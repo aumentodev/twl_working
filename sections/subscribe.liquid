@@ -1,0 +1,35 @@
+<div class="footer-newsletter" {% unless settings.bg_color == blank %}style="background: {{ settings.bg_color }}"{% endunless %}>
+  <div class="site-footer__newsletter">
+    {% form 'customer' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+    <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+    {% else %}
+    <label for="Email" class="h4 main-txt-title">{% unless settings.newlsett_title == blank %}{{ settings.newlsett_title }}{% endunless %}</label>
+    <label for="Email" class="h4 sub-h4 main-ctn-text">{% unless settings.newlsett_subtitle == blank %}{{ settings.newlsett_subtitle }}{% endunless %}</label>
+    <div class="input-group">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email"
+             name="contact[email]"
+             id="Email"
+             class="input-group__field newsletter__input"
+             value="{% if customer %}{{ customer.email }}{% endif %}"
+             placeholder="Enter your email"
+             autocorrect="off"
+             autocapitalize="off">
+      <select class="select-option" name="contact[option]">
+        <option>{{ settings.gender_dropdown }}</option>
+        <option value="{{ settings.male }}">{{ settings.male }}</option>
+        <option value="{{ settings.female }}">{{ settings.female }}</option>
+      </select>
+      <span class="input-group__btn">
+        <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+
+          <span class="newsletter__submit-text--large">{% if settings.btn_txt == blank %}submit{% else %}{{ settings.btn_txt }}{% endif %}</span>
+        </button>
+      </span>
+    </div>
+    {% endif %}
+    {% endform %}
+  </div>
+</div>

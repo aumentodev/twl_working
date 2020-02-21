@@ -1,0 +1,170 @@
+<header class="sticky-menu site-header{% if section.settings.align_logo == 'left' %} border-bottom logo--left{% else %} logo--center{% endif %}" role="banner">
+    <div class="grid grid--no-gutters grid--table grid--table-first desktop-menu">
+
+        {% if section.settings.align_logo == 'center' %}
+            {%- assign logo_classes = 'medium-up--one-sixth logo-align--center' -%}
+        {% else %}
+            {%- assign logo_classes = 'medium-up--one-sixth logo-align--left' -%}
+        {% endif %}
+
+        <div class="grid__item small--one-half {{ logo_classes }}">
+
+            {% if template.name == 'index' %}
+            <h1 class="h2 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+            {% else %}
+            <div class="h2 site-header__logo" itemscope itemtype="http://schema.org/Organization">
+            {% endif %}
+            {% if section.settings.logo %}
+                {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <a href="/" itemprop="url" class="site-header__logo-image{% if section.settings.align_logo == 'center' %} site-header__logo-image--centered{% endif %}">
+                {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
+                <img class="lazyload js"
+                    data-src="{{ section.settings.logo | img_url: '300x300' }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                    data-aspectratio="{{ section.settings.logo.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ logo_alt | escape }}"
+                    style="max-width: {{ section.settings.logo_max_width }}px">
+                <noscript>
+                    {% capture image_size %}{{ section.settings.logo_max_width | escape }}x{% endcapture %}
+                    <img src="{{ section.settings.logo | img_url: image_size }}"
+                        srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                        alt="{{ section.settings.logo.alt | default: shop.name }}"
+                        itemprop="logo"
+                        style="max-width: {{ section.settings.logo_max_width }}px;">
+                </noscript>
+                </a>
+            {% else %}
+                <a class="site-header__logo-link" href="/" itemprop="url">{{ shop.name }}</a>
+            {% endif %}
+            {% if template.name == 'index' %}
+            </h1>
+            {% else %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="grid__item small--one-half medium-up--four-sixths search-box">
+            <div class="header-search-section-desktop">
+                <div class="headerSearch_overlay" data-js-element="headerSearch_overlay"></div>
+                <form action="/search" method="get" id="header-quick-search-sticky" role="search">
+                    <div class="search-sec">
+                        <input isp_search_box class="search__input search-bar__input search-header__input search-header__input-custom "
+                            type="search"
+                            name="q"             
+                            placeholder="{% if settings.search_title == blank %}Search products{% else %}{{ settings.search_title }}{% endif %}"
+                            aria-label="{{ 'general.search.placeholder' | t }}">
+                        <button class="search-header__submit search__submit btn--link" type="submit">
+                            <img src="{{ 'search.png' | asset_url }}" class="icon-search">
+                            <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="grid__item small--one-half {% if section.settings.align_logo == 'left' %}medium-up--one-sixth{% else %}medium-up--one-third{% endif %} text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %} desktop">
+            <div class="site-header__icons-wrapper">
+                <!-- <a href="/cart" class="site-header__cart">
+                    {% include 'icon-cart' %}
+                    <span class="visually-hidden">{{ 'layout.cart.title' | t }}</span>
+                    <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+                    {% if cart.item_count > 0 %}
+                    <div id="CartCount" class="site-header__cart-count">
+                        <span>{{ cart.item_count }}</span>
+                        <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
+                    </div>
+                    {% endif %}
+                </a> -->
+                {% comment %}
+          {% if section.settings.align_logo == 'left' %}
+            <div class="site-header__search small--hide">
+              {% include 'search-form' %}
+            </div>
+          {% endif %}
+
+          <button type="button" class="btn--link site-header__search-toggle js-drawer-open-top medium-up--hide">
+            {% include 'icon-search' %}
+            <span class="icon__fallback-text">{{ 'layout.navigation.search' | t }}</span>
+          </button>
+          {% endcomment %}
+
+          {% if section.settings.currency %}
+            <div class="currency-section">
+              <span class="icons-text main-txt-title">AUD</span>
+            </div>
+          {% endif %}
+
+          <div class="help-section">
+            <span class="icons-text main-txt-title">help</span>
+            <div class="site-nav__dropdown">
+              <ul>
+                {% for link in linklists[section.settings.help_link].links %}
+                  <li class="pare-menu">
+                    <a href="{{ link.url }}" class="main-txt-title site-nav__link">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          {% if shop.customer_accounts_enabled %}
+            <div class="site-header__account">
+              <a href="{% if customer %}/account{% else %}/account/login{% endif %}">
+              {% include 'icon-login' %}
+              </a>
+
+              {% comment %}
+              <div class="sub-header__account">
+                <ul>
+
+                  <li>
+                    <a class="btn btn-login" href="{% if customer %}/account{% else %}/account/login{% endif %}">Log in</a>
+                  </li>
+                  <li>
+                    <a class="btn btn-signin" href="/account/login?sign-up">Sign up</a>
+                  </li>
+
+                </ul>
+              </div>
+              {% endcomment %}
+            </div>
+            {% comment %}
+            {% if customer %}
+              <a href="/account" class="site-header__account">
+                {% include 'icon-login' %}
+                <span class="icon__fallback-text">{{ 'layout.customer.account' | t }}</span>
+              </a>
+            {% else %}
+              <a href="/account/login" class="site-header__account">
+                {% include 'icon-login' %}
+                <span class="icon__fallback-text">{{ 'layout.customer.log_in' | t }}</span>
+              </a>
+            {% endif %}
+            {% endcomment %}
+          {% endif %}
+
+
+          <a href="/cart" class="site-header__cart">
+            <!--<span class="icons-text main-txt-title">cart</span>-->
+            {% include 'icon-cart' %}
+            <span class="visually-hidden">{{ 'layout.cart.title' | t }}</span>
+            <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+            {% if cart.item_count > 0 %}
+              <div id="CartCount" class="site-header__cart-count">
+                <span>{{ cart.item_count }}</span>
+                <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
+              </div>
+            {% endif %}
+          </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="grid grid--no-gutters grid--table grid--table-second desktop-menu">
+        <nav class="grid__item small--hide" id="AccessibleNav" role="navigation">
+            {% include 'site-nav-second' %}
+        </nav>
+    </div>
+    <div class="clear"></div>
+  </header>

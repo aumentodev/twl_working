@@ -1,0 +1,101 @@
+<div class="faq-section-data">
+
+  {% if section.settings.faq_title!= '' %} <h2 class="title">{{section.settings.faq_title}}</h2> {% endif %}
+  {% if section.settings.faq_description!= '' %} {{section.settings.faq_description}} {% endif %}
+  <p> </p>
+
+
+  {% for block in section.blocks %}
+
+      {% if block.settings.faq_category != '' %}
+  
+  		{% if block.type == 'text' %}
+              <ul class="_faq">
+
+                    {% assign faq_category = block.settings.faq_category %}
+                    <li>
+                      <h4>{{block.settings.faq_category}}</h4>
+                    </li>
+
+                	<ul>
+                      {% for q_block in section.blocks %}
+                
+                          {% if q_block.type == 'question' %}
+                
+                              {% if q_block.settings.faq_category_name == faq_category %}
+               
+                                  
+                                    <li>{{q_block.settings.qusetion}}</li>
+                                    <ul>
+                                      {{q_block.settings.answer}}
+                                    </ul>
+                                  
+                              {% endif %}
+                      {% endif %}
+                      {% endfor %}
+                      </ul>
+
+
+              </ul>
+  		  {% endif %}		
+
+      {% endif %}
+
+  {% endfor %}
+
+
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ",
+    "class": "faq-section",
+	"settings": [
+      {
+        "type": "text",
+        "id": "faq_title",
+        "label": "FAQ Title"
+      },
+	  {
+        "type": "textarea",
+        "id": "faq_description",
+        "label": "FAQ Description"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "text",
+        "name": "Faq Category",
+        "settings": [
+                {
+                  "type": "text",
+                  "id": "faq_category",
+                  "label": "FAQ Category Name"
+                }
+        ]
+      },
+	  {
+        "type": "question",
+        "name": "Question and Answer",
+        "settings": [
+                {
+                  "type": "text",
+                  "id": "faq_category_name",
+                  "label": "FAQ Category Name"
+                },
+				{
+                  "type": "textarea",
+                  "id": "qusetion",
+                  "label": "Question"
+                },
+				{
+                  "type": "textarea",
+                  "id": "answer",
+                  "label": "Answer"
+                }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

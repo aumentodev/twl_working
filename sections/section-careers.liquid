@@ -1,0 +1,95 @@
+<meta charset="utf-8" />
+<h1 style="text-align: center;"><strong><iframe width="854" height="480" src="{{section.settings.video_link}}" frameborder="0" allowfullscreen=""></iframe></strong></h1>
+<h2 style="font-weight: bold; text-align: center;" class="want_join">{{section.settings.title}}</h2>
+{{section.settings.description}}
+<meta charset="utf-8" />
+<h1 class="text-center opp">CURRENT CAREER OPPORTUNITIES:</h1>
+<div class="careers">  
+   {% for block in section.blocks %}
+     {% if block.type == 'accordian' %}
+  		<div class="accordion-container">
+          {% if block.settings.accordian_title != null %}<a href="#" class="accordion-toggle">{{block.settings.accordian_title}}</a>{% endif %}
+          <div class="accordion-content">
+             {% if block.settings.accordian_content != null %}{{block.settings.accordian_content}}{% endif %}
+             <div class="accordion-container inner">
+                {% if block.settings.subaccordian_title != null %}<a href="#" class="accordion-toggle">{{block.settings.subaccordian_title}} </a>{% endif %}
+                {% if block.settings.subaccordian_content != null %}
+                <div class="accordion-content">
+                   <ul>
+                      {{block.settings.subaccordian_content}}
+                   </ul>
+                </div>
+                {% endif %}
+             </div>
+             <div class="btn job"><a href="{{block.settings.btn_link}}" target="_top">{{block.settings.btn_lbl}}</a></div>
+          </div>
+       </div>
+     {% endif %}
+   {% endfor %}  
+</div>
+{% schema %}
+  {
+    "name": "Careers",
+    "settings": [
+      {
+        "type": "text",
+        "id": "video_link",
+        "label": "Youtube video link"
+      },
+	  {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+	  {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      }
+    ],
+	"blocks": [
+	  {
+        "type": "accordian",
+        "name": "Accordian content",
+        "settings": [
+                {
+                  "type": "text",
+                  "id": "accordian_title",
+                  "label": "Accordian title"
+                },
+				{
+                  "type": "textarea",
+                  "id": "accordian_content",
+                  "label": "Accordian content"
+                },
+				{
+                  "type": "text",
+                  "id": "subaccordian_title",
+                  "label": "Sub Accordian title"
+                },
+				{
+                  "type": "textarea",
+                  "id": "subaccordian_content",
+                  "label": "Sub Accordian content"
+                },
+				{
+                  "type": "url",
+                  "id": "btn_link",
+                  "label": "Button Link"
+                },
+				{
+                  "type": "text",
+                  "id": "btn_lbl",
+                  "label": "Button label"
+                }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

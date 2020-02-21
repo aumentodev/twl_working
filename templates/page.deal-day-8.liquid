@@ -1,0 +1,94 @@
+<style>
+ @media (max-width: 900px) { 
+  .bann_image {
+      background-image: url('{{ settings.dayeight_banner | img_url: 'master' }}');
+  }
+ }
+  
+</style>
+
+{% if settings.enable_banpage-eight %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+<div class="bann_image overly">
+                  <img src="{{ settings.dayeight_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+ <div class="bann_img-cont">
+  {%if  settings.enable_banheadd-eight %}
+   <h2><b>{{page.title}}</b></h2>
+   <h3><b>{{ settings.bannerday_eight_description }}</b></h3>
+          <div class="note">
+            <b>{{ settings.bannerrday_eight_note }}</b>
+          </div>
+  {% endif %}
+  </div>
+  </div>
+    {% if settings.day_eight_deal != blank %}
+  <div class="section page email-txt">
+    <div class="page-width">
+      <div class="fd-email text-center deal_info">{{ settings.day_eight_deal }}</div>
+    </div>
+  </div>
+  {% endif %}
+  
+  {% if settings.day_8_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+  
+  <div class="section page hot_deals_page">
+    <div class="page-width">
+      
+      <div class="grid">
+        <div class="col-md-12">
+          <div class="content text-center">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+      
+       <div class="grid grid--uniform">
+      
+  <div class="collection-items-holder hot-deals">
+            <ul class="collection-items text-center">
+              <div class="row ">
+              {%  for product in collections[settings.dayeight-deal-col].products  %}
+              <li class="grid__item {% if collections[settings.dayeight-deal-col].all_products.count < 4 %}a-set-float-none{% endif %} small--one-half medium-up--one-quarter extrasmall">
+                {% include 'a-product-card-grid-2' %}
+              </li>
+              {% endfor %}
+              </div>
+            </ul>
+          {% comment %} <div class="AjaxinatePagination text-center">
+            <div class="blog-view-all">
+              {% if paginate.next %}
+              <a class="ld ld-ring ld-spin" href="{{ paginate.next.url }}"></a>
+              {% endif %}
+            </div>
+          </div> {% endcomment %}
+        </div>
+         {%comment%}  {% include 'pagination' %}{%endcomment%}
+
+      
+      </div>
+    </div>
+  </div>
+   {% include 'pointouts' %}
+  {% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+</main>
+{% endif %}
+{% if settings.enable_banpage-eight == blank %}
+<main class="{% if settings.enable_banpage-eight == blank %}blank-page{% endif %}">
+  <div class="section">
+    <div class="page-width">
+      <div class="grid">
+        <div class="col-md-12 text-center">
+          {% include 'blank-content' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+ {% endif %}
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>

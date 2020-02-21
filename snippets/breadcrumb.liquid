@@ -1,0 +1,22 @@
+<div class="page-width-custom">
+  <ul class="breadcrumbs main-bold-title">
+    <li><a href="/">Home</a></li>
+    {% if template contains 'collection' %}
+    / <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+    {% elsif template contains 'product' %}
+
+    {% if collection.title != blank %}
+    / <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+    {% endif %}
+    / <li><a href="{{ product.url }}">{{ product.title }}</a></li>
+    {% endif %}
+
+    {% if template contains 'page' %}
+      {% if page.handle  == 'new-tb-apparel-page' %}
+      / <li>{{ page.title }}</li>
+      {% else %}
+      / <li>{{ page.title | capitalize }}</li>
+      {% endif %}
+    {% endif %}
+  </ul>  
+</div>

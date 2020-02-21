@@ -1,0 +1,110 @@
+<div class="help-page-template">
+	<div class="page-width-custom">
+		<ul class="breadcrumbs main-txt-title">
+			<li><a href="/">Home</a></li> / <li>{{ page.title }}</li>
+		</ul>
+	</div>
+	<div class="left-sidebar left-sidebar-desktop">
+		<div class="help-menu-list">
+			<ul class="menu-list">
+				{% for link in linklists[settings.help_menu].links %}
+                  <li class="pare-menu">
+                    <a href="{{ link.url }}" class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="right-sidebar">
+		<div class="content">
+			<h2 class="tracking-title">order status & tracking</h2>
+			<div class="track-contents">
+				{{ page.content }}
+			</div>
+			<div class="track-table">
+				<!-- Begin Page inserted by SimpleOrderStatus Application //--><script data-cfasync="false" type="text/javascript" src="//sosapp.sinelabs.com/media/js/sos_ensurejq.js"></script><script data-cfasync="false" type="text/javascript" src="//sosapp.sinelabs.com/media/js/simpleorderstatus.js"></script><script data-cfasync="false" type="text/javascript">// <![CDATA[
+				document.write('<link rel="stylesheet" href="//sosapp.sinelabs.com/media/css/simpleorderstatus.css">');
+				// ]]></script><!-- CUSTOMIZATION BEGIN: FEEL FREE TO CUSTOMIZE THIS HTML/TEXT //-->
+
+				<!-- CUSTOMIZATION END //--> <!-- CUSTOMIZATION BEGIN: FEEL FREE TO MODIFY THE ERROR MESSAGE TEXTS BELOW AS YOU PREFER //--><script data-cfasync="false" type="text/javascript">// <![CDATA[
+				    var error_required = '[Required]';
+				    var error_email_invalid = '[E-mail address formatted improperly]';
+				    var error_date_invalid = '[Order date values not valid]';
+				// ]]></script><!-- CUSTOMIZATION END //-->
+				<div id="sos_wrapper" class="sos_wrapper" style="display: none;">
+				<form id="sos_frm" class="sos_frm">
+
+					<div class="form-item">
+						<input type="hidden" id="sos_sid" name="sos_sid" value="2260165" /> 
+						<label for="sos_oid">Order #: <span id="sos_oid_error" class="sos_fld_error"></span></label> 
+						<input type="text" tabindex="1" id="sos_oid" name="sos_oid" class="sos_oid" /> 
+					</div>	
+					<!-- OPTIONAL: UNCOMMENT THIS BLOCK BELOW TO ASK CUSTOMERS TO ALSO ENTER ORDER DATE TO LOOKUP THEIR ORDER //--> <!-- REMOVE THIS ROW TO UNCOMMENT
+					<label for="sos_mm">Order date: <span id="sos_date_error" class="sos_fld_error"></span></label>
+					<input type="text" tabindex="2" id="sos_mm" name="sos_mm" style="width:60px;" placeholder="MM" />
+					<span style="float:left;font-size:18pt;line-height:40px;padding:0 5px;">/</span>
+					<input type="text" tabindex="3" id="sos_dd" name="sos_dd" style="clear:none;width:60px;" placeholder="DD" />
+					<span style="float:left;font-size:18pt;line-height:40px;padding:0 5px;">/</span>
+					<input type="text" tabindex="4" id="sos_yyyy" name="sos_yyyy" style="clear:none;width:100px;" placeholder="YYYY" />
+					<div class="sos_clear"></div>
+					REMOVE THIS ROW TO UNCOMMENT //--> <!-- OPTIONAL: UNCOMMENT THIS BLOCK BELOW TO ASK CUSTOMERS TO ALSO ENTER BILLING ZIP CODE TO LOOKUP THEIR ORDER //--> <!-- REMOVE THIS ROW TO UNCOMMENT
+					<label for="sos_zip">ZIP code: <span id="sos_zip_error" class="sos_fld_error"></span></label>
+					<input type="text" tabindex="5" id="sos_zip" name="sos_zip" style="width:150px;" />
+					REMOVE THIS ROW TO UNCOMMENT //--> 
+
+					<div class="form-item">
+						<input type="text" tabindex="99" class="sos_hp" name="Phone" value="" /> 
+						<label for="sos_eml">E-mail address: <span id="sos_eml_error" class="sos_fld_error"></span></label> 
+						<input type="text" tabindex="6" id="sos_eml" name="sos_eml" class="sos_eml" /> 
+					</div>
+
+					<input type="submit" tabindex="7" id="sos_lkp" value="Lookup Order Status" />
+					<div class="sos_clear"></div>
+				</form>
+				<div id="sos_loading" class="sos_loading" style="display: none;"><!-- CUSTOMIZATION BEGIN: FEEL FREE TO CUSTOMIZE THIS HTML/TEXT //-->
+				<p>Just a moment, searching...<span class="show_progress"></span></p>
+				<!-- CUSTOMIZATION END //--></div>
+				<div id="sos_error" class="sos_error" style="display: none;"><!-- CUSTOMIZATION BEGIN: FEEL FREE TO CUSTOMIZE THIS HTML/TEXT //-->
+				<h4>Terribly sorry, order lookup is not currently functioning.</h4>
+				<p>Please contact store customer support.</p>
+				<!-- CUSTOMIZATION END //--> <input type="button" id="sos_retry_error" class="sos_retry" value="Retry" /></div>
+				<div id="sos_order_not_found" class="sos_order_not_found" style="display: none;"><!-- CUSTOMIZATION BEGIN: FEEL FREE TO CUSTOMIZE THIS HTML/TEXT //-->
+				<h4>Terribly sorry, but we could not locate your order.</h4>
+				<p>Please recheck your order number and e-mail address - it must match exactly the one used when placing your order exactly. If you continue to have trouble locating your order, please contact store customer support.</p>
+				<!-- CUSTOMIZATION END //--> <input type="button" id="sos_retry_not_found" class="sos_retry" value="Retry" /></div>
+				<div id="sos_order" class="sos_order" style="display: none;"></div>
+				<div class="sos_clear"></div>
+				</div>
+
+			</div>
+			<div class="tracking-form">
+				<h2 class="">WANT TO KNOW THE STATUS OF YOUR SHIPMENT?</h2>
+				 <div id="as-root"></div>
+		          <script>// <![CDATA[
+		          (function(e,t,n){var r,i=e.getElementsByTagName(t)[0];if(e.getElementById(n))return;
+		          r=e.createElement(t);r.id=n;r.src="//button.aftership.com/all.js";i.parentNode.insertBefore(r,i)})(document,"script","aftership-jssdk")
+		          // ]]></script>
+		          <div class="as-track-button" data-size="large" data-domain="thewodlife.aftership.com"></div>
+			</div>
+			
+			<div class="track-logos">
+				{% section 'track-logo' %}
+			</div>
+		</div>
+	</div>
+	<div class="left-sidebar left-sidebar-mobile help-sidebar-mobile">
+		<div class="help-menu-list">
+			<h3 class="mob-title">Need more help</h3>
+			<ul class="menu-list">
+				{% for link in linklists[settings.help_menu].links %}
+                  <li class="pare-menu">
+                    <a href="{{ link.url }}" class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}

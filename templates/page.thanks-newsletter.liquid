@@ -1,0 +1,15 @@
+<div class="page-default-template">
+  <div class="page-width">
+      <div class="section-header text-center">
+        <h1>{{ page.title }}</h1>
+      </div>
+      <div class="rte">
+        {{ page.content }}
+      </div>
+  </div>
+</div>
+
+{% include 'visely-trending-now' %}
+{% include 'visely-most-popular' %}
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}

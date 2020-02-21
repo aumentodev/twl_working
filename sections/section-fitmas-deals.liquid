@@ -1,0 +1,326 @@
+{% if section.settings.show_page %}
+<style>
+ @media (max-width: 900px) { 
+  .bann_image {
+      background-image: url('{{ settings.fitmas_banner | img_url: 'master' }}');
+  }
+ }  
+</style>
+<main class="{{page.title | handle }} merged-page-template">
+    <div class="page-default-template fitmas-template">
+    <div class="order-shipping sec-countdown">
+      {% if section.settings.show_announcement_bar %}
+      <p>{{section.settings.announce_text_prev}} 
+      <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+      {{section.settings.announce_text_next}}
+      </p>      
+      {% endif %}
+    </div>
+    {% comment %}
+      <div class="blue-wrapper" style="margin-bottom:0px;">
+        <div class="grid">
+          <div class="grid__item medium-up--one-whole" style="margin-bottom:0px;">
+            <div class="box_view header_box">
+              <div class="box_inner last_r">
+                <div class="text-view">
+                  <h3>TODAY'S DEAL</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>          
+      </div>
+    {% endcomment %}
+    <section id="page-header">
+    <div class="header-background compexpagebn desktop-image">
+      {% unless section.settings.desktop_image == "" %}
+      <a href="{{section.settings.banner_link}}">
+		<img src="{{section.settings.desktop_image | img_url : "master"}}" width="100%" />
+      </a>
+      {% endunless %}
+    </div>
+    <div class="header-background compexpagebn mobile-image">
+      {% unless section.settings.mobile_image == "" %}
+      <a href="{{section.settings.banner_link}}">
+		 <img src="{{section.settings.mobile_image | img_url : "master"}}" width="100%" /> 
+      </a>
+      {% endunless %}
+    </div>   
+  </section>
+<!--     <div class="blue-wrapper mb0">
+          <div class="grid">
+            
+            <div class="grid__item medium-up--one-whole mb0">
+              <a href="https://www.thewodlife.com.au/collections/2019-sept-sale/shoes+nike" class="box_view">
+                <div class="box_inner" style="padding-top:15.3%;">
+                  <div class="text-view">
+                    <h1>TODAY'S DEAL</h1>
+				<img class="desktop-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-desktop-1nikeshoes.jpg?v=1568783983" width="100%">
+                    <img class="mobile-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mobile-1nikeshoes_1b93225b-48ec-41f0-ae03-449ed4c239af.jpg?v=1568790524" width="100%"> 
+                  </div>
+                </div>
+              </a>
+            </div>
+      </div>
+    </div> -->
+    {% if section.settings.show_announcement_bar %}
+    <div class="grey-bg daysec-countdown">
+      <div class="deal-section daysec-countdown" id="deal-section">
+        <div class="section-header text-center m0" >
+         <h1>{{section.settings.deal_expire_text}}</h1>
+          <div class="counter">
+<!--             <div class="timer-view"><span id="sale_day" class="timer"></span><span>Days</span></div><span class="separator">:</span> -->
+            <div class="timer-view"><span id="day_hours" class="timer"></span><span>hours</span></div><span class="separator">:</span>
+            <div class="timer-view"><span id="day_minutes" class="timer"></span><span>minutes</span></div><span class="separator">:</span>
+            <div class="timer-view"><span id="day_seconds" class="timer"></span><span>seconds</span></div>
+          </div>
+        </div> 
+      </div>
+    </div>
+    {% endif %}
+    <div class="page-width fitmas-wrapper">
+      <div class="section-header text-center ">
+        <h1>{{section.settings.day_sec_header_title}}</h1>
+        <h4>{{section.settings.day_sec_sub_header_title}}</h4>
+      </div>
+   <div class="blue-wrapper" >
+          <div class="grid">            
+            {% for block in section.blocks %}            
+            {% if block.type == 'day_sale_image'%}
+            {% assign fit_link = collections[block.settings.col_id].url %}
+            <div class="grid__item medium-up--one-quarter small--one-half">
+              <a href="{% if fit_link != "" %} {{fit_link}} {% else %} javascript:void(0); {% endif %}" class="box_view">              
+                <div class="box_inner">
+                  <div class="text-view">
+                    {% unless block.settings.col_image == "" %}
+				 	<img class="desktop-image" src="{{block.settings.col_image | img_url : "master"}}" width="100%" /> 
+                    {% endunless %}
+                    {% unless block.settings.col_image_mobile == "" %}
+                    <img class="mobile-image" src="{{block.settings.col_image_mobile | img_url : "master"}}" width="100%" /> 
+                    {% endunless %}
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}    
+            {% endfor %}       
+            
+			<!-- <div class="grid__item medium-up--one-quarter small--one-half">
+              <a href="https://www.thewodlife.com.au/collections/2019-sept-sale/shoes+reebok" class="box_view">
+                <div class="box_inner">
+                  <div class="text-view">
+                    <h4>DAY 2</h4>
+                  </div>
+                </div>
+              </a>
+            </div> --> 
+          </div>          
+        </div>
+    </div>
+    <div class="grey-bg">
+        <div class="page-width">
+        
+          <section id="get-in-touch" class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 set_form">       
+            <h2 class="appreal_heading_text appgive-title">{{section.settings.form_heading}}</h2>
+            <p class="appreal_heading_text appgive-subtitle">{{section.settings.form_subheading}} </p>
+            <form class="contact_form whyweatform"  method="GET" target="_blank">      
+              <div class="klaviyo_messages">
+                <div class="success_message" style="display:none;"></div>
+                <div class="error_message" style="display:none;"></div>
+              </div> 
+              <div class="grid__item-setf">
+                <div class="set_input name_fld txt-centr">
+                  <input required="" type="text" id="ContactFormName" name="contact[name]" placeholder="Your name" value="">
+                </div>
+              </div>
+              <input type="hidden" name="g" value="KqHhE8">
+              <div class="grid__item-setf">
+                <div class="set_input email_fld txt-centr">
+                  <input type="email" value="" required="" name="email" id="k_id_email" placeholder="Your email">
+                </div>
+              </div>         
+              <div class="col-md-12 ">
+                <div class="set_input name_fld txt-centr">
+                  <button type="submit" class="btn contactbtn" style="color: #fff;background-color: #000;">{{section.settings.btn_text}}</button>             
+                </div>
+              </div>           
+            </form>
+          </div>
+        </div>
+      </div>
+      <h1 class="text-center whyis_sweat"></h1>
+    </section>
+      </div>
+    </div>
+  </div>  
+ {%comment%} {% include 'pointouts' %}{%endcomment%}
+</main>
+
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+
+<style>
+  section#page-header .header-background.compexpagebn{height:auto;}  
+   section#page-header .header-background {background-color:transparent;}
+</style>
+{% endif %}
+{% schema %}
+{
+	"name": "Fitmas deals",
+    "settings": [
+	  {
+        "type": "checkbox",
+        "id": "show_page",
+        "label": "Publish page",
+        "default": false
+      },
+	  {
+		"type": "header",
+		"content": "Announcement Text"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Show announcement bar",
+        "default": true
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_prev",
+		"label": "Announcement previous text"
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_next",
+		"label": "Announcement next text"
+      },
+	  {
+		"type": "header",
+		"content": "Banner"
+      },
+	  {
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile Banner image"
+      },
+	  {
+		"type": "url",
+		"id": "banner_link",
+		"label": "Banner Link"
+      },
+      {
+		"type": "text",
+		"id": "deal_expire_text",
+		"label": "Deal expire text"
+      },
+      {
+        "type": "text",
+        "id": "datetime",
+        "label": "End date",
+         "info": "String formatted as following:: dd mmmm YYYY hh:mm:ss Example: 29 April 2019 9:56:00 GMT+10:30"
+      },
+	  {
+		"type": "text",
+		"id": "day_sec_header_title",
+		"label": "Day section header title"
+      },
+	  {
+		"type": "text",
+		"id": "day_sec_sub_header_title",
+		"label": "Day section sub header title"
+      },
+	  { 
+		"type" : "header",
+		"content" : "Subscribe form data"
+      },
+	  {
+		"type": "text",
+		"id": "form_heading",
+		"label": "Form heading"
+      },
+	  {
+		"type": "text",
+		"id": "form_subheading",
+		"label": "Form sub heading"
+      },
+	  {
+		"type": "text",
+		"id": "btn_text",
+		"label": "Form button text"
+      }
+	],
+	"blocks": [
+          {
+            "type": "day_sale_image",
+            "name": "Day sale",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id" : "col_id",
+                "type" : "collection",
+                "label" : "Select collection"
+			  }
+            ]
+         }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+<script type="text/javascript">
+  	function makeTimerDaySale() {
+      		var endTime = new Date("{{section.settings.datetime}} GMT+10:30");			
+			endTime = (Date.parse(endTime) / 1000);
+
+			var now = new Date();
+			now = (Date.parse(now) / 1000);
+
+			var timeLeft = endTime - now;
+
+			var days = Math.floor(timeLeft / 86400); 
+			var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+			var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+			var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+  
+			if (hours < "10") { hours = "0" + hours; }
+			if (minutes < "10") { minutes = "0" + minutes; }
+			if (seconds < "10") { seconds = "0" + seconds; }
+      		console.log("days:"+days);
+            if(days < 0)
+            {
+          	   $(".daysec-countdown").hide(); 	
+            }
+            else
+            {
+              $(".daysec-countdown").show();
+            }
+			$("#sale_day").html(days);
+      		$("#day_hours").html(hours);
+			$("#day_minutes").html(minutes);
+			$("#day_seconds").html(seconds);		
+
+	}
+	setInterval(function() { makeTimerDaySale(); }, 1000);
+</script>

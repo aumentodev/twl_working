@@ -1,0 +1,144 @@
+{% if section.settings.enabled %}
+	{% assign actual_product = product %}
+	{% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+	{% for product in collections[vendor_handle].all_products %}
+		{% if vendor == product.vendor %}
+			{% if handle != product.handle %}
+				{% capture temp %}
+					{{product.handle}}
+					{% if forloop.last == false %},{% endif%}
+				{% endcapture %}
+				{% assign brand_products = brand_products | append: temp %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+	{% assign product_handles = brand_products | split: ","%}
+	{% if product_handles.size > 0 %}
+        <div class="page-width">
+            <div class="page-collection-list">
+            {% if section.settings.title != blank %}
+              <div class="section-header text-center">
+                <h2 class="main-ctn-title"> {{ section.settings.title }} {{vendor}}</h2>
+              </div>
+            {% endif %}
+            {% case section.settings.grid %}
+              {% when 2 %}
+                {%- assign grid_item_width = 'medium-up--one-half' -%}
+              {% when 3 %}
+                {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+              {% when 4 %}
+                {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+              {% when 5 %}
+                {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+            {% endcase %}
+            {% assign num_limit = section.settings.maxproducts %}
+            <div class="product-list-slider product-list-slider-{{ section.id }}">
+                {% assign counter = 0  %}
+                {% assign max_products = section.settings.maxproducts | times: 1 %}
+                {% for handle in product_handles %}
+                {% assign counter = counter | plus: 1  %}
+                {% if counter <= max_products %}
+                  <div class="product-list">
+                    {% assign product_handle = handle | handleize %}
+                    {% assign product = all_products[product_handle] %}
+
+										{% assign disableQuickShop = true %}
+                    {% include "product-box" with product %}
+                  </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+    {% endif %}
+    {% assign product  = actual_product %}
+{% endif %}
+<script>
+  $(document).ready(function(){
+    var desk_num = {{ num_limit }};
+
+    if($(window).width() < 450){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }else if($(window).width() < 789){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }else if($(window).width() < 950){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }else {
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }
+  })
+</script>
+{% schema %}
+  {
+    "name": "Products by brand",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enabled",
+        "label": "Enabled",
+        "default":   true
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "MORE FROM"
+      },
+      {
+        "type": "select",
+        "id": "maxproducts",
+        "label": "No of products",
+        "options": [
+          {
+            "value": "5",
+            "label": "5 products"
+          },
+          {
+            "value": "10",
+            "label": "10 products"
+          },
+          {
+            "value": "15",
+            "label": "15 products"
+          },
+          {
+            "value": "20",
+            "label": "20 products"
+          }
+        ],
+        "default": "10"
+      }
+    ]
+  }
+{% endschema %}

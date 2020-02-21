@@ -1,0 +1,366 @@
+{% if settings.enable_crossfit-beginner %}
+<main class="{{page.title | handle }} merged-page-template">
+{% include 'breadcrumb' %}
+
+  {%comment%}{% include 'page-header' %}{%endcomment%}
+
+  {%comment%}{%if settings.enable_CrossFit_banner_section %}  
+  <div class="a-set-beginners-banner-img" >
+     <div class="a-set-video-container"> 
+        <div class="a-beginners-banner-img">
+           <img src="{{ settings.CrossFit_banner_image | img_url: 'original' }}">
+        </div>               
+     </div>           
+  </div>   
+  {
+        "type": "image_picker",
+        "id": "CrossFit_banner_image",
+        "label": "Banner Image"
+      } 
+  {% endif %}{%endcomment%}
+  
+  {%if settings.enable_CrossFit_banner_section %} 
+  <section id="page-header">
+    <div class="header-background" style="background-image: url('{{ settings.CrossFit_banner_bgnrimage | img_url: 'master' }}')">
+      <div class="page-width">
+<!--             <h1>{{ page.title }}</h1> -->
+          <h1>  {{ settings.CrossFit_banner_image_title }}</h1>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  
+  {% if settings.cross_begin_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+  
+  {%if settings.enableCrossFit_text_section %} 
+   <div class="page-width">
+          <div class="a-set-2018games-text-section">
+              <div class="content">
+                <p>{{ settings.CrossFit_text_section_text}}</p>
+              </div>
+          </div>
+   </div>    
+  {% endif %} 
+  
+ 
+  
+  
+  <div class="a-CrossFit-Signup-section">
+    <div class="page-width">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="blogpost text-center">        
+            {%comment%}  <div>
+                <a href="{{settings.CrossFit_blog_image_url1 }}"> <img src="{{settings.CrossFit_blog_image1 | img_url:'original'}}"></a>
+              </div>{%endcomment%}
+              {% for article in blogs[settings.cross].articles limit:2 %}
+               <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 extrasmall">                 
+                 
+                     <a href="{{ article.url}}"> {{ article.title }}</a>                 
+                 
+              </div>
+              {% endfor %}
+           </div>
+        </div>       
+     </div>
+   </div>
+  </div>
+  
+  
+  
+  {%if settings.enable_CrossFit_blogpost_section %}
+    <div class="a-CrossFit-blogpost-section"> 
+      <div class="page-width">
+            <div class="blog-section-wrap">
+               {% if settings.CrossFit_blogpost_heading != blank %}
+               <div class="division-wrap">
+                 <h1 class="division-title">
+                     {{ settings.CrossFit_blogpost_heading }}
+                 </h1>
+               </div>
+               {% endif %}
+               <div class="CrossFit-blogpostimages-container grid grid--uniform">
+                 {%if settings.enable_CrossFit_blogpost_1 %}
+                 <div class="grid__item  small--one-half medium-up--one-quarter extrasmall">
+                    <div class="CrossFit-blogpost-images">
+                      <a href="{{ settings.CrossFit_blogpost_img_link_1 }}">
+                          <img src="{{ settings.CrossFit_blogpost_img_1 | img_url: 'original' }}">
+                          {% if settings.CrossFit_blogpost_heading_1 != blank %}
+                          <div class="blog-post-title">
+                            {{ settings.CrossFit_blogpost_heading_1 }}
+                          </div>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_excerpt_1 != blank %}
+                          <p class="blog-post-text">
+                            {{ settings.CrossFit_blogpost_excerpt_1 }}
+                          </p>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_button != blank %}
+                          <a href="{{ settings.CrossFit_blogpost_img_link_1 }}" class="blog-post-link" target="_blank">{{ settings.CrossFit_blogpost_button }}</a>  
+                          {% endif %}
+                        </a>
+                    </div>
+                 </div>
+                 {% endif %}
+                 {%if settings.enable_CrossFit_blogpost_2 %}
+                 <div class="grid__item extra-small--one-whole small--one-half medium-up--one-quarter extrasmall">
+                    <div class="CrossFit-blogpost-images">
+						<a href="{{ settings.CrossFit_blogpost_img_link_2 }}">
+                          <img src="{{ settings.CrossFit_blogpost_img_2 | img_url: 'original' }}">
+                          {% if settings.CrossFit_blogpost_heading_2 != blank %}
+                          <div class="blog-post-title">
+                            {{ settings.CrossFit_blogpost_heading_2 }}
+                          </div>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_excerpt_2 != blank %}
+                          <p class="blog-post-text">
+                            {{ settings.CrossFit_blogpost_excerpt_2 }}
+                          </p>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_button != blank %}
+                          <a href="{{ settings.CrossFit_blogpost_img_link_2 }}" class="blog-post-link" target="_blank">{{ settings.CrossFit_blogpost_button }}</a>  
+                          {% endif %}
+                        </a>
+                    </div>
+                 </div>
+                 {% endif %}
+                 {%if settings.enable_CrossFit_blogpost_3 %}
+                 <div class="grid__item extra-small--one-whole small--one-half medium-up--one-quarter extrasmall">
+                    <div class="CrossFit-blogpost-images">
+                        <a href="{{ settings.CrossFit_blogpost_img_link_3 }}">
+                          <img src="{{ settings.CrossFit_blogpost_img_3 | img_url: 'original' }}">
+                          {% if settings.CrossFit_blogpost_heading_3 != blank %}
+                          <div class="blog-post-title">
+                            {{ settings.CrossFit_blogpost_heading_3 }}
+                          </div>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_excerpt_3 != blank %}
+                          <p class="blog-post-text">
+                            {{ settings.CrossFit_blogpost_excerpt_3 }}
+                          </p>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_button != blank %}
+                          <a href="{{ settings.CrossFit_blogpost_img_link_3 }}" class="blog-post-link" target="_blank">{{ settings.CrossFit_blogpost_button }}</a>  
+                          {% endif %}
+                        </a>
+                    </div>
+                 </div> 
+                 {% endif %}
+                 {%if settings.enable_CrossFit_blogpost_4 %}
+                 <div class="grid__item extra-small--one-whole small--one-half medium-up--one-quarter extrasmall">
+                    <div class="CrossFit-blogpost-images">
+                        <a href="{{ settings.CrossFit_blogpost_img_link_4 }}">
+                          <img src="{{ settings.CrossFit_blogpost_img_4 | img_url: 'original' }}">
+                          {% if settings.CrossFit_blogpost_heading_4 != blank %}
+                          <div class="blog-post-title">
+                            {{ settings.CrossFit_blogpost_heading_4 }}
+                          </div>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_excerpt_4 != blank %}
+                          <p class="blog-post-text">
+                            {{ settings.CrossFit_blogpost_excerpt_4 }}
+                          </p>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_button != blank %}
+                          <a href="{{ settings.CrossFit_blogpost_img_link_4 }}" class="blog-post-link" target="_blank">{{ settings.CrossFit_blogpost_button }}</a>  
+                          {% endif %}
+                        </a>
+                    </div>
+                 </div>
+                 {% endif %}
+                 {%if settings.enable_CrossFit_blogpost_5%}
+                 <div class="grid__item extra-small--one-whole small--one-half medium-up--one-quarter extrasmall">
+                    <div class="CrossFit-blogpost-images">
+                        <a href="{{ settings.CrossFit_blogpost_img_link_5 }}">
+                          <img src="{{ settings.CrossFit_blogpost_img_5 | img_url: 'original' }}">
+                          {% if settings.CrossFit_blogpost_heading_5 != blank %}
+                          <div class="blog-post-title">
+                            {{ settings.CrossFit_blogpost_heading_5 }}
+                          </div>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_excerpt_5 != blank %}
+                          <p class="blog-post-text">
+                            {{ settings.CrossFit_blogpost_excerpt_5 }}
+                          </p>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_button != blank %}
+                          <a href="{{ settings.CrossFit_blogpost_img_link_5 }}" class="blog-post-link" target="_blank">{{ settings.CrossFit_blogpost_button }}</a>  
+                          {% endif %}
+                        </a>
+                    </div>
+                 </div>
+                 {% endif %}
+                 {%if settings.enable_CrossFit_blogpost_6 %}
+                 <div class="grid__item extra-small--one-whole small--one-half medium-up--one-quarter extrasmall">
+                    <div class="CrossFit-blogpost-images">
+                        <a href="{{ settings.CrossFit_blogpost_img_link_6 }}">
+                          <img src="{{ settings.CrossFit_blogpost_img_6 | img_url: 'original' }}">
+                          {% if settings.CrossFit_blogpost_heading_6 != blank %}
+                          <div class="blog-post-title">
+                            {{ settings.CrossFit_blogpost_heading_6 }}
+                          </div>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_excerpt_6 != blank %}
+                          <p class="blog-post-text">
+                            {{ settings.CrossFit_blogpost_excerpt_6 }}
+                          </p>
+                          {% endif %}
+                          {% if settings.CrossFit_blogpost_button != blank %}
+                          <a href="{{ settings.CrossFit_blogpost_img_link_6 }}" class="blog-post-link" target="_blank">{{ settings.CrossFit_blogpost_button }}</a>  
+                          {% endif %}
+                        </a>
+                    </div>
+                 </div>
+                 {% endif %}
+               </div>
+             </div>
+       </div> 
+    </div>
+    {% endif %}
+  
+   {%if settings.enable_CrossFit_signup_section %}
+  <div class="a-CrossFit-Signup-section">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid_item">
+          <div class="signup text-center">
+            <div class="CrossFit-newsletters">
+                <h2 class="title">
+                    {{ settings.CrossFit_signup_title }}
+                </h2>
+                <div class="input-group">
+                    <div id="mc_embed_signup gg">
+                      <form id="email_signup" class="klaviyo_condensed_embed_JJu2LF" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+                        <input type="hidden" name="g" value="JJu2LF">
+                        <div class="klaviyo_field_group">
+                          <div class="input-group">
+                            <input type="email" class="form-control input" name="email" id="k_id_email" placeholder="ADD EMAIL" value="">
+                            <div class="input-group-btn klaviyo_form_actions">
+                              <button class="button button-secondary" type="submit" class="klaviyo_submit_button">SIGN UP</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="klaviyo_messages">
+                          <div class="success_message" style="display:none;"></div>
+                          <div class="error_message" style="display:none;"></div>
+                        </div>
+                      </form>
+
+                      <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+                      <script type="text/javascript">
+                        KlaviyoSubscribe.attachToForms('#email_signup', {
+                          hide_form_on_success: true
+                        });
+                        $('#email_signup').bind('click', function() {
+                          fbq('track', 'Lead');
+                        });
+                      </script>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+  
+   {% if settings.enable_CrossFit_beginners_coll %}
+  <div class="a-set-first-collection">
+       {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.CrossFit_beginners_coll].products %}
+                {% capture temp %}
+                    {{product.handle}}
+                    {% if forloop.last == false %},{% endif%}
+                {% endcapture %}
+                {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    
+      <section id="by-brand">
+        <div class="page-width 123">
+          <div class="grid">
+            <div class="grid_item">
+              {% if settings.CrossFit_beginners_coll_heading != blank %}
+              <div class="division-wrap">
+                <h1 class="division-title">
+                              {{ settings.CrossFit_beginners_coll_heading}}
+                </h1>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+         
+          <div class="rowcx">
+            
+          <div class=" gamescollection swiper-col">
+            
+      
+
+        <div class="collection-items-holder hot-deals ">
+          <ul class="a-set-collection-ul collection-items grid grid--uniform">
+            <div class="row ">
+            {%  for product in collections[settings.CrossFit_beginners_coll].products %}
+            <li class="grid__item  small--one-half medium-up--one-quarter">
+             {% include "a-product-card-grid-2" %}
+            </li>
+            {% endfor %}
+            </div>
+          </ul>
+         {% comment %} 
+          <div class="AjaxinatePagination text-center">
+           <div class="blog-view-all">
+            {% if paginate.next %}
+              <a class="ld ld-ring ld-spin" href="{{ paginate.next.url }}"></a>
+            {% endif %}
+           </div>
+          </div>
+          {% endcomment %}
+        </div>
+      
+
+      
+<!--             <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> -->
+            {% if settings.CrossFit_beginners_coll_link != blank %}
+              <div class="stance-view-all-button text-center">
+                <a href="{{ settings.CrossFit_beginners_coll_link }}">{{ settings.CrossFit_beginners_view_all_buy }}</a>
+              </div>
+              {% endif %}
+               </div>  
+             
+          
+        </div>
+         
+          
+        </div>
+      </section>
+    
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  
+  
+  
+</main>
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+
+<style>
+
+ 
+ 
+</style>
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}

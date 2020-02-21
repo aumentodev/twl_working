@@ -1,0 +1,22 @@
+<div id="store-flag" style="display: none;" class="flag-store">
+  <div class="store-inner">
+    <img src="{{ 'logo-twl-yellow.png' | asset_url }}" class="store-logo"/>
+    <h2>welcome to twl</h2>
+    <h5>please select a store</h5>
+    <ul id="storelist">
+      {% for block in section.blocks %}
+      {% if block.type == "store_select" %}
+      {% if block.settings.flag_c_box != blank %}
+      <li data-value="au"><a href="{{ block.settings.link }}"  class="store-block " >
+        {% unless block.settings.round_flag == blank %}
+        <img src="{{ block.settings.round_flag | img_url: '100x' }}">
+        {% endunless %}
+        <span>{{ block.settings.title }}</span>
+        </a>
+      </li>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

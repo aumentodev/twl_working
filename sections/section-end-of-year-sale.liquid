@@ -1,0 +1,385 @@
+{% if section.settings.show_page %}
+<div class="page-default-template cyber-template">
+  <div class="order-shipping sec-countdown" style="display:none;">
+      {% if section.settings.show_announcement_bar %}
+      {% include 'day-countdown' %}
+      <p>{{section.settings.announce_text_prev}} 
+        {% comment %}<span id="days"></span>:{% endcomment %}<span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+      {{section.settings.announce_text_next}}
+      </p>      
+      {% endif %}
+  </div>			
+  {% comment %}
+  <div class="blue-wrapper home-banner" style="margin-bottom:60px;">
+    <div class="box_inner">
+      <div class="text-view text-center">
+         <div class="section-header text-center">
+           <h1>{{section.settings.discount_code}}</h1>
+           <h5>{{section.settings.subheading_order}}</h5>
+           <div class="code-view"><span>use code </span> : <h5>blackfriday</h5></div>
+           {%comment%}<h5>{{section.settings.heading_order}}</h5>{% endcomment%}
+           {%comment%}<h5>{{section.settings.checkout_text}}</h5>{% endcomment%}
+         </div>
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
+  
+  {% if section.settings.banner_type == "boxed" %}  
+  	<div class="blue-wrapper home-banner" style="margin-bottom:60px;background-image:url('{{section.settings.boximage | img_url : "master"}}')">
+      <div class="box_inner">
+        <div class="text-view text-center">
+           <div class="section-header text-center">
+             <h1>{{section.settings.heading_order}}</h1>
+             <h5>{{section.settings.subheading_order}}</h5>
+             <div class="code-view">{{section.settings.discount_code}}</div>
+             {%comment%}<h5>{{section.settings.heading_order}}</h5>{% endcomment%}
+             {%comment%}<h5>{{section.settings.checkout_text}}</h5>{% endcomment%}
+           </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+  	<section id="page-header">
+      <div class="header-background compexpagebn desktop-image" >
+        {% unless section.settings.desktop_image == "" %}
+        <a href="{{section.settings.banner_url}}">
+          <img src="{{section.settings.desktop_image | img_url : "master"}}" width="100%">
+        </a>
+        {% endunless %}
+      </div>
+      <div class="header-background compexpagebn mobile-image">
+        {% unless section.settings.mobile_image == "" %}
+        <a href="{{section.settings.banner_link}}">
+           <img src="{{section.settings.mobile_image | img_url : "master"}}" width="100%"> 
+        </a>
+        {% endunless %}
+      </div>   
+    </section>
+  {% endif %}
+    
+
+  <div class="deal-section daysec-countdown" id="deal-section">
+    <div class="text-center m0" >
+      <h3>{{section.settings.timer_text}}</h3>
+      <div class="counter">
+        <div class="timer-view"><span id="sale_day" class="timer"></span><span>Days</span></div>
+        <div class="timer-view"><span id="day_hours" class="timer"></span><span>hours</span></div>
+        <div class="timer-view"><span id="day_minutes" class="timer"></span><span>minutes</span></div>
+        <div class="timer-view"><span id="day_seconds" class="timer"></span><span>seconds</span></div>
+      </div>
+    </div> 
+  </div>     
+  <div class="page-width cyber-wrapper">
+    {%comment %}
+    <div class="section-header text-center">
+      
+       <h1>{{section.settings.discount_code}}</h1>
+      <h4>{{section.settings.heading_order}}</h4>
+      <h4>{{section.settings.subheading_order}}</h4>
+      {%comment %}<h4>{{section.settings.checkout_text}}</h4>{% endcomment %}
+       
+    </div>
+   {% endcomment %}
+    <div class="rte">
+
+     
+      <div class="blue-wrapper">
+        <div class="grid">
+          {% for block in section.blocks %}
+          <div class="grid__item  {% if block.type == 'Third_row_image'%} medium-up--one-whole {% elsif block.type == 'Second_row_image' %} medium-up--one-half {% elsif block.type == 'First_row_image'%}medium-up--one-third {% else %}{% endif %}">
+            <a href="{{block.settings.link}}" class="box_view">
+              <div class="box_inner {% if block.type == 'Third_row_image'%} last_r {% endif %}">
+                <div class="text-view ">
+                  {% comment%} <h4>{{block.settings.text_content}}</h4>{% endcomment %}
+                  {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                  {% if block.settings.col_image_mobile != blank %}   <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+
+        </div>          
+      </div>
+    </div>
+    <div class="slider-wrap slider-launch">
+    <h3 class="text-center">{{section.settings.coll_title}}</h3>
+    <div class="cyber ">     
+      {%- assign collection = collections[section.settings.collection] -%}
+      {% for product in collection.products limit:8 %}
+      <div class="grid-view-item product-card-grid-col">
+        <div class="product-view">
+          <img class="second-img-alt mb20" src="{{product.featured_image | img_url: "master"}}">
+          <div class="h4 grid-view-item__title text-center main-ctn-title">{{ product.title }}</div>
+          <div class="grid-view-item__meta text-center main-ctn-title">
+            {% include 'product-price' %}
+          </div>
+          <div class="star-rating star-rating-{{ settings.star_color }}">{% include 'okendo-reviews-product-rating-summary' %}</div>
+        </div>
+      </div>      
+      {% endfor %}   
+    </div>
+    <div class="rich-btn-view btn-view text-center">
+      <a href="{{section.settings.btn_link}}" class="btn btn--primary rich-btn cyber-btn">{{section.settings.btn_text}}
+      </a></div>
+  </div>      
+</div>
+</div>
+{% endif %}
+{% schema %}
+{
+	"name": "Black Friday",
+    "settings": [
+	  {
+        "type": "checkbox",
+        "id": "show_page",
+        "label": "Publish page",
+        "default": false
+      },
+	  {
+		"type": "header",
+		"content": "Announcement Text"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Show announcement bar",
+        "default": true
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_prev",
+		"label": "Announcement previous text"
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_next",
+		"label": "Announcement next text"
+      },
+	  {
+        "type": "text",
+        "id": "datetime",
+        "label": "End date",
+        "info": "String formatted as following:: DD-MM-YYYY hh:mm:ss"
+      },
+	  {
+		"type": "header",
+		"content": "Banner"
+      },
+	  {
+         "type":      "radio",
+         "id":        "banner_type",
+         "label":     "Banner Type",
+         "options": [
+           { "value": "boxed", "label": "Boxed layout" },
+           { "value": "image", "label": "Image layout" }
+         ],
+         "default":   "boxed",
+         "info":      "Display banner image having text or boxed layout "
+      },
+	  {
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile Banner image"
+      },
+	  {
+		"type": "url",
+		"id": "banner_link",
+		"label": "Banner Link"
+      },
+	  {
+		"type": "header",
+		"content": "Heading"
+      },
+	  {
+		"type": "text",
+		"id": "heading_order",
+		"label": "Header"
+      },
+	  {
+		"type": "text",
+		"id": "subheading_order",
+		"label": "SubHeader"
+      },
+	  {
+		"type": "text",
+		"id": "discount_code",
+		"label": "Discount code"
+      },
+      {
+        "id": "boximage",
+        "type": "image_picker",
+        "label": "Box image"
+      },
+      {
+		"type": "text",
+		"id": "timer_text",
+		"label": "Countdown timer text"
+      },
+      {
+        "type": "text",
+        "id": "sale_datetime",
+        "label": "Sale End date",
+        "info": "String formatted as following:: DD-MM-YYYY hh:mm:ss"
+      },
+	  {
+		"type": "header",
+		"content": "Slider"
+      },
+	  {
+		"type": "text",
+		"id": "coll_title",
+		"label": "Title"
+      },
+	  {
+		"type": "collection",
+		"id": "collection",
+		"label": "Collection"
+      },
+	  {
+		"type": "text",
+		"id": "btn_text",
+		"label": "Button Text"
+      },
+	  {
+		"type": "url",
+		"id": "btn_link",
+		"label": "Button Link"
+      }
+	],
+	"blocks": [
+          {
+            "type": "First_row_image",
+            "name": "Day sale three column",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			 {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              },
+			  {
+                "id": "text_content",
+                "type": "text",
+                "label": "Text label"
+              }
+            ]
+         },
+		 {
+            "type": "Second_row_image",
+            "name": "Day sale two column",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+		 	  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              },
+			  {
+                "id": "text_content",
+                "type": "text",
+                "label": "Text label"
+              }		
+            ]
+         },
+		 {
+            "type": "Third_row_image",
+            "name": "Day sale one column",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+				 {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              },
+			  {
+                "id": "text_content",
+                "type": "text",
+                "label": "Text label"
+              }
+            ]
+         }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+
+{% endjavascript %}
+<style>
+  section#page-header .header-background.compexpagebn{height:auto;} 
+  #shopify-section-section-day-sale{display:none;}
+  section#page-header .header-background {background-color:transparent;}
+</style>
+<script type="text/javascript">
+  setInterval(function() { makeTimer(); }, 1000);  
+  	function makeTimerDaySale() {
+      		var endTime = new Date("{{section.settings.sale_datetime}} GMT+10:30");			
+			endTime = (Date.parse(endTime) / 1000);
+
+			var now = new Date();
+			now = (Date.parse(now) / 1000);
+
+			var timeLeft = endTime - now;
+
+			var days = Math.floor(timeLeft / 86400); 
+			var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+			var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+			var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+  
+			if (hours < "10") { hours = "0" + hours; }
+			if (minutes < "10") { minutes = "0" + minutes; }
+			if (seconds < "10") { seconds = "0" + seconds; }
+            
+            if(days < 0)
+            {
+          	   $(".daysec-countdown").hide(); 	
+            }
+            else
+            {
+              $(".daysec-countdown").show();
+            }
+			$("#sale_day").html(days);
+      		$("#day_hours").html(hours);
+			$("#day_minutes").html(minutes);
+			$("#day_seconds").html(seconds);		
+
+	}
+	setInterval(function() { makeTimerDaySale(); }, 1000);
+</script>

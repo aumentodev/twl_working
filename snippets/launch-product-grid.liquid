@@ -1,0 +1,552 @@
+{% if section.settings.layout == 'grid' %}
+{% case section.settings.grid %}
+ {% when '1' %}
+    {%- assign max_height = 530 -%}
+  {% when '2' %}
+    {%- assign max_height = 530 -%}
+  {% when '3' %}
+    {%- assign max_height = 345 -%}
+  {% when '4' %}
+    {%- assign max_height = 250 -%}
+  {% when '5' %}
+    {%- assign max_height = 195 -%}
+{% endcase %}
+{% case settings.sections['collection-template'].settings.grid %}
+{% when '1' %}
+{%- assign grid_item_width = 'medium-up--one-whole' -%}
+{% when '2' %}
+{%- assign grid_item_width = 'medium-up--one-half' -%}
+{% when '3' %}
+{%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+{% when '4' %}
+{%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+{% when '5' %}
+{%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+{% endcase %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{% assign collectionids = '' %}
+{% assign freesheep = '' %}
+{% assign free_exp_sheep = '' %}
+{% assign ships_separatly = '' %}
+{% assign three_ships_free = '' %}
+{% assign heavy_bulky = '' %}
+{% assign ptags = '' %}
+
+{% assign free_ship = settings.free_shipping  %}
+{% assign in_discount_tag = false %}	
+{% assign coll_freeship = collections[settings.free_shipping].id %}
+{% assign coll_free_exp_ship = collections[settings.free_Express_shipping].id %}
+{% assign ships_separatly_id = collections[settings.drop_ships].id %}
+{% assign three_ships_free_id = collections[settings.three_ships_free].id %}
+{% assign heavy_bulky_id = collections[settings.bulky_items].id %}
+
+{% for pcollection in product.collections %}
+{% if pcollection.id == coll_freeship %}
+{% assign freesheep = pcollection.id %}
+{% endif %}
+{% if pcollection.id == coll_free_exp_ship %}
+{% assign free_exp_sheep = pcollection.id %}
+{% endif %}
+{% if pcollection.id == ships_separatly_id %}
+{% assign ships_separatly = pcollection.id %}
+{% endif %}
+{% if pcollection.id == three_ships_free_id %}
+{% assign three_ships_free = pcollection.id %}
+{% endif %}
+{% if pcollection.id == heavy_bulky_id %}
+{% assign heavy_bulky = pcollection.id %}
+{% endif %}
+{% if forloop.index == 1 %}
+{% assign collectionids = pcollection.handle %}
+{% else %}
+{% assign collectionids = collectionids | append:',' | append:pcollection.handle %}
+{% endif %}
+{% endfor %}
+{% for tag in product.tags %}
+{% assign ptags = tag | append:',' %}
+{% assign disable_quick_shop = 1 %}
+
+
+{% endfor %}
+<div class="product grid__item {{ grid_item_width }} pgrid {{freesheep}}" data-vsize="{{product.variants.size}}">
+  <div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}" data-sticker="{{freesheep}}**{{free_exp_sheep}}">
+    {% if product.metafields.custom_fields["launching_date"] != blank %}
+    <div class="date-view">
+      <h4>{{ product.metafields.custom_fields["launching_date"] | date: "%-d %b"}}</h4>
+    </div>
+    {% endif %}
+    {% if product.available %}
+        {% if settings.prsticker == true %}
+          {% if freesheep == coll_freeship or free_exp_sheep == coll_free_exp_ship %}
+            <ul class="pr_sticker">
+                <li>free shipping *</li>
+            </ul>
+          {% endif %}
+        {% endif %}
+    {% else %}
+    	<ul class="pr_sticker">
+                <li>OUT OF STOCK - GET NOTIFIED</li>
+            </ul>
+    {% endif %}
+    
+    <a class="grid-view-item__link grid-view-item__image-container" href="{{ product.url | within: collection }}">
+      {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
+      {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
+      {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+      {% unless product.featured_image == blank %}
+      {% comment %}{% include 'image-style' with image: product.featured_image, width: max_height, height: max_height, small_style: true, wrapper_id: wrapper_id, img_id: img_id %}{% endcomment %}
+      {% endunless %}
+      <div id="{{ wrapper_id }}" class="grid-view-item__image-wrapper js product-hover-sec">
+        <div style="padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};">
+
+          {% if product.images.size > 0 %}
+            {% for image in product.images %}
+              {% if forloop.first == true %}
+                <img id="{{ img_id }}"
+                     class="grid-view-item__image lazyload"
+                     data-src="{{ product.featured_image | product_img_url:'450x' }}"
+                     data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                     data-sizes="auto"
+                     alt="{{ product.featured_image.alt | escape }}">
+              {% else %}
+                  {% if forloop.index0 == 1 %}
+          			<span class="secong_img_{{product.id}}"></span>  
+                  {% endif %}
+          		  <script type="text/javascript">                  
+                      var windowWidth = $(window).width();
+                      if( windowWidth > 767 ){
+                        {% if forloop.index0 == 1 %}
+                        var img = $('<img class="second-img-alt">'); 
+                        img.attr('src', '{{ image.src | product_img_url: '450x450' }}');
+                        img.appendTo(".secong_img_"+{{product.id}});
+                        {% endif %}
+                      }
+          		  </script>
+              {% endif %}
+
+            {% endfor %}
+          {% else %}
+            <img id="{{ img_id }}"
+               class="grid-view-item__image lazyload"
+               src="{{ product.featured_image | img_url: '300x300' }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ product.featured_image.alt | escape }}">
+          {% endif %}
+
+          </div>
+      </div>
+    </a>
+    {% if collectionids contains "shoes" or collectionids contains "twl-bundles" or ptags contains "TWLBundleJuly2018" or ptags contains "bundle" or product.options.size == 3 %}
+    	{% if disable_quick_shop == 0 %}
+        <div class="quick-shop-form">
+              <p class="quick_title"><a href="{{product.url}}">View item </a></p>
+        </div>
+    	{% endif %}
+      {% elsif collectionids contains "twl-bundles" or ptags contains "TWLBundleJuly2018" or ptags contains "bundle" or product.options.size == 3%}
+    	{% if disable_quick_shop == 0 %}
+        <div class="quick-shop-form">
+              <p class="quick_title"><a href="{{product.url}}">View item </a></p>
+        </div>
+    	{% endif %}
+      {% else %}
+
+        {% assign flag = 0 %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+              {% if option.name == 'Color' %}
+                {% assign flag = 1 %}
+              {% elsif option.name == 'Size' %}
+                {% assign flag = 1 %}
+            {% endif%}
+          {% endfor %}
+
+        {% endunless %}
+
+    	{% if product.variants.size >= 1 %}
+  		{% if disable_quick_shop == 0 %}
+          <div class="quick-shop-form {{collection.template_suffix}} {% if flag == 0 %} no-options {% endif %}">
+            <p class="quick_title">Quick shop <img src="{{ 'plus-collection.png' | asset_url }}"></p>
+            <form id="product_{{ product.id }}" action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-{{ section.id }}{% unless section.settings.show_variant_labels %} product-form--hide-variant-labels{% endunless %}" data-section="{{ section.id }}">
+
+              	  {% if freesheep != '' and free_exp_sheep != '' %}
+              		<input type="hidden" name="properties[_free_express_shipping]" value="{% if settings.arrow_freeexpress %}{{ settings.freeexpress | img_url: '150x150' }}{% else %}{{'free-express-shipping.png' | asset_url}}{% endif %}">
+                  {% else %}
+              		{% if free_exp_sheep == coll_free_exp_ship %}
+                    <input type="hidden" name="properties[_free_express_shipping]" value="{% if settings.arrow_freeexpress %}{{ settings.freeexpress | img_url: '150x150' }}{% else %}{{'free-express-shipping.png' | asset_url}}{% endif %}">
+                    {% endif %}
+
+                    {% if freesheep == coll_freeship %}
+                    <input type="hidden" name="properties[_free_shipping]" value="{% if settings.arrow_freeshiping %}{{ settings.freeshiping | img_url: '150x150' }}{% else %}{{'freeshipping.png' | asset_url}}{% endif %}">
+                    {% endif %}
+              	  {% endif %}
+
+              	  {% if ships_separatly_id == ships_separatly %}
+                  <input type="hidden" name="properties[_drop_ships]" value="{% if settings.arrow_separately %}{{ settings.separately | img_url: '150x150' }}{% else %}{{'ships-separately.png' | asset_url}}{% endif %}">
+                  {% endif %}
+
+              	  {% if three_ships_free_id == three_ships_free %}
+                  <input type="hidden" name="properties[_three_ships_free]" value="{% if settings.arrow_threeships %}{{ settings.threeships | img_url: '150x150' }}{% else %}{{'3-Ships-Free.png' | asset_url}}{% endif %}">
+                  {% endif %}
+
+                  {% if heavy_bulky_id == heavy_bulky %}
+                  <input type="hidden" name="properties[_bulky_items]" value="{% if settings.arrow_blikyitems %}{{ settings.blikyitems | img_url: '150x150' }}{% else %}{{'blikyitems.png' | asset_url}}{% endif %}">
+                  {% assign isBulky = 1 %}
+                  {% endif %}
+
+
+                  <select name="id" id="ProductSelect-{{ product.id }}" data-section="{{ section.id }}" class="product-sel__final product-form__variants no-js">
+                    {% for variant in product.variants %}
+
+                    {% if variant.available %}
+                    <option data-qty="{{ variant.inventory_quantity }}"
+                            {% if variant.option1 %} data-o1='{{ variant.option1 }}'{% endif %}
+                            {% if variant.option2 %} data-o2='{{ variant.option2 }}'{% endif %}
+                            {% if variant.option3 %} data-o3='{{variant.option3 }}'{% endif %} {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" title='{{ variant.title }}'>
+                      {{ variant.title }}
+                    </option>
+                    {% else %}
+                    <option data-qty="{{ variant.inventory_quantity }}"
+                            {% if variant.option1 %} data-o1='{{variant.option1}}'{% endif %}
+                            {% if variant.option2 %} data-o2='{{variant.option2}}'{% endif %}
+                            {% if variant.option3 %} data-o3='{{variant.option3}}'{% endif %} class="soldout" disabled="disabled" title='{{ variant.title }}'>{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+            {% unless product.has_only_default_variant %}
+              {% for option in product.options_with_values %}
+              {% assign option_name = option.name | handleize %}
+
+                  <div class="selector-wrapper selector-wrapper-all wrapper-{{ forloop.index }} selector-wrapper-{{ option.name | escape }} js product-form__item">
+                    <label class="label--hidden" for="SingleOptionSelector-{{ forloop.index0 }}">
+                      {{ option.name }}
+                    </label>
+                    <select class="single-option-selector single-option-selector-product-template label--hidden single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                      {% for value in option.values %}
+                      <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                    {% if option_name == 'color' or option_name == 'colour' %}
+						{% for value in option.values %}
+                        {% assign color_img = value | handleize | append: '.png' %}
+
+                        <div class="box-option {% if option.selected_value == value %} selected-color{% endif %}" value='{{ value | escape }}' style="background-color: {{ value }}; background-image: url({{ color_img | asset_url }});     background-size: cover !important;
+        background-position: center center !important;"></div>
+                        {% endfor %}
+                    {% else %}
+                    	{% for value in option.values %}
+                            <div class="box-option {% if option.selected_value == value %} selected-size{% endif %}" value='{{ value | escape }}'>
+
+                              {%- assign val = value | handleize -%}
+
+                              {% if val == 'extra-small' %}
+                                {{ 'xs' | escape }}
+                              {% elsif val == 'small' %}
+                                {{ 's' | escape }}
+                              {% elsif val == 'medium' %}
+                                {{ 'm' | escape }}
+                              {% elsif val == 'large' %}
+                                {{ 'l' | escape }}
+                              {% elsif val == 'extra-large' %}
+                                {{ 'xl' | escape }}
+                              {% elsif val == 'extraextra-large' %}
+                                {{ 'xxl' | escape }}
+                              {% elsif val == 'extra-extra-large' %}
+                                {{ 'xxl' | escape }}
+                              {% else %}
+
+                                {{ value | escape }}
+
+
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                    {% endif %}
+                  </div>
+
+              {% endfor %}
+            {% endunless %}
+
+
+
+            {% if section.settings.show_quantity_selector %}
+              <div class="product-form__item product-form__item--quantity">
+                <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="product-form__input" pattern="[0-9]*">
+              </div>
+            {% endif %}
+
+            <div class="product-form__item product-form__item--submit">
+              <button type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                  {% unless current_variant.available %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% else %}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {% endunless %}
+                </span>
+              </button>
+            </div>
+          </form>
+          </div>
+    	{% endif %}
+     {% else %}
+    	{% if disable_quick_shop == 0 %}
+    	<div class="quick-shop-form {{collection.template_suffix}} {% if flag == 0 %} no-options {% endif %}">
+            <p class="quick_title">Quick shop <img src="{{ 'plus-collection.png' | asset_url }}"></p>
+            <form id="product_{{ product.id }}" action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-{{ section.id }}{% unless section.settings.show_variant_labels %} product-form--hide-variant-labels{% endunless %}" data-section="{{ section.id }}">
+
+              	  {% if freesheep != '' and free_exp_sheep != '' %}
+              		<input type="hidden" name="properties[_free_express_shipping]" value="{{'free-express-shipping.png' | asset_url}}">
+                  {% else %}
+              		{% if free_exp_sheep == coll_free_exp_ship %}
+                    <input type="hidden" name="properties[_free_express_shipping]" value="{{'free-express-shipping.png' | asset_url}}">
+                    {% endif %}
+
+                    {% if freesheep == coll_freeship %}
+                    <input type="hidden" name="properties[_free_shipping]" value="{{'freeshipping.png' | asset_url}}">
+                    {% endif %}
+              	  {% endif %}
+
+              	  {% if ships_separatly_id == ships_separatly %}
+                  <input type="hidden" name="properties[_drop_ships]" value="{{'ships-separately.png' | asset_url}}">
+                  {% endif %}
+
+              	  {% if three_ships_free_id == three_ships_free %}
+                  <input type="hidden" name="properties[_three_ships_free]" value="{{'3-Ships-Free.png' | asset_url}}">
+                  {% endif %}
+
+                  {% if heavy_bulky_id == heavy_bulky %}
+                  <input type="hidden" name="properties[_bulky_items]" value="{{'blikyitems.png' | asset_url}}">
+                  {% assign isBulky = 1 %}
+                  {% endif %}
+
+
+                <select name="id" id="ProductSelect-{{ product.id }}" data-section="{{ section.id }}" class="product-sel__final product-form__variants no-js">
+                    {% for variant in product.variants %}
+
+                    {% if variant.available %}
+                    <option data-qty="{{ variant.inventory_quantity }}"
+                            {% if variant.option1 %} data-o1='{{ variant.option1 }}'{% endif %}
+                            {% if variant.option2 %} data-o2='{{ variant.option2 }}'{% endif %}
+                            {% if variant.option3 %} data-o3='{{variant.option3 }}'{% endif %} {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" title='{{ variant.title }}'>
+                      {{ variant.title }}
+                    </option>
+                    {% else %}
+                    <option data-qty="{{ variant.inventory_quantity }}"
+                            {% if variant.option1 %} data-o1='{{variant.option1}}'{% endif %}
+                            {% if variant.option2 %} data-o2='{{variant.option2}}'{% endif %}
+                            {% if variant.option3 %} data-o3='{{variant.option3}}'{% endif %} class="soldout" disabled="disabled" title='{{ variant.title }}'>{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                    {% endif %}
+                    {% endfor %}
+                  </select>
+
+
+
+            {% if section.settings.show_quantity_selector %}
+              <div class="product-form__item product-form__item--quantity">
+                <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="product-form__input" pattern="[0-9]*">
+              </div>
+            {% endif %}
+
+            <div class="product-form__item product-form__item--submit">
+              <button type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                  {% unless current_variant.available %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% else %}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {% endunless %}
+                </span>
+              </button>
+            </div>
+          </form>
+          </div>
+    	{% endif %}
+      {% endif %}
+      {% endif %}
+</div>
+  
+{% comment %}
+  <script type="text/javascript">
+
+
+    $(document).ready(function(){
+
+
+      if($("#product_{{ product.id }} .selector-wrapper").length){
+           $("#product_{{ product.id }} .selector-wrapper").each(function(index){
+              if($("#product_{{ product.id }} .selector-wrapper").length == 1)
+              {
+                $(this).addClass("option1");
+              }
+              else
+              {
+                $(this).addClass("option"+(index+1));
+              }
+           })
+         }
+
+
+
+
+
+      // Check option 1 is available
+      if($("#product_{{ product.id }} .option1").length){
+        $("#product_{{ product.id }} .option1 .box-option").each(function(){
+
+          var o1 = $(this).attr("value");
+          var flag = 0;
+
+          $("#ProductSelect-{{ product.id }} option[data-o1='"+o1+"'] ").each(function(){
+              var qty = $(this).data('qty');
+              if(qty > 0){flag = 1;}
+          })
+
+          if(flag == 0){
+            $(this).addClass('out_stock')
+          }
+
+        })
+    }
+
+
+
+
+    // Check option 2 is available
+    if($("#product_{{ product.id }} .option2").length){
+      $("#product_{{ product.id }} .option2 .box-option").each(function(){
+
+        var o2 = $(this).attr("value");
+        var flag1 = 0;
+
+        $("#ProductSelect-{{ product.id }} option[data-o2='"+o2+"'] ").each(function(){
+            var qty1 = $(this).data('qty'); $(this).data("qty",qty1);
+            if(qty1 > 0){flag1 = 1;}
+        })
+
+        if(flag1 == 0){
+          $(this).addClass('out_stock')
+        }
+
+      })
+    }
+
+
+    })
+
+
+
+
+  </script>
+
+
+      <noscript>
+        {% capture image_size %}{{ max_height }}x{{ max_height }}{% endcapture %}
+        <img class="grid-view-item__image" src="{{ product.featured_image.src | img_url: image_size, scale: 2 }}" alt="{{ product.featured_image.alt }}" style="max-width: {{ max_height | times: product.featured_image.aspect_ratio }}px;">
+      </noscript>
+  {% endcomment %}
+    <a class="grid-view-item__link grid-view-item__image-container  text-center" href="{{ product.url | within: collection }}">
+     
+      <div class="progress-wrapper">
+        <div class="progress-txt">In Stock</div>
+        <div class="progress">
+          <div class="progress-bar" name="progress" role="progressbar" aria-valuenow="41">
+          </div>
+        </div>
+		<!-- <div class="progress" style="heigt:9px;width:138px">
+          <div class="progress-bar" name="progress" role="progressbar" aria-valuenow="30"></div>
+        </div>
+
+        <div class="progress" style="heigt:9px;width:138px">
+          <div class="progress-bar" name="progress" role="progressbar" aria-valuenow="40"></div>
+        </div> -->
+      </div>
+     
+      <div class="h4 grid-view-item__title main-ctn-title">{{ product.title }}</div>
+      {% if settings.enable_review %}
+      <div class="star-rating star-rating-{{ settings.star_color }}">{% include 'okendo-reviews-product-rating-summary' %}</div>
+      {% endif %}
+      {% if section.settings.show_vendor %}
+      <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+      {% endif %}
+      <div class="grid-view-item__meta">
+        {% include 'product-price' %}
+        {% assign current_variant = product.selected_or_first_available_variant %}
+        <span class="pr_weight" style="display:none;">{{current_variant.weight}}</span>
+      </div>
+      
+      <div class="rich-btn-view">
+        <a href="{{product.url}}" class="btn btn--primary rich-btn">
+         {% if product.template_suffix  == "launches-notifiy" %}
+          	Notify me
+         {% elsif product.template_suffix == "launch-winpair-pr-template" %}
+          	Enter to win a pair
+         {% else %}
+          	Buy now
+         {% endif %}
+        </a>
+      </div>
+      {% for tag in product.tags %}
+        {% assign tag_string = tag | downcase %}
+        {% if tag_string contains 'dis_' %}
+        {% assign in_discount_tag = true %}
+        {% assign in_discount_tag_value = tag_string %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if in_discount_tag %}
+      
+        	<div class="custom_discounts">
+              {% assign finalstring = in_discount_tag_value | split: 'dis_' %}
+              {{finalstring}}
+        	</div>
+     
+      {% endif %}
+    </a>
+</div>
+
+
+
+{% else %}
+<a href="{{ product.url | within: collection }}" class="list-view-item">
+  <div class="list-view-item__image-column">
+    <div class="list-view-item__image-wrapper">
+      <img class="list-view-item__image" src="{{ product.featured_image.src | img_url: '95x95', scale: 2 }}" alt="{{ product.featured_image.alt | escape }}">
+    </div>
+  </div>
+  <div class="list-view-item__title-column">
+    <div class="list-view-item__title">{{ product.title }}</div>
+
+    {% if product.compare_at_price > product.price %}
+    <div class="list-view-item__on-sale">{{ 'products.product.on_sale' | t }}</div>
+    {% endif %}
+    {% if section.settings.show_vendor %}
+    <div class="list-view-item__vendor medium-up--hide">{{ product.vendor }}</div>
+    {% endif %}
+    {% unless product.available %}
+    <div class="list-view-item__sold-out">{{ 'products.product.sold_out' | t }}</div>
+    {% endunless %}
+  </div>
+
+  {% if section.settings.show_vendor %}
+  <div class="list-view-item__vendor-column small--hide">
+    <div class="list-view-item__vendor">{{ product.vendor }}</div>
+  </div>
+  {% endif %}
+
+  <div class="list-view-item__price-column">
+    {% include 'product-price' %}
+  </div>
+</a>
+{% endif %}
+
+

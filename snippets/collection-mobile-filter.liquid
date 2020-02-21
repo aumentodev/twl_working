@@ -1,0 +1,344 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+
+{%- assign url = pageUrl | split: 'collections/' -%}
+
+<div class="mob-filter-header">
+  <div class="mob-filter-lists">
+    <div class="filter-header">
+      {% unless section.settings.filter_main_title == blank %}
+      <div class="col-main-filter-title main-txt-title">{{ section.settings.filter_main_title }}</div>
+      {% endunless %}
+      <div class="reset-all">Reset All</div>
+    </div>
+    {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'filter_collection' %}
+    {% if block.settings.enable %}
+    <div class="mob-filter-list mob-filter-category active-body">
+      {% unless block.settings.title == blank %}
+      <div class="mob-filter-title main-txt-title">{{ block.settings.title }}</div>
+      {% endunless %}
+      <ul class="mob-filter-body">
+
+        {% if collection and block.settings.category_menu %}
+
+        {% for link in linklists[block.settings.category_menu].links %}
+
+        {% assign tag_link = link.url | split: '/' | last %}
+        {% assign index = 0 %}
+        {% for product in collection.products %}
+        {% for tag in product.tags %}
+        {% if tag == tag_link %}{% assign index = index | plus: 1 %}{% endif %}
+        {% endfor %}
+        {% endfor %}
+        <li class="parent1 {% if link.links != blank %}has-child-parent1{% endif %} cate__{{ tag_link }}">
+
+          <label value="{{ tag_link }}">{{ link.title }} <span class="num">({{ index }})</span></label>
+
+          {% if link.links != blank %}
+          {% capture child_list_handle %}{{ link.handle }}-{{ outerLoopIndex }}{% endcapture %}
+
+          <div class="sub-col-lists" style="display: none;">
+            <ul class="sub-list-sec">
+              {% assign menu_handle = link.handle %}
+              {% for childlink in link.links %}
+              {% assign tag_link = childlink.url | split: '/' | last %}
+              {% assign index = 0 %}
+              {% for product in collection.products %}
+              {% for tag in product.tags %}
+              {% if tag == tag_link %}{% assign index = index | plus: 1 %}{% endif %}
+              {% endfor %}
+              {% endfor %}
+
+              <li class="parent2 cate__{{ tag_link }}" value="{{ tag_link }}">
+
+                <label value="{{ tag_link }}">{{ childlink.title }} <span class="num">({{ index }})</span></label>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+
+
+        {% endif %}
+
+        {% assign tags = block.settings.list_tags | split: ',' %}
+        {% assign index = false %}
+
+        {% for t in tags %}
+        {% assign ts = t | split: '(' %}
+        {% assign tag = ts[0] %}
+        {% assign tag_value = ts[1] | remove: ')' %}
+
+
+        <li class="{% if tag_value == collection.handle %}checked{% endif %}" value="{{ tag_link }}">
+          <a href="/collections/{{ tag_value }}">{{ tag }}</a>
+        </li>
+
+
+        {% endfor %}
+
+
+      </ul>
+    </div>
+    {% endif %}
+    {% when 'filter_size' %}
+    {% if block.settings.enable %}
+    <div class="mob-filter-list mob-filter-list-size active-body">
+      {% unless block.settings.title == blank %}
+      <div class="mob-filter-title main-txt-title">{{ block.settings.title }}</div>
+      {% endunless %}
+      <div class="mob-filter-body">
+        {% assign tags = block.settings.list_tags | split: ',' %}
+        {% assign index = false %}
+
+        {% for tag in tags %}
+        {% assign tag_value = tag | handleize %}
+
+
+        {% assign index = 0 %}
+
+        {% for product in collection.products %}
+        {% for tag in product.tags %}
+        {% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+        {% endfor %}
+        {% endfor %}
+
+        <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}" value="{{ tag_value }}">
+          <label value="{{ tag_value }}">{{ tag }} <span class="num">({{ index }})</span></label>
+        </li>
+
+        {% endfor %}
+
+      </div>
+    </div>
+    {% endif %}
+    {% when 'filter_brand' %}
+    {% if block.settings.enable %}
+    <div class="mob-filter-list mob-filter-list-brand active-body">
+      {% unless block.settings.title == blank %}
+      <div class="mob-filter-title main-txt-title">{{ block.settings.title }}</div>
+      {% endunless %}
+      <div class="mob-filter-body">
+        {% assign tags = block.settings.list_tags | split: ',' %}
+        {% assign index = false %}
+
+        {% for tag in tags %}
+        {% assign tag_value = tag | handleize %}
+
+        {% assign index = 0 %}
+
+        {% for product in collection.products %}
+        {% for tag in product.tags %}
+        {% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+        {% endfor %}
+        {% endfor %}
+
+        <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}" value="{{ tag_value }}">
+          <label value="{{ tag_value }}">{{ tag }} <span class="num">({{ index }})</span></label>
+        </li>
+
+        {% endfor %}
+
+      </div>
+    </div>
+    {% endif %}
+    {% when 'filter_color' %}
+    {% if block.settings.enable %}
+    <div class="mob-filter-list mob-filter-list-color active-body">
+      {% unless block.settings.title == blank %}
+      <div class="mob-filter-title main-txt-title">{{ block.settings.title }}</div>
+      {% endunless %}
+      <div class="mob-filter-body">
+        {% comment %}
+        {% assign tags = block.settings.list_tags | split: ',' %}
+        {% assign index = false %}
+
+        {% for tag in tags %}
+        {% assign tag_value = tag | handleize %}
+
+        <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}" value="{{ tag_value }}">
+          <div class="color-box" style="background-color: {{ tag_value }};"></div>
+          <label value="{{ tag_value }}">{{ tag }}</label>
+        </li>
+
+        {% endfor %}
+        {% endcomment %}
+
+        {% for i in (1..13) %}
+        {% capture name %}list_color_name{{ i }}{% endcapture %}
+        {% capture color %}list_color{{ i }}{% endcapture %}
+
+        {% unless block.settings[name] == blank %}
+
+        {% assign tag_value = block.settings[name] | handleize %}
+        {% assign index = 0 %}
+
+        {% for product in collection.products %}
+        {% for tag in product.tags %}
+        {% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+        {% endfor %}
+        {% endfor %}
+
+        <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}" value="{{ tag_value }}">
+          <div class="color-box" style="background-color: {{ block.settings[color] }};"></div>
+          <label value="{{ tag_value }}">{{ block.settings[name] }} <span class="num">({{ index }})</span></label>
+        </li>
+
+        {% endunless %}
+
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% when 'filter_price' %}
+    {% if block.settings.enable %}
+    <div class="mob-filter-list  mob-filter-list-option active-body">
+      {% unless block.settings.title == blank %}
+      <div class="mob-filter-title main-txt-title">{{ block.settings.title }}</div>
+      {% endunless %}
+      <div class="mob-filter-body">
+        {% assign max_price = block.settings.list_tags %}
+        {% assign index = false %}
+
+        {% assign tags = block.settings.list_tags | split: ',' %}
+        {% assign index = false %}
+
+        {% for tag in tags %}
+        {% assign tag_value = tag | handleize %}
+        {% assign index = 0 %}
+
+        {% for product in collection.products %}
+        {% for tag in product.tags %}
+        {% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+        {% endfor %}
+        {% endfor %}
+
+        <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}"  value="{{ tag_value }}">
+          <label value="{{ tag_value }}">{{ tag }} <span class="num">({{ index }})</span></label>
+        </li>
+
+        {% endfor %}
+
+      </div>
+    </div>
+    {% endif %}
+    {% when 'filter_rate' %}
+    {% if block.settings.enable %}
+    <div class="mob-filter-list mob-filter-list-rate active-body">
+      {% unless block.settings.title == blank %}
+      <div class="mob-filter-title main-txt-title">{{ block.settings.title }}</div>
+      {% endunless %}
+      <div class="colr-filter-body mob-filter-body">
+        <ul class="review-rate">
+
+          {% assign index = 0 %}
+
+          {% for product in collection.products %}
+          {% for tag in product.tags %}
+          {% if tag == "4" %}{% assign index = index | plus: 1 %}{% endif %}
+          {% endfor %}
+          {% endfor %}
+
+          <li class="sli-rating rate__4" value="4">
+            <span class="rate-body">
+              <span class="stars full-stars">★★★★</span><span class="stars empty-stars">★</span>&amp; Up <span class="num"> ({{ index }})</span>
+            </span>
+          </li>
+
+          {% assign index = 0 %}
+
+          {% for product in collection.products %}
+          {% for tag in product.tags %}
+          {% if tag == "3" %}{% assign index = index | plus: 1 %}{% endif %}
+          {% endfor %}
+          {% endfor %}
+
+          <li class="sli-rating rate__3" value="3">
+            <span class="rate-body">
+              <span class="stars full-stars">★★★</span><span class="stars empty-stars">★★</span>&amp; Up <span class="num"> ({{ index }})</span>
+            </span>
+          </li>
+
+          {% assign index = 0 %}
+
+          {% for product in collection.products %}
+          {% for tag in product.tags %}
+          {% if tag == "2" %}{% assign index = index | plus: 1 %}{% endif %}
+          {% endfor %}
+          {% endfor %}
+
+          <li class="sli-rating rate__2" value="2">
+            <span class="rate-body">
+              <span class="stars full-stars">★★</span><span class="stars empty-stars">★★★</span>&amp; Up <span class="num"> ({{ index }})</span>
+            </span>
+          </li>
+
+          {% assign index = 0 %}
+
+          {% for product in collection.products %}
+          {% for tag in product.tags %}
+          {% if tag == "1" %}{% assign index = index | plus: 1 %}{% endif %}
+          {% endfor %}
+          {% endfor %}
+          <li class="sli-rating rate__1" value="1">
+            <span class="rate-body">
+              <span class="stars full-stars">★</span><span class="stars empty-stars">★★★★</span>&amp; Up <span class="num"> ({{ index }})</span>
+            </span>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+    {% endcase %}	
+    {% endfor %}
+    
+    <div class="filter-footer">
+      <div class="cancel-btn main-txt-title">Cancel</div>
+      <div class="apply-btn main-txt-title">Apply</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $(".mob-filter-list .mob-filter-title").click(function(){
+      var $obj = $(this).parent(".mob-filter-list");
+      
+      if($obj.hasClass("active-body")) {
+      	$obj.removeClass("active-body");
+      }else {
+      	
+        $obj.addClass("active-body");
+      }
+    });
+    
+    $(".mob-filter-list .mob-filter-body li").click(function(){
+      
+      if($(this).hasClass("checked")) {
+        
+        $(this).removeClass("checked");
+        
+      }else {
+
+        $(this).addClass("checked");
+        
+      }
+    });
+    
+    $(".reset-all").click(function(){
+      $(".mob-filter-list .mob-filter-body .checked").removeClass("checked");
+    });
+    
+    $(".apply-btn").click(function(){
+      var txt = '';
+      $(".mob-filter-list .mob-filter-body .checked").each(function(){
+      	
+      });
+    });
+  })
+</script>

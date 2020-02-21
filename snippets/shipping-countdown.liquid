@@ -1,0 +1,38 @@
+<script>
+  $(document).ready(function(n){
+    var e = n("span.counter", "section#shipping-countdown"),
+        t = moment().tz("Australia/Sydney"),
+        i = moment().tz("Australia/Sydney"),
+        a = moment().tz("Australia/Sydney");
+    i.set({
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    }); 
+    a.set({
+      hour: {{settings.countdown_time}},
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    });
+    
+    console.log(t.format("YYYY-MM-DD HH:mm:ss ZZ"))
+   // console.log(moment(t).isBetween(i, a))
+    
+    var datetime = a.format("YYYY-MM-DD HH:mm:ss ZZ");
+    
+//     $("section#shipping-countdown").find("span.counter").countdown(datetime, function(event) {
+//       $(this).text(
+//         event.strftime('%H:%M:%S')
+//       );
+//     });
+    
+    moment(t).isBetween(i, a) && 6 != t.isoWeekday() && 7 != t.isoWeekday() ? $("section#shipping-countdown").find("span.counter").countdown(datetime, function(event) {
+      $(this).text(
+        event.strftime('%H:%M:%S')
+      );
+    }) : n("section#shipping-countdown").hide()
+    
+  });
+</script>

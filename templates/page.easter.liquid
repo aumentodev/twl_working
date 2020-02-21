@@ -1,0 +1,487 @@
+<!-- {{ 'main.css' | asset_url | stylesheet_tag }}
+{{ 'style.css' | asset_url | stylesheet_tag }} -->
+<!-- {{ 'flipclock.css' | asset_url | stylesheet_tag }} -->
+
+
+{% if settings.enable_easterpage %}
+<main class="{{page.title | handle }} merged-page-template">
+ {%comment%} {% include 'breadcrumb' %}{%endcomment%}
+ {% if settings.enable_eastertophead %}
+
+  <section id="page-header">
+
+    <div class="header-background easter-bg" style="background-image: url({{ settings.easter_banner | img_url: 'master' }});">
+      <div class="page-width">
+      <div class="changable-image">
+        <div class="page-width">
+          <div class="grid grid--uniform">
+            <div class="grid__item medium-up--one-whole">
+                {%if  settings.enable_estbanhead %}
+
+                 <h1>{{ page.title }}</h1>
+                {% endif %}
+                {%if  settings.enable_estbanhead_customhead %}
+
+                  <h1>{{ settings.enable_estbanhead_customhead_text }}</h1>
+                {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </section>
+  {% endif %}
+  {% unless page.content == blank %}
+  <div class="section page ">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item medium-up--one-whole">
+          <div class="content text-center">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endunless %}
+   {% if settings.enable_esttop_ban %}
+  {% unless settings.enable_cybertophead %}
+  <section class="top_bar_monday" >
+
+      <div class=" top_image_ban  full_width">
+     <div class="page-width">
+        <img src="{{ settings.top_easter_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+        {%if  settings.cyb_head != blank %}
+        <h1>{{settings.cyb_head}}</h1>
+        {% endif %}
+     </div>
+    </div>
+  </section>
+  {% endunless %}
+      {% endif %}
+     {% if settings.enable_top_ban and settings.enable_cybertophead %}
+
+   <section class="top_bar_monday" >
+    <div class="page-width">
+      <div class="grid top_image_ban">
+        <div class="grid__item medium-up--one-whole">
+        <img src="{{ settings.top_monday_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+        {%if  settings.cyb_head != blank %}
+        <h1>{{settings.cyb_head}}</h1>
+        {% endif %}
+      </div>
+      </div>
+     </div>
+  </section>
+      {% endif %}
+
+
+  {% if settings.easterup_head %}
+   {% section 'main-bar' %}
+  {% endif %}
+
+<!--  ----------------------------------commented code below----------------------------------------  -->
+
+  {%comment%}
+
+
+  {% if settings.easterup_head %}
+  <section id="home-ups-bar" class=" blk_cyb_ups">
+    <div class="page-width">
+
+      <div class="grid the-easter-fa">
+                  <div class="icon-wrap">
+
+        <div class="grid__item medium-up--one-quarter medium-down--one-third small--one-half extra-small--one-whole icon-wrap-grid-fa">
+          <i class="fa {{ settings.estcicon1 }}"></i>
+          <h4>{{ settings.estctitle1 }}</h4>
+          <div class="description">
+            {{ settings.estcsubtitle1 }}
+          </div>
+        </div>
+        <div class="grid__item medium-up--one-quarter medium-down--one-third small--one-half extra-small--one-whole icon-wrap-grid-fa">
+          <i class="fa {{ settings.estcicon2 }}"></i>
+          <h4>{{ settings.estctitle2 }}</h4>
+          <div class="description">
+            {{ settings.estcsubtitle2 }}
+          </div>
+        </div>
+        <div class="grid__item medium-up--one-quarter medium-down--one-third small--one-half extra-small--one-whole icon-wrap-grid-fa">
+          <i class="fa {{ settings.estcicon3 }}"></i>
+          <h4>{{ settings.estctitle3 }}</h4>
+          <div class="description">
+            {{ settings.estcsubtitle3 }}
+          </div>
+        </div>
+        <div class="grid__item medium-up--one-quarter medium-down--one-third small--one-half extra-small--one-whole icon-wrap-grid-fa last-icon-wrap-grid-fa">
+          <i class="fa {{ settings.estcicon4 }}"></i>
+          <h4>{{ settings.estctitle4 }}</h4>
+          <div class="description">
+            {{ settings.estcsubtitle4 }}
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+
+  {
+        "type": "text",
+        "id": "estcicon1",
+        "label": "Icon 1"
+      },
+      {
+        "type": "text",
+        "id": "estctitle1",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "estcsubtitle1",
+        "label": "Subtitle 1"
+      },
+      {
+        "type": "text",
+        "id": "estcicon2",
+        "label": "Icon 2"
+      },
+      {
+        "type": "text",
+        "id": "estctitle2",
+        "label": "Title 2"
+      },
+      {
+        "type": "text",
+        "id": "estcsubtitle2",
+        "label": "Subtitle 2"
+      },
+      {
+        "type": "text",
+        "id": "estcicon3",
+        "label": "Icon 3"
+      },
+      {
+        "type": "text",
+        "id": "estctitle3",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "estcsubtitle3",
+        "label": "Subtitle 3"
+      },
+      {
+        "type": "text",
+        "id": "estcicon4",
+        "label": "Icon 4"
+      },
+      {
+        "type": "text",
+        "id": "estctitle4",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "estcsubtitle4",
+        "label": "Subtitle 4"
+      },
+
+
+
+   {%endcomment%}
+
+ {% if settings.easter_countdown %}
+    {% include 'countdown' %}
+  {% endif %}
+
+  <div class="section page mob_top">
+    <div class="page-width">
+      <div class="grid">
+          <div class="content">
+            {% if settings.e_enable_three_img %}
+            <div class="three_col ">
+              <div class="grid__item medium-up--one-third small--one-half extra-small--one-whole ">
+                <a href="{{settings.e_image3_1_link}}">
+                  <img src="{{ settings.e_image3_1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+
+              </div>
+              <div class="grid__item medium-up--one-third small--one-half extra-small--one-whole">
+                <a href="{{settings.e_image3_2_link}}">
+                  <img src="{{ settings.e_image3_2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+
+              </div>
+              <div class="grid__item medium-up--one-third small--one-half extra-small--one-whole ">
+                <a href="{{settings.e_image3_3_link}}">
+                  <img src="{{ settings.e_image3_3 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+
+              </div>
+            </div>
+            {% endif %}
+            {% if settings.enable_esttwo_img %}
+            <div class="two_col">
+              <div class="grid__item medium-up--one-half small--one-whole extra-small--one-half">
+                <a href="{{settings.estcimage2_1_link}}">
+                  <img src="{{ settings.estcimage2_1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+
+              </div>
+              <div class="grid__item medium-up--one-half small--one-whole extra-small--one-half">
+                <a href="{{settings.estcimage2_2_link}}">
+                  <img src="{{ settings.estcimage2_2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+
+              </div>
+
+            </div>
+            {% endif %}
+
+
+            {% if settings.m_enable_seller %}
+            <div class="two-col">
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{settings.m_him_sell_url}}">
+
+                  <img src="{{ settings.m_him_sell | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+                {% if settings.m_enable_himsell_un %}
+
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_him_sell_url_un1 }}">
+
+                    <img src="{{ settings.m_him_sell_un1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_him_sell_url_un2 }}">
+
+                    <img src="{{ settings.m_him_sell_un2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third" >
+                  <a href="{{ settings.m_him_sell_url_un3 }}">
+
+                    <img src="{{ settings.m_him_sell_un3 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{settings.m_her_sell_url}}">
+
+                  <img src="{{ settings.m_her_sell | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+                {% if settings.m_enable_hersell_un %}
+
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_her_sell_url_un1 }}">
+
+                    <img src="{{ settings.m_her_sell_un1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_her_sell_url_un2 }}">
+
+                    <img src="{{ settings.m_her_sell_un2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_her_sell_url_un3 }}">
+
+                    <img src="{{ settings.m_her_sell_un3 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+
+            {% if settings.m_enable_extra %}
+            <div class="two-col">
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{ settings.m_him_extra_url }}">
+
+                  <img src="{{ settings.m_him_extra | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+                {% if settings.m_enable_himsell_un %}
+
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="">
+
+                    <img src="{{ settings.m_him_extra_un1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="">
+
+                    <img src="{{ settings.m_him_extra_un2| img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="">
+
+                    <img src="{{ settings.m_him_extra_un3 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{settings.m_her_extra_url}}">
+
+                  <img src="{{ settings.m_her_extra | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+                {% if settings.m_enable_hersell_un %}
+
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_her_extra_url_un1 }}">
+
+                    <img src="{{ settings.m_her_extra_un1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_her_extra_url_un2}}">
+
+                    <img src="{{ settings.m_her_extra_un2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                <div class="grid__item medium-up--one-third small--one-third extra-small--one-third">
+                  <a href="{{ settings.m_her_extra_url_un3 }}">
+
+                    <img src="{{ settings.m_her_extra_un3 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+
+            {% if settings.m_enable_pro_banner %}
+            <div class="banner_gift text-center">
+              <div class="grid">
+              <div class="grid__item one-whole bannerimage">
+                <a href="{{ settings.m_banner_url}}">
+
+                  <img src="{{ settings.m_promo_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+                </a>
+              </div>
+              </div>
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+    </div>
+  </div>
+  
+  
+{% if settings.e_enable_Opnups %}
+  <div class="section page hot_deals_page">
+    <div class="page-width">
+     {% if settings.easter_collection_heading != blank %}
+      <div class="grid">
+          <div class="grid__item">
+            <div class="division-wrap" style="padding-top:0;margin-top:-20px;">
+              <h1 class="division-title">
+                {{ settings.easter_collection_heading }}
+              </h1>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+       <div class="grid grid--uniform">
+        <div class="collection-items-holder hot-deals auto-load-col">
+         <div class="row">
+            {%  for product in collections[settings.eastermonday-col].products  %}
+            <div class="grid__item extra-small--one-whole small--one-half medium-up--one-quarter">
+              {% include 'a-product-card-grid-2' %}
+            </div>
+            {% endfor %}
+		 </div>
+
+        </div>
+         </div>
+      {% comment %}
+        <div class="AjaxinatePagination text-center">
+         <div class="blog-view-all">
+          {% if paginate.next %}
+            <a class="ld ld-ring ld-spin" href="{{ paginate.next.url }}"></a>
+          {% endif %}
+         </div>
+        </div>{% endcomment %}
+
+
+
+
+
+    </div>
+  </div>
+   {% endif %}
+</main>
+ {% endif %}
+
+{% if settings.enable_easterpage == blank %}
+<main class="{% if settings.enable_cyberpage == blank %}blank-page{% endif %}">
+  <div class="section">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item text-center">
+          {% include 'blank-content' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+ {% endif %}
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+<style>
+  section#home-ups-bar .the-easter-fa .description{font-size:0.99em;}
+</style>
+
+
+ {%- comment %}
+   {{ 'flipclock.js' | asset_url | script_tag }}
+   <!-- <script type="text/javascript">
+   			var clock;
+
+   			$(document).ready(function() {
+
+   				// Grab the current date
+   				var currentDate = new Date();
+                  console.log(currentDate.getTime());
+
+   				// Set some date in the past. In this case, it's always been since Jan 1
+   				var pastDate  = new Date(currentDate.getFullYear(), 3, 2);
+
+   				// Calculate the difference in seconds between the future and current date
+   				var diff = (pastDate.getTime()+((7*3600)+1800)*1000) / 1000 - currentDate.getTime() / 1000;
+
+   				// Instantiate a coutdown FlipClock
+   				clock = $('.clock').FlipClock(diff, {
+   					clockFace: 'DailyCounter'
+   				});
+   			});
+   		</script>  -->
+ {% endcomment -%}
+
+
+
+
+
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+
+
+<style>
+  .bannerimage{padding-left:30px !important;}
+  .merged-page-template .section{padding-bottom:0px !important;}
+</style>

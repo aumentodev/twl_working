@@ -1,0 +1,92 @@
+<div class="help-page-template">
+  <div class="page-width-custom">
+    <ul class="breadcrumbs main-txt-title">
+      <li><a href="/">Home</a></li> / <li>account</li>
+    </ul>
+  </div>
+  <div class="left-sidebar left-sidebar-desktop">
+    <div class="help-menu-list">
+      <ul class="menu-list">
+        {% for link in linklists[settings.account_menu].links %}
+          <li class="pare-menu {% if link.handle == 'need-help' %}end-menu{% endif %}">
+
+            <h3 class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></h3>
+
+            {% if link.handle == 'need-help' %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <p>If you have any questions or want <br />
+                        to reach out to the customer <br />
+                        service team click <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </p>  
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+                  {% if childlink.title contains "Personal Data" %}
+                    <li class="sub-list">
+                      <a title="{{ 'customer.login.forgot_password' | t }}" href="/account?view=reset" attrid="RecoverPassword">Update or Change Password</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+
+              </ul>
+            
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="right-sidebar policies-page">
+
+    <div class="content shipping-template">
+      <h1 class="title">{{ page.title }}</h1>
+      {{ page.content }}
+    </div>
+  </div>
+  <div class="left-sidebar left-sidebar-mobile">
+    <div class="help-menu-list">
+      <ul class="menu-list">
+        {% for link in linklists[settings.account_menu].links %}
+          <li class="pare-menu {% if link.handle == 'need-help' %}end-menu{% endif %}">
+
+            <h3 class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></h3>
+
+            {% if link.handle == 'need-help' %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <p>If you have any questions or want <br />
+                        to reach out to the customer <br />
+                        service team click <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </p>  
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+                {% endfor %}
+
+              </ul>
+            
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}

@@ -1,0 +1,114 @@
+{% if settings.enable_leadmagnet2 %}
+<main id="contact" class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+
+  <section id="page-header">
+    <div class="header-background">
+      <div class="changable-image" style="background-image: url({{ settings.leadmagnet_banner2 | img_url: 'master' }});">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+             
+              <h1>{{ page.title }}</h1>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+	{% if settings.leadmagnet_countdown2 %}
+    {% include 'countdown' %} 
+  {% endif %} 
+  
+  <section id="get-in-touch" class="section">
+    
+    <div class="container">
+      
+      <div class="row">
+<!--         <div class="col-md-12 set_form"> -->
+          
+          
+   <div class="col-md-12 set_form">       
+        <h2 class="appreal_heading_text appgive-title">{{settings.leadmagnet_formtitle2}}</h2>
+     
+     
+        <p class="appreal_heading_text appgive-subtitle">{{settings.leadmagnet_formsubtitle2}}</p>
+    
+     
+             <form id="email_signup" class="klaviyo_standard_embed_QqXqgT contact_form" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+         
+            <div class="grid__item-setf">
+              <div class="set_input name_fld txt-centr">
+              <input required type="text" id="ContactFormName" name="contact[name]" placeholder="Enter Name" value="">
+           </div>
+              </div>
+            <input type="hidden" name="g" value="KNLHQg">
+              <div class="grid__item-setf">
+                <div class="set_input email_fld txt-centr">
+                  
+                    
+    
+    <input type="email" value="" name="email" id="k_id_email" placeholder="Your email" />
+  
+                  
+<!--               <input required type="email" id="ContactFormEmail" name="contact[email]" placeholder="Enter Email Address" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}" > -->
+           	</div>
+         </div>
+	  <div class="klaviyo_messages">
+    <div class="success_message" style="display:none;"></div>
+    <div class="error_message" style="display:none;"></div>
+    </div>
+          
+ <div class="col-md-12 ">
+           
+           <div class="set_input name_fld txt-centr">
+
+            
+    <button type="submit" class="btn contactbtn" style="color: #fff;background-color: #000;">{{settings.leadmagnet_btn_title2}}</button>
+             {{ settings.gym_banner_giveaway_btn_underneath_text2 }}
+  </div>
+<!-- 			              <div class="set_input name_fld txt-centr">
+
+          <input type="submit" class="btn contactbtn" value="Enter To Win">
+					</div> -->
+           </div>
+           
+                     <div class="col-md-12 ">
+          
+          <p class="appreal_heading_text appgive-subtitle">{{settings.leadmagnet_btn_underneath_txt2}}</p>
+          </div>
+          
+               
+<!--       </div> -->
+     </form>
+     
+        </div>
+    
+       <div class="grid__item medium-up--one-half contactonright ">
+         {% if page.content.size > 0 %}
+        <div class="rte">
+          {{ page.content }}
+        </div>
+      {% endif %}
+      </div>
+  </div>
+</div>
+  </section>
+  {% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+</main>
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}
+<script>
+  
+   jQuery(document).ready(function(){
+KlaviyoSubscribe.attachToForms('#email_signup', {
+   hide_form_on_success: true,
+   success_message: "Great, the program should be in your inbox shortly. Check your spam/promotions folder if you can't see it."
+ });
+   });
+</script>

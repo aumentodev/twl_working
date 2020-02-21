@@ -1,0 +1,12 @@
+{% include 'breadcrumb' %}
+{% section 'section-gift-guide' %}
+{% section 'newsletter-section' %}
+{% if page.handle == 'thanks-newsletter' %}
+  {% include 'visely-trending-now' %}
+  {% include 'visely-most-popular' %}
+{% endif %}
+{% section 'main-bar' %}
+<style>
+/*   .page-default-template{margin-top:0px;} */
+  img.about-image{margin-bottom:0px;}
+</style>

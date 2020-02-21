@@ -1,0 +1,151 @@
+{% assign boxed = 'boxed' %}
+{% assign list = '' %}
+
+{% if full %}
+  {% assign boxed = '' %}
+{% endif %}
+
+{% if sale %}
+  {% assign list = list | append: 'on-sale' | append: ',' %}
+{% endif %}
+
+{% if sold %}
+  {% assign list = list | append: 'sold-out' | append: ',' %}
+{% endif %}
+
+{% comment %} 
+  // START backsupport for metafields
+{% endcomment %}
+
+{% if product.metafields.helpers.freeshipping %}
+  {% assign list = list | append: 'free-shipping' | append: ',' %}
+{% endif %}
+
+{% if product.metafields.helpers.freeexpress %}
+  {% assign list = list | append: 'free-express-shipping' | append: ',' %}
+{% endif %}
+
+{% comment %} 
+  // END backsupport for metafields
+{% endcomment %}
+
+{% if collections %}
+  {% for currentCollection in collections %}
+    {% assign list = list | append: currentCollection.handle | append: ',' %}
+  {% endfor %}
+{% endif %}
+
+{% assign list = list | split: ',' %}
+
+{% assign tagHandler = '' %}
+
+<div class="product-flags {{boxed}} ">
+{% if page.handle  == 'cyber-monday' %}
+   {% if settings.cybermondaytag-enable %} 
+     <div class="product-flag">
+          <div class="cyber-mon pull-left">
+            
+            <div class="flag">
+              
+            {{ settings.cybermonday-tag }}
+              
+            </div>  
+           
+          </div>        
+          <div class="clearfix"></div>
+        </div>
+    {% endif %}
+    {% endif %}
+  
+  {% for currentTag in list %}
+    
+    {% assign tagName = false %}
+    {% assign tagColor = 'green' %}
+    {% assign description = '' %}
+    {% assign extraDescription = '' %}
+
+    {% case currentTag %}
+      {% when 'free-shipping' %}
+        {% assign tagName = 'FREE SHIPPING*' %}
+        {% assign tagColor = 'red' %}
+        {% assign description = 'Australia Only' %}
+        {% assign tagHandler = 'free-shipping' %}
+
+      {% when 'free-express-shipping' %}
+        {% assign tagName = 'FREE EXPRESS SHIPPING*' %}
+        {% assign tagColor = 'green' %}
+        {% assign description = 'Australia Only' %}
+        {% assign tagHandler = 'free-express-shipping' %}
+
+      {% when '3-ships-free' %}
+        {% assign tagName = '&nbsp;&nbsp;3 SHIPS FREE**&nbsp;&nbsp;' %}
+        {% assign tagColor = 'red' %}
+        {% assign description = "Only applies when 3<br/> or more '3 Ships Free'<br/> products are selected." %}
+        {% assign tagHandler = '3-ships-free' %}
+
+      {% when 'new-arrivals' %}
+        {% assign tagName = 'NEW ARRIVAL' %}
+        {% assign tagColor = 'green' %}
+        {% assign tagHandler = 'new-arrivals' %}
+
+      {% when 'top-seller' %}
+        {% assign tagName = 'TOP SELLER' %}
+        {% assign tagColor = 'green' %}
+        {% assign description = 'Australia Only' %}
+        {% assign tagHandler = 'top-seller' %}
+
+      {% when 'twl-approved' %}
+        {% assign tagName = 'TWL APPROVED' %}
+        {% assign tagColor = 'green' %}
+        {% assign description = 'Australia Only' %}
+        {% assign tagHandler = 'twl-approved' %}
+
+      {% when 'best-sellers' %}
+        {% assign tagName = 'BEST SELLER' %}
+        {% assign tagColor = 'green' %}
+        {% assign description = 'Australia Only' %}
+        {% assign tagHandler = 'best-seller' %}
+      
+      {% when 'on-sale' %}
+        {% assign tagName = 'SALE' %}
+        {% assign tagColor = 'green' %}
+        {% assign tagHandler = 'new-arrivals' %}
+      
+      {% when 'sold-out' %}
+        {% assign tagName = 'SOLD OUT' %}
+        {% assign tagColor = 'red' %}
+        {% assign tagHandler = 'sold-out' %}
+
+    {% endcase %}
+
+    {% if tagName %}
+      {% if tagHandler == '3-ships-free' and boxed == '' and displayInCart == false %}
+        <div class="product-flag three-ships-free">
+          <div class="description-special">
+            <img src="{{ '3-ships-free.svg' | asset_url }}" />
+            <h4>3 Ships for Free</h4>
+            Buy 3 or More items marked "3 Ships For Free" and those items ship for FREE!
+            <div class="australia-only">AUSTRALIA ONLY</div>
+          </div>
+        </div>
+      {% else %}
+        <div class="product-flag">
+          <div class="{{tagColor}} pull-left">
+            <div class="flag">
+              {{ tagName }}
+            </div>
+            {% if description %}
+              <div class="extra-description">{{ description }}</div>
+            {% endif %}
+          </div>
+          {% if extraDescription %}
+            <div class="timeline pull-right">
+              {{ extraDescription }}
+            </div>
+          {% endif %}
+          <div class="clearfix"></div>
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>

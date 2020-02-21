@@ -1,0 +1,45 @@
+{% if settings.enable_gym_signedknee %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+
+  
+  {% if page.handle != 'giveaways' %}
+    {% include 'page-header' %}
+  {% endif %}
+  
+  {%if  settings.signedknee_enable_gym_banner_giveaway_banner_section %}
+  <section id="page-header">
+  <div class="a-set-feel-banner-img" style="position: relative;"> 
+      <img src="{{ settings.signedknee_gym_banner_giveaway_banner_image | img_url: 'master' }}" alt="feel_banner_img" class="a-set-img" />      
+            <h1>{{ page.title }}</h1>
+<!--             {{ settings.signedknee_gym_banner_giveaway_banner_image_title }}  -->
+  </div>
+  </section>
+  {% endif %} 
+  
+
+  {% if settings.win_a_twl_shop_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+  
+  {%if settings.header_img_text%}
+  <div class="fitness_class">
+   <img src="{{ settings.sign_img | img_url: 'master' }}" alt="feel_banner_img" class="a-set-img" />    
+  <h1>{{settings.heading_text}}</h1>
+  </div>
+  {%endif%}
+
+  <div class="section page">
+    <div class="page-width">
+          <div class="content text-center">
+            {{ page.content }}
+          </div>
+    </div>
+  </div>
+</main>
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}

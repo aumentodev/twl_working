@@ -1,0 +1,73 @@
+<div class="site-mega-menu-sec site-mega-menu-sec-sticky">
+  <div class="page-width">
+    <div class="mega-menu-main-area">
+      <div class="mega-menu-parent-lists">
+        <ul class="">
+          {% for childlink in link.links %}
+            <li class="{% if forloop.index == 1 %}nav--active{% endif %} {% if childlink.active %}site-nav--active{% endif %}" data-id="mega-parent-{{ childlink.handle }}-sec">
+
+              <span href="{{ childlink.url }}" class="site-nav__link main-bold-title">
+                {{ childlink.title | escape }}
+              </span>
+              
+            </li>
+          {% endfor %}
+
+        </ul>
+      </div>
+    </div>
+    <div class="mega-menu-sub-area">
+      
+      {% for childlink in link.links %}
+        {% if childlink.handle != blank %}
+          <div class="site-mega-menu-lists {% if forloop.first == true %}active{% endif %}" id="mega-parent-{{ childlink.handle }}-sec">
+              {% assign ini = childlink.handle | downcase %}
+			  {% assign num = 0 %}
+              {% for grandlink in linklists[ini].links %}
+                {%- assign child_list_handle = grandlink.title | handleize -%}
+                {% assign num = num | plus: 1 %}
+
+                {% if grandlink.links != blank %}
+                <div class="mega-list mega-list-{{num}}">
+                  <h2>{{ grandlink.title }}</h2>
+                  <ul class="site-nav__childlist-grid">
+                    {% if grandlink.links != blank %}
+                    {% for gchildlink in grandlink.links %}
+                    <li class="site-nav__childlist-item">
+                      <a href="{{ gchildlink.url }}" class="site-nav__link site-nav__child-link site-nav__child-link--parent"{% if gchildlink.active %} aria-current="page"{% endif %}>
+                        {{ gchildlink.title | escape }}
+                      </a>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                  </ul>
+                </div>
+                {% else %}
+                <div class="empty-mega-list mega-list mega-list-{{num}}">
+                  <a href="{{ grandlink.url }}" class="site-nav__link site-nav__child-link site-nav__child-link--parent"{% if grandlink.active %} aria-current="page"{% endif %}>
+                    {{ grandlink.title | escape }}
+                  </a>
+                </div>
+                {% endif %}
+
+              {% endfor %}
+            <div class="mega-list mega-list-logo">
+              {% for block in section.blocks %}
+              	{% unless block.settings.link == blank %}<a href="{{ block.settings.link }}">{% endunless %}
+              	{% if block.settings.mega_link == childlink.handle %}
+              		<img src="{{ block.settings.image | img_url: '500x500' }}">
+              		<div class="text__section">
+                      {% unless block.settings.title == blank %}<h3>{{ block.settings.title }}</h3>{% endunless %}
+                      {% unless block.settings.subtitle == blank %}<p>{{ block.settings.subtitle }}</p>{% endunless %}
+              		</div>
+              	{% endif %}
+              {% unless block.settings.link == blank %}</a>{% endunless %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  	<div class="mega-menu-img"></div>
+  </div>
+</div>

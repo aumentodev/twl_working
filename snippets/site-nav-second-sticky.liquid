@@ -1,0 +1,30 @@
+<ul class="site-nav list--inline {{ nav_alignment }}" id="SiteNav">
+  {% for link in linklists[section.settings.main_linklist].links %}
+    {%- assign child_list_handle = link.title | handleize -%}
+
+    {% comment %}
+      Check if third-level nav exists on each parent link.
+    {% endcomment %}
+    {%- assign three_level_nav = false -%}
+    {% if link.links != blank %}
+      {% if link.levels == 2 %}
+        {%- assign three_level_nav = true -%}
+      {% endif %}
+    {% endif %}
+
+    {% if link.links != blank %}
+      <li class="site-nave-parent site-nave-parent-{{ child_list_handle }} site-nav--has-dropdown{% if three_level_nav %} site-nav--has-centered-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true" aria-controls="SiteNavLabel-{{ child_list_handle }}">
+        <a href="{{ link.url }}" class="main-bold-title site-nav__link site-nav__link--main"{% if link.active %} aria-current="page"{% endif %} aria-expanded="false">
+          {{ link.title }}
+          {% include 'icon-chevron-down' %}
+        </a>
+
+        {% include 'site-sticky-cus-mega' %}
+      </li>
+    {% else %}
+      <li class="site-nave-parent{% if link.active %} site-nav--active{% endif %}">
+        <a href="{{ link.url }}" class="main-bold-title site-nav__link site-nav__link--main"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

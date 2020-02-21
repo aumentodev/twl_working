@@ -1,0 +1,39 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+{% section 'launch-winpair-pr-template' %}
+
+{% include 'visely-data-layer' %}
+{% include 'visely-you-may-also-like' %}
+{% include 'visely-data-layer' %}
+{% section 'okendo-reviews' %}
+{% section 'custom-content-product' %}
+{% comment %} {% section 'related-product-slider' %} {% endcomment %}
+{% section 'product-by-brand' %}
+{% include 'visely-recently-viewed' %}
+{% comment %}{% section 'brand-product-slider' %}{% endcomment %}
+{% section 'product-recommendation' %}
+<div style="display:none !important;" id="product-recommendation"></div>
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}
+
+{% unless product.metafields.description.guide_description == blank %}
+	{% include 'size-guid' %}
+{% endunless %}
+
+
+{% comment %}
+{% section 'feature-delivery' %}
+{% section 'product-bottom' %}
+{% endcomment %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+</script>

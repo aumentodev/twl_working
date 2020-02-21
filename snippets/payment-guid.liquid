@@ -1,0 +1,40 @@
+<div class="payment-guide-overlay"></div>
+<div class="payment-guide-sec">
+ <div class="payment-guide-area">
+   <div class="close-icn"><img src={{ 'close-black.png' | asset_url }}></div>	
+   <div class="after-pay-section">{{ pages.page-afterpay.content }}</div>
+   <div class="zip-pay-section">{{ pages.page-zippay.content }}</div>
+  </div>
+</div>
+<script>
+  $(".payment-icons .after-pay span").click(function(){
+  	$(".payment-guide-overlay").show();
+    $(".payment-guide-sec").show();
+    $(".payment-guide-sec .after-pay-section").show();
+    $(".payment-guide-sec .zip-pay-section").hide();
+  });
+
+  $(".payment-icons .zip-pay span").click(function(){
+  	$(".payment-guide-overlay").show();
+    $(".payment-guide-sec").show();
+    $(".payment-guide-sec .after-pay-section").hide();
+    $(".payment-guide-sec .zip-pay-section").show();
+  });
+  
+  $(".payment-guide-overlay").click(function(){
+  	$(".payment-guide-overlay").hide();
+    $(".payment-guide-sec").hide();
+  });
+  
+  $(".payment-guide-sec .close-icn").click(function(){
+  	$(".payment-guide-overlay").hide();
+    $(".payment-guide-sec").hide();
+  });
+  
+  $(".payment-guide-sec").on("click", function(event){
+    if(!$(event.target).closest(".payment-guide-area").length) {
+      $(".payment-guide-overlay").hide();
+      $(".payment-guide-sec").hide();
+    }
+  });
+</script>

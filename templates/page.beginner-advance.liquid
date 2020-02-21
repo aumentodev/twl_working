@@ -1,0 +1,186 @@
+
+
+{% if settings.enable_beginner_advanced %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+
+
+  
+{% if page.handle == 'beginner-email' %}
+
+  
+<section id="page-header">
+     <div class="header-background">
+      <div class="changable-image"  style="background-image: url('{{ settings.begginerimg | img_url : 'original' }}');" >
+<!--         -->
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              <h1>{{ page.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+  <!-- 
+
+
+
+<div class="jumbotron text-center" style="background-image:url(https://d3k81ch9hvuctc.cloudfront.net/company/a8HtAL/images/8f399725-cddf-4203-8e61-6c2aac7f773a.jpeg); background-repeat:no-repeat; background-position:center; background-size: auto;">
+  <img src="https://d3k81ch9hvuctc.cloudfront.net/company/a8HtAL/images/6f535a50-de59-496d-9c58-98c0ee2362b3.png" class="img-fluid" alt="Responsive image">
+  <p class="lead text-center">
+    <strong>BEGINNER</strong></p>
+  
+</div> -->
+   <div class="beggiadvancewrap">  
+<div class="page-width coll-ab-class">
+  <p class=" text-center">{{ settings.b_txt }}</p>
+<div class="text-center beginner-class">
+  <div class="division-wrap begin_coll">
+    <h1 class="division-title">{{ settings.b_head_1 }}</h1>
+  </div>
+  <p class="about-text">{{ settings.b_txt_1 }}</p>
+  <div class="stance-view-all-button"><a class="" href="{{ settings.b_url }}"> {{ settings.b_btn_txt }} </a></div>
+</div>
+</div>
+</div>
+
+  <div class="11 a-set-first-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.b_coll].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+          <div class="">
+<!--             <div class="slider-carousel-wrap"> -->
+<!--               <ul class="slider-carousel center_reviews"> -->
+            <div class="grid grid--uniform ul_class">
+                 {% for product in collections[settings.b_coll].products %}
+                <div class="grid__item small--one-half tab-down--one-third medium-up--one-quarter">
+                  {% include "a-product-card-grid-2" %}
+                </div>
+                {% endfor %}
+              </div>
+                      
+<!--             </div> -->
+          </div>
+<!--            <div class="stance-view-all-button text-center">
+                <a href="{{ settings.b_coll_url }}">{{ settings.b_view }}</a>
+              </div> -->
+<!--                          <div class="loading-bar">
+                <div class="spinner"></div>
+              </div> -->
+      </div>
+
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  
+  {% if page.handle == 'advanced-email' %}
+<!-- <div class="jumbotron text-center" style="background-image:url(https://d3k81ch9hvuctc.cloudfront.net/company/a8HtAL/images/8f399725-cddf-4203-8e61-6c2aac7f773a.jpeg); background-repeat:no-repeat; background-position:center; background-size: auto;">
+  <img src="https://d3k81ch9hvuctc.cloudfront.net/company/a8HtAL/images/6f535a50-de59-496d-9c58-98c0ee2362b3.png" class="img-fluid" alt="Responsive image">
+  <p class="lead text-center">
+    <strong>ADVANCED</strong></p>
+  
+</div> -->
+  
+
+<section id="page-header">
+      <div class="header-background">
+      <div class="changable-image"  style="background-image: url('{{ settings.advanceimg | img_url : 'master' }}');">
+<!--         -->
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              <h1>{{ page.title }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  {% if settings.begin_adv_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+  
+  <div class="beggiadvancewrap">  
+<div class="page-width coll-ab-class">
+  <p class=" text-center">{{ settings.a_txt }}</p>
+<div class="text-center beginner-class">
+  <div class="division-wrap begin_coll">
+    <h1 class="division-title">{{ settings.a_head_1 }}</h1>
+  </div>
+  <p class="about-text">{{ settings.a_txt_1 }}</p>
+  <div class="stance-view-all-button"><a class="" href="{{ settings.a_url }}"> {{ settings.a_btn_txt }} </a></div>
+</div>
+</div>
+  </div>
+
+  <div class="11 a-set-first-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.a_coll].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+          <div class="">
+<!--             <div class="slider-carousel-wrap"> -->
+<!--               <ul class="slider-carousel center_reviews"> -->
+            <div class="grid grid--uniform ul_class">
+                 {% for product in collections[settings.a_coll].products %}
+                <div class="grid__item  small--one-half tab-down--one-third medium-up--one-quarter">
+                  {% include "a-product-card-grid-2" %}
+                </div>
+                {% endfor %}
+              </div>
+                      
+<!--             </div> -->
+          </div>
+<!--            <div class="stance-view-all-button text-center">
+                <a href="{{ settings.a_coll_url }}">{{ settings.a_view }}</a>
+              </div> -->
+        </div>
+<!--                          <div class="loading-bar">
+                <div class="spinner"></div>
+              </div> -->
+
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+
+
+  {% endif %}
+  
+</main>
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+  <iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}

@@ -1,0 +1,23 @@
+<div class="slider-wrap slider-launch">
+  <h3 class="text-center">{{section.settings.coll_title}}</h3>
+  <div class="cyber ">     
+    {%- assign collection = collections[section.settings.collection] -%}
+    {% for product in collection.products limit:8 %}
+    <div class="grid-view-item product-card-grid-col">
+      <a href="{{product.url}}">
+        <div class="product-view">
+          <img class="second-img-alt mb20" src="{{product.featured_image | img_url: "master"}}">
+          <div class="h4 grid-view-item__title text-center main-ctn-title">{{ product.title }}</div>
+          <div class="grid-view-item__meta text-center main-ctn-title">
+            {% include 'product-price' %}
+          </div>
+          <div class="star-rating star-rating-{{ settings.star_color }}">{% include 'okendo-reviews-product-rating-summary' %}</div>
+        </div>
+      </a>
+    </div>      
+    {% endfor %}   
+  </div>
+  <div class="rich-btn-view btn-view text-center">
+    <a href="{{section.settings.btn_link}}" class="btn btn--primary rich-btn cyber-btn">{{section.settings.btn_text}}
+    </a></div>
+</div>

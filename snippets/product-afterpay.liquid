@@ -1,0 +1,37 @@
+{% comment%}
+<div class="afterpay-box-sec">
+  <div class="description">
+    {% if product.price >= 120000 %}
+      Or Due to certain restrictions, Afterpay is unavailable on products over $1,200.
+    {% else %}
+      Or 4 payments of
+      <span id="afterpay_instalments">{{ product.price | divided_by: 4 | money }}</span>
+      with
+    {% endif %}
+  </div>
+  <div class="image-holder">
+    <img alt="Afterpay" class="lazyload" data-src="{{ 'afterpay-logo.png' | asset_url }}" />
+  </div>
+  <a href="#afterpay" class="afterpay-box">Learn more</a>
+  <span class="clearfix"></span>
+</div>
+<span class="zippay-or" style="display:none;">Or</span>
+{% endcomment%}
+
+{% include 'afterpay-popup' %}
+{% include 'custom-zippay' %}
+<div class="afterpay-box-sec">
+  <div class="buy-text">
+    <h3>buy now pay later with</h3>
+  </div>
+  <div class="buy-logo">
+    <a href="#afterpay" class="afterpay-box-cs">
+      {% include 'aftrepay-icon'%}
+    </a>
+    <div class="buy-border"></div>
+     <a href="#zippay-new" class="zippay-box-light">
+     <img alt="Afterpay" class="lazyload" data-src="{{ 'zip-pay.jpg' | asset_url }}" />
+    </a>
+  </div>
+</div>
+

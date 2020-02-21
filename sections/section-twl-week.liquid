@@ -1,0 +1,350 @@
+{% include 'breadcrumb' %}
+<div class="page-default-template week-template" id="week">
+	<section id="page-header">
+      <div class="header-background compexpagebn desktop-slider">
+       {% if section.settings.desktop_image != blank %}
+        <a href="{{section.settings.daily_deal_collection}}">
+      		<img src="{{section.settings.desktop_image | img_url: 'master'}}" width="100%" />
+        </a>
+       {% endif %}
+      </div>
+       
+      <div class="header-background compexpagebn  tablet-slider">
+        {% if section.settings.desktop_image != blank %}
+        	<a href="{{section.settings.daily_deal_collection}}">
+          		<img src="{{ section.settings.desktop_image | img_url: 'master' }}" width="100%" />
+        	</a>
+        {% endif %}
+      </div>
+      
+      <div class="header-background compexpagebn mobile-slider">
+        {% if section.settings.desktop_image != blank %}
+        	<a href="{{section.settings.daily_deal_collection}}">
+        		<img src="{{ section.settings.mobile_image | img_url: 'master' }}" width="100%" />
+        	</a>
+        {% endif %}
+      </div>   
+ 	 </section>
+    <div class="page-width">
+      <div class="section-header text-center">
+        <h1>{{ section.settings.week_sale_header }}</h1>
+        <h4>{{ section.settings.week_sale_subheader }}</h4>
+      </div>
+      <div class="rte">
+        <div class="blue-wrapper">
+          <div class="grid">
+            {% for block in section.blocks %}
+            {% if block.type == 'First_row_image' %}
+            <div class="grid__item medium-up--one-third ">
+              <a href="{{block.settings.link}}" class="box_view">
+                <div class="box_inner">
+                  <div class="text-view">
+                    <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" width="100%" />
+                    <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}" width="100%" />
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% if block.type == 'Second_row_image' %}
+            <div class="grid__item medium-up--one-half  ">
+              <a href="{{block.settings.link}}" class="box_view">
+                <div class="box_inner">
+                  <div class="text-view">
+                    <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" width="100%" />
+                    <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}" width="100%" />
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% if block.type == 'Third_row_image' %}
+            <div class="grid__item medium-up--one-third ">
+              <a href="{{block.settings.link}}" class="box_view">
+                <div class="box_inner">
+                  <div class="text-view">
+                    <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" width="100%" />
+                    <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}" width="100%" />
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% if block.type == 'Fourth_row_image' %}
+            <div class="grid__item medium-up--one-whole">
+              <a href="{{block.settings.link}}" class="box_view">
+                <div class="box_inner last_r">
+                  <div class="text-view">
+                    <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" width="100%" />
+                    <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}" width="100%" />
+                  </div>
+                </div>
+              </a>
+            </div> 
+            {% endif %}
+            {% endfor %}               
+          </div>          
+        </div>
+      </div>
+    </div>
+      <div class="grey-bg">
+        <div class="page-width">
+        <section id="get-in-touch" class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 set_form">       
+            <h2 class="appreal_heading_text appgive-title">{{ section.settings.subscribe_form_header }}</h2>
+            <p class="appreal_heading_text appgive-subtitle">{{ section.settings.subscribe_form_subheader }}</p>
+            <form id="email_signup" class="klaviyo_standard_embed_QqXqgT contact_form whyweatform" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" >      
+              <div class="klaviyo_messages">
+                <div class="success_message" style="display:none;"></div>
+                <div class="error_message" style="display:none;"></div>
+              </div> 
+              <div class="grid__item-setf">
+                <div class="set_input name_fld txt-centr">
+                  <input required type="text" id="ContactFormName" name="contact[name]" placeholder="Your name" value="">
+                </div>
+              </div>
+              <input type="hidden" name="g" value="{{ section.settings.form_list_id }}">
+              <div class="grid__item-setf">
+                <div class="set_input email_fld txt-centr">
+                  <input type="email" value="" required name="email" id="k_id_email" placeholder="Your email">
+                </div>
+              </div>         
+              <div class="col-md-12 ">
+                <div class="set_input name_fld txt-centr">
+                  <button type="submit" class="btn contactbtn" style="color: #fff;background-color: #000;">{{ section.settings.form_btn_text }}</button>             
+                </div>
+              </div>           
+            </form>
+          </div>
+        </div>
+      </div>
+      <h1 class="text-center whyis_sweat">{{section.settings.form_bottom_text}}</h1>
+    </section>
+       <div class="orange-wrapper">
+              <div class="grid">
+                {% for block in section.blocks %}
+                {% if block.type == 'week_deals' %}
+                <div class="grid__item medium-up--one-quarter small--one-half">
+                  	<div class="box_inner last_section">
+                      {% if block.settings.week_image != blank %}
+                      	{% if block.settings.deal_status == "running" %}
+                          <a href="{{block.settings.link}}">
+                              <img class="desktop-image" src="{{block.settings.week_image | img_url: 'master'}}" width="100%" />
+                          </a>
+                      	{% else %}
+                      	  <img class="desktop-image" src="{{block.settings.week_image | img_url: 'master'}}" width="100%" />
+                      	{% endif %}
+                      {% endif %}
+                      {% if block.settings.week_image_mobile != blank %}
+                      	{% if block.settings.deal_status == "running" %}
+                          <a href="{{block.settings.link}}">
+                     		<img  class="mobile-image" src="{{block.settings.week_image_mobile | img_url: 'master'}}" width="100%" />
+                      	  </a>
+                        {% else %}
+                      		<img  class="mobile-image" src="{{block.settings.week_image_mobile | img_url: 'master'}}" width="100%" />	
+                     	{% endif %}
+                      {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+          	</div>          
+<!--         {{ page.content }} -->
+        </div>
+        </div>
+  </div>
+</div>
+<style>
+  .header-background.compexpagebn{height:auto !important;}
+  .header-background.compexpagebn img{display:block;}
+  @media (max-width: 767px){
+   .header-background.compexpagebn{height:auto !important;}
+  .header-background.compexpagebn img{display:block !important;}
+  }
+  @media (min-width: 768px) and (max-width: 1150px){
+   .header-background.compexpagebn{height:auto !important;}
+  .header-background.compexpagebn img{display:block !important;}
+  }
+</style>
+{% schema %}
+  {
+    "name": "TWL Week",
+    "settings": [
+	  {
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile Banner image"
+      },
+	  {
+		"type": "url",
+		"id": "daily_deal_collection",
+		"label": "Daily deal collection"
+      },
+	  {
+		"type": "text",
+		"id": "week_sale_header",
+		"label": "Week sale header"
+      },
+	  {
+		"type": "text",
+		"id": "week_sale_subheader",
+		"label": "Week sale sub header"
+      },
+	  {
+		"type": "text",
+		"id": "subscribe_form_header",
+		"label": "Subscribe form header"
+      },
+	  {
+		"type": "text",
+		"id": "subscribe_form_subheader",
+		"label": "Subscribe form sub header"
+      },
+	  {
+		"type": "text",
+		"id": "form_btn_text",
+		"label": "Form button text"
+      },
+	  {
+		"type": "text",
+		"id": "form_list_id",
+		"label": "Form klaviyo list Id"
+      }
+	],
+	"blocks": [
+          {
+            "type": "First_row_image",
+            "name": "Week sale first row",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			 {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         },
+		 {
+            "type": "Second_row_image",
+            "name": "Week sale second row",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+				
+		 {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+
+            ]
+         },
+		 {
+            "type": "Third_row_image",
+            "name": "Week sale third row",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+				 {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+
+            ]
+         },
+		 {
+            "type": "Fourth_row_image",
+            "name": "Week sale fourth row",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+				 {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+
+            ]
+         },
+		 {
+            "type": "week_deals",
+            "name": "TWL week deals",
+            "settings": [
+              {
+                "id": "week_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			  {
+                "id": "week_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+			  {
+                "id": "link",
+                "type": "url",
+                "label": "Collection Link"
+              },
+			  {
+                 "type":      "radio",
+                 "id":        "deal_status",
+                 "label":     "Deal running status",
+                 "options": [
+                   { "value": "running", "label": "Deal is running" },
+                   { "value": "expired", "label": "Deal is expired" }
+                 ],
+                 "default":   "expired",
+                 "info":      "Deal status"
+              }
+            ]
+         }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,225 @@
+<div class="page-default-template christmas-shipping">
+   <div class="page-width">
+      <div class="section-header text-center">
+         <h1>{{ page.title }}</h1>
+      </div>
+      <div class="rte">
+         {{ page.content }}
+         <div class="content christmas-template">
+           <p>
+             {{section.settings.chr_description}}
+           </p>
+
+           {% capture data_1 %}
+           {% for block in section.blocks %}
+           {% if block.type == 'sub1' %}
+           
+           {% assign l1_que = block.settings.l1_qusetion %}
+           {% assign l1_ans = block.settings.l1_answer %}
+           {% assign l1_info = block.settings.l1_info | append:'#que' | append : l1_que | append:'#ans'| append : l1_ans | append:'&&'%}
+           {% assign l1_info = l1_info  %}{{l1_info}}{% endif %}{% endfor %}
+           {% endcapture %}
+       
+       
+           
+           {% for block in section.blocks %}
+           {% assign quetion = block.settings.qusetion %}
+            {% if block.type == 'parent' %}<h2>{{block.settings.qusetion}}</h2>{% endif %}
+           <div>
+             {% if block.type == 'parent' %}
+             {{block.settings.answer}}
+             {% endif %}
+             {% assign data = data_1 | split : '&&'%}
+
+             {% for que in data %}{% if que contains quetion %} 
+             <div style="padding:10px 0px 0px 0px;">
+               {% comment %}
+               <p>How quickly can you deliver a gift card?</p>
+               <p>Gift Cards are delivered instantly! So all you need to do is place your order and then the Gift Card purchased will be delivered electronically to your email.</p>
+               {% endcomment %}
+               <div class="christmas">
+                 <h2>{% assign que_data = que | split: '#ans'| first %}{{que_data | split: '#que'| last }}</h2>
+                 <div>
+                  {{que | split: '#ans'| last}}
+                 </div>
+                 
+               </div>
+             </div>
+             {% endif %}
+             {% endfor %}
+           </div> 
+           {% endfor %}
+
+           
+           {% comment %}
+            <h2>HOW LONG WILL MY ORDER TAKE TO ARRIVE?</h2>
+            <div>
+               <p><img src="//cdn.shopify.com/s/files/1/0226/0165/files/LAST-DAYS-TO-ORDER_Grey_grande.jpg?v=1512437754" alt="Last Days to Order" /></p>
+            </div>
+            <h2>HOW LONG WILL MY ORDER TAKE TO ARRIVE?</h2>
+            <div>
+               <p><strong>DOMESTIC AUSTRALIAN ORDERS</strong></p>
+               <p><img src="//cdn.shopify.com/s/files/1/0226/0165/files/SHIPPING_GRAPHIC_Updated_grande.jpg?v=1481753269" alt="Shipping Times for The WOD Life" /></p>
+               <p>Please consider that this is a guide only. The WOD Life does our best to ensure your packages are shipped in a timely manner, but we cannot be held accountable for unforseen circumstances with courier companies.</p>
+               <p>Note: All shipping times relate to all orders under 5kg. All orders over 5kg are estimated to be received within 2-7 business days and will be sent via Road Courier.</p>
+            </div>
+            <h2>WHEN IS THE EXPRESS CHRISTMAS SHIPPING CUT OFF?</h2>
+            <div>
+               <p><strong>Aus Metro Centres: (Capital Cities and Metro Suburbs)</strong> 1PM Eastern Standard Time on Monday the 23rd December</p>
+               <p><strong>Aus Non-Metro Centres and Regional/Rural Areas:</strong> 1PM Eastern Standard Time on Friday the 20th December. </p>
+               <p><strong>International Orders: </strong>1PM Eastern Standard Time on Wednesday the 18th December</p>
+               <p><em>*Please note that this is a guide for all orders shipped via Toll or Australia Post Express under 5Kg.</em></p>
+               <p><em> All other orders including Australia Road Ground Shipping (orders over 5Kg) please allow 2-7 Business Days for delivery once despatched.</em></p>
+            </div>
+            <h2>WHAT ABOUT HEAVY OR BULKY ITEMS?</h2>
+            <div>
+               <p>As heavy and/or bulky items have to be shipped by road, we recommend that you order prior to Monday the 9th December.</p>
+               <p>Road shipping takes approximately 7-10 business days as a guide once despatched.</p>
+               <p>Of course the earlier the better for gear like weight vests, barbells and squat racks!</p>
+            </div>
+            <h2>HOW MUCH WILL SHIPPING COST?</h2>
+            <div>
+               <p>Please go to the <a href="http://thewodlife.com.au/cart" title="The WOD Life Shopping Cart">CART</a>and enter your details for an accurate real time shipping quote. </p>
+            </div>
+            <h2>TIPS FOR FAST DELIVERY</h2>
+            <div>
+               <p>1. Double check your address before ordering</p>
+               <p>2. Choose the 'Authority to leave' option in the checkout if you have a secure front yard or location that a parcel can be left.</p>
+               <p>3. If you do not have a secure location where a parcel can be left with authority to leave, potentially have it delivered to your workplace with 'signature required.'</p>
+               <p>4. If being delivered to a workplace, include the name of the business, not the shop number or level.</p>
+            </div>
+            <h2>GOT AN URGENT ISSUE?</h2>
+            <div>
+               <p>Call Us on 1300 732 152 during business hours Mon-Fri (CST); or</p>
+               <p>Email: support@thewodlife.com.au</p>
+               <p>We are working overtime to assist with providing a smooth experience for your order. </p>
+            </div>
+            <h2>GIFT CARDS</h2>
+            <div style="padding:10px 0px 0px 0px;">
+               <p>How quickly can you deliver a gift card?</p>
+               <p>Gift Cards are delivered instantly! So all you need to do is place your order and then the Gift Card purchased will be delivered electronically to your email.</p>
+               <div class="christmas">
+                  <h2>Who will receive the gift card? </h2>
+                  <div>
+                     <p>Gift Cards are emailed to the selected recipient via email. You can easily send this email through to the lucky gift recipient, or you can print off the confirmation and include it together with a Christmas card for the big day.
+                     </p>
+                  </div>
+                  <h2>What do I do if I can't find my gift card?</h2>
+                  <div>
+                     <p>The best thing to do is to double check your junk mail. Sometimes your gift card might end up there. Absolute worst case please contact us and we will organise to resend or set up a custom gift card option for you.</p>
+                     <p>What is the latest time I can order a Gift Card? </p>
+                     <p>As Gift Card orders are delivered automatically by email, you can order any time even Christmas Day!</p>
+                  </div>
+               </div>
+            </div>
+            <h2>WHICH SHIPPING OPTION SHOULD I SELECT?</h2>
+            <div>
+               <p>The WOD Life highly recommends using <strong>EXPRESS SHIPPING</strong> during the Christmas Period. You can select either Toll or Australia Post Express options. Both are set to arrive within 1-3 business days.</p>
+               <p>Please be mindful that due to the nature of Christmas and the busy period, Australia Post and Toll may experience some delays. </p>
+               <p><em>*Please note that there may be instances where an item is out of stock, or shipped directly from a Vendor. In this instance, we are unable to guarantee adherence to the below delivery times*</em></p>
+            </div>
+            <h2>AMRAP PACKING &amp; SHIPPING</h2>
+            <div>
+               <p>Unlike other businesses, The WOD Life is not shutting down over the Christmas Period. We have CrossFit Elves picking and packing orders overnight on the 21st, 22nd, and 23rd of December to ensure we have provided every effort for your order to get delivered for the big day.</p>
+            </div>
+            <h2>WHAT IF I LIVE IN A OUTSIDE A MAJOR CITY OR REMOTE AREA?</h2>
+            <div>
+               <p>If you live in a place not on the Australia Post Express Network eg. the Northern Territory or some regional areas we recommend ordering using Toll Priority.</p>
+               <p>If you live in a Remote location we recommend allowing 3-4 business days for your order to arrive.</p>
+            </div>
+            <h2>WHAT ABOUT SHIPPING TO NEW ZEALAND?</h2>
+            <div>
+               <p>For orders under 2kg we have recently welcomed Australia Post International Express to New Zealand. Please allow 3-4 days from dispatch to your door. We have a flat rate of only $9.99 for these deliveries. </p>
+            </div>
+            <h2>HOW ABOUT OTHER INTERNATIONAL SHIPPING?</h2>
+            <div>
+               <p>If you live outside Australia and New Zealand and are looking to pick up some great gear then we recently have welcomed DHL Express on board as a courier.</p>
+               <p>We recommend choosing DHL Express for deliveries worldwide to your door in 2-4 days after dispatch. Please be aware that you will have to sign for these orders and DHL Express cannot deliver to PO Boxes except to the UAE where they will only deliver to a PO Box.</p>
+            </div>
+            <h2>WILL I RECEIVE TRACKING INFORMATION?</h2>
+            <div>
+               <p>Yes. With full tracking you will be able to track where your order is and have peace of mind. We endeavour to send tracking details as soon as possible to the email with your shipping confirmation.</p>
+               <p>Although it is likely these details will come through quicker, please allow 24-48 hours.</p>
+               <div><a href="http://thewodlife.com.au/pages/order-lookup" title="The WOD Life Track  Your Order">Track Your Order HERE!</a></div>
+            </div>
+            <h2>DETAILS FROM OUR SHIPPING CARRIERS</h2>
+            <div>
+               <p>For the latest updates direct from Toll please check:</p>
+               <p><a href="https://www.tollgroup.com/">https://www.tollgroup.com/</a></p>
+               <p>For more information on regular Australia Post shipping please visit the link below:</p>
+               <p><a href="https://auspost.com.au/mypost/track/#/search">https://auspost.com.au/mypost/track/#/search</a></p>
+               <p>For any FAQs on DHL tracking please check out the following link:</p>
+               <p><a href="http://www.dhl.com/en/express/tracking/tracking_faq.html" title="DHL Tracking Details Link - The WOD Life">http://www.dhl.com/en/express/tracking/tracking_faq.html</a></p>
+            </div>
+           {% endcomment %}
+           
+         </div>
+      </div>
+   </div>
+</div>
+{% schema %}
+  {
+    "name": "Christmas shipping",
+	"settings": [
+      {
+        "type": "text",
+        "id": "chr_title",
+        "label": "Christmas Title"
+      },
+	  {
+        "type": "textarea",
+        "id": "chr_description",
+        "label": "Christmas Description"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "parent",
+        "name": "Parent Que and Ans",
+        "settings": [
+                {
+                  "type": "text",
+                  "id": "q1_info",
+                  "label": "Parent quetion info part"
+                },
+				{
+                  "type": "textarea",
+                  "id": "qusetion",
+                  "label": "Parent question"
+                },
+				{
+                  "type": "textarea",
+                  "id": "answer",
+                  "label": "Parent answer"
+                }
+        ]
+      },
+	  {
+        "type": "sub1",
+        "name": "Sub lavel 1",
+        "settings": [
+                {
+                  "type": "text",
+                  "id": "l1_info",
+                  "label": "Parent Question"
+                },
+                {
+                  "type": "text",
+                  "id": "l1_content",
+                  "label": "Lavel 1 question info part"
+                },
+				{
+                  "type": "textarea",
+                  "id": "l1_qusetion",
+                  "label": "Lavel1 question"
+                },
+				{
+                  "type": "textarea",
+                  "id": "l1_answer",
+                  "label": "Lavel1 answer"
+                }
+        ]
+      }
+    ]
+  }
+{% endschema %}

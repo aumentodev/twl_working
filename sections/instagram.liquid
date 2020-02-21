@@ -1,0 +1,34 @@
+<div class="instagram-feed-wrap" id="instagram-feed">
+  {% if section.settings.section_title != blank %}<h2 class="text-center lined main-txt-title">{{ section.settings.section_title }}</h2>{% endif %}
+  {% if section.settings.content != blank %}<p class="text-center lined main-ctn-text">{{ section.settings.content }}</p>{% endif %}
+  <div id="insta-feeds">
+  	   <script src="//foursixty.com/media/scripts/fs.embed.v2.5.js" data-feed-id="the-wod-life" data-open-links-in-same-page="false" data-theme="lookbook_v2_5" data-page-size="10" ></script><style>.fs-has-links::after {  padding: 3px 6px; color:rgb(255, 255, 255); content: "SHOP OUR INSTAGRAM";  }.fs-wrapper div.fs-text-container .fs-entry-title, div.fs-detail-title{font-family:Times New Roman, serif;font-style:normal;font-weight:bold;}div.fs-text-container .fs-entry-date, div.fs-detail-container .fs-post-info, div.fs-wrapper div.fs-has-links::after, .fs-text-product, .fs-overlink-text{font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-style:normal;font-weight:bold;}.fs-slider-next-button, .fs-slider-prev-button { opacity: 1; }.fs-wrapper div.fs-text-container * {color:rgb(255, 255, 255)}.fs-wrapper div.fs-text-container {background-color:rgba(0, 0, 0, 0.5); margin: 0px}div.fs-entry-date{display:none}div.fs-entry-title{display:none}.fs-wrapper div.fs-timeline-entry{ margin: 0px }</style>
+  </div>
+  
+</div>
+{% schema %}
+  {
+    "name": "Instagram",
+	"class": "instagram-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Heading",
+        "default": "Talk about your brand"
+      },
+	  {
+        "type": "text",
+        "id": "content",
+        "label": "Content",
+        "default": "Talk about your brand"
+      }
+	],
+    "presets": [
+      {
+        "name": "Instagram",
+        "category": "Instagram"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,19 @@
+{% assign is_in_okendo_collection = false %}
+{% assign collection_handles = product.collections | map: "title" %}
+{% if collection_handles contains 'okendo_' %}
+ {% assign is_in_okendo_collection = true %}
+{% endif %}
+{% if is_in_okendo_collection %}
+{% assign reverse_collections = product.collections | sort: "title" | reverse %}
+{% for collection in reverse_collections %}
+{% if collection.title contains 'okendo_' %}
+{% assign oke_collection_id = collection.id %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if is_in_okendo_collection == true %}
+	<div class="product-title-review" data-oke-reviews-product-listing-rating data-oke-reviews-collection-id="{{ oke_collection_id }}"></div>
+{% else %}
+    <div class="product-title-review" data-oke-reviews-product-listing-rating>{{ product.metafields.okendo.ProductListingSnippet }}</div>
+{% endif %}

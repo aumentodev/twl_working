@@ -1,0 +1,659 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+
+{%- assign url = pageUrl | split: 'collections/' -%}
+
+{% case section.settings.grid %}
+  {% when '2' %}
+    {%- assign max_height = 530 -%}
+  {% when '3' %}
+    {%- assign max_height = 345 -%}
+  {% when '4' %}
+    {%- assign max_height = 250 -%}
+  {% when '5' %}
+    {%- assign max_height = 195 -%}
+{% endcase %}
+
+{% if section.settings.layout == 'grid' %}
+  {%- assign limit = section.settings.grid | times: section.settings.rows -%}
+{% else %}
+  {%- assign limit = 16 -%}
+{% endif %}
+
+{% assign full_num = collection.all_products_count %}
+
+{% paginate collection.products by collection.all_products_count %}
+
+{% if section.settings.header_enable %}
+{% if collection.image %}
+	<div class="collection-header-bg" style="background-image: url({{ collection.image | img_url: '1600x1600' }});">
+      
+	</div>
+{% endif %}
+{% endif %}
+
+{% include 'breadcrumb' %}
+
+<div data-section-id="{{ section.id }}" data-section-type="collection-template">
+  <div class="collection-header">
+   
+    <div class="page-width">
+      
+      {% comment %}
+      {% if section.settings.sort_enable %}
+      <div class="filters-toolbar__item text-left">
+        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+        <label for="SortBy" class="label--hidden">{{ 'collections.sorting.title' | t }}</label>
+        <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort hidden">
+          {% if sort_by == collection.default_sort_by %}
+          <option value="title-ascending" selected="selected">{{ 'collections.sorting.title' | t }}</option>
+          {% if collection.default_sort_by != 'manual' %}
+          <option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+          {% endif %}
+          {% if collection.default_sort_by != 'best-selling' %}
+          <option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+          {% endif %}
+          {% if collection.default_sort_by != 'title-ascending' %}
+          <option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+          {% endif %}
+          {% if collection.default_sort_by != 'title-descending' %}
+          <option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+          {% endif %}
+          {% if collection.default_sort_by != 'price-ascending' %}
+          <option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+          {% endif %}
+          {% if collection.default_sort_by != 'price-descending' %}
+          <option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+          {% endif %}
+          {% if collection.default_sort_by != 'created-descending' %}
+          <option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+          {% endif %}
+          {% if collection.default_sort_by != 'created-ascending' %}
+          <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+          {% endif %}
+          {% else %}
+          <option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+          <option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+          <option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+          <option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+          <option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+          <option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+          <option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+          <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+          {% endif %}
+        </select>
+        <input id="DefaultSortBy" type="hidden" value="{{ collection.default_sort_by }}">
+      </div>
+      {% endif %}
+      {% endcomment %}
+      
+      {% if section.settings.header_txt_enable %}
+      <div class="section-header">
+        <h1 class="main-txt-title">{{ collection.title }}</h1>
+        {% if collection.description != blank %}
+
+        <div class="rte">
+          <div class="short-desc">{{ collection.description | split: "<!-- product description -->" | first }}</div>
+          <div class="read-more"><span class="main-txt-title">Read more</span></div>
+          
+          <div class="second-desc">{{ collection.description | split: "<!-- product description -->" | last }}</div>
+          <div class="less-more"><span class="main-txt-title">Read less</span></div>
+        </div>
+
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="collection-ctn">
+    <div class="page-width" id="Collection">
+      {% if section.settings.layout == 'grid' %}
+        {% case section.settings.grid %}
+        {% when '2' %}
+          {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {% when '3' %}
+          {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+        {% when '4' %}
+          {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+        {% when '5' %}
+          {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+        {% endcase %}
+
+        <div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
+
+          {% assign index = 0 %}
+          {% for product in collection.products %}
+
+              <div class="grid-collection-quick-product grid__item-{{ index }} grid__item-list-{{ forloop.index }} grid__item grid__item--{{section.id}} {{ grid_item_width }}"  data-product-id="{{ product.id }}" data-index="{{ index }}">
+                {% include 'product-card-grid-col', max_height: max_height %}
+              </div>
+
+          {% else %}
+            {% comment %}
+            Add default products to help with onboarding for collections/all only.
+
+            The onboarding styles and products are only loaded if the
+            store has no products.
+            {% endcomment %}
+            {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+              <div class="grid__item">
+                <div class="grid grid--uniform">
+                  {% for i in (1..limit) %}
+                    <div class="grid__item {{ grid_item_width }}">
+                      <div class="grid-view-item">
+                        <a href="#" class="grid-view-item__link">
+                          <div class="grid-view-item__image">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                          </div>
+                          <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                          <div class="grid-view-item__meta">
+                            <span class="product-price__price">$19.99</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% else %}
+              {%- assign is_empty_collection = true -%}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="list-view-items">
+          {% for product in collection.products %}
+            <a href="{{ product.url | within: collection }}" class="list-view-item">
+              {% include 'product-card-list', product: product %}
+            </a>
+          {% else %}
+
+            {% comment %}
+            Add default products to help with onboarding for collections/all only.
+
+            The onboarding styles and products are only loaded if the
+            store has no products.
+            {% endcomment %}
+            {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0%}
+              {% for i in (1..4) %}
+                <a href="#" class="list-view-item">
+                  <div class="list-view-item__image-column">
+                    <div class="list-view-item__image-wrapper">
+                      <div class="list-view-item__image">
+                        {%- assign placeholder = 'placeholder-product-' | append: i -%}
+                        {% include placeholder %}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="list-view-item__title-column">
+                    <div class="list-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                  </div>
+
+                  <div class="list-view-item__price-column">
+                    <span class="product-price__price">$19.99</span>
+                  </div>
+                </a>
+              {% endfor %}
+            {% else %}
+              {%- assign is_empty_collection = true -%}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if is_empty_collection %}
+        <div class="grid__item small--text-center">
+          <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+
+      {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+{% include 'slider-cart-custom' %}
+{% endpaginate %}
+
+<script>
+  $(document).ready(function(){
+    $(".read-more-btn span").click(function(){
+      var $par = $(this).parent();
+      var name = $(this).attr("attr");
+      
+      $par.hide();
+      $("." + name).show();
+    });
+    
+    var num_page = {{ limit }};
+    var num_max = {{ full_num }};
+     var cur_step = 1;
+    var mod = Math.ceil(num_max / num_page);
+    
+    // function checkPosition( step ) { 
+      
+    //   	var id = step * num_page;
+    //   	var pos_ele = 0;  
+      
+    //     if( id < num_max) {
+    //     	pos_ele = $(".grid__item-list-" + id).offset();
+    //       	pos_ele = pos_ele.top + $(".grid__item-list-" + id).outerHeight();
+    //     }
+      
+    //   	return pos_ele;
+     
+    // }
+    
+    $(window).scroll(function(){
+      var scrollPos = $(window).scrollTop() + $(window).height();
+      // var cur_pos = checkPosition(cur_step);
+      
+      // if(scrollPos > cur_pos) {
+      // 	$(".grid__item-" + cur_step).show();
+      //   cur_step = cur_step + 1;
+      // }
+      
+    });
+    
+    $(".section-header .read-more span").click(function(){
+      var $par = $(this).parent();
+      $par.hide();
+      $(".second-desc").show();
+      $(".less-more").show();
+    });
+    
+    $(".section-header .less-more span").click(function(){
+      var $par = $(this).parent();
+      $par.hide();
+      $(".second-desc").hide();
+      $(".read-more").show();
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Collection pages",
+	"class": "main-collection-template",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "grid",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          },
+          {
+            "value": "list",
+            "label": "List"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Products per row (grid only)",
+        "default": "4",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "rows",
+        "label": "Rows per page (grid only)",
+        "default": "2",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "label": "Show collection image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendors",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "sort_enable",
+        "label": "Enable sorting",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "tags_enable",
+        "label": "Enable tag filtering",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "header_enable",
+        "label": "Enable header image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "header_txt_enable",
+        "label": "Enable header text",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "filter_main_title",
+        "label": "Filter title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "filter_color",
+        "name": "Filter Color",
+        "settings": [
+		  {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+      	  },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Filter Title"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name1",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color1",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name2",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color2",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name3",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color3",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name4",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color4",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name5",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color5",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name6",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color6",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name7",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color7",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name8",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color8",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name9",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color9",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name10",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color10",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name11",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color11",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name12",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color12",
+            "label": "Select color"
+          },
+          {
+            "type": "text",
+            "id": "list_color_name13",
+            "label": "Color name"
+          },
+          {
+            "type": "color",
+            "id": "list_color13",
+            "label": "Select color"
+          }
+        ]
+      },
+      {
+        "type": "filter_price",
+        "name": "Filter Price",
+        "settings": [
+		  {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+      	  },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Filter Title"
+          },
+          {
+            "type": "textarea",
+            "id": "list_tags",
+            "label": "Tag lists"
+          }
+        ]
+      },
+	  {
+        "type": "filter_brand",
+        "name": "Filter Brand",
+        "settings": [
+		  {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+      	  },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Filter Title"
+          },
+          {
+            "type": "textarea",
+            "id": "list_tags",
+            "label": "List Tags",
+            "info": "Separate by a comma, i.e \"Dincidunteros, Nectellus, Solutmades\"."
+          }
+        ]
+      },
+      {
+        "type": "filter_collection",
+        "name": "Filter Collection",
+        "settings": [
+		  {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+      	  },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Filter Title"
+          },
+          {
+            "type": "link_list",
+            "id": "category_menu",
+            "label": "Category List"
+          }
+        ]
+      },
+      {
+        "type": "filter_size",
+        "name": "Filter Size",
+        "settings": [
+		  {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+      	  },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Filter Title"
+          },
+          {
+            "type": "textarea",
+            "id": "list_tags",
+            "label": "List Tags",
+            "info": "Separate by a comma, i.e \"Dincidunteros, Nectellus, Solutmades\"."
+          }
+        ]
+      },
+      {
+        "type": "filter_rate",
+        "name": "Filter Rate",
+        "settings": [
+		  {
+          "type": "checkbox",
+          "id": "enable",
+          "label": "Enable",
+          "default": true
+      	  },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Filter Rate"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

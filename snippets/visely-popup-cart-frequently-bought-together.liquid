@@ -1,0 +1,7 @@
+<div class="popup-cart visely-widget-container">
+  <h3 class="visely-recommendations-title" data-visely-widget-title-element="POPUP_CART_FREQUENTLY_BOUGHT_TOGETHER"></h3>
+  <div class="frequently-bought-together visely-widget-wrapper" data-visely-recommendation-type="POPUP_CART_FREQUENTLY_BOUGHT_TOGETHER" data-visely-frequently-bought-together="{{ cart.items | map: 'product_id' | join: ','}}">
+    {% include 'visely-recommendation-item-template' %}
+    <div class="visely-pagination" data-visely-pagination></div>
+  </div>
+</div>

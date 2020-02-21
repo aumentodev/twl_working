@@ -1,0 +1,23 @@
+{% if settings.arrow_enable %}
+<div class="top-arrow-sec" id="main-top-arrow-func">
+	<img src="{{ settings.arrow | img_url: '100x100' }}">
+</div>
+{% endif %}
+
+<script>
+  $(document).ready(function(){
+  	$(window).scroll(function(){
+      var scrollPos = $(document).scrollTop();
+      if(scrollPos > 500) {
+      	$("#main-top-arrow-func").show();
+      }else {
+      	$("#main-top-arrow-func").hide();
+      }
+
+    });
+
+    $("#main-top-arrow-func").click(function(){
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+    });
+  })
+</script>

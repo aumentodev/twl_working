@@ -1,0 +1,8 @@
+<div class="visely-widget-container page-width">
+  <h3 class="visely-recommendations-title" data-visely-widget-title-element="MOST_POPULAR"></h3>
+  <div class="most-popular visely-widget-wrapper" data-visely-recommendation-type="MOST_POPULAR">
+    {% include 'visely-recommendation-item-template' %}
+    <div class="visely-pagination" data-visely-pagination></div>
+  </div>
+</div>
+<script>document.dispatchEvent( new CustomEvent('viselyWidgetInit', {detail: { widgetType: 'MOST_POPULAR' }}));</script>

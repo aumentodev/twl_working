@@ -1,0 +1,10 @@
+<div class="attr-swatches">
+  {% for option in product.options_with_values %}
+  {% assign option_name = option.name | downcase %}
+  {% if option_name contains 'color' or option_name contains 'colour' or option_name contains 'couleur' or option_name contains 'kleur' %}
+  {% for value in option.values %}
+	{{ shop.metafields.spfcolor[value] }}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+</div>

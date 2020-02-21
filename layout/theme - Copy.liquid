@@ -1,0 +1,350 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+
+
+  {% if settings.favicon != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+  {% capture seo_title %}
+    {{ page_title }}
+    {% if current_tags %}
+      {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {% endif %}
+    {% if current_page != 1 %}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {% endif %}
+    {% unless page_title contains shop.name %}
+      &ndash; {{ shop.name }}
+    {% endunless %}
+  {% endcapture %}
+  <title>{{ seo_title }}</title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% include 'social-meta-tags' %}
+
+  {{ 'geolocator.min.js' | asset_url | script_tag }}
+  
+  <link href="https://d3hw6dc1ow8pp2.cloudfront.net/styles/main.min.css" rel="stylesheet" type="text/css">
+  {{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'slick.scss' | asset_url | stylesheet_tag }}
+  {{ 'slick-theme.scss' | asset_url | stylesheet_tag }}
+  {{ 'nouislider.min.css' | asset_url | stylesheet_tag }}
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  {{ 'owl.carousel.css' | asset_url | stylesheet_tag }}
+  {% include 'google-fonts' %}
+
+  <script>
+
+    var theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        showMore: {{ 'general.filters.show_more' | t | json }},
+        showLess: {{ 'general.filters.show_less' | t | json }},
+        addressError: {{ 'sections.map.address_error' | t | json }},
+        addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+        addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+        authError: {{ 'sections.map.auth_error_html' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    }
+
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
+
+<!-- Start of thewodlifeau Zendesk Widget object configuration -->
+  <script>
+    // console.log('hello human');
+    // window.zESettings = {
+    //   webWidget: {
+    //     color: {
+    //       theme: '#78a300',
+    //       launcher: '#CC3A83'
+    //     },
+    //     offset: {
+    //       horizontal: '-50px',
+    //       vertical: '300px'
+    //     }
+    //   }
+    // };
+
+  </script>
+
+<!-- End of thewodlifeau Zendesk Widget object configuration -->
+
+<!-- Start of thewodlifeau Zendesk Widget script -->
+  <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=14940fe3-7e46-4b3f-ad09-4421ecd965da"> </script>
+<!-- End of thewodlifeau Zendesk Widget script -->
+
+  <!--[if (lte IE 9) ]>{{ 'match-media.min.js' | asset_url | script_tag }}<![endif]-->
+
+  {% if template.directory == 'customers' %}
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+  {% endif %}
+
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'lazysizes.min.js' | asset_url }}"></script><![endif]-->
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'nouislider.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'nouislider.min.js' | asset_url }}"></script><![endif]-->
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'jquery.fancybox.js' | asset_url }}" async="async"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'jquery.fancybox.min.js' | asset_url }}"></script><![endif]-->
+   {{ 'zippay.js' | asset_url | script_tag }}
+  {% comment %}
+  {% if template == "product" %}
+  <script type="text/javascript" src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/fancybox/dist/js/jquery.fancybox.pack.js"></script>
+  {% endif %}
+  {% endcomment %}
+
+  {{ 'moment.js' | asset_url | script_tag }}
+  {{ 'jquery.countdown.min.js' | asset_url | script_tag }}
+
+  {{ content_for_header }}
+
+
+{%- include 'bold-common' -%}
+{{ shop.metafields.okendo.ReviewsWidgetStyleTag }}
+{{ shop.metafields.okendo.StyleCustomizations }}
+{{ 'okendo-reviews.scss.css' | asset_url | stylesheet_tag }}
+{{ 'okendo-reviews.js' | asset_url | script_tag }}
+{% include 'sca-quick-view-init' %}
+ {% section 'filter-menu-settings' %}
+ <style type="text/css">
+      .filter-menu.sticky {
+        float: none;
+        position: fixed;
+        top: 120px;
+        z-index: 6;
+        left: auto;
+        overflow-y:auto !important;
+        height:693px !important;
+      }
+  </style>
+
+   {% include 'open-graph-tags' %}
+  {% include 'twitter-card' %}
+  <!--[if lt IE 9]>
+{{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+<![endif]-->
+  {% include 'google-optimize' %}
+
+
+  {% include 'dataLayer-allPages' %}
+  {% include 'gtm-script' %}
+  {% if handle contains 'size-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'alpha-asc-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'alpha-desc-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'created-desc-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'created-asc-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'price-desc-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'price-asc-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+  {% if handle contains 'views-' %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+
+   <!-- Hits Analytics tracking code -->
+  {% if shop.customer_accounts_enabled %}
+  {% if customer %}
+  <script type="text/javascript">
+    function hitsReady() {
+      if (typeof hits != 'undefined')
+        hits('user','identify', {'id' : '{{ customer.id }}'});
+                                 else
+                                 setTimeout(hitsReady,500);
+                                }
+             window.attachEvent ? window.attachEvent('onload', hitsReady) : window.addEventListener('load', hitsReady, false);
+  </script>
+  {% endif %}
+  {% endif %}
+  <!-- end of Hits Analytics code -->
+
+</head>
+
+<body class="gf-left swatch-round template-{{ template | split: '.' | first }}">
+   {% include 'gtm-noscript' %}
+  {% include 'slider-cart' %}
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div id="SearchDrawer" class="search-bar drawer drawer--top">
+    <div class="search-bar__table">
+      <div class="search-bar__table-cell search-bar__form-wrapper">
+        <form class="search search-bar__form" action="/pages/search-results" method="get" role="search">
+          <button class="search-bar__submit search__submit btn--link" type="submit">
+            {% include 'icon-search' %}
+            <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+          </button>
+          <input class="search__input search-bar__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+        </form>
+      </div>
+      <div class="search-bar__table-cell text-right">
+        <button type="button" class="btn--link search-bar__close js-drawer-close">
+          {% include 'icon-close' %}
+          <span class="icon__fallback-text">{{ 'general.search.close' | t }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {% if template == collection %}
+
+  {% endif %}
+
+  {% section 'header' %}
+
+  <div class="page-container" id="PageContainer">
+
+    <main class="main-content" id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+    {% section 'footer' %}
+
+  </div>
+
+  {% if template == collection %}
+
+  {% endif %}
+
+  {% include 'top-arrow' %}
+  {% include 'quick-search' %}
+  {% include 'ajaxify-cart' %}
+  <script type="text/javascript">
+
+      geolocator.config({
+          language: "en",
+          google: {
+              version: "3",
+              key: "AIzaSyBB68v8N-6Tf1aaTWabfv0gbTZXxVcaZls"
+          }
+      });
+
+      window.onload = function () {
+          var options = {
+              enableHighAccuracy: true,
+              timeout: 5000,
+              maximumWait: 10000,     // max wait time for desired accuracy
+              maximumAge: 0,          // disable cache
+              desiredAccuracy: 30,    // meters
+              fallbackToIP: true,     // fallback to IP if Geolocation fails or rejected
+              addressLookup: true,    // requires Google API key if true
+              timezone: true         // requires Google API key if true
+          };
+          geolocator.locate(options, function (err, location) {
+              if (err) return console.log(err);
+              console.log(location);
+              if(location.address){
+                if(location.address.country === 'Australia'){
+                  //redirect to aus
+                }else if(location.address.country === 'United States'){
+                  //redirect to usa
+                }else{
+                  //redirect to int
+                }
+              }else{
+                //redirect to int
+              }
+          });
+      };
+      jQuery(window).scroll(function(){
+        if($(this).width() > 767){
+          var container = $('#gf-grid').height();
+          var sidebar = $('.filter-menu').height();
+          var scroll = $(this).scrollTop() + 60 ;
+          var scrollto = container - sidebar;
+          var width = $('.filter-menu').width();
+          var height = $('.filter-menu').height();
+
+          if(scroll > scrollto){
+            $('.filter-menu').css('opacity',0);
+            $('.filter-menu').removeClass('sticky');
+            $('.filter-menu').removeAttr('style');
+          }else if(scroll < 265){
+            $('.filter-menu').removeClass('sticky');
+            $('.filter-menu').removeAttr('style');
+          }else{
+            $('.filter-menu').addClass('sticky');
+            $('.filter-menu').css('opacity',1);
+            $('.filter-menu').width(width);
+            //$('.filter-menu').height(height);
+          }
+        }else{
+          $('.filter-menu').addClass('sticky');
+          $('.filter-menu').css('opacity',1);
+          $('.filter-menu').width(width);
+          //$('.filter-menu').height(height);
+        }
+      })
+      jQuery(window).resize(function(){
+        var width = $('.filter-menu').width();
+        if($(this).width() <= 767){
+
+          $('.filter-menu').addClass('sticky');
+          $('.filter-menu').css('opacity',1);
+          $('.filter-menu').width(width)
+        }
+      });
+
+  </script>
+
+    {% include 'schema-markups' %}
+{% include 'payment-guid' %}
+{%- include 'bold-currency-converter' -%}
+{% if settings.enable_go %}
+  {{ "jquery.cookie.js" | asset_url | script_tag }}
+  {% include 'go-locator' %}
+{% endif %}
+{% include 'social-login' %}{% include 'sca-quick-view-template' %}
+  {% if template == 'index' or template == 'collection' or template.name == 'login' or template.name == 'reset_password' or template.name == 'register' or template == 'product' or template.name == 'account' or template == 'blog' or template.name == 'page' or template.name == 'cart' or template == 'article' or template == 'search' or template == 'customer'  %}
+  {{ "main.js" | asset_url | script_tag }}
+  {% else %}
+
+  {% endif %}
+<script async type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=a8HtAL"></script>
+ </body>
+
+</html>

@@ -1,0 +1,95 @@
+<div class="go-overlay"></div>
+<div class="go-contents">
+    <div class="go-area">
+        <div class="close-icn"><img src={{ 'close-black.png' | asset_url }}></div>	
+        <div class="header-area">
+            <img src="{{ settings.go_logo | img_url: '300x300' }}">
+        </div>
+        <div class="text-area">
+            {{ settings.go_title }}
+        </div>
+        <div class="location-area">
+            {% for i in (1..5) %}
+                {% capture check %}enable_go{{ i }}{% endcapture %}
+                {% capture flag %}go_logo{{ i }}{% endcapture %}
+                {% capture title %}go_title{{ i }}{% endcapture %}
+                {% capture link %}go_link{{ i }}{% endcapture %}
+
+                {% if settings[check] %}
+                    <a href="{{ settings[link] }}">
+                        <div class="flag-box">
+                            <img src="{{ settings[flag] | img_url: '50x50' }}">
+                            <p>{{ settings[title] }}</p>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $(".go-overlay").click(function(){
+            $(".go-overlay").hide();
+            $(".go-contents").hide();
+        });
+
+        $(".go-contents .close-icn").click(function(){
+            $(".go-overlay").hide();
+            $(".go-contents").hide();
+        });
+
+        $(".go-contents").on("click", function(event){
+            if(!$(event.target).closest(".go-area").length) {
+            $(".go-overlay").hide();
+            $(".go-contents").hide();
+            }
+        });
+
+        function getCookie(name) {
+            var dc = document.cookie;
+            var prefix = name + "=";
+            var begin = dc.indexOf("; " + prefix);
+            if (begin == -1) {
+                begin = dc.indexOf(prefix);
+                if (begin != 0) return null;
+            }
+            else
+            {
+                begin += 2;
+                var end = document.cookie.indexOf(";", begin);
+                if (end == -1) {
+                end = dc.length;
+                }
+            }
+            // because unescape has been deprecated, replaced with decodeURI
+            //return unescape(dc.substring(begin + prefix.length, end));
+            return decodeURI(dc.substring(begin + prefix.length, end));
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        var myCookie = getCookie("Gocookie113");
+
+       if (myCookie == null) {
+           console.log('no');
+           setCookie("Gocookie113", "yes", 1);
+          
+            $(".go-overlay").show();
+            $(".go-contents").show();
+        }
+        else {
+            console.log('yes');
+        }
+        
+    })
+    
+</script>

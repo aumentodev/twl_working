@@ -1,0 +1,31 @@
+{% if template contains 'product' %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/", 
+  "@type": "Product", 
+  "name": "{{product.title}}",
+  "image": "https:{{product.featured_image.src|img_url:'grande'}}",
+  "description": "{{product.description | strip_newlines | strip_html | escape }}",
+  "brand": "{{product.vendor}}",
+  "sku": "{{product.id}}",
+  {% if product.metafields.yotpo.reviews_count and product.metafields.yotpo.reviews_count != "0" %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.metafields.yotpo.reviews_average }}",
+    "ratingCount": "{{ product.metafields.yotpo.reviews_count }}"
+  },
+  {% endif %}    
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AUD",
+    "price": "{{product.price | money_without_currency | remove: ","}}",
+    {% if product.available %}
+    "availability": "http://schema.org/InStock",
+    {% else %}
+    "availability" : "http://schema.org/OutOfStock",
+    {% endif %}
+    "itemCondition": "http://schema.org/NewCondition"
+  }
+}
+</script>
+{% endif %}

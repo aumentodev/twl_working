@@ -1,0 +1,631 @@
+{% if settings.enable_compex_page %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% comment %} {% include 'breadcrumb' %}{% endcomment %}
+  {% comment %}{% include 'page-header' %}{% endcomment %}
+  {% comment %}<div class="section page">
+  <div class="page-width">
+    <div class="grid">
+        <div class="content">
+          {{ page.content }}
+        </div>
+    </div>
+  </div>
+  </div>{% endcomment %}
+  <!-- a-set-custom  -->
+  {%if  settings.enable_feel_banner_img_rebel_coffee %}
+  
+  {% comment %}<section id="page-header">
+    <div class="header-background compexpagebn">
+      <div class="changable-image" style="background-image: url({{ settings.feel_banner_img_rebel_coffee | img_url: 'master' }});">
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              {%if  settings.enable_rebel_coffee_page_heading %}
+
+              <h1>{{ page.title }}</h1>
+              {% endif %}
+              {%if  settings.enable_rebel_coffee_customhead %}
+
+              <h1>{{ settings.enable_rebel_coffee_customhead_text }}</h1>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>{% endcomment %}
+  
+  
+  <section id="page-header">
+  <div class="a-set-feel-banner-img" style="position: relative;"> 
+      <img src="{{ settings.feel_banner_img_rebel_coffee | img_url: 'master' }}" alt="feel_banner_img" class="a-set-img" />      
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              {%if  settings.enable_rebel_coffee_page_heading %}
+
+              <h1>{{ page.title }}</h1>
+              {% endif %}
+              {%if  settings.enable_rebel_coffee_customhead %}
+
+              <h1>{{ settings.enable_rebel_coffee_customhead_text }}</h1>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+  </div>
+  </section>
+  
+  
+  
+  
+  
+  {% endif %}
+
+  {%if  settings.enable_video_rebel_coffee %}
+
+  <div class="a-set-video-container">  
+    <div class="desktop">
+
+       <img src="{{ settings.rebel_coffee_bottom_image_desktopdt | img_url: 'master' }}" alt="" />
+    </div>
+    {% comment %}
+    <video autoplay loop id="a-set-myVideo" controls>
+      <source src="{{ settings.video_link_rebel_coffee }}" type="video/mp4">
+      <source src="{{ settings.video_link_rebel_coffee }}" type="video/ogg">      
+      <div class="content">
+        <button id="a-set-myBtn" onclick="a-set-myFunction()">Pause</button>
+      </div>
+    </video>   {% endcomment %}  
+    <div class="a-set-banner-below-img-mob compleximg_mbl">
+      <div class="mobile">
+<!--         <div class="container">
+          <h2 class="electric-mus">Benefit of Electric Muscle Stim</h2>
+          <div class="a-set-usp col-30 col-28">
+            <img src="{{'compex1.png' | asset_url  }}">
+          </div>
+          <div class="a-set-usp col-30 col-26">
+            <img src="{{'compex2.png' | asset_url  }}">
+          </div>
+          <div class="a-set-usp col-20 col-23 col-new1">
+            <img src="{{'compex3.png' | asset_url  }}">
+          </div>
+          <div class="a-set-usp col-20 col-23 col-new2">
+            <img src="{{'compex4.png' | asset_url  }}">
+          </div>
+        </div> -->
+
+         <img src="{{ settings.rebel_coffee_bottom_image_mobilembl | img_url: 'master' }}" alt="" />
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {%if  settings.enable_video %}
+
+
+  {% endif %}
+  {% comment %}{%if  settings.enable_shop_collection_heading_rebel_coffee %}
+  <div class="a-set-pagecollection">
+    <div class="section page">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="content">
+              <h1>{{ settings.a_set_heading1_rebel_coffee}}</h1>
+              <a href="{{ settings.link_complex }}">{{ settings.a_set_shop_collection_rebel_coffee }}</a>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+  {% endif %}{% endcomment %}  
+
+  {%if  settings.enable_shop_top_rebel_coffee %}
+  <div class="section page">
+    <div class="page-width">
+      <div class="content">
+
+        <div class="text-center new-division"> 
+          <h1 class="">{{ settings.top_rebel_coffee}}</h1>
+
+        </div>
+        <div class="stance-view-all-button top-compex text-center">    
+          <a href="{{ settings.top_rebel_coffee_link }}">{{ settings.top_rebel_coffee_btn}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+	
+  {% if settings.rebel_coffee_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+
+  {% if settings.enable_stance_col_rebel_coffee %}
+  <div class="11 a-set-first-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.stance_coll_rebel_coffee].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="division-wrap">
+              <h1 class="division-title">
+                {{ settings.stance_coll_heading_rebel_coffee}}
+              </h1>
+          </div>
+          </div>
+        </div>
+        <div class="">
+            <div class="swiper-container slider-carousel-wrap">
+              <div class="swiper-wrapper collection-items-holder hot-deals auto-load-col center_reviews">
+                {% assign counter = 0  %}
+                {% assign max_products = 5 | times: 1 %}
+                {% for handle in product_handles %}
+                {% assign counter = counter | plus: 1  %}
+                {% if counter <= max_products %}
+                {% assign product_handle = handle | handleize %}
+                {% assign product = all_products[product_handle] %}
+                <div class="swiper-slide extra-small--one-whole small--one-half medium-up--one-quarter">
+                          {% include 'a-product-card-grid-2' %}
+                      </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+              <!-- Add Arrows -->
+     <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+              <div class="stance-view-all-button text-center">
+                <a href="{{ settings.top_rebel_coffee_link11 }}">{{ settings.stance_view_all_buy_rebel_coffee11 }}</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_first_col_rebel_coffee %}
+  <div class="22 a-set-first-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.stance_first_coll_rebel_coffee].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="division-wrap">
+              <h1 class="division-title">
+                {{ settings.stance_first_coll_heading_rebel_coffee}}
+              </h1>
+          </div>
+          </div>
+        </div>
+        <div class="">
+            <div class="swiper-container slider-carousel-wrap">
+              <div class="swiper-wrapper collection-items-holder hot-deals auto-load-col center_reviews">
+                {% assign counter = 0  %}
+                {% assign max_products = 5 | times: 1 %}
+                {% for handle in product_handles %}
+                {% assign counter = counter | plus: 1  %}
+                {% if counter <= max_products %}
+                {% assign product_handle = handle | handleize %}
+                {% assign product = all_products[product_handle] %}
+               <div class="swiper-slide extra-small--one-whole small--one-half medium-up--one-quarter">
+                          {% include 'a-product-card-grid-2' %}
+                      </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+              <!-- Add Arrows -->
+     <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+              <div class="stance-view-all-button text-center">
+                <a href="{{ settings.stance_first_coll_link_rebel_coffee }}">{{ settings.stance_first_view_all_buy_rebel_coffee }}</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_second_col_rebel_coffee %}
+  <div class="33 a-set-second-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.stance_second_coll_rebel_coffee].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="division-wrap">
+              <h1 class="division-title">
+                {{ settings.stance_second_coll_heading_rebel_coffee}}
+              </h1>
+          </div>
+          </div>
+        </div>
+        <div class="">
+            <div class="swiper-container slider-carousel-wrap">
+              <div class="swiper-wrapper collection-items-holder hot-deals auto-load-col center_reviews">
+                {% assign counter = 0  %}
+                {% assign max_products = 5 | times: 1 %}
+                {% for handle in product_handles %}
+                {% assign counter = counter | plus: 1  %}
+                {% if counter <= max_products %}
+                {% assign product_handle = handle | handleize %}
+                {% assign product = all_products[product_handle] %}
+                <div class="swiper-slide extra-small--one-whole small--one-half medium-up--one-quarter">
+                          {% include 'a-product-card-grid-2' %}
+                      </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+              <!-- Add Arrows -->
+    <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+              <div class="stance-view-all-button text-center">
+                <a href="{{ settings.stance_second_coll_link_rebel_coffee }}">{{ settings.stance_second_view_all_buy_rebel_coffee }}</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  
+    
+<!--    -->
+<!--    -->
+<!--    -->
+  {% comment %}
+    {% if settings.enable_stance_col_rebel_coffee_k_n %}
+  <div class="11 a-set-first-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.stance_coll_rebel_coffee_k_n].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="division-wrap">
+              <h1 class="division-title">
+                {{ settings.stance_coll_heading_rebel_coffee_k_n }}
+              </h1>
+          </div>
+          </div>
+        </div>
+        <div class="">
+          <div class="">
+            <div class="swiper-container slider-carousel-wrap">
+<!--             <div class="swiper-container"> -->
+              <div class="swiper-wrapper collection-items-holder hot-deals auto-load-col center_reviews">
+<!--               <ul class="swiper-wrapper center_reviews"> -->
+                {% assign counter = 0  %}
+                {% assign max_products = 5 | times: 1 %}
+                {% for handle in product_handles %}
+                {% assign counter = counter | plus: 1  %}
+                {% if counter <= max_products %}
+                {% assign product_handle = handle | handleize %}
+                {% assign product = all_products[product_handle] %}
+                <div class="swiper-slide extra-small--one-whole small--one-half medium-up--one-quarter">
+                     {% include 'a-product-card-grid-2' %}
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+              </div>
+            <!-- Add Arrows -->
+    <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+              <div class="stance-view-all-button text-center">
+                <a href="{{ settings.top_rebel_coffee_link11_k_n }}">{{ settings.stance_view_all_buy_rebel_coffee11_k_n }}</a>
+              </div>
+            
+                         
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  
+<!--    -->
+<!--    -->
+<!--    -->
+{% endcomment %}  
+  
+  
+  {% endif %}
+  {% if settings.enable_stance_performance_rebel_coffee %}
+  <div class="stance-feature-block-container">
+    <div class="stance-content-block">
+      <div> 
+        {% if settings.icon1_rebel_coffee != blank  %}       
+        <img src="{{ settings.icon1_rebel_coffee | img_url: 'original' }}" alt="block_img" class="icon-img" />
+        {% endif %}
+
+      </div>
+      <div class="content">
+
+        <h2>{{ settings.stance_block_heading1_rebel_coffee }}</h2>
+        <p>{{ settings.stance_block_desc1_rebel_coffee }}</p>
+        <a href="{{ settings.stance_block_button1link_rebel_coffee }}">{{ settings.stance_block_button1_rebel_coffee }}</a>
+      </div>
+    </div>       
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img1_rebel_coffee | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_individually_rebel_coffee %}
+  <div class="stance-feature-block-container individually-desktop">
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img2_rebel_coffee | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+    <div class="stance-content-block">
+      <div>
+         {% if settings.icon2_rebel_coffee != blank  %}  
+        <img src="{{ settings.icon2_rebel_coffee | img_url: 'original' }}" alt="block_img" class="icon-img" />
+        {% endif %}
+      </div>
+      <div class="content">
+        <h2>{{ settings.stance_block_heading2_rebel_coffee }}</h2>
+        <p>{{ settings.stance_block_desc2_rebel_coffee }}</p>
+        <a href="{{ settings.stance_block_button2link_rebel_coffee }}">{{ settings.stance_block_button2_rebel_coffee }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="stance-feature-block-container individually-mobile">         
+    <div class="stance-content-block">
+       {% if settings.icon2_rebel_coffee != blank  %}  
+      <div> <img src="{{ settings.icon2_rebel_coffee | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+        {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading2_rebel_coffee }}</h2>
+        <p>{{ settings.stance_block_desc2_rebel_coffee }}</p>
+        <a href="{{ settings.stance_block_button2link_rebel_coffee }}">{{ settings.stance_block_button2_rebel_coffee }}</a>
+      </div>
+    </div>
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img2_rebel_coffee | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_maximum_rebel_coffee %}
+  <div class="stance-feature-block-container">
+    <div class="stance-content-block">
+        {% if settings.icon3_rebel_coffee != blank  %}  
+      <div> <img src="{{ settings.icon3_rebel_coffee | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+      {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading3_rebel_coffee }}</h2>
+        <p>{{ settings.stance_block_desc3_rebel_coffee }}</p>
+        <a href="{{ settings.stance_block_button3link_rebel_coffee }}">{{ settings.stance_block_button3_rebel_coffee }}</a>
+      </div>
+    </div>       
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img3_rebel_coffee | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+
+  {% if settings.enable_stance_individually_rebel_coffee %}
+  <div class="stance-feature-block-container individually-desktop">
+    
+    <div class="stance-content-block">
+      {% if settings.icon4_rebel_coffee != blank  %}  
+      <div> <img src="{{ settings.icon4_rebel_coffee | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+       {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading4n_rebel_coffee }}</h2>
+        <p>{{ settings.stance_block_desc4n_rebel_coffee }}</p>
+        <a href="{{ settings.stance_block_button4nlink_rebel_coffee }}">{{ settings.stance_block_button4n_rebel_coffee }}</a>
+      </div>
+    </div>  
+   
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img4n_rebel_coffee | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>   
+    
+  </div>
+  <div class="stance-feature-block-container individually-mobile">         
+    <div class="stance-content-block">
+      {% if settings.icon4_rebel_rebel_coffee != blank  %}  
+      <div> <img src="{{ settings.icon4_rebel_rebel_coffee | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+       {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading4n_rebel_coffee }}</h2>
+        <p>{{ settings.stance_block_desc4n_rebel_coffee }}</p>
+        <a href="{{ settings.stance_block_button4nlink_rebel_coffee }}">{{ settings.stance_block_button4n_rebel_coffee }}</a>
+      </div>
+    </div>
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img4n_rebel_coffee | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+  
+  
+  
+  
+  
+  
+<!--  ----------------------------------commented code below----------------------------------------  -->
+  
+  {%comment%}
+  
+  
+
+  {% if settings.enable_a_set_boxingusp %}
+  <section id="home-ups-bar" class="hidden-xs  blk_cyb_ups">
+    <div class="page-width">
+      <div class="grid ">
+        <div class="a-set-footer-usp">
+
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon1 }}"></i>
+            <h4>{{ settings.a_set_bxtitle1 }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle1 }}
+            </div>
+          </div>
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon2 }}"></i>
+            <h4>{{ settings.a_set_bxtitle2 }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle2 }}
+            </div>
+          </div>
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon3 }}"></i>
+            <h4>{{ settings.a_set_bxtitle3 }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle3 }}
+            </div>
+          </div>
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon4 }}"></i>
+            <h4>{{ settings.a_set_bxtitle4 }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle4 }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  
+  {
+        "type": "text",
+        "id": "a_set_bxicon1_complex",
+        "label": "Icon 1"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle1_complex",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle1_complex",
+        "label": "Subtitle 1"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxicon2_complex",
+        "label": "Icon 2"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle2_complex",
+        "label": "Title 2"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle2_complex",
+        "label": "Subtitle 2"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxicon3_complex",
+        "label": "Icon 3"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle3_complex",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle3_complex",
+        "label": "Subtitle 3"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxicon4_complex",
+        "label": "Icon 4"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle4_complex",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle4_complex",
+        "label": "Subtitle 4"
+      }
+  
+  {%endcomment%}
+  
+  
+  <!-- a-set-custom-end  -->
+</main>
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+{% if settings.enable_a_set_boxingusp_compex %}
+   {% section 'main-bar' %}
+  {% endif %}
+
+
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}

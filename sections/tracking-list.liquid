@@ -1,0 +1,68 @@
+
+<ul class="tracking-list">
+  {% for block in section.blocks %}
+    <li>
+      <a href="{{ block.settings.link }}" target="_blank">
+        <img src="{{ block.settings.icon | img_url: '45x' }}" />
+        {{ block.settings.text }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% schema %}
+  {
+    "name": "Tracking",
+    "class": "tracking-list-template",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background image"
+      },
+      {
+        "type": "text",
+        "id": "main_title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "label",
+        "label": "Label"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub title"
+      },
+      {
+        "type": "textarea",
+        "id": "content",
+        "label": "Contents"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tracking",
+        "name": "Tracking",
+        "settings": [
+          {
+            "type":   "image_picker",
+            "id":     "icon",
+            "label":  "Icon"
+          },
+          {
+            "type":   "url",
+            "id":     "link",
+            "label":  "Link"
+          },
+          {
+            "type":   "text",
+            "id":     "text",
+            "label":  "Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

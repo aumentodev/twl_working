@@ -1,0 +1,125 @@
+<div class="page-width">
+  <h2 class="text-center title">{{ section.settings.title }}</h2>
+  {% if section.blocks.size > 0 %}
+    <div class="featured-brand-section">
+      {% for block in section.blocks %}
+        {% if block.type == 'featured_logo' %}
+          <div class="featured-logo-list">
+            {% unless block.settings.link == blank %}
+              <a href="{{ block.settings.link }}">
+            {% endunless %}
+
+            {% unless block.settings.image == blank %}
+              <img src="{{ block.settings.image | img_url: '300x' }}" >
+            {% endunless %}
+            
+            {% unless block.settings.link == blank %}
+              </a>
+            {% endunless %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="brand-search-section">
+    <div class="brand-search__input-wrapper">
+      <input type="text" class="brand-search__input" placeholder="Search Brands">
+    </div>
+  </div>
+
+  {% assign chars = 'a-b-c-d-e-f-g-h-i-j-k-l-m-n-o-p-q-r-s-t-u-v-w-x-y-z' | split: '-' %}
+  <div class="brand-lists-section">
+    <ul class="brand-lists">
+      {% for char in chars %}
+
+        {% assign ava = false %}
+        {% for block in section.blocks %}
+          {% if block.type == 'logo_list' %}
+            {% assign text = block.settings.title | slice: 0, 1 | handleize %}
+            {% if text == char %}
+              {% assign ava = true %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        {% if ava == true %}
+          <li class="character">
+            <h3>{{ char }}</h3>
+            <ul class="brand-child">
+              {% for block in section.blocks %}
+                {% if block.type == 'logo_list' %}
+                  {% assign text = block.settings.title | slice: 0, 1 | handleize %}
+                  {% if text == char %}
+                    <li class="child">
+                      {% unless block.settings.link == blank %}
+                        <a href="{{ block.settings.link }}">
+                      {% endunless %}
+
+                      {% unless block.settings.title == blank %}
+                        <span>{{ block.settings.title }}</span>
+                      {% endunless %}
+
+                      {% unless block.settings.link == blank %}
+                        </a>
+                      {% endunless %}
+                    </li>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Brand list",
+    "class": "brand-section-area",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featurd brands"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_logo",
+        "name": "Featured logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      },
+      {
+        "type": "logo_list",
+        "name": "Logo list",
+        "settings": [
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

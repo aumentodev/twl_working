@@ -1,0 +1,75 @@
+<div class="magic-return-page">
+<div class="magic-return-page-template">
+	{% if settings.check_banner %}
+
+	<div class="header-sec" style="background-image: url('{{ settings.magic_banner | img_url: '1800x' }}')">
+		<h2 class="main-title">{{ settings.magic_title }}</h2>
+	</div>
+
+	{% endif %}
+
+	<div class="sub-header">
+		<h2>{{ settings.magic_mtitle }}</h2>
+	</div>
+	<div class="icons-area">
+		<div class="icons-lists">
+			<div class="icon-list">
+				<img src="{{ settings.magic_search_icon1 | img_url: '300x' }}">
+				<p>{{ settings.magic_search_txt1 }}</p>
+			</div>
+			<div class="icon-list">
+				<img src="{{ settings.magic_search_icon2 | img_url: '300x' }}">
+				<p>{{ settings.magic_search_txt2 }}</p>
+			</div>
+			<div class="icon-list">
+				<img src="{{ settings.magic_search_icon3 | img_url: '300x' }}">
+				<p>{{ settings.magic_search_txt3 }}</p>
+			</div>
+			<div class="icon-list">
+				<img src="{{ settings.magic_search_icon4 | img_url: '300x' }}">
+				<p>{{ settings.magic_search_txt4 }}</p>
+			</div>
+			<div class="icon-list">
+				<img src="{{ settings.magic_search_icon5 | img_url: '300x' }}">
+				<p>{{ settings.magic_search_txt5 }}</p>
+			</div>
+			<div class="icon-list">
+				<img src="{{ settings.magic_search_icon6 | img_url: '300x' }}">
+				<p>{{ settings.magic_search_txt6 }}</p>
+			</div>
+		</div>
+	</div>
+	<div class="main-contents-sec">
+		<div class="content-list">
+			<h2>{{ settings.magic_text1 }}</h2>
+			<div class="contents-sec">
+				{{ settings.magic_txt1 }}
+			</div>
+		</div>
+		<div class="content-list">
+			<h2>{{ settings.magic_text2 }}</h2>
+			<div class="contents-sec">
+				{{ settings.magic_txt2 }}
+			</div>
+		</div>
+		<div class="content-list">
+			<h2>{{ settings.magic_text3 }}</h2>
+			<div class="contents-sec">
+				{{ settings.magic_txt3 }}
+			</div>
+		</div>
+		<div class="content-list">
+			<h2>{{ settings.magic_text4 }}</h2>
+			<div class="contents-sec">
+				{{ settings.magic_txt4 }}
+			</div>
+		</div>
+		<div class="content-list">
+			<h2>{{ settings.magic_text5 }}</h2>
+			<div class="contents-sec">
+				{{ settings.magic_txt5 }}
+			</div>
+		</div>
+	</div>
+</div>
+</div>

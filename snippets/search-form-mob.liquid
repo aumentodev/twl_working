@@ -1,0 +1,21 @@
+<div class="search-box-mob">
+    <div class="header-search-section-mob">
+        <form action="/search" method="get" id="header-quick-search-mob" role="search">
+            <div class="search-sec">
+            <input isp_search_box class="search__input search-bar__input search-header__input search-header__input-custom "
+                type="search"
+                name="q"             
+                placeholder="Search products"
+                aria-label="{{ 'general.search.placeholder' | t }}">
+                <button class="search-header__submit search__submit btn--link" type="submit">
+                    <img src="{{ 'search.png' | asset_url }}" class="icon-search">
+                    <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+                </button>
+            </div>
+        </form>
+        <div class="close-search"><img src="{{ 'close.png' | asset_url }}"></div>
+    </div>
+    <div class="body-search-section">
+        <div class="search-results"></div>
+    </div>
+</div>

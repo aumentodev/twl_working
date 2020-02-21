@@ -1,0 +1,53 @@
+<div class="visely-widget-container page-width">
+    <h3 class="visely-recommendations-title" data-visely-widget-title-element="RECENTLY_VIEWED"></h3>
+    <div class="recently-viewed visely-widget-wrapper" data-visely-recommendation-type="RECENTLY_VIEWED" data-visely-product-id="{{ product.id }}">
+        <div class="prev-arrow"></div>
+        <script data-visely-item-template type="text/mustache">
+            <article class="visely-recommendation-item" data-recommendation-type="[##product.recommendationType##]" data-recommendation-item-position="[##product.position##]">
+                <a href="[##product.relUrl##]" title="[##{product.name.en}##]" data-visely-product-id="[##product.id##]">
+                    <section data-visely-item-section="Image">
+                        [###includeSaleBadge##]
+                            <span class="badge badge--sale sale-item icn product-tag product-tag--absolute">
+                                <span class="badge__text">Sale</span>
+                            </span>
+                        [##/includeSaleBadge##]
+                        <div class="product__image">
+                            <ul class="pr_sticker">
+                              <li>free shipping *</li>
+                            </ul>
+                            [###truncateMedia##]
+                                <img data-src="[##url##]" alt="[##{product.name.en}##]">
+                            [##/truncateMedia##]
+                        </div>
+                    </section>
+                    <section data-visely-item-section="Name">
+                        <div class="product__title ">
+                            <p class="h4 grid-view-item__title text-center main-ctn-title">[##{product.name.en}##]</p>
+                        </div>
+                        <div class="star-rating star-rating-black">
+                          <div class="product-title-review" data-oke-reviews-product-listing-rating></div>
+                        </div>
+                    </section>
+                    <section data-visely-item-section="Price">
+                        <div class="offer product__prices product-card__price notranslate">
+                            [###priceRangeFrom##]
+                                <span>From </span><span class="price money" data-currency="[##currency##]" data-currency-[##currency##]="[##formattedValue##]">[##formattedValue##]</span>
+                            [##/priceRangeFrom##]
+                            [##^priceRangeFrom##]
+                                <div class="price-container">
+                                [###product.prices##]
+                                    <span class="price money [###toLowerCase##][##priceType##][##/toLowerCase##]" data-currency="[##currency##]" data-currency-[##currency##]="[##formattedValue##]">[##formattedValue##]</span>
+                                [##/product.prices##]
+                                </div>
+                            [##/priceRangeFrom##]
+                        </div>
+                    </section>
+                </a>
+            </article>
+        </script>
+        <div class="visely-recommendations-container" data-visely-recommendations-container></div>
+        <div class="next-arrow"></div>
+        <div class="visely-pagination" data-visely-pagination></div>
+    </div>
+</div>
+<script>document.dispatchEvent( new CustomEvent('viselyWidgetInit', {detail: { widgetType: 'RECENTLY_VIEWED' }}));</script>

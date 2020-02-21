@@ -1,0 +1,368 @@
+<style>
+ @media (max-width: 900px) { 
+  .bann_image {
+      background-image: url('{{ settings.new_tb_banner | img_url: 'master' }}');
+  }
+ }
+  
+</style>
+
+{{ 'flipclock.css' | asset_url | stylesheet_tag }}
+{% if settings.enable_tbmainpage %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+  
+ {% if settings.enable_tbmaintophead %}
+
+ {%comment%} <section id="page-header">
+    
+<div class="header-background easter-bg tbpagebanner" {%if  settings.new_tb_banner %} style="background-image: url({{ settings.new_tb_banner | img_url: 'master' }});" {% endif %}>
+      <div class="page-width">
+      <div class="changable-image">
+        <div class="container">
+          <div class="grid">
+            <div class="grid__item">
+                {%if  settings.enable_tb_bandhead %}
+
+                  <h1>{{ page.title }}</h1>
+                {% endif %}
+                {%if  settings.enable_tb_bandhead_customhead %}
+
+                  <h1>{{ settings.enable_tb_bandhead_customhead_text }}</h1>
+                {% endif %}
+                 {%if  settings.enable_tb_bandhead_customhead_subheadtext %}
+                   <h3 class="subtext-fortbpage">{{ settings.enable_tb_bandhead_customhead_subheadtext }}</h3>
+                 {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </section>{%endcomment%}
+  
+  <div class="bann_image">
+    <img src="{{ settings.new_tb_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+   
+  <div class="bann_img-cont">
+                {%if  settings.enable_tb_bandhead %}
+
+                  <h2 style="color:#000">{{ page.title }}</h2>
+                {% endif %}
+                {%if  settings.enable_tb_bandhead_customhead %}
+
+                  <h2 style="color:#000">{{ settings.enable_tb_bandhead_customhead_text }}</h2>
+                {% endif %}
+                 {%if  settings.enable_tb_bandhead_customhead_subheadtext %}
+                   <h3 style="color:#000" class="subtext-fortbpage">{{ settings.enable_tb_bandhead_customhead_subheadtext }}</h3>
+                 {% endif %}
+  </div>
+  </div>
+  
+  
+  
+  {% endif %}
+  
+  {% if settings.new_tb_apparel_countdown %}
+    {% include 'countdown' %} 
+  {% endif %} 
+
+  {% unless page.content == blank %}
+  <div class="section page ">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item">
+          <div class="content text-center">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endunless %}
+  
+  
+  
+ 
+  <section id="home-ups-bar" class=" blk_cyb_ups">
+    <div class="page-width">
+      <div class="grid">
+      <div class="the-easter-fa">
+                <div class="">
+                  <div class="icon-wrap">
+
+<!--         <div class="col-sm-6 set_appreal_icon_sec"> -->
+                    <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center">
+          
+          <i class="fa {{ settings.tbmaincicon1 }}"></i>
+          <h4>{{ settings.tbmainctitle1 }}</h4>
+          <div class="description">
+            {{ settings.tbmaincsubtitle1 }}
+          </div>
+        </div>
+<!--         <div class="col-sm-6 set_appreal_icon_sec"> -->
+          <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center">
+          <i class="fa {{ settings.tbmaincicon2 }}"></i>
+          <h4>{{ settings.tbmainctitle2 }}</h4>
+          <div class="description">
+            {{ settings.tbmaincsubtitle2 }}
+          </div>
+        </div>
+                    
+<!--    Edited for making only two usps                  -->
+                    
+<!--         <div class="col-sm-3 set_appreal_icon_sec">
+          <i class="fa {{ settings.tbmaincicon3 }}"></i>
+          <h4>{{ settings.tbmainctitle3 }}</h4>
+          <div class="description">
+            {{ settings.tbmaincsubtitle3 }}
+          </div>
+        </div>
+        <div class="col-sm-3 last-col-3 set_appreal_icon_sec">
+          <i class="fa {{ settings.tbmaincicon4 }}"></i>
+          <h4>{{ settings.tbmainctitle4 }}</h4>
+          <div class="description">
+            {{ settings.tbmaincsubtitle4 }}
+          </div>
+        </div> -->
+                    
+<!--        end              -->
+                    
+        </div>
+      </div>
+      </div>
+        </div>
+    </div>
+  </section>
+ 
+  
+
+<div class="page-width">
+<div class="grid grid--uniform section page mob_top">
+    <div class="container">
+          <div class="content">
+            {% if settings.tbn_enable_two_img %}
+            <div class="row three_col ">
+              <div class="grid__item medium-up--one-half small--one-whole extra-small--one-whole twl-img-col">
+                <div class="tbtwl-apparel-2div">
+                <a class="tbtwl-apparel-href-img" href="{{settings.tbn_image3_1_link}}">
+                  <img src="{{ settings.tbn_image3_1 | img_url: 'original' }}" alt="About WODLife" class="app-coll-img" />
+                </a> 
+                <div class="tbtwl-apparel-2div_overlay">
+                  <p class="carton-title">
+                MEN'S
+                </p>
+                <p>
+                <a href="{{settings.tbn_image3_1_link}}"  class="button twl-btn">
+                    EXPLORE
+                  </a>
+                </p>
+                  </div>
+                  
+                </div>
+
+              </div>
+              
+              
+              <div class="grid__item medium-up--one-half small--one-whole extra-small--one-whole twl-img-col">
+               <div class="tbtwl-apparel-2div">
+                <a class="tbtwl-apparel-href-img" href="{{settings.tbn_image3_2_link}}">
+                  <img src="{{ settings.tbn_image3_2 | img_url: 'original' }}" alt="About WODLife" class="app-coll-img" />
+                </a> 
+                <div class="tbtwl-apparel-2div_overlay">
+                <p class="carton-title">
+                  WOMEN'S
+                  </p>
+                <p>
+                  <a href="{{settings.tbn_image3_2_link}}"  class="button twl-btn">
+                    EXPLORE
+                  </a>
+                    </p>
+                 </div>
+              </div>
+              </div>
+              
+            </div>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  
+  
+  <div class="grid grid--uniform page hot_deals_page">
+    {% if settings.enable_new_tb_apparel_linklist %}
+     <div class="grid__item medium-up--one-fifth tab-down--one-whole filter-menu-wrapper pg-shop-by-cat">
+      <div class="filter-menu-holder">
+              <div class="apparel-cat">
+            <h2 class="collection-title apparel-category-title">       
+              {{ settings.new_tb_apparel_linklist_title }}
+            </h2>
+              </div>
+            <div class="widget-content">
+
+              <ul class="collection-filter-list collection-page-list">
+                {% for link in linklists.[settings.new_tb_apparel_linklist].links %}
+                <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+
+
+            </div>    
+                 </div>       
+              </div>
+    {% endif %}
+    
+    <div class="grid__item {% if settings.enable_new_tb_apparel_linklist %} medium-up--four-fifths{% else %} medium-up--one-whole {% endif %} tab-down--one-whole collection-list app-coll">
+<!--     <div class="container">   -->
+     <div class="collection-grid">
+       {% paginate collections[settings.tbmainmonday-col].products %}
+        <div class="">
+       <div class="collection-items-holder hot-deals auto-load-col">
+          <div class="division-wrap">
+                <h1 class="division-title">
+                    {{ settings.tbmaincollection_man }}
+                </h1>
+              </div>
+          <div class="grid grid--uniform twl_clear_class collection-items">
+             {%  for product in collections[settings.tbmainmonday-col].products  %}
+            <div class=" grid__item extra-small--one-whole tab-down--one-third small--one-half medium-up--one-quarter">
+              {% include 'a-product-card-grid-2' %}
+            </div>
+            {% endfor %}            
+          </div>
+        
+         {% comment %}
+          <div class="grid grid--uniform twl_clear_class collection-items">
+            {%  for product in collections['the-wod-life-mens-t-shirts'].products  %}
+            <div class=" grid__item extra-small--one-whole tab-down--one-third small--one-half medium-up--one-quarter">
+              {% include 'a-product-card-grid-2' %}
+            </div>
+            {% endfor %}
+          </div>
+         {% endcomment %}
+              
+                <div class="stance-view-all-button">
+                  <a href="{{ settings.tbmainmonday_col_men_link }}">{{ settings.tbmainmonday_col_view_all_men }}</a>
+                </div>
+<!--         </div> -->
+         </div>
+          </div>
+             
+
+      {% endpaginate %}
+      </div>
+    
+      
+      
+<!--     </div> -->
+    
+<!--     <div class="container">   -->
+      
+      
+      
+       <div class="collection-grid">
+         {% paginate collections[settings.tbappmonday-col-women].products %}
+ <div class="">
+        <div class="collection-items-holder hot-deals auto-load-col">
+          <div class="division-wrap">
+                <h1 class="division-title">
+                      {{ settings.tbmaincollection_woman }}
+                </h1>
+              </div>
+<!--            <h1>{{ settings.tbmaincollection_woman }}</h1> -->
+          <div class="grid grid--uniform twl_clear_class collection-items">
+            
+            {%  for product in collections[settings.tbmainmonday-col-women].products  %}
+             <div class=" grid__item extra-small--one-whole tab-down--one-third small--one-half medium-up--one-quarter">
+              {% include 'a-product-card-grid-2' %}
+            </div>
+            {% endfor %}
+           
+         </div> 
+          <div class="stance-view-all-button">
+                  <a href="{{ settings.tbmainmonday_col_women_link }}">{{ settings.tbmainmonday_col_view_all_women }}</a>
+                </div>
+        </div>
+         </div>
+                 
+
+      {% endpaginate %}
+      </div>
+      
+      
+    </div>
+<!--     </div> -->
+  </div>
+  </div>
+  
+</main>
+ {% endif %}
+
+{% if settings.enable_appmainpage == blank %}
+<main class="{% if settings.enable_cyberpage == blank %}blank-page{% endif %}">
+  <div class="section">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item text-center">
+          {% include 'blank-content' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+ {% endif %}
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+<!-- <div class="main-whiteback-bar"> -->
+{% section 'main-bar' %}
+<!-- </div> -->
+<style>
+  section#home-ups-bar .the-easter-fa .description{font-size:0.99em;}
+  
+    section#home-ups-bar.blk_cyb_ups .icon-wrap div h4,section#home-ups-bar.blk_cyb_ups .icon-wrap div{
+    margin-left:0px;
+    }
+  
+</style>
+
+
+<!-- removed settings from settings_schema.json for usps -->
+
+<!-- {
+        "type": "text",
+        "id": "appmaincicon3",
+        "label": "Icon 3"
+      },
+      {
+        "type": "text",
+        "id": "appmainctitle3",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "appmaincsubtitle3",
+        "label": "Subtitle 3"
+      },
+      {
+        "type": "text",
+        "id": "appmaincicon4",
+        "label": "Icon 4"
+      },
+      {
+        "type": "text",
+        "id": "appmainctitle4",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "appmaincsubtitle4",
+        "label": "Subtitle 4"
+      }, -->
+<!-- end -->
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>

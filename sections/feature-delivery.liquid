@@ -1,0 +1,182 @@
+<div class="page-width">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2 class="main-ctn-title">{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="grid {% unless section.blocks.size == 5 %}grid--uniform{% endunless %} grid--flush-bottom">
+    {%- assign grid_item_width = 'medium-up--one-third' -%}
+    {%- assign max_height = 345 -%}
+    {% case section.blocks.size %}
+      {% when 1 %}
+        {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+      {% when 2 %}
+        {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+      {% when 4 %}
+        {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+    {% endcase %}
+    {% for block in section.blocks %}
+      {% if section.blocks.size == 5 and forloop.index < 3 %}
+        {%- assign column_width = 'medium-up--one-half' -%}
+        {%- assign max_height = 530 -%}
+      {% else %}
+        {%- assign column_width = grid_item_width -%}
+      {% endif %}
+      <div class="grid__item grid__item-{{ forloop.index }} {{ column_width }} text-{{ section.settings.align_text }}" {{ block.shopify_attributes }}>
+        
+        {% if block.settings.title != blank %}
+          <h3 class="h4 main-txt-title">{{ block.settings.title | escape }}</h3>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="rte-setting main-ctn-text">{{ block.settings.text }}</div>
+        {% endif %}
+        
+        {% if block.settings.enable_form %}
+       
+        <div class="input-fields">
+		 {% comment %}
+          <div class="fields-list">
+            <label>Country</label>
+            <select class="country-select">
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>
+          <div class="fields-list">
+            <label>Province</label>
+            <select class="country-select">
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>
+          <div class="fields-list">
+            <label>Province</label>
+            <input type="text" >
+          </div>
+          <div class="btn-fields">
+            <div class="btn">calculate</div>
+          </div>
+          {% endcomment %}
+           {% include 'shipping-calculator' %}
+        </div>
+        <div class="shipping-txt">
+          <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+          <p class="second-txt">Delivery Australia Wide</p>
+        </div>
+        <div class="shipping-txt">
+          <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+          <p class="second-txt">Delivery Australia Wide</p>
+        </div>
+        <div class="shipping-txt">
+          <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+          <p class="second-txt">Delivery Australia Wide</p>
+        </div>
+        <div class="shipping-txt">
+          <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+          <p class="second-txt">Delivery Australia Wide</p>
+        </div>
+        <p class="last-dev-txt">There are 2 shipping rates availabel for K2P 1L4, Canada, starting at $11.CAD<br />
+
+          Within the hour at $000</p>
+        
+       
+        
+        {% endif %}
+        
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+<script>
+  theme.strings = {
+      shippingCalcSubmitButton: {{ settings.shipping_calculator_submit_button_label | default: 'Calculate shipping' | json }},
+      shippingCalcSubmitButtonDisabled: {{ settings.shipping_calculator_submit_button_label_disabled | default: 'Calculating...' | json }},
+      {% if customer %}shippingCalcCustomerIsLoggedIn: true,{% endif %}
+      shippingCalcMoneyFormat: {{ shop.money_with_currency_format | json }}
+  }
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="/services/javascripts/countries.js"></script>
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+{% schema %}
+  {
+    "name": "Text columns with images",
+    "class": "index-section text-image-section product-text-image-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Text columns with images"
+      },
+      {
+        "type": "select",
+        "id": "align_text",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Centered"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text_block",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable_form",
+            "label": "Show form",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Add a title or tagline"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text columns with images",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "text_block"
+          },
+          {
+            "type": "text_block"
+          },
+          {
+            "type": "text_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

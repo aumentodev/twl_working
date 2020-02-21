@@ -1,0 +1,381 @@
+{% include 'breadcrumb' %}
+{% if section.settings.show_page %}
+<div class="page-default-template podcast-template">
+  <div class="order-shipping sec-countdown" style="display:none;">
+    {% if section.settings.show_announcement_bar %}
+    {% include 'day-countdown' %}
+    <p>{{section.settings.announce_text_prev}} 
+      <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+      {{section.settings.announce_text_next}}
+    </p>      
+    {% endif %}
+  </div> 
+  {% if section.settings.banner_type == "boxed" %}  
+  <div class="blue-wrapper home-banner">
+    <div class="box_inner">
+      <div class="text-view text-center">
+        <div class="section-header text-center">
+          <h1>{{section.settings.banner_heading}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <section id="page-header">
+    <div class="header-background compexpagebn desktop-image" >
+      {% unless section.settings.desktop_image == "" %}
+        <img src="{{section.settings.desktop_image | img_url : "master"}}" width="100%" />
+      {% endunless %}
+    </div>
+    <div class="header-background compexpagebn mobile-image">
+      {% unless section.settings.mobile_image == "" %}
+        <img src="{{section.settings.mobile_image | img_url : "master"}}" width="100%" /> 
+      {% endunless %}
+    </div>   
+  </section>
+  {% endif %}
+  <div class="grid page-width episode-wrapper">    
+    {% for block in section.blocks limit:6 %}
+    {% if block.type == 'podcast_episode'%}
+    {% if block.settings.episode_img != blank %} 
+    	<div class=" grid__item medium-up--one-third small--one-whole episode ">          
+          <div class="episode-image">
+            <button type="button" class="play_btn paused" data-id="{{ forloop.index }}"> 
+              <img src="https://cdn.shopify.com/s/files/1/0226/0165/files/icon-play.svg?315762" width="80px" class="pause" />
+              <img src="https://cdn.shopify.com/s/files/1/0226/0165/files/icon-pause.svg?315762" width="80px" class="play" />
+            </button>
+            <img src="{{ block.settings.episode_img | img_url: 'master' }}" class="epic-img"/>          
+          </div>
+          <div class="episode-audio" style="display:none;">
+            <audio class="audio" controls="controls" data-id="{{ forloop.index }}">
+  				<source src="{{block.settings.episode_audio}}" type="audio/ogg" />
+            </audio>
+          </div>
+          <div class="episode-text">
+            <h5 class="desc">{{block.settings.episode_desc}}</h5>
+          </div>
+          <div class="listen-list">
+            <ul>
+              <li class="desc">Listen now on <a href="{{block.settings.anchor_link}}" target="_blank">Anchor</a></li>
+              <li class="desc">Listen now on <a href="{{block.settings.spotify_link}}" target="_blank">Spotify</a></li>
+              <li class="desc">Listen now on <a href="{{block.settings.apple_podcasts_link}}" target="_blank">Apple Podcasts</a></li>
+            </ul>
+          </div>
+        </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}   
+  </div>
+  <div class="page-width load-btn">
+    <a class="shop_link" id="load_more_audio" href="#">load more <img src="https://cdn.shopify.com/s/files/1/0226/0165/files/load_more_btn.png?v=1580882679"/></a>
+  </div>
+  <div class="podcast-subscribe">
+    <div class="subscribe-inner page-width">
+      <h2>{{section.settings.subscribe_title}}</h2>
+      <p>{{section.settings.subscribe_desc}}</p>
+      <div class="page-width load-btn">
+        <a class="shop_link" href="{{section.settings.subscribe_btn_link}}">{{section.settings.subscribe_btn_text}} </a>
+      </div>
+      <div class="social-areas">
+        <ul class="list--inline site-footer__social-icons social-icons">
+          {% if settings.social_podcast_link != blank %}
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_podcast_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Spotify' }}" target="_blank">
+              {% include 'icon-spotify' %}
+              <span class="icon__fallback-text">Spotify</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if settings.social_music_link != blank %}
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_music_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Music' }}" target="_blank">
+              {% include 'icon-music' %}
+              <span class="icon__fallback-text">Music</span>
+            </a>
+          </li>
+          {% endif %}
+           {% if settings.social_youtube_link != blank %}
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}" target="_blank">
+              {% include 'icon-youtube' %}
+              <span class="icon__fallback-text">YouTube</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if settings.social_instagram_link != blank %}
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}" target="_blank">
+              {% include 'icon-instagram' %}
+              <span class="icon__fallback-text">Instagram</span>
+            </a>
+          </li>
+          {% endif %}
+              {% if settings.social_facebook_link != blank %}
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}" target="_blank">
+              {% include 'icon-facebook' %}
+              <span class="icon__fallback-text">Facebook</span>
+            </a>
+          </li>
+          {% endif %}
+         
+           {% if settings.social_twitter_link != blank %}
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}" target="_blank">
+              {% include 'icon-twitter' %}
+              <span class="icon__fallback-text">Twitter</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if settings.social_pinterest_link != blank %}
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}" target="_blank">
+              {% include 'icon-pinterest' %}
+              <span class="icon__fallback-text">Pinterest</span>
+            </a>
+          </li>
+          {% endif %}
+         
+      
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<style>
+  section#page-header .header-background.compexpagebn{height:auto;}
+</style>
+
+<script>
+  $(document).ready(function(){ 
+    $(document).on('click','.paused',function(){
+      var btn = $(this).data('id');
+      
+	  $('.play_btn').addClass('paused');
+      $('.play_btn').removeClass('playing');
+      
+      $(this).addClass('playing');
+      $(this).removeClass('paused');      
+      $('.audio').each(function(i){                
+        var a = $(this).data('id');
+        $('.audio').get(i).pause();
+        if(btn == a){      
+          $(this).prop("currentTime",0);
+          //$(this).currentTime = 0;
+          //console.log('playing');
+          $(this).get(0).play();
+        }
+      });
+    });
+    
+    $(document).on('click','.playing',function(){
+      var btn = $(this).data('id');
+    
+      
+      $(this).addClass('paused');
+      $(this).removeClass('playing');
+      $('.audio').each(function(){
+        var a = $(this).data('id');
+        if(btn == a){                
+          console.log('paused');
+          // $('.audio').pause();
+          $(this).get(0).pause();          
+        }
+      });
+    })
+    
+    
+    $('.audio').on('ended', function(){
+
+      var a = $(this).data('id');
+      $('.playing').each(function(){
+        var b = $(this).data('id');
+        if(a == b){
+          $(this).addClass('paused');
+          $(this).removeClass('playing');
+        }
+      });   	
+    });
+      
+      
+      
+  		
+	
+  });
+</script>
+
+{% schema %}
+{
+		"name": "TWL Podcast",
+		"settings": [
+				{
+                  "type": "checkbox",
+                  "id": "show_page",
+                  "label": "Publish page",
+                  "default": false
+                },
+                {
+                  "type": "header",
+                  "content": "Announcement Text"
+                },
+                {
+                  "type": "checkbox",
+                  "id": "show_announcement_bar",
+                  "label": "Show announcement bar",
+                  "default": true
+                },
+                {
+                  "type": "text",
+                  "id": "announce_text_prev",
+                  "label": "Announcement previous text"
+                },
+                {
+                  "type": "text",
+                  "id": "announce_text_next",
+                  "label": "Announcement next text"
+                },
+                {
+                  "type": "text",
+                  "id": "datetime",
+                  "label": "End date",
+                  "info": "String formatted as following:: DD-MM-YYYY hh:mm:ss"
+                },
+                {
+                    "type":      "radio",
+                    "id":        "banner_type",
+                    "label":     "Banner Type",
+                    "options": [
+                        { "value": "boxed", "label": "Boxed layout" },
+                        { "value": "image", "label": "Image layout" }
+                     ],
+                    "default":   "boxed",
+                    "info":      "Display banner image having text or boxed layout "
+                },
+                {
+                  "type": "image_picker",
+                  "id": "desktop_image",
+                  "label": "Desktop Banner image"
+                },
+                {
+                  "type": "image_picker",
+                  "id": "mobile_image",
+                  "label": "Mobile Banner image"
+                },
+                {
+                  "type": "text",
+                  "id": "banner_heading",
+                  "label": "Banner Heading"
+                },
+				{
+                  "type": "image_picker",
+                  "id": "play_icon",
+                  "label": "Play icon"
+                },
+				{
+                  "type": "image_picker",
+                  "id": "pause_icon",
+                  "label": "Pause icon"
+                },
+				{
+                  "type": "text",
+                  "id": "subscribe_title",
+                  "label": "Subscribe title"
+                },
+                {
+                  "type": "text",
+                  "id": "subscribe_desc",
+                  "label": "Subscribe description"
+                },
+                {
+                  "type": "url",
+                  "id": "subscribe_btn_link",
+                  "label": "Subscribe button link"
+                },
+                {
+                  "type": "text",
+                  "id": "subscribe_btn_text",
+                  "label": "Subscribe button text"
+                }
+            ],
+			"blocks": [
+				{
+                  "type": "podcast_episode",
+                  "name": "POD cast Episode",
+                  "settings": [
+                        {
+                          "type": "image_picker",
+                          "id": "episode_img",
+                          "label": "Episode image"
+                        },
+                        {
+                          "type": "url",
+                          "id": "episode_audio",
+                          "label": "Episode audio"
+                        },
+						{
+                          "type": "textarea",
+                          "id": "episode_desc",
+                          "label": "Episode description"
+                        },
+                        {
+                          "type": "url",
+                          "id": "anchor_link",
+                          "label": "Anchor"
+                        },
+                        {
+                          "type": "url",
+                          "id": "spotify_link",
+                          "label": "Spotify"
+                        },
+                        {
+                          "type": "url",
+                          "id": "apple_podcasts_link",
+                          "label": "Apple Podcasts"
+                        }
+					]
+				}
+			]
+}
+{% endschema %}
+<script type="text/javascript">
+  $("#load_more_audio").on("click",function(){
+    var ep_audio = "";
+    {% for block in section.blocks offset:6 %}
+    {% if block.type == 'podcast_episode'%}
+    {% if block.settings.episode_img != blank %} 
+    	ep_audio += '<div class=" grid__item medium-up--one-third small--one-whole episode ">';
+        //ep_audio += '<a href="#"><img src="{{ block.settings.episode_img | img_url: 'master' }}" class="epic-img"/></a>';
+        ep_audio += '<div class="episode-image">';
+        ep_audio += '<button type="button" class="play_btn paused" data-id="{{ forloop.index }}">'; 
+        ep_audio += '<img src="https://cdn.shopify.com/s/files/1/0226/0165/files/pause.svg?314572" width="80px" class="pause" />';
+        ep_audio += '<img src="https://cdn.shopify.com/s/files/1/0226/0165/files/play-button.svg?314573" width="80px" class="play" />';
+        ep_audio += '</button>';
+        ep_audio += '<img src="{{ block.settings.episode_img | img_url: 'master' }}" class="epic-img"/>';          
+        ep_audio += '</div>';
+        ep_audio += '<div class="episode-audio" style="display:none;">';
+        ep_audio += '<audio class="audio" controls="controls" data-id="{{ forloop.index }}">';
+        ep_audio += '<source src="{{block.settings.episode_audio}}" type="audio/ogg" />';
+        ep_audio += '</audio>';
+        ep_audio += '</div>';
+ 		var desc = "{{block.settings.episode_desc | strip }}";
+        ep_audio += '<div class="episode-text"><h5 class="desc">'+desc+'</h5></div>';          
+        ep_audio += '<div class="listen-list"><ul>';
+        ep_audio += '<li class="desc">Listen now on <a href="{{block.settings.anchor_link}}" target="_blank">Anchor</a></li>';
+        ep_audio += '<li class="desc">Listen now on <a href="{{block.settings.spotify_link}}" target="_blank">Spotify</a></li>';
+        ep_audio += '<li class="desc">Listen now on <a href="{{block.settings.apple_podcasts_link}}" target="_blank">Apple Podcasts</a></li>';
+        ep_audio += '</ul>';
+        ep_audio += '</div>';
+        ep_audio += '</div>';
+    {% endif %}
+    {% endif %}
+    {% endfor %} 
+    $(".episode-wrapper").append(ep_audio);
+    $(this).hide();
+  });
+</script>
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

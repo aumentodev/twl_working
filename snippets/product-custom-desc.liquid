@@ -1,0 +1,519 @@
+{% if product.metafields.custom_fields["product_image_1"] == blank and product.metafields.custom_fields["product_image_2"] == blank%}
+<div class="product-single__description rte " itemprop="description" id="product-description">
+  <div class="contents">
+    <h2 class="title main-ctn-title">description</h2>
+	<div class="product-descrp">
+      {% assign des = product.description | split: '<!-- product size guide -->' %}
+      {{ des[0] | split: '<!-- product description -->' | last }}
+      <div class="clear"></div>
+    </div> 
+    {% comment %}
+    <div class="product-descrp">
+      {% assign des = product.description | split: '<!-- product size guide -->' %}      
+      {% assign last_des = des[0] | split: '<!-- product description -->' | last | split : '<spliting>' %}      
+      {% assign words = last_des[0] | split: '<spliting>'  | first  %}      
+      <div class="product-description-short desktop"> {{words}} <a class="readmore" href="#">read more</a></div>
+	  <div class="product-description-short mobile"> {{words}} <a class="readmore_mobile" href="#">read more</a></div>
+      <div class="product-description-full" style="display:none;">{{last_des}}<a class="readless" href="#product-description">read less</a></div>      
+      <div class="clear"></div>      
+      {% comment %}
+      <div class="product-description-short desktop"> {{ des[0] | split: '<!-- product description -->' | last  | split : '<spliting>' | first  | strip_html | strip_newlines | truncate: 200, ". . . "  }}<a class="readmore" href="#">read more</a></div>
+      <div class="product-description-short mobile"> {{ des[0] | split: '<!-- product description -->' | last  | split : '<spliting>' | first | truncate: 93, ". . . "  }}<a class="readmore_mobile" href="#">read more</a></div>
+      <div class="product-description-full" style="display:none;">{{ des[0] | split: '<!-- product description -->' | last | split : '<spliting>' |first}}<a class="readless" href="#">read less</a></div>
+      <div class="accordion"> {{ last_des[1] }}</div>
+      <div class="clear"></div>
+	  {% endcomment %}
+    </div>
+    {% endcomment %}
+  </div>
+</div>
+
+{% else %}
+
+
+<div class="product-single__description rte " itemprop="description">
+  <div class="contents">
+    <h2 class="title main-ctn-title">description</h2>
+    
+    <div class="product-descrp">
+      {% if product.metafields.custom_fields["product_description"] != blank %}
+       <p>{{ product.metafields.custom_fields["product_description"] }}</p>
+      {% endif %}
+      
+     
+      {% comment %} Tab Content {% endcomment %}
+      {% if product.metafields.custom_fields["product_image_1"] != blank or product.metafields.custom_fields["fit__care"] != blank or product.metafields.custom_fields["faq"] != blank%}
+      <div class="tab_contents">
+      <ul class="tabs 111">
+  		<li class="active" rel="features">FEATURES</li>
+  		<li rel="fit_care">FIT & CARE</li>
+  		<li rel="faqs">FAQ's</li>
+      </ul>
+        <div class="tab_container">
+          	<h3 class="tab_drawer_heading d_active" rel="features">FEATURES</h3>
+        	<div id="features" class="tab_content">  				
+                <ul class="descrip_image-full">
+                  <li>
+                    {% if product.metafields.custom_fields["product_image_1"] != blank %}
+                    {{ product.metafields.custom_fields["product_image_1"] }}
+                    {% if product.metafields.custom_fields["product_title_1"] != blank %}<p class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_1"] }}</p>{% endif %}
+                     {% endif %}
+                  </li>
+                  <li> {% if product.metafields.custom_fields["product_image_2"] != blank %}
+                    {{ product.metafields.custom_fields["product_image_2"] }}
+                    {% if product.metafields.custom_fields["product_title_2"] != blank %}<p class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_2"] }}</p>{% endif %}
+                     {% endif %}
+                  </li>
+                  <li> {% if product.metafields.custom_fields["product_image_3"] != blank %}
+                    {{ product.metafields.custom_fields["product_image_3"] }}
+                    {% if product.metafields.custom_fields["product_title_3"] != blank %}<p class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_3"] }}</p>{% endif %}
+                     {% endif %}
+                  </li>
+                  <li> {% if product.metafields.custom_fields["product_image_4"] != blank %}
+                    {{ product.metafields.custom_fields["product_image_4"] }}
+                    {% if product.metafields.custom_fields["product_title_4"] != blank %}<p class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_4"] }}</p>{% endif %}
+                     {% endif %}
+                  </li>
+                  <li> {% if product.metafields.custom_fields["product_image_5"] != blank %}
+                    {{ product.metafields.custom_fields["product_image_5"] }}
+                    {% if product.metafields.custom_fields["product_title_5"] != blank %}<p class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_5"] }}</p>{% endif %}
+                     {% endif %}
+                  </li>
+                  <li> {% if product.metafields.custom_fields["product_image_6"] != blank %}
+                    {{ product.metafields.custom_fields["product_image_6"] }}
+                    {% if product.metafields.custom_fields["product_title_6"] != blank %}<p class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_6"] }}</p>{% endif %}
+                     {% endif %}
+                  </li>
+                </ul>              
+  			</div>
+          
+          	<h3 class="tab_drawer_heading" rel="fit_care">FIT & CARE</h3>
+            <div id="fit_care" class="tab_content">
+              	{% if product.metafields.custom_fields["fit__care"] != blank %}
+    				{{ product.metafields.custom_fields["fit__care"] }}
+              	{% endif %}
+  			</div>
+          
+	        <h3 class="tab_drawer_heading" rel="faqs">FAQ's</h3>
+        	<div id="faqs" class="tab_content">
+              
+              {% if product.metafields.custom_fields["faq"] != blank %}
+                  {{ product.metafields.custom_fields["faq"] }}
+              {% endif %}
+              	
+              
+           <!--     <div id="accordion">
+                <h3>General Questions 1</h3>
+                <div>
+                  <p>
+                    Who is The WOD Life? Do you have a real life store? Can I come in and look at your gear? Can I pick up my order at your store?
+                  </p>
+                </div>
+                <h3>General Questions 2</h3>
+                <div>
+                  <p>
+                    Who is The WOD Life? Do you have a real life store? Can I come in and look at your gear? Can I pick up my order at your store?
+                  </p>
+                </div>
+                <h3>General Questions 3</h3>
+                <div>
+                  <p>
+                    Who is The WOD Life? Do you have a real life store? Can I come in and look at your gear? Can I pick up my order at your store?
+                  </p>
+                </div>
+              </div>
+              
+              
+             <div class="faq">
+                <dl>
+                    <dt>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</dt>
+                    <dd>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</dt>
+                    <dd>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</dt>
+                    <dd>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    </dd>
+                </dl>
+              </div> -->
+
+              
+              
+<!-- 				<ul class="_faq">
+                  <li>
+                    <h4 class="_title">General Questions</h4>
+                  </li>
+                	<p class="_content">Who is The WOD Life?
+                      Do you have a real life store? Can I come in and look at your gear? Can I pick up my order at your store?
+                    </p>
+              	</ul>
+              	<ul class="_faq">
+                  <li>
+                    <h4 class="_title">General Questions</h4>
+                  </li>
+                	<p class="_content">Who is The WOD Life?
+                      Do you have a real life store? Can I come in and look at your gear? Can I pick up my order at your store?
+                    </p>
+              	</ul>
+                <ul class="_faq">
+                    <li>
+                      <h4 class="_title">General Questions</h4>
+                    </li>
+                      <p class="_content">Who is The WOD Life?
+                        Do you have a real life store? Can I come in and look at your gear? Can I pick up my order at your store?
+                      </p>
+                  </ul> -->
+  			</div>
+        </div>
+      </div>
+      {% endif %}
+      {% comment %} Tab Content End {% endcomment %}
+      
+      {% comment %}
+      <ul class="descrip_image-full">
+        <li>
+          {% if product.metafields.custom_fields["product_image_1"] != blank %}
+          {% comment %}<img class="feature-row__image-full"  alt="" src="{{ 'Dev_icons-30.svg' | asset_url }}">{% endcomment %}
+          {{ product.metafields.custom_fields["product_image_1"] }}
+          {% if product.metafields.custom_fields["product_title_1"] != blank %}<h6 class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_1"] }}</h6>{% endif %}
+           {% endif %}
+        </li>
+        <li> {% if product.metafields.custom_fields["product_image_2"] != blank %}
+          {% comment %}<img class="feature-row__image-full"  alt="" src="{{ 'Dev_icons-30.svg' | asset_url }}">{% endcomment %}
+          {{ product.metafields.custom_fields["product_image_2"] }}
+          {% if product.metafields.custom_fields["product_title_2"] != blank %}<h6 class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_2"] }}</h6>{% endif %}
+           {% endif %}
+        </li>
+        <li> {% if product.metafields.custom_fields["product_image_3"] != blank %}
+          {% comment %}<img class="feature-row__image-full"  alt="" src="{{ 'Dev_icons-30.svg' | asset_url }}">{% endcomment %}
+          {{ product.metafields.custom_fields["product_image_3"] }}
+          {% if product.metafields.custom_fields["product_title_3"] != blank %}<h6 class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_3"] }}</h6>{% endif %}
+           {% endif %}
+        </li>
+        <li> {% if product.metafields.custom_fields["product_image_4"] != blank %}
+          {% comment %}<img class="feature-row__image-full"  alt="" src="{{ 'Dev_icons-30.svg' | asset_url }}">{% endcomment %}
+          {{ product.metafields.custom_fields["product_image_4"] }}
+          {% if product.metafields.custom_fields["product_title_4"] != blank %}<h6 class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_4"] }}</h6>{% endif %}
+           {% endif %}
+        </li>
+        <li> {% if product.metafields.custom_fields["product_image_5"] != blank %}
+          {% comment %}<img class="feature-row__image-full"  alt="" src="{{ 'Dev_icons-30.svg' | asset_url }}">{% endcomment %}
+          {{ product.metafields.custom_fields["product_image_5"] }}
+          {% if product.metafields.custom_fields["product_title_5"] != blank %}<h6 class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_5"] }}</h6>{% endif %}
+           {% endif %}
+        </li>
+        <li> {% if product.metafields.custom_fields["product_image_6"] != blank %}
+          {% comment %}<img class="feature-row__image-full"  alt="" src="{{ 'Dev_icons-30.svg' | asset_url }}">{% endcomment %}
+          {{ product.metafields.custom_fields["product_image_6"] }}
+          {% if product.metafields.custom_fields["product_title_6"] != blank %}<h6 class="feature-row__image-title">{{ product.metafields.custom_fields["product_title_6"] }}</h6>{% endif %}
+           {% endif %}
+        </li>
+      </ul>
+      
+      {% endcomment %}
+      
+       {% if product.metafields.custom_fields["size_guide_description"] != blank %}
+      <div class="feature_descript_composition">
+          {{ product.metafields.custom_fields["size_guide_description"] }}
+      </div>
+       {% endif %}
+      
+      <div class="feature_guide_img">
+       {% if product.metafields.custom_fields["size_chart_image"] != blank %}
+         
+          {{ product.metafields.custom_fields["size_chart_image"] }}
+          
+           {% endif %}
+      </div>
+      
+      
+    </div>
+      
+      {% comment %}
+      {% assign des = product.description | split: '<!-- product size guide -->' %}
+      {{ des[0] | split: '<!-- product description -->' | last }}
+      <div class="clear"></div>
+      {% endcomment %}
+    </div>
+
+  </div>
+
+ {% endif %}
+
+
+<style type="text/css">
+  /*
+Theme Name: jqueryui-com
+Template: jquery
+*/
+/* a,
+.title {
+	color: #b24926;
+} */
+
+#content a:hover {
+	color: #333;
+}
+
+#banner-secondary p.intro {
+	padding: 0;
+	float: left;
+	width: 50%;
+}
+
+#banner-secondary .download-box {
+	border: 1px solid #aaa;
+	background: #333;
+	background: -webkit-linear-gradient(left, #333 0%, #444 100%);
+	background: linear-gradient(to right, #333 0%, #444 100%);
+	float: right;
+	width: 40%;
+	text-align: center;
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+#banner-secondary .download-box h2 {
+	color: #71d1ff;
+	font-size: 26px;
+}
+
+#banner-secondary .download-box .button {
+	float: none;
+	display: block;
+	margin-top: 15px;
+}
+
+#banner-secondary .download-box p {
+	margin: 15px 0 5px;
+}
+
+#banner-secondary .download-option {
+	width: 45%;
+	float: left;
+	font-size: 16px;
+}
+
+#banner-secondary .download-legacy {
+	float: right;
+}
+
+#banner-secondary .download-option span {
+	display: block;
+	font-size: 14px;
+	color: #71d1ff;
+}
+
+#content .dev-links {
+	float: right;
+	width: 30%;
+	margin: -15px -25px .5em 1em;
+	padding: 1em;
+	border: 1px solid #666;
+	border-width: 0 0 1px 1px;
+	border-radius: 0 0 0 5px;
+	box-shadow: -2px 2px 10px -2px #666;
+}
+
+#content .dev-links ul {
+	margin: 0;
+}
+
+#content .dev-links li {
+	padding: 0;
+	margin: .25em 0 .25em 1em;
+	background-image: none;
+}
+
+.demo-list {
+	float: right;
+	width: 25%;
+}
+
+.demo-list h2 {
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+#content .demo-list ul {
+	width: 100%;
+	border-top: 1px solid #ccc;
+	margin: 0;
+}
+
+#content .demo-list li {
+	border-bottom: 1px solid #ccc;
+	margin: 0;
+	padding: 0;
+	background: #eee;
+}
+
+#content .demo-list .active {
+	background: #fff;
+}
+
+#content .demo-list a {
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+	font-size: 13px;
+	color: #3f3f3f;
+	text-shadow: 1px 1px #fff;
+	padding: 2% 4%;
+}
+
+.demo-frame {
+	width: 70%;
+	height: 420px;
+}
+
+.view-source a {
+	cursor: pointer;
+}
+
+.view-source > div {
+	overflow: hidden;
+	display: none;
+}
+
+@media all and (max-width: 600px) {
+	#banner-secondary p.intro,
+	#banner-secondary .download-box {
+		float: none;
+		width: auto;
+	}
+
+	#banner-secondary .download-box {
+		overflow: auto;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	#content .dev-links {
+		width: 55%;
+		margin: -15px -29px .5em 1em;
+		overflow: hidden;
+	}
+}
+  
+  .accordion-title ul{
+display:none;  
+  }
+</style>
+
+
+
+<script>
+  $(document).ready(function(){
+    
+   // tabbed content
+    // http://www.entheosweb.com/tutorials/css/tabs.asp
+    $(".tab_content").hide();
+    $(".tab_content:first").show();
+
+  /* if in tab mode */
+    $("ul.tabs li").click(function() {
+      
+      $(".tab_content").hide();
+      var activeTab = $(this).attr("rel"); 
+      
+      $("#"+activeTab).fadeIn();
+      
+		
+      $("ul.tabs li").removeClass("active");
+      $(this).addClass("active");
+
+	  $(".tab_drawer_heading").removeClass("d_active");
+	  $(".tab_drawer_heading[rel^='"+activeTab+"']").addClass("d_active");
+      if($(this).hasClass("tab_last"))
+      {
+      	$( "#accordion" ).accordion({heightStyle: "content"});
+      }
+    });
+	/* if in drawer mode */
+	$(".tab_drawer_heading").click(function() {
+      
+      $(".tab_content").hide();
+      var d_activeTab = $(this).attr("rel"); 
+      
+     $("#"+d_activeTab).slideDown();
+
+	  
+	  $(".tab_drawer_heading").removeClass("d_active");
+      $(this).addClass("d_active");
+	  
+	  $("ul.tabs li").removeClass("active");
+	  $("ul.tabs li[rel^='"+d_activeTab+"']").addClass("active");
+    });
+	
+	
+	/* Extra class "tab_last" 
+	   to add border to right side
+	   of last tab */
+	$('ul.tabs li').last().addClass("tab_last");
+	
+  });
+  
+  $(document).ready(function() {
+	var slide = $('#faqs dl')
+    slide.find('dd').slideUp();
+    slide.click(function() {
+      slide.not(this).find('dd').slideUp();
+      $(this).find('dd').slideToggle();       
+    });
+
+    $('#faqs dl dt').click(function() {
+      if ( $(this).hasClass('active')) {
+        $(this).removeClass('active')
+      }else
+      {
+        $('#faqs dl dt.active').removeClass('active');
+        $(this).addClass('active')
+      }
+    });
+  });
+  $('.readmore').click(function (event) {
+    event.preventDefault();
+    var descriptionFull = document.querySelector('.product-description-full');
+    descriptionFull.style.display = 'block';
+    var descriptionShort = document.querySelector('.product-description-short');
+    descriptionShort.style.display = 'none';
+  });
+  $('.readmore_mobile').click(function (event) {
+    event.preventDefault();
+    var descriptionFull = document.querySelector('.product-description-full');
+    descriptionFull.style.display = 'block';
+    $(".product-description-short.mobile").attr("style", "display: none !important");    
+  });
+  $('.readless').click(function (event) {
+    event.preventDefault();
+    var descriptionFull = document.querySelector('.product-description-full');
+    descriptionFull.style.display = 'none';
+    var descriptionShort = document.querySelector('.product-description-short');
+    descriptionShort.style.display = 'block';
+    var descriptionShortMobile = document.querySelector('.product-description-short.mobile');
+    descriptionShortMobile.style.display = 'block';
+    
+     $("html, body").delay(2000).animate({
+        scrollTop: $('#product-description').offset().top 
+    }, 2000);
+    
+  });  
+  $('.accordion-title p').on('click',function(){
+    $(this).toggleClass('open');
+    $(this).siblings('ul').slideToggle();
+    
+  });  
+</script>

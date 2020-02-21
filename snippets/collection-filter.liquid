@@ -1,0 +1,776 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+
+{%- assign url = pageUrl | split: 'collections/' -%}
+<div class="col-filter-lists col-filter-header">
+  {% unless section.settings.filter_main_title == blank %}
+  	<div class="col-filter-title main-txt-title">{{ section.settings.filter_main_title }}</div>
+  {% endunless %}
+  <div class="col-filter-header-body">
+  	
+  </div>
+  <a href="{{ collection.url }}" class="close-all">Clear All</a>
+</div>
+<div class="col-filter-lists">
+  {% for block in section.blocks %}
+  	{% case block.type %}
+  		{% when 'filter_collection' %}
+          {% if block.settings.enable %}
+            <div class="col-filter-list col-filter-category">
+              {% unless block.settings.title == blank %}
+                  <div class="col-filter-title main-txt-title">{{ block.settings.title }}</div>
+              {% endunless %}
+              <div class="colr-filter-body colr-filter-body1">
+                
+                {% if collection and block.settings.category_menu %}
+ 		
+                		{% for link in linklists[block.settings.category_menu].links %}
+                			
+                		{% assign tag_link = link.url | split: '/' | last %}
+                		{% assign index = 0 %}
+                        {% for product in collection.products %}
+                        {% for tag in product.tags %}
+                        {% if tag == tag_link %}{% assign index = index | plus: 1 %}{% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                          <li class="parent1 {% if link.links != blank %}has-child-parent1{% endif %} cate__{{ tag_link }}">
+                            
+                            <label value="{{ tag_link }}">{{ link.title }} <span class="num">({{ index }})</span></label>
+                            
+                            {% if link.links != blank %}
+                              {% capture child_list_handle %}{{ link.handle }}-{{ outerLoopIndex }}{% endcapture %}
+
+                              <div class="sub-col-lists" style="display: none;">
+                                <ul class="sub-list-sec">
+                                  {% assign menu_handle = link.handle %}
+                                  {% for childlink in link.links %}
+                                  {% assign tag_link = childlink.url | split: '/' | last %}
+                                  {% assign index = 0 %}
+                                  {% for product in collection.products %}
+                                  {% for tag in product.tags %}
+                                  {% if tag == tag_link %}{% assign index = index | plus: 1 %}{% endif %}
+                                  {% endfor %}
+                                  {% endfor %}
+                                  
+                                  <li class="parent2 cate__{{ tag_link }}">
+                                    
+                                    <label value="{{ tag_link }}">{{ childlink.title }} <span class="num">({{ index }})</span></label>
+                                  </li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                            {% endif %}
+                          </li>
+                		{% endfor %}
+   
+                
+                {% endif %}
+                
+                {% assign tags = block.settings.list_tags | split: ',' %}
+                {% assign index = false %}
+
+                {% for t in tags %}
+                {% assign ts = t | split: '(' %}
+                {% assign tag = ts[0] %}
+                {% assign tag_value = ts[1] | remove: ')' %}
+
+                
+                <li class="{% if tag_value == collection.handle %}checked{% endif %}">
+                  <a href="/collections/{{ tag_value }}">{{ tag }}</a>
+                </li>
+                
+                
+                {% endfor %}
+
+                
+              </div>
+            </div>
+          {% endif %}
+  		{% when 'filter_size' %}
+          {% if block.settings.enable %}
+            <div class="col-filter-list col-filter-list-tags col-filter-list-tag col-filter-list-size">
+              {% unless block.settings.title == blank %}
+                  <div class="col-filter-title col-filter-title-cus main-txt-title">{{ block.settings.title }}</div>
+              {% endunless %}
+              <div class="colr-filter-body">
+                {% assign tags = block.settings.list_tags | split: ',' %}
+                {% assign index = false %}
+
+                {% for tag in tags %}
+                {% assign tag_value = tag | handleize %}
+                
+                
+                {% assign index = 0 %}
+
+                {% for product in collection.products %}
+                {% for tag in product.tags %}
+                {% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+                {% endfor %}
+                {% endfor %}
+
+                <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}">
+                  <label value="{{ tag_value }}">{{ tag }} <span class="num">({{ index }})</span></label>
+                </li>
+                
+                {% endfor %}
+                
+              </div>
+            </div>
+          {% endif %}
+  		{% when 'filter_brand' %}
+          {% if block.settings.enable %}
+            <div class="col-filter-list col-filter-list-tags col-filter-list-tag col-filter-list-brand">
+              {% unless block.settings.title == blank %}
+                  <div class="col-filter-title col-filter-title-cus main-txt-title">{{ block.settings.title }}</div>
+              {% endunless %}
+              <div class="colr-filter-body">
+                {% assign tags = block.settings.list_tags | split: ',' %}
+                {% assign index = false %}
+
+                {% for tag in tags %}
+                 {% assign tag_value = tag | handleize %}
+                
+                {% assign index = 0 %}
+
+                {% for product in collection.products %}
+                {% for tag in product.tags %}
+                {% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+                {% endfor %}
+                {% endfor %}
+
+                <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}">
+                  <label value="{{ tag_value }}">{{ tag }} <span class="num">({{ index }})</span></label>
+                </li>
+                
+                {% endfor %}
+                
+              </div>
+            </div>
+          {% endif %}
+  		{% when 'filter_color' %}
+          {% if block.settings.enable %}
+            <div class="col-filter-list col-filter-list-tags col-filter-list-tag col-filter-list-color">
+              {% unless block.settings.title == blank %}
+                  <div class="col-filter-title col-filter-title-cus main-txt-title">{{ block.settings.title }}</div>
+              {% endunless %}
+              <div class="colr-filter-body">
+                {% comment %}
+                {% assign tags = block.settings.list_tags | split: ',' %}
+                {% assign index = false %}
+
+                {% for tag in tags %}
+                 {% assign tag_value = tag | handleize %}
+
+                <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}">
+                  <div class="color-box" style="background-color: {{ tag_value }};"></div>
+                  <label value="{{ tag_value }}">{{ tag }}</label>
+                </li>
+                
+                {% endfor %}
+                {% endcomment %}
+                
+                {% for i in (1..13) %}
+                	{% capture name %}list_color_name{{ i }}{% endcapture %}
+                	{% capture color %}list_color{{ i }}{% endcapture %}
+                	
+                	{% unless block.settings[name] == blank %}
+                
+                	{% assign tag_value = block.settings[name] | handleize %}
+                	{% assign index = 0 %}
+                
+                	{% for product in collection.products %}
+                		{% for tag in product.tags %}
+                			{% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+                		{% endfor %}
+                	{% endfor %}
+                
+                    <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}">
+                      <div class="color-box" style="background-color: {{ block.settings[color] }};"></div>
+                      <label value="{{ tag_value }}">{{ block.settings[name] }} <span class="num">({{ index }})</span></label>
+                    </li>
+                
+                	{% endunless %}
+                
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+ 		{% when 'filter_price' %}
+          {% if block.settings.enable %}
+            <div class="col-filter-list  col-filter-list-tags  col-filter-list-tag col-filter-list-option">
+              {% unless block.settings.title == blank %}
+                  <div class="col-filter-title col-filter-title-cus main-txt-title">{{ block.settings.title }}</div>
+              {% endunless %}
+              <div class="colr-filter-body">
+                {% assign max_price = block.settings.list_tags %}
+                {% assign index = false %}
+                
+				{% comment %}
+                <div class="price-filter-sec">
+                  <div id = "price-filter-range"></div>
+                  <div class="price-label main-txt-content">
+                    <span>Price:</span>
+                    $<span id = "range-value-1"></span> - 
+                    $<span id = "range-diff-1"></span>
+                    <div class="filter-btn">filter</div>
+                  </div>
+                  <div style="clear: both"></div>
+                </div>
+                {% endcomment %}
+                
+                {% assign tags = block.settings.list_tags | split: ',' %}
+                {% assign index = false %}
+
+                {% for tag in tags %}
+                {% assign tag_value = tag | handleize %}
+                {% assign index = 0 %}
+
+                {% for product in collection.products %}
+                {% for tag in product.tags %}
+                {% if tag == tag_value %}{% assign index = index | plus: 1 %}{% endif %}
+                {% endfor %}
+                {% endfor %}
+
+                <li class="tag__{{ tag_value }} {% if tag_value == collection.handle %}checked{% endif %}">
+                  <label value="{{ tag_value }}">{{ tag }} <span class="num">({{ index }})</span></label>
+                </li>
+
+                {% endfor %}
+                
+              </div>
+            </div>
+          {% endif %}
+  		{% when 'filter_rate' %}
+          {% if block.settings.enable %}
+            <div class="col-filter-list col-filter-list-tags col-filter-list-rate">
+              {% unless block.settings.title == blank %}
+                  <div class="col-filter-title col-filter-title-cus main-txt-title">{{ block.settings.title }}</div>
+              {% endunless %}
+              <div class="colr-filter-body">
+                <ul class="review-rate">
+                  
+                  {% assign index = 0 %}
+
+                  {% for product in collection.products %}
+                  {% for tag in product.tags %}
+                  {% if tag == "4" %}{% assign index = index | plus: 1 %}{% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                  
+                  <li class="sli-rating rate__4" rate="4">
+                    <span class="rate-body">
+                      <span class="stars full-stars">★★★★</span><span class="stars empty-stars">★</span>&amp; Up <span class="num"> ({{ index }})</span>
+                    </span>
+                  </li>
+                  
+                  {% assign index = 0 %}
+
+                  {% for product in collection.products %}
+                  {% for tag in product.tags %}
+                  {% if tag == "3" %}{% assign index = index | plus: 1 %}{% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                  
+                  <li class="sli-rating rate__3" rate="3">
+                    <span class="rate-body">
+                      <span class="stars full-stars">★★★</span><span class="stars empty-stars">★★</span>&amp; Up <span class="num"> ({{ index }})</span>
+                    </span>
+                  </li>
+                  
+                  {% assign index = 0 %}
+
+                  {% for product in collection.products %}
+                  {% for tag in product.tags %}
+                  {% if tag == "2" %}{% assign index = index | plus: 1 %}{% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                  
+                  <li class="sli-rating rate__2" rate="2">
+                    <span class="rate-body">
+                      <span class="stars full-stars">★★</span><span class="stars empty-stars">★★★</span>&amp; Up <span class="num"> ({{ index }})</span>
+                    </span>
+                  </li>
+                  
+                  {% assign index = 0 %}
+
+                  {% for product in collection.products %}
+                  {% for tag in product.tags %}
+                  {% if tag == "1" %}{% assign index = index | plus: 1 %}{% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                  <li class="sli-rating rate__1" rate="1">
+                    <span class="rate-body">
+                      <span class="stars full-stars">★</span><span class="stars empty-stars">★★★★</span>&amp; Up <span class="num"> ({{ index }})</span>
+                    </span>
+                     
+                  </li>
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+  		{% endcase %}	
+  {% endfor %}
+  
+</div>
+
+<script>
+  $(document).ready(function(){
+    var index_values;
+    {% comment %}
+    var slider = document.getElementById('price-filter-range');
+
+    var max_num = {{ max_price }};
+    max_num = max_num / 1;
+
+    noUiSlider.create(slider, {
+      start: [0, max_num],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': max_num
+      }
+    });
+
+    var valuesDivs = [
+      document.getElementById('range-value-1'),
+      document.getElementById('range-diff-1')
+    ];
+
+    // When the slider value changes, update the input and span
+    slider.noUiSlider.on('update', function( values, handle ) {
+      valuesDivs[handle].innerHTML = values[handle];
+      index_values = values;
+    });
+    
+    {% endcomment %}
+    
+    $(".col-filter-list-tags .col-filter-title").click(function(){
+      var $obj = $(this).parent(".col-filter-list-tags");
+      
+      if($obj.hasClass("active-body")) {
+      	$obj.removeClass("active-body");
+      }else {
+      	//$(".collection-filter .active-body").removeClass("active-body");
+        $obj.addClass("active-body");
+      }
+    });
+    
+    $(".col-filter-category .col-filter-title").click(function(){
+      var $obj = $(this).parent(".col-filter-category");
+      
+      if($obj.hasClass("active-body")) {
+      	$obj.removeClass("active-body");
+      }else {
+      	//$(".collection-filter .active-body").removeClass("active-body");
+        $obj.addClass("active-body");
+      }
+    });
+    
+    $(".col-filter-list-tag .colr-filter-body li").click(function(){
+      var ctn = $(this).html();
+      var $obj = $(this).find("label");
+      var tag = $obj.attr("value");
+      
+      if($(this).hasClass("checked")) {
+      	$(this).removeClass("checked");
+        var html = $(".col-filter-header .col-filter-header-body").html();
+        html = html.replace('<li class="tag " name="tag__' + tag + '" value="' + tag + '">' + ctn + '</li>', '');
+        $(".col-filter-header .col-filter-header-body").empty();
+        $(".col-filter-header .col-filter-header-body").html(html);
+        checkEmpty();
+      }else {
+      	$(this).addClass("checked");
+        $(".col-filter-header .col-filter-header-body").append('<li class="tag " name="tag__' + tag + '" value="' + tag + '">' + ctn + '</li>');
+        $(".close-all").show();
+      }
+      
+      colOption();
+    }); 
+    
+	$(".col-filter-list-rate .colr-filter-body li").click(function(){
+       var ctn = $(this).html();
+      var $obj = $(this);
+      var tag = $obj.attr("rate");
+      
+      if($(this).hasClass("checked")) {
+      	$(this).removeClass("checked");
+        var html = $(".col-filter-header .col-filter-header-body").html();
+        html = html.replace('<li class="rate " name ="rate__' + tag + '" value="' + tag + '">' + ctn + '</li>', '');
+        $(".col-filter-header .col-filter-header-body").empty();
+        $(".col-filter-header .col-filter-header-body").html(html);
+        checkEmpty();
+      }else {
+      	$(this).addClass("checked");
+        $(".col-filter-header .col-filter-header-body").append('<li class="rate " name ="rate__' + tag + '" value="' + tag + '">' + ctn + '</li>');
+        $(".close-all").show();
+      }
+      
+      colOption();
+    }); 
+    
+    $(".col-filter-list-price .filter-btn").click(function(){
+      
+      	$(".col-filter-header .col-filter-header-body").append('<li class="price">$' + index_values[0] + ' - $' + index_values[1] + '</li>');
+      	$(".close-all").show();
+    	filOption();
+    }); 
+    
+    $(document).on('click', ".col-filter-category li", function(){
+      var ctn = $(this).html();	
+      var $obj = $(this).find("label");
+      var tag = $obj.attr("value");
+      
+      if($(this).hasClass("checked")) {
+      	$(this).removeClass("checked");
+      }else {
+      	$(this).addClass("checked");
+      }
+      
+      if($(this).hasClass("parent1")) {
+         var num = 'cate1';
+         }else {
+         var num = 'cate2';
+         }
+         
+      $(".col-filter-header .col-filter-header-body").append('<li class="cate ' + num + '" name ="cate__' + tag + '" value="' + tag + '">' + ctn + '</li>');
+      $(".close-all").show();
+      
+      $(".col-filter-category .colr-filter-body").hide();
+      	
+      if($(this).hasClass("has-child-parent1")) {
+        var $obj = $(this).find(".sub-list-sec");
+        var html = $obj.html();
+      	var txt = '<div class="colr-filter-body colr-filter-body2">' + html + '</div>';
+        $(".col-filter-category").append(txt);
+      }
+      
+      colOption();
+      
+      
+    });
+    
+    $(document).on('click', ".col-filter-header .col-filter-header-body li", function(){
+      
+      var x = $(this).get(0).outerHTML;
+      var html = $(".col-filter-header .col-filter-header-body").html();
+      html = html.replace(x, '');
+      $(".col-filter-header .col-filter-header-body").empty();
+      $(".col-filter-header .col-filter-header-body").html(html);
+      
+      checkEmpty();
+      
+      if($(this).hasClass("price")) {
+        colOption();
+      }else if($(this).hasClass("cate")) {
+        if($(this).hasClass("cate1")) {
+          $(".colr-filter-body1").show();
+          //$(".col-filter-category").remove(".colr-filter-body2");
+          
+//           var body = $(".col-filter-category").html();
+//           var html = $(".col-filter-category .colr-filter-body2").get(0).outerHTML;
+//           body = body.replace(html, '');
+//           $(".col-filter-category").empty();
+//           $(".col-filter-category").html(body);
+
+        }else {
+          $(".colr-filter-body1").show();
+          var body = $(".col-filter-category").html();
+          var html = $(".col-filter-category .colr-filter-body2").get(0).outerHTML;
+          body = body.replace(html, '');
+          $(".col-filter-category").empty();
+          $(".col-filter-category").html(body);
+        }
+        
+        var name = $(this).attr("name");
+        var $obj = $("." + name);
+
+        
+        $obj.removeClass("checked");
+        colOption();
+        
+      }else {
+        var name = $(this).attr("name");
+        var $obj = $("." + name);
+
+        
+        $obj.removeClass("checked");
+        
+        if ($(".col-filter-header .col-filter-header-body li").hasClass("price")) {
+        	filOption();
+        }else {
+        	colOption();
+        }
+        
+        
+      }	
+    });
+    
+    function checkEmpty() {console.log(123);
+      if ($(".col-filter-header .col-filter-header-body").children().length == 0) {
+      	$(".close-all").hide();
+      }
+    }
+    
+    function filOption() {
+      var url = '';
+      
+      var tag = '/';
+      
+      $(".col-filter-list-tag .colr-filter-body li").each(function(){
+        
+        if($(this).hasClass("checked")) {
+          var $obj = $(this).find("label");
+          tag = tag + $obj.attr("value") + "+";
+        }
+        
+      });
+      
+      
+      $(".col-filter-category .colr-filter-body li").each(function(){
+        
+        if($(this).hasClass("checked")) {
+          var $obj = $(this).find("label");
+          tag = tag + $obj.attr("value") + "+";
+        }
+        
+      });
+      
+      if (tag == '/') {
+      	
+      }else {
+      	tag = tag.substring(0, tag.length - 1);
+      }
+      
+      url = url + tag;
+      
+      var cus_url = '';
+      
+      $(".col-filter-list-rate .colr-filter-body li").each(function(){
+        
+        if($(this).hasClass("checked")) {
+          
+          cus_url = cus_url + $(this).attr("rate") + "+";
+        }
+        
+      });
+      
+      if(cus_url != '') {
+      	//cus_url = '?filter_rate=' + cus_url;
+        cus_url = cus_url.substring(0, cus_url.length - 1);
+        
+      }
+      
+      if(tag != '/') {
+      	url = url + '+' + cus_url;
+      }else {
+      	url = url + cus_url;
+      }
+      
+     // var price = '?filter_price=' + index_values[0] + '+' + index_values[1];
+      
+      
+      
+      //console.log(price);
+
+      //url = '{{ collection.handle }}' + url + price;
+      url = '{{ collection.handle }}' + url;
+      
+      console.log(url);
+      ajaxGetfunction (url);
+    }
+    
+    function colOption() {
+      var url = '';
+      
+      var tag = '/';
+      
+      $(".col-filter-list-tag .colr-filter-body li").each(function(){
+        
+        if($(this).hasClass("checked")) {
+          var $obj = $(this).find("label");
+          tag = tag + $obj.attr("value") + "+";
+        }
+        
+      });
+      
+      $(".col-filter-category .colr-filter-body li").each(function(){
+        
+        if($(this).hasClass("checked")) {
+          var $obj = $(this).find("label");
+          tag = tag + $obj.attr("value") + "+";
+        }
+        
+      });
+      
+      if (tag == '/') {
+      	
+      }else {
+      	tag = tag.substring(0, tag.length - 1);
+      }
+      
+      url = url + tag;
+      
+      var cus_url = '';
+      
+      $(".col-filter-list-rate .colr-filter-body li").each(function(){
+        
+        if($(this).hasClass("checked")) {
+          
+          cus_url = cus_url + $(this).attr("rate") + "+";
+        }
+        
+      });
+      
+      if(cus_url != '') {
+      	//cus_url = '?filter_rate=' + cus_url;
+        cus_url = cus_url.substring(0, cus_url.length - 1);
+        
+      }
+
+      
+      if(tag != '/') {
+        url = url + '+' + cus_url;
+      }else {
+        url = url + cus_url;
+      }
+      
+      
+      
+//       var size = '?size_filter=';
+      
+//       $(".col-filter-list-size .colr-filter-body li").each(function(){
+        
+//         if($(this).hasClass("checked")) {
+//           var $obj = $(this).find("label");
+//           size = size + $obj.attr("value") + "+";
+//         }
+        
+//       });
+      
+//       if (size == '?size_filter=') {
+//       	size = '';
+//       }else {
+//       	size = size.substring(0, size.length - 1);
+//       }
+      
+//       var color = '?color_filter=';
+      
+//       $(".col-filter-list-color .colr-filter-body li").each(function(){
+        
+//         if($(this).hasClass("checked")) {
+//           var $obj = $(this).find("label");
+//           color = color + $obj.attr("value") + "+";
+//         }
+        
+//       });
+      
+//       if (color == '?color_filter=') {
+//       	color = '';
+//       }else {
+//       	color = color.substring(0, color.length - 1);
+//       }
+      
+//       url = url + size + color;
+      url = '{{ collection.handle }}' + url;
+      
+      console.log(url);
+      ajaxGetfunction (url);
+    }
+    
+    function ajaxGetfunction (url) {
+      console.log(url);
+    	$.ajax({
+          type: 'GET',
+          url: url,
+          data: {},
+          complete: function (data) {
+            
+            $(".main-collection-template .collection-ctn").empty();
+            var html = $(data.responseText).find(".main-collection-template .collection-ctn").html();
+            $(".main-collection-template .collection-ctn").html(html);
+          	
+            $(".selector-wrapper-size .enabled-option").click(function(){
+
+              var $obj = $(this).parent(".selector-wrapper-size");
+
+              if($(this).hasClass("selected-size")){
+                //$(this).removeClass("selected-size");
+              }else {
+                $obj.find(".selected-size").removeClass("selected-size");
+                $(this).addClass("selected-size");
+              }
+              var val = $obj.find(".selected-size").attr("value");
+              change($obj);
+            });
+
+            $(".selector-wrapper-Color .box-option").click(function(){
+
+              var $obj = $(this).parent(".selector-wrapper-Color");
+
+              if($(this).hasClass("selected-color")){
+                //$(this).removeClass("selected-color");
+              }else {
+                $obj.find(".selected-color").removeClass("selected-color");
+                $(this).addClass("selected-color");
+              }
+              var val = $obj.find(".selected-color").attr("value");
+              change($obj);
+            });
+
+            function change($obj) {
+              var $sel = $obj.parent("form");
+              var $color = $sel.find(".selector-wrapper-Color");
+              var col_value = $color.find(".selected-color").attr("value");
+              var $size = $sel.find(".selector-wrapper-size");
+              var siz_value = $size.find(".selected-size").attr("value");
+              var str1 = col_value + " / " + siz_value;
+              var str2 = siz_value + " / " + col_value;
+
+              var selector = $sel.find(".product-sel__final").attr("id");
+
+              $("#" + selector + " option").each(function() {
+                if(($(this).attr("title") == str1) || ($(this).attr("title") == str2)) {
+                  $(this).attr('selected', 'selected');            
+                }                        
+              });
+
+            }
+
+            $(".grid-view-item__image-wrapper .quick-shop-form .quick_title").click(function(){
+              var $obj = $(this).parent(".quick-shop-form");
+              $obj.addClass("click-quick-form");
+            });
+
+            $(".quick-shop-form").hover(function(){
+
+            }, function(){
+              $(this).removeClass("click-quick-form");
+            });
+
+            var $win = $(".quick-shop-form");
+            var $title = $(".quick_title");
+            var $box = $(".box-option");
+            var $log = $(".product-form__cart-submit");
+
+            $win.on("click.Bst", function(event){	
+              if ( $box.has(event.target).length == 0 && !$box.is(event.target) ){
+                if ( $title.has(event.target).length == 0 && !$title.is(event.target) ){
+                  $win.removeClass("click-quick-form");
+                }else {
+
+                }
+              }else {
+
+                if ( $log.has(event.target).length == 0 && !$log.is(event.target) ){
+
+                }else {
+
+                }
+
+              }
+            });
+      	}
+      });
+    }
+  })
+</script>

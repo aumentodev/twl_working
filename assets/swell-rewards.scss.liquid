@@ -1,0 +1,680 @@
+@-ms-viewport {
+	width: device-width;
+}
+html {
+	box-sizing: border-box;
+	-ms-overflow-style: scrollbar;
+}
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+body {
+	margin: 0;
+}
+
+@font-face {
+    font-family: 'Druk Wide';
+    src: url('Druk-WideHeavyItalic.woff2') format('woff2'),
+        url('Druk-WideHeavyItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+$colorWhite: #fff;
+$colorBlack: #000;
+$colorDarkBlack: #131313;
+$colorYellow: #ffff00;
+$colorLightGrey: #e6e6e6;
+
+/*media quries*/
+$min: min-width;
+$small: 480px;
+$medium: 768px;
+$large: 1024px;
+
+$theme-font-family-montserat: montserrat,sans-serif;
+$theme-font-family-drukwide: 'Druk Wide';
+
+@font-face {
+  font-family: 'swell-rewards';
+  src:  url('swell-rewards.eot?jh2iau');
+  src:  url('swell-rewards.eot?jh2iau#iefix') format('embedded-opentype'),
+    url('swell-rewards.ttf?jh2iau') format('truetype'),
+    url('swell-rewards.woff?jh2iau') format('woff'),
+    url('swell-rewards.svg?jh2iau#swell-rewards') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="swell-icon-"], [class*=" swell-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'swell-rewards' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.swell-icon-facebook:before {
+  content: "\e902";
+  color: #fff;
+}
+.swell-icon-link:before {
+  content: "\e903";
+  color: #fff;
+}
+.swell-icon-message:before {
+  content: "\e904";
+  color: #fff;
+}
+.swell-icon-messenger:before {
+  content: "\e905";
+  color: #fff;
+}
+
+.swell-reward-TWL {
+	font-family: $theme-font-family-montserat;
+	font-weight: normal;
+	color: $colorDarkBlack;
+	ul {
+		padding: 0;
+		margin: 0;
+		li {
+			list-style: none;
+		}
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		-o-object-fit: cover;
+		object-fit: cover;
+		-o-object-position: center top;
+		object-position: center top;
+		vertical-align: -webkit-baseline-middle;
+	}
+}
+.referral-section {
+	background-image: url(swell-refer-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	min-height: 100vh;
+	padding: 30px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media ($min: $medium) {
+		justify-content: flex-start;
+		padding: 30px 10px;
+	}
+	@media ($min: $large) {
+		padding: 30px 50px;
+	}
+	.swell-referral-content {
+		width: 100%;
+		@media ($min: $medium) {
+			display: flex;
+		}
+		.swell-referral-loader {
+			position: absolute;
+			top: 25%;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			text-align: center;
+			display: block;
+			width: 100%;
+			@media ($min: $medium) {
+				top: 50%;
+			}
+			img {
+				max-width: 75px;
+			}
+		}
+		.swell-referral-holder {
+			max-width: 500px;
+			width: 100%;
+			margin: 0 auto 15px;
+			background-color: $colorWhite;
+			padding: 50px 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			min-height: 497px;
+			@media($min: $medium) {
+				min-height: 450px;
+				margin: 0;
+				max-width: 718px;
+			}
+			.swell-referral {
+				width: 100%;
+			}
+			.swell-referral-thanks {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				background: $colorDarkBlack;
+				width: 100%;
+				height: 100%;
+				z-index: 9;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				padding: 30px;
+				.swell-referral-thanks-holder {
+					max-width: 500px;
+					width: 100%;
+					margin: 0 auto;
+					.swell-referral-heading {
+						color: $colorYellow !important;
+					}
+					.swell-referral-details {
+						color: $colorWhite !important;
+					}
+				}
+			}
+			.swell-referral-content-container {
+				.swell-referral-content-sidebar {
+					display: none;
+				}
+				.swell-referral-content-main {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					text-align: center;
+					min-height: 312px;
+					@media ($min: $medium) {
+						min-width: 410px;
+					}
+					.swell-referral-register,
+					.swell-referral-refer {
+						width: 100%;
+						margin: 0 auto;
+					}
+					.swell-referral-heading {
+						font-size: 30px;
+						margin-bottom: 30px;
+						line-height: 1;
+						color: $colorDarkBlack;
+						font-family: $theme-font-family-drukwide;
+						font-style: italic;
+						font-weight: 900;
+						text-transform: uppercase;
+						letter-spacing: 0;
+						@media($min: $medium) {
+							font-size: 48px;
+						}
+						span{
+							display: block;
+							font-size: 14px;
+							font-weight: 900;
+							font-style: italic;
+							font-family: $theme-font-family-drukwide;
+							margin-bottom: 10px;
+							@media($min: $small) {
+								font-size: 20px;
+							}
+						}
+					}
+					.swell-referral-details {
+						font-size: 16px;
+						color: $colorDarkBlack;
+						position: relative;
+						font-family: $theme-font-family-montserat;
+						line-height: 1.3;
+						margin: 0 auto 30px;
+						max-width: 400px;
+						font-weight: 500;
+						padding: 0 10px;
+						@media ($min: $small) {
+							font-size: 18px;
+							max-width: 545px;
+						}
+					}
+					.swell-referral-form-header-details {
+						display: none;	
+					}
+					.swell-referral-form-list {
+						@media ($min: $medium) {
+							display: flex;
+							align-items: flex-start;
+							justify-content: center;
+							max-width: 530px;
+							width: 100%;
+							margin: 0 auto;
+							.swell-referral-form-list-field {
+								flex: 1;
+								&:first-child {
+									flex: 3;
+								}
+							}
+						}
+					}
+					.refer-customer-error {
+						color: red;
+					}
+					.swell-referral-form-list-field-input {
+						font-size: 14px;
+						width: 100%;
+						margin-bottom: 10px;
+						background-color: $colorLightGrey;
+						border: 1px solid $colorLightGrey;
+						color: $colorDarkBlack;
+						text-align: left;
+						padding: 14px 12px;
+						font-family: $theme-font-family-montserat;
+						@media($min: $medium) {
+							margin-bottom: 0;
+						}
+						&::placeholder {
+							color: $colorDarkBlack;
+						}
+					}
+					.swell-referral-form-list-submit {
+						font-size: 14px;
+						width: 100%;
+						color: $colorDarkBlack;
+						background-color: $colorYellow;
+						text-transform: uppercase;
+						font-weight: 900;
+						padding: 14px 12px;
+						font-family: $theme-font-family-drukwide;
+						font-style: italic;
+						border: 1px solid $colorYellow;
+					}
+					.signup-link {
+						font-size: 14px;
+						font-weight: normal;
+						font-family: $theme-font-family-montserat;
+						color: $colorDarkBlack;
+						margin-top: 20px;
+						a {
+							color: $colorDarkBlack;
+							text-decoration: underline;
+							text-underline-position: under;
+						}
+					}
+					.swell-referral-media-wrapper {
+						margin-top: 30px;
+						.swell-referral-media-details {
+							color: $colorDarkBlack;
+							font-weight: normal;
+							font-size: 14px;
+							font-family: $theme-font-family-montserat;
+							margin-bottom: 10px;
+						}
+						.swell-referral-media-list {
+							display: flex;
+							align-items: center;
+							justify-content: space-around;
+							flex-direction: row;
+							max-width: 350px;
+							margin: 0 auto;
+							.swell-referral-medium {
+								cursor: pointer;
+								&.swell-share-referral-sms {
+									@media ($min: $medium) {
+										display: none;
+									}
+								}
+								.swell-referral-medium-content {
+									font-size: 14px;
+									font-weight: normal;
+									font-family: $theme-font-family-montserat;
+									color: $colorDarkBlack;
+									.swell-referral-media-icon {
+										color: $colorDarkBlack;
+										font-size: 14px;
+										display: block;
+										margin-bottom: 10px;
+										&:before {
+											color: $colorDarkBlack;
+										}
+										@media ($min: $medium) {
+											display: inline-block;
+											margin-bottom: 0;
+											margin-right: 5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.redeem-holder {
+			background: $colorDarkBlack;
+			padding: 30px 0;
+			display: none;
+			max-width: 500px;
+			width: 100%;
+			margin: 0 auto;
+			@media ($min: $medium) {
+				max-width: 430px;
+				margin-left: 0;
+			}
+			.refer-details {
+				border-bottom: 1px solid $colorWhite;
+				padding: 0 20px 20px;
+				margin-bottom: 20px;
+				.swell-section-content {
+					.swell-section-heading {
+						text-align: center;
+						margin-bottom: 0;
+						h2 {
+							font-size: 22px;
+							font-family: $theme-font-family-drukwide;
+							font-style: italic;
+							font-weight: 900;
+							color: $colorWhite;
+							margin-bottom: 15px;
+						}
+					}
+				}
+			}
+			.table-classes {
+				border: 0;
+				margin-bottom: 20px;
+				.table-responsive {
+					max-height: 289px;
+					min-height: 289px;
+					overflow-y: scroll;
+					padding-right: 20px;
+					.swell-referral-table thead tr th {
+						text-transform: capitalize;
+					}
+					&::-webkit-scrollbar {
+						width: 0.6em;
+					}
+					&::-webkit-scrollbar-track {
+						background: $colorWhite;
+						border-top-left-radius: 4px;
+						border-top-right-radius: 4px;
+						border-bottom-left-radius: 4px;
+						border-bottom-right-radius: 4px;
+					}
+					&::-webkit-scrollbar-thumb {
+						background-color: $colorYellow;
+						outline: 1px solid slategrey;
+						border-top-left-radius: 4px;
+						border-top-right-radius: 4px;
+						border-bottom-left-radius: 4px;
+						border-bottom-right-radius: 4px;
+					}
+					.swell-referral-table {
+						width: 100%;
+						thead,
+						tbody {
+							tr {
+								th,
+								td {
+									border: 0;
+									border-bottom: 1px solid #1c1f21;
+									padding: 8px 5px;	
+									font-size: 12px;
+									color: $colorWhite;
+									font-weight: normal;
+									font-family: $theme-font-family-montserat;
+									@media($min: $small) {
+										font-size: 14px;
+									}
+									@media($min: $medium) {
+										font-size: 12px;
+									}
+									@media($min: $large) {
+										font-size: 14px;
+									}
+								}
+								&:last-child {
+									td {
+										border-bottom: 0;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.heading-area {
+				text-align: center;
+				padding: 0 20px;
+				.heading-holder {
+					h4 {
+						font-size: 24px;
+						margin-bottom: 15px;
+						font-family: $theme-font-family-drukwide;
+						font-style: italic;
+						font-weight: 900;
+						color: $colorWhite;
+						span {
+							color: $colorWhite;
+							font-size: 24px;
+							font-family: $theme-font-family-drukwide;
+						}
+					}
+				}
+				a {
+					display: block;
+					max-width: 180px;
+					font-size: 14px;
+					width: 100%;
+					margin: 0 auto;
+					padding: 15px 5px;
+					background: $colorYellow;
+					color: $colorBlack;
+					font-family: $theme-font-family-drukwide;
+					font-style: italic;
+					font-weight: 900;
+				}
+			}
+		}
+	}
+}
+
+.swell-referral-back-link {
+	width: 1.5em;
+	height: 1.5em;
+	max-width: 20px;
+	max-height: 20px;
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	&:after, &:before {
+		background: $colorWhite;
+		content: "";
+		height: 2px;
+		max-width: calc(20px * 1.414);
+		position: absolute;
+		top: 0;
+		transition: 0.05s ease-in-out background-color;
+		width: calc(1.5em * 1.414);
+	}
+	&:before {
+		left: 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+		-webkit-transform-origin: left;
+		-ms-transform-origin: left;
+		transform-origin: left;
+	}
+	&:after {
+		right: 0;
+		-webkit-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		-webkit-transform-origin: right;
+		-ms-transform-origin: right;
+		transform-origin: right;
+	}
+}
+.swell-referral-copy {
+	position: absolute;
+	background: $colorDarkBlack;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	display: none;
+	-webkit-align-items: center;
+	-moz-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+	-ms-flex-pack: center;
+	width: 100%;
+	height: 100%; 
+	.swell-referral-copy-content {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 15px;
+		.swell-referral-copy-main {
+			width: 100%;
+			background: $colorDarkBlack;
+			.swell-referral-heading {
+				display: none;
+			}
+			.swell-referral-form-wrapper {
+				.swell-referral-copy-link {
+					font-size: 20px;
+					font-style: italic;
+					color: $colorYellow;
+					line-height: 1;
+					font-weight: 900;
+					text-transform: uppercase;
+					margin: 0 auto 30px;
+					font-family: $theme-font-family-drukwide;
+					@media($min: $small) {
+						font-size: 30px;
+					}
+				}
+				.swell-referral-copy-button {
+					text-transform: uppercase;
+					padding: 15px 12px;
+					min-width: 150px;
+					color: $colorDarkBlack;
+					font-size: 14px;
+					font-style: italic;
+					font-weight: 900;
+					border: 1px solid $colorYellow;
+					font-family: $theme-font-family-drukwide;
+					background-color: $colorYellow;
+				}
+				.swell-referral-details {
+					font-size: 14px !important;
+					color: $colorWhite !important;
+					@media($min: $small) {
+						font-size: 16px !important;
+					}
+				}
+			}
+		}
+	}
+}
+.the-wod-life-post-checkout {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 8;
+	background: rgba(0,0,0,0.3);
+	width: 100%;
+	height: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	.post-checkout-holder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		max-width: 1192px;
+		width: 100%;
+		padding: 0 15px;
+		.referral-section {
+			min-height: auto;
+			padding: 0;
+			.swell-referral-content {
+				.swell-referral-holder {
+					flex-direction: column;
+					background-color: transparent;
+					max-width: 100%;
+					justify-content: flex-start;
+					align-items: flex-start;
+					.checkout-holder {
+						text-align: center;
+						margin-bottom: 30px;
+						.checkout-heading {
+							color: $colorWhite;
+							font-size: 14px;
+							text-transform: uppercase;
+							font-weight: bold;
+							font-style: italic;
+							font-family: $theme-font-family-drukwide;
+						}
+					}
+					.swell-referral {
+						@media ($min: $medium) {
+							max-width: 550px;
+						}
+					}
+					.swell-referral-content-container {
+						.swell-referral-content-main {
+							.swell-referral-heading {
+								color: $colorYellow;
+								span {
+									color: $colorWhite;
+								}
+							}
+							.swell-referral-details,
+							.swell-referral-form-header-details,
+							.swell-referral-media-details {
+								color: $colorWhite;
+							}
+							.swell-referral-media-wrapper {
+								.swell-referral-media-list {
+									.swell-referral-medium {
+										.swell-referral-medium-content {
+											color: $colorWhite;
+											&:before {
+												color: $colorWhite;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

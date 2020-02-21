@@ -1,0 +1,41 @@
+<div class="help-page-template">
+  <div class="page-width-custom">
+    <ul class="breadcrumbs main-txt-title">
+      <li><a href="/">Home</a></li> / <li>{{ page.title }}</li>
+    </ul>
+  </div>
+  <div class="left-sidebar left-sidebar-desktop">
+    <div class="help-menu-list">
+      <ul class="menu-list">
+        {% for link in linklists[settings.help_menu].links %}
+          <li class="pare-menu">
+            <a href="{{ link.url }}" class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="right-sidebar policies-page">
+
+    <div class="content shipping-template">
+      <h1 class="title">{{ page.title }}</h1>
+      {{ page.content }}
+    </div>
+  </div>
+  <div class="left-sidebar left-sidebar-mobile help-sidebar-mobile">
+    <div class="help-menu-list">
+      
+      <h3 class="mob-title">Need more help</h3>
+      <ul class="menu-list">
+        {% for link in linklists[settings.help_menu].links %}
+          <li class="pare-menu">
+            <a href="{{ link.url }}" class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}

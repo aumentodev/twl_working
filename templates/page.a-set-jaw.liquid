@@ -1,0 +1,264 @@
+{% if settings.enable_jaw_page %}
+<main class="{{page.title | handle }} merged-page-template">
+
+  
+  {%if  settings.enable_banner_img_jaw %}  
+  <section id="page-header">
+    <div class="header-background compexpagebn desktop-stance">
+      <div class="changable-image" style="background-image: url({{ settings.feel_banner_img_jaw | img_url: 'master' }});">
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              {%if  settings.enable_jaw_page_heading %}
+
+              <h1>{{ page.title }}</h1>
+              {% endif %}
+              {%if  settings.enable_jaw_customhead %}
+
+              <h1>{{ settings.enable_jaw_customhead_text }}</h1>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-background mobile-stance">
+      <div class="changable-image" style="background-image: url({{ settings.feel_banner_img_jaw_mobile | img_url: 'master' }});">
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              {%if  settings.enable_jaw_page_heading %}
+
+              <h1>{{ page.title }}</h1>
+              {% endif %}
+              {%if  settings.enable_jaw_customhead %}
+
+              <h1>{{ settings.enable_jaw_customhead_text }}</h1>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  
+  
+  {%if settings.enable_video_bottom_img_jaw %}
+  <div class="a-set-banner-below-img aset_stance_img">
+      <div class="desktop">
+        <img src="{{ settings.video_bottom_desk_img_jaw | img_url: 'master' }}">
+      </div>
+    </div>  
+    <div class="a-set-banner-below-img-mob">
+      <div class="mobile">
+        <div class="page-width">
+          <div class="a-set-usp">
+            <img src="{{ settings.video_bottom_mob_img1_jaw | img_url: 'master' }}">
+          </div>
+          <div class="a-set-usp">
+            <img src="{{ settings.video_bottom_mob_img2_jaw | img_url: 'master' }}">
+          </div>
+          <div class="a-set-usp">
+            <img src="{{ settings.video_bottom_mob_img3_jaw | img_url: 'master' }}">
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+  {%if  settings.enable_feel_banner_img_jaw %}
+  <div class="section a-set-feel-banner-img page">
+    <a href="{{ settings.jaw_feel_link }}">
+      <img src="{{ settings.feel_banner_img_picker_jaw | img_url: 'master' }}" alt="feel_banner_img" class="a-set-img" />
+    </a>
+  </div>
+  {% endif %}
+  
+  {% if settings.jaw_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+  
+  {% if settings.enable_jaw_col %}
+  <div class="a-set-first-collection">
+       {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.jaw_coll].products %}
+      {% capture temp %}
+      {{product.handle}}
+      {% if forloop.last == false %},{% endif%}
+      {% endcapture %}
+      {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+      <section id="by-brand">
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              <div class="division-wrap">
+                <h1 class="division-title">
+                    {{ settings.jaw_coll_heading}}
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="">
+              <div class="swiper-container slider-carousel-wrap">
+                <div class="swiper-wrapper collection-items-holder hot-deals auto-load-col center_reviews">
+                  {% assign counter = 0  %}
+                  {% assign max_products = 5 | times: 1 %}
+                  {% for handle in product_handles %}
+                  {% assign counter = counter | plus: 1  %}
+                  {% if counter <= max_products %}
+                    {% assign product_handle = handle | handleize %}
+                    {% assign product = all_products[product_handle] %}
+                      <div class="swiper-slide  extra-small--one-whole small--one-half medium-up--one-quarter">
+                          {% include 'a-product-card-grid-2' %}
+                      </div>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                <div class="stance-view-all-button">
+                  <a href="{{ settings.jaw_coll_link }}">{{ settings.jaw_view_all_buy }}</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  
+  {% if settings.enable_jaw_first_col %}
+  <div class="a-set-second-collection">
+       {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.jaw_first_coll].products %}
+                {% capture temp %}
+                    {{product.handle}}
+                    {% if forloop.last == false %},{% endif%}
+                {% endcapture %}
+                {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+      <section id="by-brand">
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item">
+              <div class="division-wrap">
+                <h1 class="division-title">
+                              {{ settings.jaw_first_coll_heading}}
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="">
+              <div class="swiper-container slider-carousel-wrap">
+                <div class="swiper-wrapper collection-items-holder hot-deals auto-load-col center_reviews">
+                  {% assign counter = 0  %}
+                  {% assign max_products = 5 | times: 1 %}
+                  {% for handle in product_handles %}
+                  {% assign counter = counter | plus: 1  %}
+                  {% if counter <= max_products %}
+                    {% assign product_handle = handle | handleize %}
+                    {% assign product = all_products[product_handle] %}
+                      <div class="swiper-slide extra-small--one-whole small--one-half medium-up--one-quarter">
+                          {% include 'a-product-card-grid-2' %}
+                      </div>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                <!-- Add Arrows -->
+     <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                <div class="stance-view-all-button">
+                  <a href="{{ settings.jaw_first_coll_link }}">{{ settings.jaw_first_view_all_buy }}</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_performance %}
+  <div class="stance-feature-block-container">
+         <div class="stance-content-block">
+           <div class="content">
+             <h2>{{ settings.jaw_block_heading1 }}</h2>
+             <p>{{ settings.jaw_block_desc1 }}</p>
+             <a href="{{ settings.jaw_block_button1link }}">{{ settings.jaw_block_button1 }}</a>
+           </div>
+         </div>       
+         <div class="stance-feature-image-block">
+           <img src="{{ settings.jaw_block_img1 | img_url: 'original' }}" alt="block_img" class="feature-img" />
+         </div>
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_individually %}
+  <div class="stance-feature-block-container individually individually-desktop">
+         <div class="stance-feature-image-block">
+           <img src="{{ settings.jaw_block_img2 | img_url: 'original' }}" alt="block_img" class="feature-img" />
+         </div>
+         <div class="stance-content-block">
+           <div class="content">
+             <h2>{{ settings.jaw_block_heading2 }}</h2>
+             <p>{{ settings.jaw_block_desc2 }}</p>
+             <a href="{{ settings.jaw_block_button2link }}">{{ settings.jaw_block_button2 }}</a>
+           </div>
+         </div>
+  </div>
+  <div class="stance-feature-block-container individually individually-mobile">         
+         <div class="stance-content-block">
+           <div class="content">
+             <h2>{{ settings.jaw_block_heading2 }}</h2>
+             <p>{{ settings.jaw_block_desc2 }}</p>
+             <a href="{{ settings.jaw_block_button2link }}">{{ settings.jaw_block_button2 }}</a>
+           </div>
+         </div>
+         <div class="stance-feature-image-block">
+           <img src="{{ settings.jaw_block_img2 | img_url: 'original' }}" alt="block_img" class="feature-img" />
+         </div>
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_maximum %}
+  <div class="stance-feature-block-container">
+         <div class="stance-content-block">
+           <div class="content">
+             <h2>{{ settings.jaw_block_heading3 }}</h2>
+             <p>{{ settings.jaw_block_desc3 }}</p>
+             <a href="{{ settings.jaw_block_button3link }}">{{ settings.jaw_block_button3 }}</a>
+           </div>
+         </div>       
+         <div class="stance-feature-image-block">
+           <img src="{{ settings.jaw_block_img3 | img_url: 'original' }}" alt="block_img" class="feature-img" />
+         </div>
+  </div>
+  {% endif %}
+</main>
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+
+ {% if settings.enable_a_set_boxingusp %}
+   {% section 'main-bar' %}
+  {% endif %}
+<iframe src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+
+{% endif %}
+

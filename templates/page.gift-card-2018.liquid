@@ -1,0 +1,281 @@
+{% if settings.enable_gift_guide_2018 %}
+<style>
+ @media (max-width: 900px) { 
+  .bann_image {
+      background-image: url('{{ settings.gift_gym_banner1 | img_url: 'master' }}');
+  }
+ }
+  
+</style>
+
+
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+
+  {%comment%}{% include 'page-header' %}{%endcomment%}
+  
+  {%if  settings.enable_gift_header1_2018 %}
+ <section id="page-header">
+  <div class="bann_image">
+    <img src="{{ settings.gift_gym_banner1_2018 | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+  {% if settings.enable_gift_banner_title1_2018 %}
+    <div class="bann_img-cont giftcard_tit">
+      {% if settings.enable_gift_banner_title1_2018 != blank %}   
+          <h2>{{ settings.gift_banner_title1_2018 }}</h2>
+      {% else %}
+          <h2>{{ page.title }}</h2>
+      {% endif %}
+    </div>
+  {% endif %}
+  </div>
+  </section>
+  
+  {% endif %}
+  
+  {% if settings.gift_guide_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+
+  {% unless page.content == blank %}
+ <div class="section page ">
+    <div class="page-width">
+      <div class="rowxc">
+        
+          <div class="content">
+            {{ page.content }}
+          </div>
+      
+      </div>
+   </div>
+  </div>
+  {% endunless %}
+  <div class="section page">
+    <div class="page-width">
+       <div class="grid grid--uniform grid-0">
+             {% if settings.enable_best_gift_2018 %}
+            <div class=" banner_gift">
+              <div class="col-md-12">
+                <a href="{{ settings.best_url_2018}}">
+
+                  <img src="{{ settings.best_gift_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+              </div>
+            </div>
+            {% endif %}
+            {% if settings.enable_gift_2018 %}
+             <div class="giftguide_secheadtext">
+              {% if settings.him_her_headtext_2018 %}  <h2 class="h3">{{ settings.him_her_headtext_2018 }} </h2> {% endif %}
+                {% if settings.him_her_subheadtext_2018 %}<p>{{ settings.him_her_subheadtext_2018 }}</p>  {% endif %}
+              </div>
+            <div class=" two-col first-col giftguide_firstblock">
+              <div class="grid__item extra-small--one-whole small--one-half medium-up--one-half text-center">
+                <a href="{{settings.him_url_2018}}" class="main-image">
+                  <img src="{{ settings.him_gift_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                   {% if settings.enable_him_gift_2018_txt1 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt1}}</h4> {% endif %}
+                </a>                           
+                {% if settings.enable_him_un_2018 %} 
+                <div class="grid ">
+                <div class="grid__item first-child-cls extra-small--one-whole small--one-half medium-up--one-third ">
+                  <a href="{{settings.him_url_un1_2018}}">
+                    <img src="{{ settings.him_gift_un1_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_him_gift_2018_txt11 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt11}}</h4> {% endif %}
+                  </a>
+                </div>
+                <div class="grid__item extra-small--one-whole small--one-half medium-up--one-third ">
+                  <a href="{{settings.him_url_un2_2018}}">
+                    <img src="{{ settings.him_gift_un2_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_him_gift_2018_txt12 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt12}}</h4> {% endif %}
+                  </a>
+                </div>
+                <div class="grid__item extra-small--one-whole small--one-half medium-up--one-third ">
+                  <a href="{{settings.him_url_un3_2018}}">
+                    <img src="{{ settings.him_gift_un3_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_him_gift_2018_txt13 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt13}}</h4> {% endif %}
+                  </a>
+                </div>
+                </div>
+                {% endif %}
+              </div>
+              <div class="grid__item extra-small--one-whole small--one-half medium-up--one-half text-center ">
+                <a href="{{settings.her_url_2018}}"  class="main-image">
+                  <img src="{{ settings.her_gift_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                  {% if settings.enable_him_gift_2018_txt2 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt2}}</h4> {% endif %}
+                </a>
+                {% if settings.enable_her_un_2018 %}
+                <div class="grid">
+                <div class="grid__item first-child-cls extra-small--one-whole small--one-half medium-up--one-third ">
+                  <a href="{{settings.her_url_un1_2018}}">
+                    <img src="{{ settings.her_gift_un1_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_him_gift_2018_txt21 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt21}}</h4> {% endif %}
+                  </a>
+                </div>
+                <div class="grid__item extra-small--one-whole small--one-half medium-up--one-third ">
+                  <a href="{{settings.her_url_un2_2018}}">
+                    <img src="{{ settings.her_gift_un2_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_him_gift_2018_txt22 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt22}}</h4> {% endif %}
+                  </a>
+                </div> 
+                <div class="grid__item extra-small--one-whole small--one-half medium-up--one-third ">
+                  <a href="{{settings.her_url_un3_2018}}">
+                    <img src="{{ settings.her_gift_un3_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_him_gift_2018_txt23 %}  <h4 class="newfit_toptit">{{settings.him_gift_2018_txt23}}</h4> {% endif %}
+                  </a>
+                </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}          
+         </div>
+    </div>
+      {% if settings.enable_stance_col_complex__trending %}
+  <div class="11 a-set-first-collection giftcard_2018_productwrap">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[settings.stance_coll_complex_trending].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="division-wrap">
+              <h1 class="division-title">
+                {{ settings.stance_coll_heading_complex_trending }}
+              </h1>
+               {% if settings.collsubhead_subheadtext_2018 %}<p>{{ settings.collsubhead_subheadtext_2018 }}</p>  {% endif %}
+                {% if settings.collsubhead_bottom_subheadtext_2018 %}<h4>{{ settings.collsubhead_bottom_subheadtext_2018 }}</h4>  {% endif %}
+            </div>
+          </div>
+        </div>
+        
+          <div class="{% if settings.col_slider_one_enable_rehband %}a-set-collectionprod-swiper{%else%}a-set-collectionprod grid grid--uniform{% endif %}">
+            <div class="{% if settings.col_slider_one_enable_trending %}swiper-container{% endif %} slider-carousel-wrap">
+<!--             <div class="swiper-container"> -->
+               <div class="{% if settings.col_slider_one_enable_trending %}swiper-wrapper{% endif %} collection-items-holder hot-deals auto-load-col center_reviews">
+<!--               <ul class="swiper-wrapper center_reviews"> -->
+                {% unless settings.col_slider_one_enable_trending %}
+                 <div class="row ">
+                {% endunless %}
+                {% for product in collections[settings.stance_coll_complex_trending].products %}
+                <div class="{% if settings.col_slider_one_enable_trending %}swiper-slide {%else%}grid__item{% endif %} extra-small--one-whole small--one-half medium-up--one-quarter col-list">
+                   {% include 'a-product-card-grid-2' %}
+                </div>
+                {% endfor %}
+                {% unless settings.col_slider_one_enable_trending %}
+                 </div>
+                {% endunless %}
+               </div>
+               {% if settings.col_slider_one_enable_trending %} <!-- Add Arrows -->
+    <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+          {% comment %}  {% else %}
+              <div class="AjaxinatePagination text-center">
+                 <div class="blog-view-all">
+                  {% if paginate.next %}
+                    <a class="ld ld-ring ld-spin" href="{{ paginate.next.url }}"></a>
+                  {% endif %}
+                 </div>
+                </div>{% endcomment %}
+              
+              {% endif %}
+              </div>
+          
+            
+            {% if settings.top_compex_link11_k != blank %}
+              <div class="stance-view-all-button text-center">
+                <a href="{{ settings.top_compex_link11_k }}">{{ settings.stance_view_all_buy_complex11_k }}</a>
+              </div>
+              {% endif %}
+                         
+          </div>
+           
+      </div>
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+    <div class="newgift-foursection">
+       <div class="page-width">
+        <div class="grid">
+        {% if settings.enable_seller_2018 %}
+            <div class=" two-col">
+               {% if settings.topcell_img1_2018 %}
+                <div class="grid__item extra-small--one-whole small--one-half medium-up--one-half text-center">
+                  <a href="{{settings.topcell_url_2018}}"  class="main-image">
+                    <img src="{{ settings.topcell_img1_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                   {% if settings.enable_seller_2018 %}  <h4 class="newfit_toptit">{{settings.topcell_tit1_2018}}</h4> {% endif %}
+                  </a>             
+                </div>
+               {% endif %}
+               {% if settings.topcell_img2_2018 %}
+                 <div class="grid__item extra-small--one-whole small--one-half medium-up--one-half text-center">
+                  <a href="{{settings.topcell_url2_2018}}"  class="main-image">
+                    <img src="{{ settings.topcell_img2_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_seller_2018 %}  <h4 class="newfit_toptit">{{settings.topcell_tit2_2018}}</h4> {% endif %}
+                   </a>             
+                 </div>
+                 {% endif %}
+                 {% if settings.topcell_img3_2018 %}
+                  <div class="grid__item extra-small--one-whole small--one-half medium-up--one-half text-center">
+                    <a href="{{settings.topcell_url3_2018}}"  class="main-image">
+                      <img src="{{ settings.topcell_img3_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                    {% if settings.enable_seller_2018 %}  <h4 class="newfit_toptit">{{settings.topcell_tit3_2018}}</h4> {% endif %}
+                    </a>             
+                  </div>
+                 {% endif %}
+                 {% if settings.topcell_img4_2018 %}
+                <div class="grid__item extra-small--one-whole small--one-half medium-up--one-half text-center">
+                  <a href="{{settings.topcell_url4_2018}}"  class="main-image">
+                    <img src="{{ settings.topcell_img4_2018 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                   {% if settings.enable_seller_2018 %}  <h4 class="newfit_toptit">{{settings.topcell_tit4_2018}}</h4> {% endif %}
+                  </a>             
+                </div>
+                 {% endif %}
+            </div>
+            {% endif %}
+         </div>
+      </div>
+    </div>
+      {% if settings.enable_giftcard_2018_block %}
+      <div class="giftcard_2018_block">
+         <div class="page-width">
+        <div class="stance-feature-block-container giftcard_2018_block">
+         <div class="stance-content-block">
+           <div> 
+              {% if settings.icon1_giftcard_2018_block != blank  %}       
+              <img src="{{ settings.icon1_giftcard_2018_block | img_url: 'original' }}" alt="block_img" class="icon-img" />
+              {% endif %}
+
+            </div>
+            <div class="content">
+              <h2>{{ settings.giftcard_2018_block_tit }}</h2>
+              <p>{{ settings.giftcard_2018_block_content }}</p>
+              <a href="{{ settings.giftcard_2018_block_btn_link }}">{{ settings.giftcard_2018_block_btn_text }}</a>
+            </div>
+             </div>      
+           <div class="stance-feature-image-block">
+             <img src="{{ settings.giftcard_2018_block_image | img_url: 'original' }}" alt="block_img" class="feature-img" />
+          </div>
+        </div>
+        </div>
+        </div>
+        {% endif %}
+  </div>
+  {% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+</main>
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}

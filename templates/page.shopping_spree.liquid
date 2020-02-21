@@ -1,0 +1,76 @@
+{% if settings.enable_win_twl_spree %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+
+  {%comment%}
+  {% if page.handle != 'giveaways' %}
+    {% include 'page-header' %}
+  {% endif %}
+    {%endcomment%}
+  
+  {% if page.handle == 'giveaways' %}
+  <section id="page-header">
+  <div class="a-set-feel-banner-img" style="position: relative;"> 
+      <img src="{{ 'King-Kong-Giveaway_Header.jpg' | asset_url }}" alt="feel_banner_img" class="a-set-img" />      
+            <h1>{{ page.title }}</h1>
+  </div>
+  </section>
+  {% endif %}
+
+  <div class="section page">
+    <div class="page-width">
+      {% if settings.enable_shopping_spree_header %}
+      <div class="grid shop_spree">
+        <div class="grid__item medium-up--one-whole text-center">
+          <a href="{{ settings.banner_url_shop}}">
+            <img src="{{ settings.shopping_spree_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+          </a>
+        </div>
+      </div>
+      {% endif %}
+      
+    {% include 'countdown' %} 
+      
+      {% if settings.how_works %}
+       <div class="how_works text-center">
+          
+             <h2 class="h3">{{settings.how_it_works}}</h2>
+         <div class="grid first_grid_howit">
+             <div class="grid__item medium-up--one-third text_center">
+               <img src="{{settings.image1 | img_url:'original'}}">
+               <h4>{{settings.spend_heading1}}</h4>
+               <p>{{settings.spend_text}}</p>
+              
+             </div>
+              <div class="grid__item medium-up--one-third text_center">
+               <img src="{{settings.image2 | img_url:'original'}}">
+               <h4>{{settings.share_heading}}</h4>
+               <p>{{settings.share_text}}</p>
+                 
+             </div>
+              <div class="grid__item medium-up--one-third text_center">
+               <img src="{{settings.image3 | img_url:'original'}}">
+               <h4>{{settings.winner_heading}}</h4>
+               <p>{{settings.winner_text}}</p>
+                
+             </div>
+         </div>
+        </div>
+      {%endif %}
+      
+      {% if settings.shop_now %}
+        <div class="grid shopnow">
+          <div class="grid__item medium-up--one-whole text-center">
+            <img src="{{ settings.shop_now_image | img_url:'original'}}">
+            <p>{{settings.title_shop}}</p>
+          </div>
+       </div>
+      {%endif%}
+
+    </div>
+            </div>
+      {% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+
+</main>
+{% endif %}

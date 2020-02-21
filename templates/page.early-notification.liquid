@@ -1,0 +1,45 @@
+{{ 'flipclock.css' | asset_url | stylesheet_tag }}
+{% if settings.enable_apparelpage %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+	 
+
+  <div class="section page section_set earlynot-page">
+     
+    <div  {% if settings.apparel_background %} style="background-image: url({{ settings.apparel_background | img_url: 'master' }}); background-repeat: repeat-x;" {% else %} class="appreal_page_background_set" {% endif %} >
+      <div class="page-width">
+        <div class="row">
+            <div class="content">
+              <div class="appreal_set_backdound_form">
+                <div class="appreal_text_and_form">
+                  
+                  <h2 class="appreal_heading_text division-title">{{ settings.apparel_top-heading }}</h2>
+        
+                  <p class="appreal_heading_text">{{ settings.apparel_top-subheading }}</p>
+                  <div class="form-holder appreal_form_set">{% include 'mailing-early-notification' %}</div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+  	
+{% endif %}
+
+{% if settings.early_noti_countdown %}
+  <div class="merged-page-template countdown-early-noti">
+  	{% include 'countdown' %} 
+  </div>
+{% endif %}
+
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+<style type="text/css">
+  .page-width-custom{margin-top: -18px;}
+  .breadcrumbs{top: 30px;}
+</style>

@@ -1,0 +1,93 @@
+<div class="size-guide-overlay"></div>
+<div class="size-guide-sec">
+ <div class="size-guide-area">
+   <div class="close-icn"><img src={{ 'close-black.png' | asset_url }}></div>
+   
+   {% comment %}
+	<div class="size-guide-container">
+		<h2 class="main-txt-title">
+			size guide Mens Shorts
+		</h2>
+		<div class="size-guide-table main-txt-title">
+			<div class="title-list title-list-header">
+				<div class="name"></div>
+				<div class="value">xs</div>
+				<div class="value">s</div>
+				<div class="value">m</div>
+				<div class="value">l</div>
+				<div class="value">xl</div>
+			</div>
+			<div class="title-list">
+				<div class="name">Waist (IN)</div>
+				<div class="value">30</div>
+				<div class="value">32</div>
+				<div class="value">34</div>
+				<div class="value">36</div>
+				<div class="value">38</div>
+			</div>
+			<div class="title-list">
+				<div class="name">inseam (IN)</div>
+				<div class="value">9</div>
+				<div class="value">9</div>
+				<div class="value">9.5</div>
+				<div class="value">9.5</div>
+				<div class="value">9.5</div>
+			</div>
+			<div class="title-list">
+				<div class="name">lenght (IN)</div>
+				<div class="value">16.5</div>
+				<div class="value">17</div>
+				<div class="value">18</div>
+				<div class="value">18.5</div>
+				<div class="value">19</div>
+			</div>
+          <div style="clear: both;"></div>
+		</div>
+	</div>
+	<div class="size-guide-footer">
+		<div class="contents">
+		<h3 class="main-txt-title">waist</h3>
+		<p>Measure around natural waist with a measuring tape.</p>
+		<p>This sizing chart is approximate. <br />
+			For more detailed information, please see garment specifications or contact a TWL Team Member.
+		</p>
+		</div>
+		<div class="images">
+			<img src="{{ 'size-pants-guide.jpg' | asset_url }}">
+		</div>
+      <div style="clear: both;"></div>
+	</div>
+   {% endcomment %}
+   
+	{% if product.metafields.description.guide_description == blank %}
+		{% comment %}{{ product.description | split: '<!-- product size guide -->' | last }}{% endcomment %}
+	{% else %}
+		{{ product.metafields.description.guide_description }}
+	{% endif %}
+   
+  </div>
+</div>
+
+<script>
+  $(".selector-wrapper-size .size-section").click(function(){
+  	$(".size-guide-overlay").show();
+    $(".size-guide-sec").show();
+  });
+  
+  $(".size-guide-overlay").click(function(){
+  	$(".size-guide-overlay").hide();
+    $(".size-guide-sec").hide();
+  });
+  
+  $(".size-guide-sec .close-icn").click(function(){
+  	$(".size-guide-overlay").hide();
+    $(".size-guide-sec").hide();
+  });
+  
+  $(".size-guide-sec").on("click", function(event){
+    if(!$(event.target).closest(".size-guide-area").length) {
+      $(".size-guide-overlay").hide();
+      $(".size-guide-sec").hide();
+    }
+  });
+</script>

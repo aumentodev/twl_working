@@ -1,0 +1,72 @@
+<div class="site-mega-menu-sec site-mega-menu-sec-main">
+  <div class="page-width">
+    <div class="side-bar-menu">
+      <ul class="sidebar-menu-list">
+        {% for childlink in link.links %}
+          {% if childlink.links == blank %}
+            <li class="{% if childlink.active %}site-nav--active{% endif %}" data-id="mega-parent-{{ childlink.handle }}">
+              <a href="{{ childlink.url }}" class="site-nav__link main-bold-title">
+                {{ childlink.title | escape }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% assign image_block = false %}
+      {% for block in section.blocks %}
+        {%- assign val = block.settings.mega_link | handleize -%}
+        {% if val == child_list_handle %}
+          {% if block.settings.menu_enable %}
+            {% assign image_block = true %}
+          {% endif %}
+         {% endif %}
+      {% endfor %}
+
+    <div class="middle-menu {% if image_block == false %}middle-menu-full{% endif %}">
+
+        {% for childlink in link.links %}
+          {% if childlink.links != blank %}
+
+              <ul class="middle-menu-list middle-menu-list-{{ forloop.index }}">
+                <li class="" data-id="mega-parent-{{ childlink.handle }}">
+                  <span class="site-nav__link main-bold-title">
+                    {{ childlink.title | escape }}
+                  </span>
+                </li>
+                {% for grandlink in childlink.links %}
+                  <li class="site-nav__childlist-item">
+                    <a href="{{ grandlink.url }}" class="site-nav__child-link" >
+                      {{ grandlink.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+
+          {% endif %}
+        {% endfor %}
+
+    </div>
+    {% if image_block == true %}
+    <div class="image-section mega-list mega-list-logo">
+      {% for block in section.blocks %}
+        {%- assign val = block.settings.mega_link | handleize -%}
+        {% if val == child_list_handle %}
+          {% if block.settings.menu_enable %}
+            {% unless block.settings.link == blank %}<a href="{{ block.settings.link }}">{% endunless %}
+              <div class="img-box">
+                <img class="lazyload" data-src="{{ block.settings.image | img_url: '500x500' }}">
+                <div class="text__section">
+                    {% unless block.settings.title == blank %}<h3>{{ block.settings.title }}</h3>{% endunless %}
+                    {% unless block.settings.subtitle == blank %}<p>{{ block.settings.subtitle }}</p>{% endunless %}
+                </div>
+              </div>
+            {% unless block.settings.link == blank %}</a>{% endunless %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>

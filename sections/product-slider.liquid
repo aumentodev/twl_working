@@ -1,0 +1,195 @@
+<div class="product-slider slider-launch 111">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2 class="main-txt-title">{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+  
+ 
+  
+  {%- assign collection = collections[section.settings.collection] -%}
+
+  {% case section.settings.grid %}
+    {% when 2 %}
+      {%- assign max_height = 530 -%}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+    {% when 3 %}
+      {%- assign max_height = 345 -%}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+    {% when 4 %}
+      {%- assign max_height = 250 -%}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+    {% when 5 %}
+      {%- assign max_height = 195 -%}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+  {% endcase %}
+
+  {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+  {% assign num_limit = section.settings.grid %}
+
+  <div class="product-list-slider product-list-slider-{{ section.id }}">
+    {% for product in collection.products limit: product_limit %}
+      <div class="product-list">
+        {% include 'product-card-grid-col', max_height: max_height %}
+      </div>
+    {% else %}
+
+      {% for i in (1..product_limit) %}
+        <div class="product-list">
+          <div class="grid-view-item">
+            <a href="#" class="grid-view-item__link">
+              <div class="grid-view-item__image">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="h4 grid-view-item__title text-center main-ctn-title">{{ 'homepage.onboarding.product_title' | t }}</div>
+              <div class="grid-view-item__meta text-center main-ctn-title">
+                {% include 'product-price' %}
+              </div>
+              <div class="star-rating star-rating-{{ settings.star_color }}">{% include 'okendo-reviews-product-rating-summary' %}</div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+
+  {% if section.settings.enable_new_link %}
+    <div class="rich-btn-view btn-view text-center" style="margin-bottom:20px;">
+      <a href="{{ section.settings.show_new_link }}" class="btn btn--primary rich-btn cyber-btn">
+        {{ section.settings.show_new_text }}
+      </a>
+    </div>
+  {% endif %}
+
+  
+  {% if section.settings.show_view_all %}
+    <hr class="hr--invisible"></hr>
+    <div class="text-center">
+      <a href="{{ collection.url }}" class="btn">
+        {{ 'collections.general.view_all' | t }}
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+
+<script>
+  $(document).ready(function(){
+
+    var desk_num = {{ num_limit }};
+
+    if($(window).width() < 450){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }else if($(window).width() < 789){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }else if($(window).width() < 950){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }else {
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: true,
+        slidesToShow: desk_num,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }
+  })
+</script>
+ <style>
+  .product-mains .slick-slider { width: 1px; min-width: 100%; width: 100%; }
+</style> 
+{% schema %}
+  {
+    "name": "Product slider",
+    "class": "index-section product-slider-sec",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Products per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "rows",
+        "label": "Rows",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendors",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "Show 'View all' button",
+        "default": false
+      },
+	  {
+        "type": "checkbox",
+        "id": "enable_new_link",
+        "label": "Enable new arrivals link",
+        "default": true
+      },
+	  {
+        "type": "text",
+        "id": "show_new_text",
+        "label": "Show new arrivals text"
+      },
+	  {
+        "type": "url",
+        "id": "show_new_link",
+        "label": "Show new arrivals link"
+      }	
+    ],
+    "presets": [
+      {
+        "name": "Product slider",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

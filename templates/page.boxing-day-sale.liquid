@@ -1,0 +1,235 @@
+{% if settings.enable_boxing_sale %}
+<main class="{{page.title | handle }} a-boxing-day-sale merged-page-template">
+  {% include 'breadcrumb' %}
+
+{% if settings.enable_boxingtophead %}
+  <section id="page-header">
+    <div class="header-background">
+      <div class="changable-image" style="background-image: url({{ settings.boxing_banner | img_url: 'master' }});">
+        <div class="page-width">
+          <div class="grid">
+            <div class="col-md-12">
+                {%if  settings.enable_boxingtophead %}
+
+              <h1>{{ page.title }}</h1>
+                {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  
+    {% unless page.content == blank %}
+
+  <div class="section page ">
+    <div class="page-width">
+      <div class="grid">
+        <div class="col-md-12">
+          <div class="content text-center">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+   </div>
+  </div>
+  {% endunless %}
+   {% if settings.enable_boxing_top_ban %}
+  {% unless settings.enable_boxingtophead %}
+  <section class="top_bar_monday" >
+      <div class=" top_image_ban full_width">
+
+        <img src="{{ settings.boxing_top_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+        {%if  settings.boxing_head != blank %}
+        <h1>{{settings.boxing_head}}</h1>
+        {% endif %}
+     </div>
+  </section>
+  {% endunless %}
+      {% endif %}
+   {% if settings.enable_boxing_top_ban and settings.enable_boxingtophead %}
+   <section class="top_bar_monday" >
+    <div class="page-width">
+      <div class="grid top_image_ban">
+                <div class="grid__item">
+
+        <img src="{{ settings.boxing_top_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+        {%if  settings.boxing_head != blank %}
+        <h1>{{settings.boxing_head}}</h1>
+        {% endif %}
+      </div>  
+      </div>
+     </div>
+  </section>
+      {% endif %}
+  {% if settings.enable_boxingusp %}
+  <section id="home-ups-bar" class="hidden-xs  blk_cyb_ups">
+  <div class="page-width">
+    <div class="grid endofsale_ups">
+     <div class="">
+
+        <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+          <i class="fa {{ settings.bxicon1 }}"></i>
+         <div class="main-text__text">
+          <h4>{{ settings.bxtitle1 }}</h4>
+          <div class="description">
+            {{ settings.bxsubtitle1 }}
+          </div>
+          </div>
+        </div>
+      <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+          <i class="fa {{ settings.bxicon2 }}"></i>
+           <div class="main-text__text">
+        <h4>{{ settings.bxtitle2 }}</h4>
+          <div class="description">
+            {{ settings.bxsubtitle2 }}
+          </div>
+        </div>
+        </div>
+      <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+          <i class="fa {{ settings.bxicon3 }}"></i>
+          <div class="main-text__text">
+        <h4>{{ settings.bxtitle3 }}</h4>
+          <div class="description">
+            {{ settings.bxsubtitle3 }}
+          </div>
+        </div>
+        </div>
+      <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+          <i class="fa {{ settings.bxicon4 }}"></i>
+          <div class="main-text__text">
+        <h4>{{ settings.bxtitle4 }}</h4>
+          <div class="description">
+            {{ settings.bxsubtitle4 }}
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  {% endif %}
+
+  {% if settings.boxing_day_countdown %}
+    {% include 'countdown' %} 
+  {% endif %} 
+  
+  <div class="section page mob_top">
+    <div class="page-width">
+      <div class=" three_col">
+        <div class="">
+          <div class="content">
+            
+            {% if settings.bxenable_three_img %}
+            <div class="grid ">
+              <div class="grid__item medium-up--one-third small--one-third extra-small--one-whole ">
+                <a href="{{settings.bximage3_1_link}}">
+                  <img src="{{ settings.bximage3_1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>                           
+                
+              </div>
+             <div class="grid__item medium-up--one-third small--one-third extra-small--one-whole ">
+                <a href="{{settings.bximage3_2_link}}">
+                  <img src="{{ settings.bximage3_2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>                           
+                
+              </div>
+              <div class="grid__item medium-up--one-third small--one-third extra-small--one-whole">
+                <a href="{{settings.bximage3_3_link}}">
+                  <img src="{{ settings.bximage3_3 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>                           
+                
+              </div>
+            </div>
+            {% endif %}
+            {% if settings.bxenable_twoimg %}
+            <div class="grid ">
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole">
+                <a href="{{settings.bximage2_1_link}}">
+                  <img src="{{ settings.bximage2_1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>                           
+                
+              </div>
+             <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole">
+                <a href="{{settings.bximage2_2_link}}">
+                  <img src="{{ settings.bximage2_2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>                           
+                
+              </div>
+              
+            </div>
+            {% endif %}
+            
+            
+            
+            {% if settings.bxb_enable_gift %}
+            <div class="grid two-col">
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{settings.bxb_him_url}}">
+                  <img src="{{ settings.bxb_him_gift | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+               
+              </div> 
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{settings.bxb_her_url}}">
+                  <img src="{{ settings.bxb_her_gift | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+               
+              </div>
+            </div>
+            {% endif %}
+            
+           
+            {% if settings.bxb_enable_seller %}
+            <div class="grid two-col">
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{settings.bxb_him_sell_url}}">
+
+                  <img src="{{ settings.bxb_him_sell | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+               
+              </div>
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole text-center two_sec">
+                <a href="{{settings.bxb_her_sell_url}}">
+
+                  <img src="{{ settings.bxb_her_sell | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+              
+              </div>
+            </div>
+            {% endif %}
+             {% if settings.bxb_enable_pro1_banner %}
+            <div class="grid banner_gift dealsblackout">
+              <div class="grid__item medium-up--one-whole">
+                <a href="{{ settings.bxb_banner_url1}}">
+
+                  <img src="{{ settings.bxb_promo_banner1 | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+                {% if settings.dealspage_enable %}
+                  <div class="dealspage">
+                    <p class="blackout1">{{settings.blackoutdeals}}</p>
+                     <p class="blackout2">{{settings.getupoff}}</p>
+                     <p class="blackout3">{{settings.plusoff}}</p>
+                    <a class="shonowurl" href="{{settings.shopnowlink}}">{{settings.shopnownew}}</a>
+                  </div>
+                {% endif %}
+                </a>
+              </div>
+            </div>
+            {% endif %}
+         
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    {% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+</main>
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}

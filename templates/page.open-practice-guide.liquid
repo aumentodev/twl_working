@@ -1,0 +1,55 @@
+{% if settings.enable_openp %}
+<main class="{{page.title | handle }} merged-page-template">
+{% include 'breadcrumb' %}
+  
+{%if settings.enable_openp_banner_section %} 
+  <section id="page-header">
+    <div class="header-background" style="background-image: url('{{ settings.openp_banner_bgnrimage | img_url: 'master' }}')">
+      <div class="page-width">
+<!--             <h1>{{ page.title }}</h1> -->
+          <h1>  {{ settings.openp_banner_image_title }}</h1>
+      </div>
+    </div>
+  </section>
+{% endif %}
+<div class="page-width">
+          <div class="a-set-2018games-text-section">
+              <div class="content openpdf_sec">
+                 <a href="{{ settings.openp_uploadpdf }}" target="_blank" download>
+                    <img src="{{ settings.openp_pdfbtn_title | img_url: 'original' }}" alt="Open Practice Guide"  />
+                 </a>
+              </div>
+          </div>
+   </div> 
+  
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}
+  
+  {% endif %}
+  
+  <style>
+ .open-practice-guide .a-set-2018games-text-section {
+    margin: 50px 0 50px 0;
+   text-align: center;
+}
+.content.openpdf_sec a:hover {
+    opacity: 0.8;
+}
+.openpdf_sec img {
+    max-width: 480px;
+    width: 100%;
+}
+.content.openpdf_sec a{
+/*     color: #fff;
+    background: #000;
+    width: 100%;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    font-family: mst-m;
+    line-height: 42px;
+    padding: 12px 20px;
+    font-weight: 200;
+    text-transform: uppercase; */
+}
+  </style>

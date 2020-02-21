@@ -1,0 +1,133 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+
+{% paginate search.results by 10 %}
+<div class="search-page-template">
+<div class="page-width">
+  {% if search.results_count == 0 or search.performed == false %}
+    <div class="empty-page-content text-center">
+      <h1 class="h2 main-txt-title">{{ 'general.search.title' | t }}</h1>
+  {% else %}
+    <div class="section-header text-center">
+      <h1 class="h2 main-txt-title">{{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}</h1>
+  {% endif %}
+        <div class="grid">
+          <div class="grid__item medium-up--two-fifths medium-up--push-three-tenths">
+            <form action="/pages/search-results" method="get" role="search" class="search">
+              <div class="input-group">
+                <input type="search"
+                  id="SearchInput"
+                  class="input-group__field search__input"
+                  name="q"
+                  value="{{ search.terms | escape }}"
+                  placeholder="{{ 'general.search.placeholder' | t }}"
+                  aria-label="{{ 'general.search.placeholder' | t }}"
+                  autofocus>
+                <span class="input-group__btn">
+                  <button class="btn search__submit" type="submit">{{ 'general.search.submit' | t }}</button>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {% if search.performed and search.results_count == 0 %}
+          <hr class="hr--small hr--invisible">
+          <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+        {% endif %}
+  </div>
+</div>
+
+
+{% if search.performed %}
+  {% if search.results_count > 0 %}
+    <hr>
+  {% endif %}
+  <div class="page-width list-view-items" id="search-result-sec">
+    {% unless search.results_count == 0 %}<div class="search-link"><a href="{{ pageUrl }}">View All Results</a></div>{% endunless %}
+    {% for item in search.results %}
+      <a href="{{ item.url }}" class="list-view-item{% if forloop.index > 4 %} list-view-item-less{% else %} list-view-item-more{% endif %}">
+        {% if item.object_type == 'product' %}
+          {% include 'product-card-list', product: item %}
+        {% else %}
+          {% if item.image %}
+            <div class="list-view-item__image-column">
+              <div class="list-view-item__image-wrapper">
+                <img class="list-view-item__image" src="{{ item.image.src | img_url: '600x600' }}" alt="{{ item.image.alt | escape }}">
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="list-view-item__title-column">
+            <div class="list-view-item__title">{{ item.title }}</div>
+            <div class="">
+              {% if item.published_at %}{{ item.published_at | date: "%b %d, %Y" }} &#8212; {% endif %}
+              {{ item.content | strip_html | truncate: 200 }}
+            </div>
+          </div>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+	
+  <div class="search-result_lists">
+    
+    <div class="category-list">
+      <div class="title main-txt-title">categories</div>
+      {% assign inex = 0 %}
+      {% for collection in collections %}
+      	{% assign title = collection.title | handleize %}
+      	{% assign col_handle = collection.title | handleize | split: "-" %}
+      	{% assign size = search.terms | size %}
+      	{% assign key = search.terms | handleize  %}
+      	{% assign col = title | truncate: size, "" %}
+ 
+      	{% if search.terms contains ' ' %}
+      		{% if title contains key %}
+              {% if inex < 3 %}
+              <div class="cate-list serach-list">
+                <a href="{{ collection.url }}" class="main-txt-title" >{% if collection.image %}<img src="{{ collection.image | img_url: '100x100' }}">{% endif %}{{ collection.title }}</a>
+              </div>
+              {% assign inex = inex | plus: 1 %}
+              {% endif %}
+      		{% endif %}
+      	{% else %}
+          {% if key == col %}
+      		{% if inex < 3 %}
+            <div class="cate-list serach-list">
+              <a class="main-txt-title" href="{{ collection.url }}">{% if collection.image %}<img src="{{ collection.image | img_url: '100x100' }}">{% endif %}{{ collection.title }}</a>
+            </div>
+         	{% assign inex = inex | plus: 1 %}
+      		{% endif %}
+          {% endif %}
+      	{% endif %}
+      {% endfor %}
+    </div>
+    
+  	{% unless search.results_count == 0 %}
+     <div class="product-list">
+       <div class="title main-txt-title">products</div>
+    	{% assign index = 0 %}
+    	{% for item in search.results %}
+    		{% if item.object_type == 'product' and index < 5 %}
+              <div class="pro-list serach-list">
+                <a class="main-txt-title" href="{{ collection.url }}"><img src="{{ item.featured_image.src | img_url: '100x100' }}">{{ item.title }}</a>
+              </div>
+    			{% assign index = index | plus: 1 %}			
+    		{% endif %}
+    	{% endfor %}
+    </div>
+    {% endunless %}
+    
+    <div class="view-all"><a href="/search?q={{ search.terms }}" class="main-txt-title">Show all result</a></div>
+  </div>
+  
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+{% endif %}
+  </div>
+{% endpaginate %}
+
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}

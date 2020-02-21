@@ -1,0 +1,504 @@
+{% if settings.enable_rehband_page %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% comment %} {% include 'breadcrumb' %}{% endcomment %}
+  {% comment %}{% include 'page-header' %}{% endcomment %}
+  {% comment %}<div class="section page">
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item">
+        <div class="content">
+          {{ page.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>{% endcomment %}
+  <!-- a-set-custom  -->
+{%if  settings.enable_feel_banner_img_complex_rehband %}
+  
+<section id="page-header"> 
+  
+    <div class="header-background easter-bg tbpagebanner" style="background-image: url({{ settings.feel_banner_img_complex_rehband | img_url: 'master' }});">
+          <div class="page-width">
+          <div class="changable-image">
+            <div class="container">
+              <div class="grid">
+                <div class="grid__item">
+                    {%if  settings.enable_tb_bandhead_rehband %}
+
+                      <h1>{{ page.title }}</h1>
+                    {% endif %}
+                    {%if  settings.enable_rehband_bandhead_customhead %}
+
+                      <h1>{{ settings.enable_rehband_bandhead_customhead_text }}</h1>
+                    {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+  </section>
+
+  {% endif %}
+
+  {%if  settings.enable_video_complex_rehband %}
+
+  <div class="a-set-video-container">  
+    <div class="desktop">
+      <section id="page-header"> 
+          
+    <div class="header-background easter-bg rehband-headbott-text">
+          <div class="page-width">
+          <div class="changable-image">
+            <div class="container">
+              <div class="grid">
+                <div class="grid__item">
+<!--       <img src="{{'compex_bottom_image.jpg' | asset_url  }}"> -->
+          {%if  settings.enable_rehband_bandhead_promocheck %}
+                <h1>{{ settings.enable_rehband_bandhead_customhead_textpromo }}</h1>
+          {% endif %}
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </section> 
+    </div>
+    
+    {% comment %}
+    <video autoplay loop id="a-set-myVideo" controls>
+      <source src="{{ settings.video_link_complex_rehband }}" type="video/mp4">
+      <source src="{{ settings.video_link_complex_rehband }}" type="video/ogg">      
+      <div class="content">
+        <button id="a-set-myBtn" onclick="a-set-myFunction()">Pause</button>
+      </div>
+    </video>
+    {% endcomment %}  
+    <div class="a-set-banner-below-img-mob">
+      <div class="mobile">
+<!--         <div class="container">
+          <h2 class="electric-mus">Benefit of Electric Muscle Stim</h2>
+          <div class="a-set-usp col-30 col-28">
+            <img src="{{'compex1.png' | asset_url  }}">
+          </div>
+          <div class="a-set-usp col-30 col-26">
+            <img src="{{'compex2.png' | asset_url  }}">
+          </div>
+          <div class="a-set-usp col-20 col-23 col-new1">
+            <img src="{{'compex3.png' | asset_url  }}">
+          </div>
+          <div class="a-set-usp col-20 col-23 col-new2">
+            <img src="{{'compex4.png' | asset_url  }}">
+          </div>
+        </div> -->
+<!--         <img src="{{'compex_bottom_image_mobile.jpg' | asset_url  }}"> -->
+         <img src="{{ settings.feel_banner_img_complex_rehband_new_mobile | img_url: 'master' }}"/>
+      </div>
+    </div>
+  </div>
+  
+  {% endif %}
+  {%if  settings.enable_video_rehband %}
+
+
+  {% endif %}
+  {% comment %}{%if  settings.enable_shop_collection_heading_complex_rehband %}
+  <div class="a-set-pagecollection">
+    <div class="section page">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="content">
+              <h1>{{ settings.a_set_heading1_complex_rehband }}</h1>
+              <a href="{{ settings.link_complex_rehband }}">{{ settings.a_set_shop_collection_complex_rehband }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+  {% endif %}{% endcomment %}  
+
+  {%if  settings.enable_shop_top_compex_rehband %}
+  <div class="section page">
+    <div class="page-width">
+      <div class="content">
+
+        <div class="text-center new-division"> 
+          <h1 class="">{{ settings.top_compex_rehband }}</h1>
+
+        </div>
+        <div class="stance-view-all-button top-compex text-center">    
+          <a href="{{ settings.top_compex_link_rehband }}">{{ settings.top_compex_btn_rehband }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if settings.rehband_countdown %}
+    {% include 'countdown' %} 
+  {% endif %} 
+
+  {% if settings.enable_stance_col_complex_rehband %}
+  <div class="11 a-set-first-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %} 
+    {% for product in collections[settings.stance_coll_complex_rehband].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}   
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+        <div class="grid ">
+          <div class="grid__item">
+            <div class="division-wrap">
+              <h1 class="division-title">
+                {{ settings.stance_coll_heading_complex_rehband }}
+              </h1>
+            </div>
+          </div>
+        </div>
+      
+        
+          <div class="{% if settings.col_slider_one_enable_rehband %}a-set-collectionprod-swiper{%else%}a-set-collectionprod grid grid--uniform{% endif %}">
+            <div class="{% if settings.col_slider_one_enable_rehband %}swiper-container{% endif %} slider-carousel-wrap">
+<!--             <div class="swiper-container"> -->
+               <div class="{% if settings.col_slider_one_enable_rehband %}swiper-wrapper{% endif %} collection-items-holder hot-deals auto-load-col center_reviews">
+<!--               <ul class="swiper-wrapper center_reviews"> -->
+                       <div class="row ">
+               {% for product in collections[settings.stance_coll_complex_rehband].products %}
+                <div class="{% if settings.col_slider_one_enable_rehband %}swiper-slide {%else%}grid__item{% endif %}  small--one-half medium-up--one-quarter col-list">
+                  {% include 'a-product-card-grid-2' %}
+                </div>
+                
+                {% endfor %}
+                 </div>
+              </div>
+             {% if settings.col_slider_one_enable_rehband %} <!-- Add Arrows -->
+     <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+    <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+             {% comment %} {% else %}
+              <div class="AjaxinatePagination text-center">
+                 <div class="blog-view-all">
+                  {% if paginate.next %}
+                    <a class="ld ld-ring ld-spin" href="{{ paginate.next.url }}"></a>
+                  {% endif %}
+                 </div>
+                </div>{% endcomment %}
+              
+              {% endif %}
+              
+              </div>
+<!--             <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div> -->
+            {% if settings.top_compex_link11_rehband != blank %}
+              <div class="stance-view-all-button text-center">
+                <a href="{{ settings.top_compex_link11_rehband }}">{{ settings.stance_view_all_buy_complex11_rehband }}</a>
+              </div>
+              {% endif %}
+                         
+          </div>
+        
+        
+      </div>
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  
+
+  
+  {% if settings.enable_stance_performance_complex_rehband %}
+  <div class="stance-feature-block-container">
+    <div class="stance-content-block">
+      <div> 
+        {% if settings.icon1_compex_rehband != blank  %}       
+        <img src="{{ settings.icon1_compex_rehband | img_url: 'original' }}" alt="block_img" class="icon-img" />
+        {% endif %}
+
+      </div>
+      <div class="content">
+
+        <h2>{{ settings.stance_block_heading1_complex_rehband }}</h2>
+        <p>{{ settings.stance_block_desc1_complex_rehband }}</p>
+        <a href="{{ settings.stance_block_button1link_complex_rehband }}">{{ settings.stance_block_button1_complex_rehband }}</a>
+      </div>
+    </div>       
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img1_complex_rehband | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_individually_complex_rehband %}
+  <div class="stance-feature-block-container individually-desktop">
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img2_complex_rehband | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+    <div class="stance-content-block">
+      <div>
+         {% if settings.icon2_compex_rehband != blank  %}  
+        <img src="{{ settings.icon2_compex_rehband | img_url: 'original' }}" alt="block_img" class="icon-img" />
+        {% endif %}
+      </div>
+      <div class="content">
+        <h2>{{ settings.stance_block_heading2_complex_rehband }}</h2>
+        <p>{{ settings.stance_block_desc2_complex_rehband }}</p>
+        <a href="{{ settings.stance_block_button2link_complex_rehband }}">{{ settings.stance_block_button2_complex_rehband }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="stance-feature-block-container individually-mobile">         
+    <div class="stance-content-block">
+       {% if settings.icon2_compex_rehband != blank  %}  
+      <div> <img src="{{ settings.icon2_compex_rehband | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+        {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading2_complex_rehband }}</h2>
+        <p>{{ settings.stance_block_desc2_complex_rehband }}</p>
+        <a href="{{ settings.stance_block_button2link_complex_rehband }}">{{ settings.stance_block_button2_complex_rehband }}</a>
+      </div>
+    </div>
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img2_complex_rehband | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+  {% if settings.enable_stance_maximum_complex_rehband %}
+  <div class="stance-feature-block-container">
+    <div class="stance-content-block">
+        {% if settings.icon3_compex_rehband != blank  %}  
+      <div> <img src="{{ settings.icon3_compex_rehband | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+      {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading3_complex_rehband }}</h2>
+        <p>{{ settings.stance_block_desc3_complex_rehband }}</p>
+        <a href="{{ settings.stance_block_button3link_complex_rehband }}">{{ settings.stance_block_button3_complex_rehband }}</a>
+      </div>
+    </div>       
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img3_complex_rehband | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+
+  {% if settings.enable_stance_individually_complex_rehband %}
+  <div class="stance-feature-block-container individually-desktop">
+    
+    <div class="stance-content-block">
+      {% if settings.icon4_compex_rehband != blank  %}  
+      <div> <img src="{{ settings.icon4_compex_rehband | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+       {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading4n_complex_rehband }}</h2>
+        <p>{{ settings.stance_block_desc4n_complex_rehband }}</p>
+        <a href="{{ settings.stance_block_button4nlink_complex_rehband }}">{{ settings.stance_block_button4n_complex_rehband }}</a>
+      </div>
+    </div>  
+   
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img4n_complex_rehband | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>   
+    
+  </div>
+  <div class="stance-feature-block-container individually-mobile">         
+    <div class="stance-content-block">
+      {% if settings.icon4_compex_rehband != blank  %}  
+      <div> <img src="{{ settings.icon4_compex_rehband | img_url: 'original' }}" alt="block_img" class="icon-img" /></div>
+       {% endif %}
+      <div class="content">
+        <h2>{{ settings.stance_block_heading4n_complex_rehband }}</h2>
+        <p>{{ settings.stance_block_desc4n_complex_rehband }}</p>
+        <a href="{{ settings.stance_block_button4nlink_complex_rehband }}">{{ settings.stance_block_button4n_complex_rehband }}</a>
+      </div>
+    </div>
+    <div class="stance-feature-image-block">
+      <img src="{{ settings.stance_block_img4n_complex_rehband | img_url: 'original' }}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  {% endif %}
+  
+  
+  
+  {% if settings.enable_a_set_boxingusp_complex_rehband %}
+   {% section 'main-bar' %}
+  {% endif %}
+  
+<!--  ----------------------------------commented code below----------------------------------------  -->
+  
+  {%comment%}
+  
+  
+
+  {% if settings.enable_a_set_boxingusp_complex_rehband %}
+  <section id="home-ups-bar" class="hidden-xs  blk_cyb_ups">
+    <div class="page-width">
+      <div class="grid">
+        <div class="a-set-footer-usp">
+
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon1_complex_rehband }}"></i>
+            <h4>{{ settings.a_set_bxtitle1_complex_rehband }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle1_complex_rehband }}
+            </div>
+          </div>
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon2_complex_rehband }}"></i>
+            <h4>{{ settings.a_set_bxtitle2_complex_rehband }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle2_complex_rehband }}
+            </div>
+          </div>
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon3_complex_rehband }}"></i>
+            <h4>{{ settings.a_set_bxtitle3_complex_rehband }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle3_complex_rehband }}
+            </div>
+          </div>
+          <div class="grid__item medium-up--one-quarter small--one-half extra-small--one-whole icon-wrap-grid-fa">
+            <i class="fa {{ settings.a_set_bxicon4_complex_rehband }}"></i>
+            <h4>{{ settings.a_set_bxtitle4_complex_rehband }}</h4>
+            <div class="description">
+              {{ settings.a_set_bxsubtitle4_complex_rehband }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  <iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+   {
+        "type": "text",
+        "id": "a_set_bxicon1_complex_rehband",
+        "label": "Icon 1"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle1_complex_rehband",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle1_complex_rehband",
+        "label": "Subtitle 1"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxicon2_complex_rehband",
+        "label": "Icon 2"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle2_complex_rehband",
+        "label": "Title 2"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle2_complex_rehband",
+        "label": "Subtitle 2"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxicon3_complex_rehband",
+        "label": "Icon 3"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle3_complex_rehband",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle3_complex_rehband",
+        "label": "Subtitle 3"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxicon4_complex_rehband",
+        "label": "Icon 4"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxtitle4_complex_rehband",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "a_set_bxsubtitle4_complex_rehband",
+        "label": "Subtitle 4"
+      }
+  
+  {%endcomment%}
+  
+  
+  <!-- a-set-custom-end  -->
+</main>
+{% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+{% endif %}
+<!-- <script>
+  var video = document.getElementById("a-set-myVideo");
+  var btn = document.getElementById("a-set-myBtn");
+
+  function myFunction() {
+    if (video.paused) {
+      video.play();
+      btn.innerHTML = "Pause";
+    } else {
+      video.pause();
+      btn.innerHTML = "Play";
+    }
+  }
+  
+  var swiper = new Swiper('.swiper-container', {
+     slidesPerView: 4,
+     spaceBetween: 10,
+    
+     loop: true,
+     loopFillGroupWithBlank: true,
+    
+     navigation: {
+       nextEl: '.swiper-button-next',
+       prevEl: '.swiper-button-prev',
+     },
+     breakpoints: {
+       989: {
+         slidesPerView: 3
+       },
+       749: {
+         slidesPerView: 2
+       },
+       480: {
+         slidesPerView: 1
+         
+       }
+     }
+   });
+  
+</script> -->
+
+
+
+
+
+
+
+

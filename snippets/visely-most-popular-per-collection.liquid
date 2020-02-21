@@ -1,0 +1,16 @@
+{%unless collectionIds%} 
+  {% assign collectionIds = '' %}
+  {% if product %}
+   	{% capture collectionIds %}{{ product.collections | map: 'id' | join: "," }}{% endcapture %}
+  {% elsif collection %}
+    {% capture collectionIds %}{{ collection.id }}{% endcapture %}  
+  {% endif%}  
+{% endunless %}
+<div class="visely-widget-container page-width">
+  <h3 class="visely-recommendations-title" data-visely-widget-title-element="MOST_POPULAR_PER_COLLECTION"></h3>
+  <div class="most-popular-per-collection visely-widget-wrapper" data-visely-recommendation-type="MOST_POPULAR_PER_COLLECTION" data-visely-most-popular-collection="{{collectionIds}}">
+    {% include 'visely-recommendation-item-template' %}
+    <div class="visely-pagination" data-visely-pagination></div>
+  </div>
+</div>
+<script>document.dispatchEvent( new CustomEvent('viselyWidgetInit', {detail: { widgetType: 'MOST_POPULAR_PER_COLLECTION' }}));</script>

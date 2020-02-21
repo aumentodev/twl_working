@@ -1,0 +1,105 @@
+<div class="page-width rich-text head-txt {{section.settings.main_class_name}} test">
+  <div class="grid">
+    <div class="grid__item {% unless section.settings.full_width %} medium-up--two-thirds medium-up--push-one-sixth{% endunless %}">
+      {% if section.settings.section_title != blank %}
+        <div class="rich-text__heading--{{ section.settings.text_size }} text-center">
+          <h2 class="h3">{{ section.settings.section_title | escape }}</h2>
+        </div>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="rich-text__text--{{ section.settings.text_size }} rte-setting text-center desktop">{{ section.settings.text }}</div>
+      <div class="mobile-rich_text mobile">
+      	<div class="rich-text__text--small rte-setting text-center"><p>{{ section.settings.mobile_heading }}</p></div>
+        <ul class="story-list">
+          {{ section.settings.mobile_content }}
+        </ul>
+      </div>
+      {% endif %}
+      {% if section.settings.enable_btn_our_story == true %}
+       	<div class="rich-btn-view"><a href="{{section.settings.btn_our_story_link}}" class="btn btn--primary rich-btn">{{section.settings.btn_our_story_text}}</a></div>   
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Rich text",
+    "class": "index-section",
+    "settings": [
+	  {
+        "type": "text",
+        "id": "main_class_name",
+        "label": "Main Class Name"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Wide display"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Heading",
+        "default": "Talk about your brand"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "label": "Size",
+        "default": "medium",
+        "options": [
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          }
+        ]
+      },
+	  {
+        "type": "checkbox",
+        "id": "enable_btn_our_story",
+        "label": "Enable our story button"
+      },
+      {
+        "type": "text",
+        "id": "btn_our_story_text",
+        "label": "Our story button text"
+      },
+      {
+        "type": "text",
+        "id": "btn_our_story_link",
+        "label": "Our story button link"
+      },
+	  {
+        "type": "text",
+        "id": "mobile_heading",
+        "label": "Mobile our story heading"
+      },
+	  {
+        "type": "textarea",
+        "id": "mobile_content",
+        "label": "Mobile our story content"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich text",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

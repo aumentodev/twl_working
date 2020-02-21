@@ -1,0 +1,8 @@
+<div class="visely-widget-container page-width">
+  <h3 class="visely-recommendations-title" data-visely-widget-title-element="NEW_ARRIVALS"></h3>
+  <div class="new-arrivals visely-widget-wrapper" data-visely-recommendation-type="NEW_ARRIVALS">
+    {% include 'visely-recommendation-item-template' %}
+    <div class="visely-pagination" data-visely-pagination></div>
+  </div>
+</div>
+<script>document.dispatchEvent( new CustomEvent('viselyWidgetInit', {detail: { widgetType: 'NEW_ARRIVALS' }}));</script>

@@ -1,0 +1,109 @@
+<div class="page-width">
+
+  <div class="header-section"><a href="/account">< back to account</a></div>
+
+  <div class="body-section">
+    {% unless section.settings.title == blank %}
+      <h2 class="title text-center">{{ section.settings.title }}</h2> 
+    {% endunless %}
+
+    <div class="oreturn-logo-sec">
+
+      {% if section.blocks.size > 0 %}
+        <div class="account-bar">
+          {% assign index = 0 %}
+          {% for block in section.blocks %}
+          {% assign index = index | plus: 1 %}
+            <div class="account-bar__item account-bar__item-{{ forloop.index }}" data="{{ forloop.index }}">
+     
+
+              	<div class="sub-account">
+        		      {% if block.settings.image != blank %}
+        		        {{ block.settings.image | img_url: '400x400' | img_tag: block.settings.image.alt, 'logo-bar__image' }}
+        		      {% else %}
+        		        {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+        		      {% endif %}
+        		  	</div>
+
+              	<div class="sub-content">
+              		{% unless block.settings.title == blank %}
+              			<p class="first">{{ block.settings.title }}</p>
+          			{% endunless %}
+              		{% unless block.settings.subtitle == blank %}
+              			<p class="second">{{ block.settings.subtitle }}</p>
+          			{% endunless %}
+              	</div>
+
+
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <div style="clear: both;"></div>
+    </div>
+
+    <div class="oreturn-description">
+      {% unless section.settings.content == blank %}
+        {{ section.settings.content }}
+      {% endunless %}
+    </div>
+
+    <div class="form-return">
+      {% unless section.settings.form_title == blank %}
+        <p class="order-title text-center">{{ section.settings.form_title }}</p> 
+      {% endunless %}
+      <div class="app-returnmagic">
+        <iframe src="https://services.alveo.io/portal/?&amp;shop=thewodlife.myshopify.com&amp;thewodlife.com.au/a/returns" width="100%" marginheight="0" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Order Return list",
+    "class": "oreturn-area",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "NEED TO RETURN SOMETHING? TOO EASY!"
+      },
+      {
+        "type": "textarea",
+        "id": "content",
+        "label": "Contents"
+      },
+      {
+        "type": "text",
+        "id": "form_title",
+        "label": "Form title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_image",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Content"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

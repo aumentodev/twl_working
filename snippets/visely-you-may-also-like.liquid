@@ -1,0 +1,8 @@
+<div class="visely-widget-container page-width">
+  <h3 class="visely-recommendations-title" data-visely-widget-title-element="YOU_MAY_ALSO_LIKE"></h3>
+  <div class="you-may-also-like visely-widget-wrapper" data-visely-recommendation-type="YOU_MAY_ALSO_LIKE" data-visely-you-may-also-like="{{product.id}}">
+    {% include 'visely-recommendation-item-template' %}
+    <div class="visely-pagination" data-visely-pagination></div>
+  </div>
+</div>
+<script>document.dispatchEvent( new CustomEvent('viselyWidgetInit', {detail: { widgetType: 'YOU_MAY_ALSO_LIKE' }}));</script>

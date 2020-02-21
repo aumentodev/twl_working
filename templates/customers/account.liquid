@@ -1,0 +1,194 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+
+<div class="help-page-template">
+  <div class="page-width-custom">
+    <ul class="breadcrumbs main-bold-title">
+      <li><a href="/">Home</a></li> / <li>account</li>
+    </ul>
+  </div>
+  <div class="left-sidebar left-sidebar-desktop">
+    <div class="help-menu-list">
+      <ul class="menu-list">
+        {% for link in linklists[settings.account_menu].links %}
+          <li class="pare-menu {% if link.handle == 'need-help' %}end-menu{% endif %}">
+
+            <h3 class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></h3>
+
+            {% if link.handle == 'need-help' %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <p>If you have any questions or want <br />
+                        to reach out to the customer <br />
+                        service team click <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </p>  
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+                  {% if childlink.title contains "Personal Data" %}
+                	<li class="sub-list">
+                        <a title="{{ 'customer.login.forgot_password' | t }}" href="/account?view=reset" attrid="RecoverPassword">Update or Change Password</a>
+                    </li>
+ 				  {% endif %}               
+                {% endfor %}
+
+              </ul>
+            
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="right-sidebar account-page-template account-template-sec account-right-sec">
+    <div class="content">
+      {% if pageUrl contains '/account?view=reset' %}
+      <div class="account-reset-password">
+        {% form 'reset_customer_password' %}
+
+          <h2 class="title">{{ 'customer.reset_password.title' | t }}</h2>
+
+          <p>{{ 'customer.reset_password.subtext' | t: email: email }} {{ customer.name }}</p>
+
+          {{ form.errors | default_errors }}
+
+          <label for="ResetPassword">{{ 'customer.reset_password.password' | t }}</label>
+          <input type="password" value="" name="customer[password]" id="ResetPassword" class="{% if form.errors contains 'password' %} input--error{% endif %}">
+
+          <label for="PasswordConfirmation">{{ 'customer.reset_password.password_confirm' | t }}</label>
+          <input type="password" value="" name="customer[password_confirmation]" id="PasswordConfirmation" class="{% if form.errors contains 'password_confirmation' %} input--error{% endif %}">
+
+          <input type="submit" class="btn text-center" value="{{ 'customer.reset_password.submit' | t }}">
+        {% endform %}
+      </div>
+      {% else %}
+      <div class="header-sec">
+        <h2 class="title">{{ 'customer.account.title' | t }}</h2>
+        <div class="log-out-btn"><span>{{ customer.name }}</span>({{ 'layout.customer.log_out' | t | customer_logout_link }})</div>
+      </div>
+      {% section 'account-logo' %}
+      <div class="order-table select-list-8">
+        <h2>{{ 'customer.orders.title' | t }}</h2>
+
+        {% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr>
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">
+                      <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small">{{ order.name }}</a>
+                    </td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+          {% else %}
+
+            <p>{{ 'customer.orders.none' | t }}</p>
+
+          {% endif %}
+          {% if paginate.pages > 1 %}
+            {% include 'pagination' %}
+          {% endif %}
+        {% endpaginate %}
+      </div>
+      <div class="address-table  select-list-3">
+        <h2>{{ 'customer.account.details' | t }} <br><a href="/account?view=edit" style="font-size: 14px;">{{ shop.metafields.locales.edit }}</a></h2>
+
+        {{ customer.default_address | format_address }}
+
+        <p><a href="/account/addresses" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="left-sidebar left-sidebar-mobile">
+    <div class="help-menu-list">
+      <ul class="menu-list">
+        {% for link in linklists[settings.account_menu].links %}
+          <li class="pare-menu {% if link.handle == 'need-help' %}end-menu{% endif %}">
+
+            <h3 class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></h3>
+
+            {% if link.handle == 'need-help' %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <p>If you have any questions or want <br />
+                        to reach out to the customer <br />
+                        service team click <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </p>  
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+                {% endfor %}
+
+              </ul>
+            
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".account-logo-sec .account-bar__item").click(function(){
+      var ele = $(this).attr("data");
+      clickElement(ele);
+    });
+
+    $(".help-menu-list .sub-menus .sub-list").click(function(){
+      var ele = $(this).attr("data");
+      clickElement(ele);
+    });
+
+    function clickElement(ele) {
+
+      if(ele == '2') {
+        window.location.href = "/pages/order-status-tracking";
+      }
+
+      $(".account-logo-sec .active").removeClass("active");
+      $(".account-logo-sec .account-bar__item-" + ele).addClass("active");
+      $(".help-menu-list .sub-menus .active").removeClass("active");
+      $(".help-menu-list .sub-menus .sub-list-" + ele).addClass("active");
+      $(".account-right-sec .active-panel").removeClass("active-panel");
+      $(".account-right-sec .select-list-" + ele).addClass("active-panel");
+    }
+  })
+</script>

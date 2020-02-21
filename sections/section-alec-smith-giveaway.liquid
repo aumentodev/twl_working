@@ -1,0 +1,553 @@
+{% include 'breadcrumb' %}
+{% if section.settings.show_page %}
+<div class="page-default-template alec_smith">
+   <div class="order-shipping sec-countdown" style="display:none;">
+      {% if section.settings.show_announcement_bar %}
+      {% include 'day-countdown' %}
+      <p>{{section.settings.announce_text_prev}} 
+        <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+      {{section.settings.announce_text_next}}
+      </p>      
+      {% endif %}
+   </div> 	
+   <div class="page-width">
+      	<div class="rte">
+        	{{ page.content }}
+      	</div>
+  	</div>  
+    {% if section.settings.banner_type == "boxed" %}  
+      <div class="blue-wrapper home-banner">
+        <div class="box_inner">
+          <div class="text-view text-center">
+             <div class="section-header text-center">
+               <h1>{{section.settings.banner_heading}}</h1>
+             </div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <section id="page-header">
+        <div class="header-background compexpagebn desktop-image" >
+          {% unless section.settings.desktop_image == "" %}
+          <a href="{{section.settings.banner_url}}">
+            <img src="{{section.settings.desktop_image | img_url : "master"}}" width="100%">
+          </a>
+          {% endunless %}
+        </div>
+        <div class="header-background compexpagebn mobile-image">
+          {% unless section.settings.mobile_image == "" %}
+          <a href="{{section.settings.banner_link}}">
+             <img src="{{section.settings.mobile_image | img_url : "master"}}" width="100%"> 
+          </a>
+          {% endunless %}
+        </div>   
+      </section>
+    {% endif %}
+  
+  	<div class="page-width">
+      <section class="page_content section_width">
+        <div class="video_box video_new">
+          <div class="video">
+            <iframe class="myVideo" width="100%" height="100%" src="{{section.settings.video_url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+          </div>
+        </div>
+        <div class="win_part">
+          <div class="klaviyo-form-P6Ykh6 alec_klaviyo_form"></div>
+        </div>
+      </section>
+     </div>
+  	 <div class="alec_collection">
+     	<div class="product-slider slider-launch">
+        {% if section.settings.prod_sec_title != blank %}
+          <div class="section-header text-center">
+            <h2 class="main-txt-title title_alec">{{ section.settings.prod_sec_title | escape }}</h2>
+            <p class="get_text">{{section.settings.prod_sec_desc | escape }}</p>
+          </div>
+        {% endif %}
+        {%- assign collection = collections[section.settings.second_collection] -%}
+        {% case section.settings.first_grid %}
+          {% when 2 %}
+            {%- assign max_height = 530 -%}
+            {%- assign grid_item_width = 'medium-up--one-half' -%}
+          {% when 3 %}
+            {%- assign max_height = 345 -%}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+          {% when 4 %}
+            {%- assign max_height = 250 -%}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+          {% when 5 %}
+            {%- assign max_height = 195 -%}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+        {% endcase %}
+        {%- assign product_limit = section.settings.first_grid | times: section.settings.first_rows -%}
+        {% assign num_limit = section.settings.first_grid %}
+        <div class="product-list-slider product-list-slider-{{ section.id }}">
+          {% for product in collection.products limit: product_limit %}
+            <div class="product-list">
+              {% include 'product-card-grid-col-new', max_height: max_height %}
+            </div>
+          {% else %}
+            {% for i in (1..product_limit) %}
+              <div class="product-list">
+                <div class="grid-view-item">
+                  <a href="#" class="grid-view-item__link">
+                    <div class="grid-view-item__image">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    <div class="h4 grid-view-item__title text-center main-ctn-title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="grid-view-item__meta text-center main-ctn-title">
+                      {% include 'product-price' %}
+                    </div>
+                    <div class="star-rating star-rating-{{ settings.star_color }}">{% include 'okendo-reviews-product-rating-summary' %}</div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          {% endfor %}
+        </div>
+     </div>
+  	 </div>
+  	 <div class="page-width">
+      <section class="content_part">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="head_part">
+              <h2>{{section.settings.section_title}}</h2>
+              <p>{{section.settings.section_description}}</p>
+            </div>
+            <div class="img_part">
+              <div class="left_img wrap_img">
+                <div class="left_top">
+                  <img class="img_alec" src="{{ section.settings.first_image_desktop  | img_url: 'master' }}">
+                </div>
+                <div class="left_bottom">
+                  <img class="img_alec" src="{{ section.settings.second_image_desktop | img_url: 'master' }}">
+                </div>
+              </div>
+              <div class="right_img wrap_img">
+                <div class="right_top">
+                  <img class="img_alec" src="{{ section.settings.third_image_desktop | img_url: 'master' }}">
+                </div>
+                <div class="right_bottom">
+                  <img class="img_alec" src="{{ section.settings.fourth_image_desktop | img_url: 'master' }}">
+                </div>
+              </div>
+            </div>
+            <a class="shop_link" href="{{section.settings.collection_btn_link}}">{{section.settings.collection_btn_label}}</a>
+          </div>
+        </div>
+      </section>
+  	</div>
+    <div class="review_part">
+      <div class="review_img_wrap">
+      	<img src="{{ 'review_bg.jpg' | asset_img_url: 'master' }}">
+      </div>
+      <div class="page-width img_index">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="star_part">
+              <ul>
+                {% for i in (1..section.settings.start_rating) %}
+                <li>
+                  <a href="#"><img src="{{ 'star.png' | asset_img_url: 'master' }}"></a>
+                </li>
+                {% endfor %}
+              </ul>
+              <p>{{section.settings.auth_info}}</p>
+              <h3>{{section.settings.auth_title}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="alec_collection shop_alec">
+     	<div class="product-slider slider-launch">
+        {% if section.settings.prod_prev_title != blank %}
+          <div class="section-header text-center">
+            <h2 class="main-txt-title title_alec">{{ section.settings.prod_prev_title | escape }} <span>X</span> {{ section.settings.prod_next_title | escape }}</h2>
+            <p class="get_text">{{section.settings.prod_secnd_desc | escape }}</p>
+          </div>
+        {% endif %}
+        {%- assign collection = collections[section.settings.first_collection] -%}
+        {% case section.settings.first_grid %}
+          {% when 2 %}
+            {%- assign max_height = 530 -%}
+            {%- assign grid_item_width = 'medium-up--one-half' -%}
+          {% when 3 %}
+            {%- assign max_height = 345 -%}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+          {% when 4 %}
+            {%- assign max_height = 250 -%}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+          {% when 5 %}
+            {%- assign max_height = 195 -%}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+        {% endcase %}
+
+        {%- assign product_limit = section.settings.first_grid | times: section.settings.first_rows -%}
+        {% assign num_limit = section.settings.first_grid %}
+        <div class="product-list-slider product-list-slider-{{ section.id }}">
+          {% for product in collection.products limit: product_limit %}
+            <div class="product-list">
+              {% include 'alec-smith-product-card-grid', max_height: max_height %}
+            </div>
+          {% else %}
+            {% for i in (1..product_limit) %}
+              <div class="product-list">
+                <div class="grid-view-item">
+                  <a href="#" class="grid-view-item__link">
+                    <div class="grid-view-item__image">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    <div class="h4 grid-view-item__title text-center main-ctn-title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="grid-view-item__meta text-center main-ctn-title">
+                      {% include 'product-price' %}
+                    </div>
+                    <div class="star-rating star-rating-{{ settings.star_color }}">{% include 'okendo-reviews-product-rating-summary' %}</div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          {% endfor %}
+        </div>
+     </div>
+  	 </div>
+</div>
+{% endif %}
+<script>
+  $(document).ready(function(){
+
+    var desk_num = {{ num_limit }};
+
+    if($(window).width() < 450){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+         arrows: false,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }else if($(window).width() < 789){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+         arrows: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }else if($(window).width() < 950){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+         arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }else {
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+         arrows: false,
+          prevArrow: '<div class="slick-prev"></div>',
+        nextArrow: '<div class="slick-next"></div>',
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: false
+      });
+    }
+  })
+</script>
+<style>
+  .product-mains .slick-slider { width: 1px; min-width: 100%; width: 100%; }
+</style>
+{% schema %}
+  {
+	"name": "Alec smith giveaway",
+	"class": "index-section product-slider-sec",
+    "settings": [
+	  {
+        "type": "checkbox",
+        "id": "show_page",
+        "label": "Publish page",
+        "default": false
+      },
+	  {
+		"type": "header",
+		"content": "Announcement Text"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Show announcement bar",
+        "default": true
+      },
+	  {
+		"type": "text",
+		"id": "banner_heading",
+		"label": "Banner Heading"
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_prev",
+		"label": "Announcement previous text"
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_next",
+		"label": "Announcement next text"
+      },
+	  {
+        "type": "text",
+        "id": "datetime",
+        "label": "End date",
+        "info": "String formatted as following:: DD-MM-YYYY hh:mm:ss"
+      },
+	  {
+		"type": "header",
+		"content": "Banner"
+      },
+	  {
+         "type":      "radio",
+         "id":        "banner_type",
+         "label":     "Banner Type",
+         "options": [
+           { "value": "boxed", "label": "Boxed layout" },
+           { "value": "image", "label": "Image layout" }
+         ],
+         "default":   "boxed",
+         "info":      "Display banner image having text or boxed layout "
+      },
+	  {
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile Banner image"
+      },
+	  {
+		"type": "url",
+		"id": "banner_link",
+		"label": "Banner Link"
+      },
+	  {
+		"type": "url",
+		"id": "video_url",
+		"label": "Youtube video URL"
+      },
+	  {
+		"type": "text",
+		"id": "prod_sec_title",
+		"label": "Product First Section Title"
+      },
+	  {
+		"type": "textarea",
+		"id": "prod_sec_desc",
+		"label": "Product First Section Description"
+      },
+	  {
+		"type": "text",
+		"id": "section_title",
+		"label": "Section Title"
+      },
+	  {
+		"type": "textarea",
+		"id": "section_description",
+		"label": "Section Description"
+      },
+	  {
+		"type": "text",
+		"id": "collection_btn_label",
+		"label": "Collection Button Label"
+      },
+	  {
+        "type": "image_picker",
+		"id": "first_image_desktop",
+        "label": "First Image Desktop"
+      },
+      {
+        "type": "image_picker",
+		"id": "first_image_mobile",
+        "label": "First Mobile Image"
+      },
+      {
+        "type": "url",
+		"id": "first_image_link",
+        "label": "Link"
+      },
+	  {
+        "type": "image_picker",
+		"id": "second_image_desktop",
+        "label": "Second Image Desktop"
+      },
+      {
+        "type": "image_picker",
+		"id": "second_image_mobile",
+        "label": "Second Mobile Image"
+      },
+      {
+        "type": "url",
+		"id": "second_image_link",
+        "label": "Link"
+      },
+	  {
+        "type": "image_picker",
+		"id": "third_image_desktop",
+        "label": "Third Image Desktop"
+      },
+      {
+        "type": "image_picker",
+		"id": "third_image_mobile",
+        "label": "Third Mobile Image"
+      },
+      {
+        "type": "url",
+		"id": "third_image_link",
+        "label": "Link"
+      },
+	  {
+        "type": "image_picker",
+		"id": "fourth_image_desktop",
+        "label": "Fourth Image Desktop"
+      },
+      {
+        "type": "image_picker",
+		"id": "fourth_image_mobile",
+        "label": "Fourth Mobile Image"
+      },
+      {
+        "type": "url",
+		"id": "fourth_image_link",
+        "label": "Fourth Link"
+      },
+	  {
+		"type": "text",
+		"id": "author_name",
+		"label": "Author Name"
+      },
+	  {
+		"type": "text",
+		"id": "author_backimage",
+		"label": "Author background image"
+      },
+	  {
+		"type": "text",
+		"id": "author_desc",
+		"label": "Author description"
+      },
+      {
+        "id": "first_collection",
+        "type": "collection",
+        "label": "First Product Collection"
+      },
+      {
+        "type": "range",
+        "id": "first_grid",
+        "label": "First Products per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "first_rows",
+        "label": "First Product Rows",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      },
+	  {
+		"type": "text",
+		"id": "prod_prev_title",
+		"label": "Product Second Section Title"
+      },
+	  {
+		"type": "text",
+		"id": "prod_next_title",
+		"label": "Product innerTitle"
+      },	
+	  {
+		"type": "textarea",
+		"id": "prod_secnd_desc",
+		"label": "Product Second Section Description"
+      },
+	  {
+        "id": "second_collection",
+        "type": "collection",
+        "label": "Second Product Collection"
+      },
+	  {
+        "type": "select",
+        "id": "start_rating",
+        "label": "Heading base size",
+        "default": "5",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+		  {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+	  {
+		"type": "textarea",
+		"id": "auth_info",
+		"label": "Author Info"
+      },
+	  {
+		"type": "text",
+		"id": "auth_title",
+		"label": "Author Title"
+      },
+	  {
+		"type": "image_picker",
+		"id": "auth_desktop_image",
+		"label": "Author Desktop Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "auth_mobile_image",
+		"label": "Author Mobile Banner image"
+      }
+	],
+	"blocks": [
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+<style>
+  section#page-header .header-background.compexpagebn{height:auto;}
+</style>
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

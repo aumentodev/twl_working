@@ -1,0 +1,111 @@
+<style>
+ @media (max-width: 900px) { 
+  .bann_image {
+      position: relative;
+      background-image: url('{{ settings.daythree_banner | img_url: 'master' }}');
+      background-size: auto;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  section#page-header h1, .bann_image .bann_img-cont {   
+      -webkit-transform: none;
+      transform: none;
+      padding: 46px 0;
+      position: unset;
+  }
+  .bann_image img.about-image {
+      display: none;
+  }
+ }
+  
+</style>
+
+{% if settings.enable_banpage-three %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+<div class="bann_image overly">
+                  <img src="{{ settings.daythree_banner | img_url: 'master' }}" alt="About WODLife" class="about-image" />
+  <div class="bann_img-cont">
+  {%if  settings.enable_banheadd-three %}
+ <h2>{{page.title}}</h2>
+   <h3>{{ settings.bannerday_three_description }}</h3>
+          <div class="note">
+            {{ settings.bannerrday_three_note }}
+          </div>
+  
+  {% endif %}
+  </div>
+  </div>
+    {% if settings.day_three_deal != blank %}
+  <div class="section page email-txt">
+    <div class="page-width">
+      <div class="fd-email text-center deal_info">{{ settings.day_three_deal }}</div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if settings.day_3_countdown %}
+    {% include 'countdown' %} 
+  {% endif %}
+  
+  <div class="section page hot_deals_page">
+    <div class="page-width">
+     
+      <div class="grid">
+        <div class="col-md-12">
+          <div class="content text-center">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+   
+     
+       <div class="grid grid--uniform">
+    
+  <div class="collection-items-holder hot-deals">
+            <ul class="collection-items text-center">
+              <div class="row ">
+              {%  for product in collections[settings.daythree-deal-col].products  %}
+              <li class="grid__item {% if collections[settings.daythree-deal-col].all_products.count < 4 %}a-set-float-none{% endif %} small--one-half medium-up--one-quarter extrasmall">
+                {% include 'a-product-card-grid-2' %}
+              </li>
+              {% endfor %}
+              </div>
+            </ul>
+          {% comment %} <div class="AjaxinatePagination text-center">
+            <div class="blog-view-all">
+              {% if paginate.next %}
+              <a class="ld ld-ring ld-spin" href="{{ paginate.next.url }}"></a>
+              {% endif %}
+            </div>
+          </div> {% endcomment %}
+        </div>
+         {%comment%}  {% include 'pagination' %}{%endcomment%}
+
+      
+      </div>
+    </div>
+  </div>
+   {% include 'pointouts' %}
+  
+    {% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+</main>
+{% endif %}
+
+{% if settings.enable_banpage-three == blank %}
+<main class="{% if settings.enable_banpage-three == blank %}blank-page{% endif %}">
+  <div class="section">
+    <div class="page-width">
+      <div class="grid">
+        <div class="col-md-12 text-center">
+          {% include 'blank-content' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+ {% endif %}
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>

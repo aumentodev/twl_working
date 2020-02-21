@@ -1,0 +1,229 @@
+<div class="slider-cart" id="slider_cart-sec-custom" style="display: none;">
+  <div class="slider-top-section">
+    <a href="/cart" class="site-header__cart-custom">
+      <img data-src="{{ 'cart-draw.png' | asset_url }}" class="lazyload cart-icon">
+      <span class="visually-hidden">{{ 'layout.cart.title' | t }}</span>
+      <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+      {% if cart.item_count > 0 %}
+      <div id="CartCount" class="site-header__cart-count">
+        <span>{{ cart.item_count }}</span>
+        <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
+      </div>
+      {% endif %}
+    </a>
+    <a href="/cart" class="main-bold-title">your cart</a>
+    <div class="cart-slider-close"><img data-src="{{ 'close-black.png' | asset_url }}" class="lazyload"></div>
+  </div>
+  <div class="slider-panel-section">
+    <div class="slider-orders">
+      {% if cart.item_count > 0 %}
+      <form action="/cart" method="post" novalidate class="cart">
+        <div class="cart-items">
+          {% for item in cart.items %}
+          <div class="cart-item-list">
+            <div class="cart-item">
+              <a href="{{ item.url | within: collections.all }}">
+                <img class="cart__image" src="{{ item | img_url: '95x95', scale: 2 }}" alt="{{ item.title | escape }}">
+              </a>
+              <div class="cart-item__product">
+                <a href="{{ item.url }}" class="main-bold-title product-cart_title">
+                  {{ item.product.title | slice: 0, 60 }}
+                </a>
+                <div class="mini-cart__meta">
+                  {% unless item.variant.title contains 'Default' %}
+                  <div class="cart__meta-text main-txt-title">
+                    {% for option in item.product.options %}
+                    <span>{{ item.variant.options[forloop.index0] }}</span><span> | </span>
+                    {% endfor %}
+                  </div>
+                  {% endunless %}
+                  <span class="price main-txt-title"><span class="Bold-theme-hook-DO-NOT-DELETE bold_product_price" data-override-value-set="1" data-override-value="{{ item.price }}" style="display:none !important;"></span>{{ item.price | money }}</span>
+                </div>
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="btn btn--small btn--secondary cart__remove main-txt-title">{{ 'cart.general.remove' | t }}</a>
+              </div>
+              <div class="cart__product-quantity">
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="btn btn--small btn--secondary cart__remove medium-up--hide main-txt-title">{{ 'cart.general.remove' | t }}</a>
+                <div class="cart__qty">
+                  <div class="qty-display-sec">
+                    <div class="qty-sec min-btn qty-btn">-</div>
+                    <div class="qty-sec num-btn">{{ item.quantity }}</div>
+                    <div class="qty-sec plu-btn qty-btn">+</div>
+                  </div>
+                  <label for="updates_{{ item.key }}" class="cart__qty-label">{{ 'cart.label.quantity' | t }}</label>
+                  <input class="cart__qty-input main-txt-title" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="1" pattern="[0-9]*">
+                </div>
+                <input type="submit" name="update" class="btn btn--small cart__update medium-up--hide" value="{{ 'cart.general.update' | t }}">
+                <input type="submit" name="checkout" class="btn-checkout-slider main-bold-title" value="{{ 'cart.general.checkout' | t }}" style="display: none;">
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+  <div class="slider-footer-section active">
+    <div class="totals-sec">
+      <span class="cart__subtotal-title main-bold-title">subtotal</span>
+      <span class="cart__subtotal main-bold-title">{{ cart.total_price | money }}</span>
+    </div>
+
+    {% comment %} <div class="payment-icons">
+      <span class="text">Or 4 payments of $22.49 with <a href="#" >More</a></span><span class="after-pay"><a href="https://www.afterpay.com/en-AU/index"><img src="{{ 'after-pay1.png' | asset_url }}"></a></span><span class="zip-pay"><a href="https://zippay.com.au "><img src="{{ 'zip-pay.png' | asset_url }}"></a></span>
+    </div> {% endcomment %}
+    {% include 'product-afterpay' %}
+    <!-- Zip WIDGET -->
+      {%include 'zip-widget'%}
+      <style>
+        .shopify-zip-prod-widget > iframe {
+          height: 60px!important;
+          max-width: min-content!important;
+        }
+      </style>
+      <span style="cursor:pointer" class="shopify-zip-prod-widget" data-zm-asset="productwidget" data-zm-widget="popup" data-zm-popup-asset="termsdialog"></span>
+    <!-- end Zip WIDGET -->
+    <div id="shipping-calculator" class="shipping-cal-sec">
+      <h3 class="main-bold-title calculate-title"><span class="main-bold-title">Calculate shipping</span></h3>
+      <div class="body-sec">
+        <p class="field">
+          <label for="address_country">Country</label>
+          <select id="address_country" name="address[country]" data-default="{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address.country }}{% elsif settings.shipping_calculator_default_country != '' %}{{ settings.shipping_calculator_default_country }}{% endif %}">{{ country_option_tags }}</select>
+        </p>
+        <p class="field" id="address_province_container" style="display:none;">
+          <label for="address_province" id="address_province_label">Province</label>
+          <select id="address_province" name="address[province]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}"></select>
+        </p>
+        <p class="field">
+          <label for="address_zip">PostCode</label>
+          <input type="text" id="address_zip" name="address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} />
+        </p>
+        <p class="field">
+          <input type="button" class="get-rates btn button" value="calculate" />
+        </p>
+      </div>
+      <div id="wrapper-response"></div>
+    </div>
+    <div class="shipping-txt">
+      <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+      <p class="second-txt">Delivery Australia Wide</p>
+    </div>
+    <div class="shipping-txt">
+      <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+      <p class="second-txt">Delivery Australia Wide</p>
+    </div>
+    <div class="shipping-txt">
+      <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+      <p class="second-txt">Delivery Australia Wide</p>
+    </div>
+    <div class="shipping-txt">
+      <p class="main-txt-title first-txt">Express Post Parcel - $28.60</p>
+      <p class="second-txt">Delivery Australia Wide</p>
+    </div>
+    <div class="cart-guest-btn">
+      <div class="btn btn-guest-checkout-btn main-bold-title" >checkout as guest</div>
+    </div>
+    <div class="cart-btn">
+      <div class="btn btn-checkout-btn main-bold-title" >{{ 'cart.general.checkout' | t }}</div>
+    </div>
+    <div class="view-cart">
+      <a href="/cart" class="main-txt-title">view cart</a>
+    </div>
+  </div>
+  <div class="slider-related-products">
+    {% unless settings.cart_slider_txt == blank %}
+    <h3 class="main-bold-title">{{ settings.cart_slider_txt }}</h3>
+    {% endunless %}
+    <div class="slider-related-sec">
+      {% for i in (1..3) %}
+      {% capture product_handle %}product{{ i }}{% endcapture %}
+      {% assign product = all_products[settings[product_handle]] %}
+
+      {% include 'product-card-grid-cart' %}
+
+      {% endfor %}
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<script id="shipping-calculator-response-template" type="text/template">
+  {% raw %}
+  <p id="shipping-rates-feedback" {{#if success}} class="success" {{else}} class="error" {{/if}}>
+  {{#if success}}
+    {{#if rates}}
+      {{#rates}}
+        {{#if @first}}
+            Rates start at {{price}}.
+        {{/if}}
+      {{/rates}}
+    {{else}}
+      We do not ship to this destination.
+    {{/if}}
+  {{else}}
+    {{ errorFeedback }}
+  {{/if}}
+  </p>
+  {% endraw %}
+</script>
+
+<script>
+  $(document).ready(function(){
+    $(".cart-slider-close").click(function(){
+      $("#slider_cart-sec").removeClass("slider-cart-open");
+      $("#slider_cart-sec").addClass("slider-cart-close");
+      setTimeout(function(){
+        $(".slider-cart-overlay").hide();
+      }, 1500);
+
+    });
+
+    $(".slider-cart-overlay").click(function(){
+      $("#slider_cart-sec").removeClass("slider-cart-open");
+      $("#slider_cart-sec").addClass("slider-cart-close");
+      setTimeout(function(){
+        $(".slider-cart-overlay").hide();
+      }, 1500);
+    });
+
+    $(".site-header__cart").click(function(e){
+      e.preventDefault();
+
+      $("#slider_cart-sec").addClass("slider-cart-open");
+      $("#slider_cart-sec").removeClass("slider-cart-close");
+      $(".slider-cart-overlay").show();
+    });
+
+    $(".cart__product-quantity .qty-btn").click(function(){
+      var num = parseInt($(".cart__product-quantity .cart__qty-input").val());
+      var min = parseInt($(".cart__product-quantity .cart__qty-input").attr("min"));
+
+      if($(this).hasClass("min-btn")) {
+        if(num > min) {
+          num = num - 1;
+        }
+      }else {
+        num = num + 1;
+      }
+
+      $(".cart__product-quantity .cart__qty-input").val(num);
+
+      $(".cart__product-quantity .num-btn").text(num);
+
+    });
+
+    $(".btn-checkout-btn").click(function(){
+      $(".btn-checkout-slider").click();
+    });
+
+    $(".slider-footer-section .calculate-title").click(function(){
+
+      var $body = $(".slider-footer-section");
+
+      if($body.hasClass("active-footer")) {
+        $body.removeClass("active-footer");
+      }else {
+        $body.addClass("active-footer");
+      }
+    });
+  });
+</script>

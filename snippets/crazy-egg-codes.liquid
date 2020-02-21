@@ -1,0 +1,16 @@
+{% assign showCrazyEgg = false %}
+{% if template contains collection and collection.handle == 'new-arrivals' %}{% assign showCrazyEgg = true %}
+{% elsif template contains collection and collection.handle == 'weightlifting' %}{% assign showCrazyEgg = true %}
+{% elsif template contains collection and collection.handle == 'rpm' %}{% assign showCrazyEgg = true %}
+{% elsif page.handle == 'contact-us' %}{% assign showCrazyEgg = true %}
+{% elsif template contains 'product' and product.handle == 'rpm-speed-rope-2-0-black' %}{% assign showCrazyEgg = true %}	
+{% elsif template == 'cart' %}{% assign showCrazyEgg = true %}
+{% elsif template =='index' %}{% assign showCrazyEgg = true %}{% endif %}
+{% if showCrazyEgg %}
+  <script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+  var b=document.getElementsByTagName("script")[0];
+  a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0025/2133.js?"+Math.floor(new Date().getTime()/3600000);
+  a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+{% endif %}

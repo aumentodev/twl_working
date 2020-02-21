@@ -1,0 +1,181 @@
+<div class="help-page-template">
+  <div class="page-width-custom">
+    <ul class="breadcrumbs main-txt-title">
+      <li><a href="/">Home</a></li> / <li>account</li>
+    </ul>
+  </div>
+  <div class="left-sidebar left-sidebar-desktop">
+    <div class="help-menu-list">
+      <ul class="menu-list">
+        {% for link in linklists[settings.account_menu].links %}
+          <li class="pare-menu {% if link.handle == 'need-help' %}end-menu{% endif %}">
+
+            <h3 class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></h3>
+
+            {% if link.handle == 'need-help' %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <p>If you have any questions or want <br />
+                        to reach out to the customer <br />
+                        service team click <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </p>  
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+                  {% if childlink.title contains "Personal Data" %}
+                	<li class="sub-list">
+                        <a title="{{ 'customer.login.forgot_password' | t }}" href="/account?view=reset" attrid="RecoverPassword">Update or Change Password</a>
+                    </li>
+ 				  {% endif %}
+                {% endfor %}
+
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="right-sidebar account-page-template account-template-sec account-right-sec">
+    <div class="content">
+      <div class="header-sec">
+        <h2 class="title">{{ 'customer.orders.title' | t }}</h2>
+      </div>
+      <div class="order-tables select-list-8">
+
+
+        {% paginate customer.orders by 5 %}
+          {% if customer.orders.size != 0 %}
+            {% for order in customer.orders %}
+              <div class="order-list">
+                <ul class="order-first-sec">
+                  <li>
+                    <p><span class="order-title">Date Ordered:</span> <span>{{ order.created_at | date: format: 'month_day_year' }}</span></p>
+                    <p><span class="order-title">Order Status:</span> <span>{{ order.financial_status_label }}</span></p>
+                    <p><span class="order-title">Order Number:</span> <span>{{ order.fulfillment_status_label }}</span></p>
+                  </li>
+                  <li>
+                    <a class="btn btn-order" href="{{ order.customer_url }}">Order details</a>
+                  </li>
+                </ul>
+                <ul class="order-second-sec">
+                  <li>
+                    <h3 class="order-title">Shipped to:</h3>
+                    <p>{{ customer.name }}</p>
+                  </li>
+                  <li>
+                    <h3 class="order-title">Iterms:</h3>
+                    <p>{{ order.name }}</p>
+                  </li>
+                  <li>
+                    <h3 class="order-title">Order Total</h3>
+                    <p>{{ order.total_price | money }}</p>
+                  </li>
+                </ul>
+              </div>
+            {% endfor %}
+          {% else %}
+
+            <p>{{ 'customer.orders.none' | t }}</p>
+
+          {% endif %}
+          {% if paginate.pages > 1 %}
+            {% include 'pagination' %}
+          {% endif %}
+        {% endpaginate %}
+
+
+        {% comment %}{% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+
+            <table class="responsive-table">
+              <thead>
+                <tr>
+                  <th>{{ 'customer.orders.order_number' | t }}</th>
+                  <th>{{ 'customer.orders.date' | t }}</th>
+                  <th>{{ 'customer.orders.payment_status' | t }}</th>
+                  <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr>
+                    <td data-label="{{ 'customer.orders.order_number' | t }}">
+                      <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small">{{ order.name }}</a>
+                    </td>
+                    <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                    <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                    <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+          {% else %}
+
+            <p>{{ 'customer.orders.none' | t }}</p>
+
+          {% endif %}
+          {% if paginate.pages > 1 %}
+            {% include 'pagination' %}
+          {% endif %}
+        {% endpaginate %}{% endcomment %}
+      </div>
+      <div class="address-table  select-list-3">
+        <h2>{{ 'customer.account.details' | t }}</h2>
+
+        {{ customer.default_address | format_address }}
+
+        <p><a href="/account/addresses" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="left-sidebar left-sidebar-mobile">
+    <div class="help-menu-list">
+      <ul class="menu-list">
+        {% for link in linklists[settings.account_menu].links %}
+          <li class="pare-menu {% if link.handle == 'need-help' %}end-menu{% endif %}">
+
+            <h3 class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></h3>
+
+            {% if link.handle == 'need-help' %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <p>If you have any questions or want <br />
+                        to reach out to the customer <br />
+                        service team click <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </p>  
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <ul class="sub-menus sub-menus-account">
+                {% for childlink in link.links %}
+                  <li class="sub-list">
+                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+                {% endfor %}
+
+              </ul>
+            
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}
+

@@ -1,0 +1,112 @@
+{% layout none %}
+{% paginate search.results by 100 %}
+{% capture results %}
+      {% for product in search.results %}
+        {% assign is_in_okendo_collection = false %}
+        {% comment %}
+        {% for collection in product.collections %}
+            {% if collection.title contains 'okendo_' %}
+                {% assign is_in_okendo_collection = true %}
+                {% assign oke_collection_id = collection.id %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+		{% endcomment %}
+		{% assign collection_handles = product.collections | map: "title" %}
+        {% if collection_handles contains 'okendo_' %}
+         {% assign is_in_okendo_collection = true %}
+        {% endif %}
+        {% if is_in_okendo_collection %}
+         {% assign reverse_collections = product.collections | sort: "title" | reverse %}
+         {% for collection in reverse_collections %}
+         {% if collection.title contains 'okendo_' %}
+         {% assign oke_collection_id = collection.id %}
+         {% break %}
+         {% endif %}
+         {% endfor %}
+        {% endif %}
+
+      	{% assign total_quantity = 0 %}
+          {
+            "id": {{product.id}},
+            "title": "{{ product.title | escape }}",
+            "description": "{{product.description | strip_newlines | replace: '\n' , '' | replace: '"' , '\"' }}",
+            "categories": ["{{product.collections | map: 'id' | join: '","'}}"],
+			{% if is_in_okendo_collection %}
+			"okendo_category_id": "{{oke_collection_id}}",
+			{% endif %}
+            "handle": "{{product.handle}}",
+            "url": "{{ product.url }}",
+            "type": "{{product.type}}",
+            "currency": "{{cart.currency.iso_code}}",
+            "vendor": "{{product.vendor}}",
+            "available": {{product.available}},
+            "price_varies": {{product.price_varies}},
+            "price": {{product.price}},
+            "price_min": {{product.price_min}},
+            "price_max": {{product.price_max}},
+            "price_min_formatted": "{{product.price_min | money | strip_html}}",
+            "price_max_formatted": "{{product.price_max | money | strip_html}}",
+			{% if product.compare_at_price %}
+            	"compare_at_price": {{product.compare_at_price}},
+			{% endif %}
+            "compare_at_price_min": {{product.compare_at_price_min}},
+            "compare_at_price_max": {{product.compare_at_price_max}},
+            "compare_at_price_min_formatted": "{{product.compare_at_price_min | money | strip_html}}",
+            "compare_at_price_max_formatted": "{{product.compare_at_price_max | money | strip_html}}",
+            "compare_at_price_varies": {{product.compare_at_price_varies}},
+            "published_at": "{{product.published_at}}",
+            "published_at_min": "{{product.published_at_min}}",
+            "published_at_max": "{{product.published_at_max}}",
+            "created_at":"{{product.created_at}}",
+            "tags":["{{product.tags | join: '", "' }}"],
+            "featured_image": "{{product.featured_image}}",
+            "images": [{% for image in product.images %}"{{ image | img_url : 'large' }}"{% if forloop.last == false %},{% endif %}{% endfor %}],
+            "options":[
+            {% for option in product.options_with_values %}
+                {
+                  "name":"{{option.name | escape}}",
+                  "position":{{option.position}}
+                }
+                {% if forloop.last == false %},{% endif %}
+            {% endfor %}
+            ],
+            "variants": [
+              {% for variant in product.variants %}
+                {
+				  "id": {{variant.id}},
+                  "title": "{{variant.title | escape }}",
+                  "option1": "{{variant.option1 | escape}}",
+                  "option2": "{{variant.option2 | escape}}",
+                  "option3": "{{variant.option3 | escape}}",
+			      "options":[],
+                  "sku":"{{variant.sku}}",
+                  "requires_shipping":{{variant.requires_shipping}},
+                  "taxable":{{variant.taxable}},
+                  "available":{{variant.available}},
+                  "price": {{variant.price}},
+				  {% if variant.compare_at_price %}
+            		"compare_at_price": {{variant.compare_at_price}},
+			      {% endif %}
+                  "quantity": {{variant.inventory_quantity}},
+                  "url": "{{variant.url}}",
+                  "weight": {{variant.weight}},
+                  "inventory_management":"{{variant.inventory_management}}",
+                  "barcode":"{{variant.barcode}}",
+				  {% if variant.featured_image %}
+                  "featured_image": {{variant.featured_image.src | json}},
+				  {% else %}
+                  "featured_image": {{product.featured_image.src | json}},
+				  {% endif %}
+				  "public_title": "{{variant.title | escape}}"
+                }
+                {% if forloop.last == false %},{% endif %}
+              {% endfor %}
+            ],
+    		"meta": {"okendo|ProductListingSnippet":{{ product.metafields.okendo.ProductListingSnippet | strip_newlines | replace: '\n' , '' | json  }}}
+            }
+		{% unless forloop.last %},{% endunless %}
+      {% endfor%}
+{% endcapture %}
+{% endpaginate %}
+[{{ results }}]

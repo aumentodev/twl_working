@@ -1,0 +1,46 @@
+{% if settings.enable_back_squat_pro %}
+<main class="{{page.title | handle }} merged-page-template">
+  {% include 'breadcrumb' %}
+
+  {%comment%}
+  {% if page.handle != 'giveaways' %}
+    {% include 'page-header' %}
+  {% endif %}
+    {%endcomment%}
+  
+  {% if page.handle == 'giveaways' %}
+  <section id="page-header">
+  <div class="a-set-feel-banner-img" style="position: relative;"> 
+      <img src="{{ 'King-Kong-Giveaway_Header.jpg' | asset_url }}" alt="feel_banner_img" class="a-set-img" />      
+            <h1>{{ page.title }}</h1>
+  </div>
+  </section>
+  {% endif %}
+
+  <div class="section page">
+    <div class="page-width">
+          <div class="content">
+            
+            {%if  settings.enable_back_squat_banner_section %}
+                <div>
+                    <a href="{{ settings.back_squat_link }}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ settings.back_squat_banner_image | img_url: 'master' }}" alt="feel_banner_img" class="a-set-img" style="margin-left: auto; margin-right: auto; max-width: 600px;" />
+                    </a>
+                </div>
+            {% endif %}
+
+          </div>
+    </div>
+  </div>
+  
+  {% if settings.back_squat_countdown %}
+    {% include 'countdown' %} 
+  {% endif %} 
+  
+  {% include 'join-the-crew' %}
+{% section 'newsletter-section' %}
+</main>
+<iframe
+src="https://asia.creativecdn.com/tags?id=pr_xplitdU3nLQ7IK7KFYpl&amp;ncm=1"
+width="1" height="1" scrolling="no" frameBorder="0" style="display: none;"></iframe>
+{% endif %}

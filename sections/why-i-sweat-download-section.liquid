@@ -1,0 +1,30 @@
+<div class="page-default-template">
+  <div class="page-width sweat-download">
+      <div class="rte">
+        <a href="{{section.settings.pdf_file}}" target="_blank"><img src="{{section.settings.image | img_url: 'master' , scale: 2}}"></a>
+      </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Why I Sweat Download",
+    "settings": [
+    	{ 
+			"type" : "image_picker",
+       		"id" : "image",
+			"label" : "Image"
+		},
+		{ 
+			"type" : "url",
+       		"id" : "pdf_file",
+			"label" : "PDF file URL"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

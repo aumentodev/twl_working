@@ -1,0 +1,89 @@
+{% unless section.settings.title == blank %}
+  <h3>{{ section.settings.title }}</h3>
+{% endunless %}
+{% unless section.settings.content == blank %}
+  <p>{{ section.settings.content }}</p>
+{% endunless %} 
+{% for block in section.blocks %}
+{% assign index = index | plus: 1 %}
+{% capture img %}logo{{ forloop.index }}{% endcapture %}
+<div class="icons-list">
+  {% comment %}
+    {% unless block.settings.image == blank %}
+      <img src="{{ block.settings.image | img_url: '400x' }}">
+    {% endunless %}
+  {% endcomment %}
+  {% if img == 'logo1' %}
+                {% include 'account-icon-new-gear' %}
+                {%elsif img == 'logo2' %}
+                {% include 'account-icon-order' %}
+                {%elsif img == 'logo3' %}
+                {% include 'account-icon-fast-checkout' %}
+                {%elsif index > 3 %}
+                	<img src="{{ block.settings.image | img_url: '400x' }}">
+                {% endif %}
+    <div class="text-area">
+      {% unless block.settings.title == blank %}
+        <h4>{{ block.settings.title }}</h4>
+      {% endunless %}
+      {% unless block.settings.subtitle1 == blank %}
+        <p class="first">{{ block.settings.subtitle1 }}</p>
+      {% endunless %}
+      {% unless block.settings.subtitle2 == blank %}
+        <p class="last">{{ block.settings.subtitle2 }}</p>
+      {% endunless %}
+    </div>
+  
+</div>
+
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "List",
+    "class": "account-list-section-area",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "BENEFITS OF CREATING AN ACCOUNT"
+      },
+      {
+        "type": "text",
+        "id": "content",
+        "label": "Sub title",
+        "default": "News and exclusive offers!"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "list",
+        "name": "List",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "subtitle1",
+            "label": "First content"
+          },
+          {
+            "type": "text",
+            "id": "subtitle2",
+            "label": "Second content"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

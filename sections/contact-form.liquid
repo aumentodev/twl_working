@@ -1,0 +1,311 @@
+  
+{% unless section.settings.title == blank %}
+  <h2>{{ section.settings.title }}</h2>
+{% endunless %}
+{% for block in section.blocks %}
+
+
+  {% if block.settings.show %}
+    {% if block.settings.full %}
+    
+      <div class="grid__item medium-up--one-half">{% endif %}
+
+    {% case block.type %}
+      {% when 'text' %}
+        
+        {% unless block.settings.title == blank %}
+          <label for="ContactForm{{ block.settings.title | remove: ' ' }}">{{ block.settings.title }}</label>
+        {% endunless %}
+        {% unless block.settings.name == blank %}
+          <input type="text" id="ContactForm{{ block.settings.title | remove: ' ' }}" name="contact[{{ block.settings.name }}]" value="">
+        {% endunless %}
+
+      {% when 'email' %}
+        
+        {% unless block.settings.title == blank %}
+          <label for="ContactForm{{ block.settings.title | remove: ' ' }}">{{ block.settings.title }}</label>
+        {% endunless %}
+        {% unless block.settings.name == blank %}
+          <input type="email" id="ContactForm{{ block.settings.title | remove: ' ' }}" name="contact[{{ block.settings.name }}]" value="" autocorrect="off" autocapitalize="off">
+        {% endunless %}
+
+      {% when 'tel' %}
+
+        {% unless block.settings.title == blank %}
+          <label for="ContactForm{{ block.settings.title | remove: ' ' }}">{{ block.settings.title }}</label>
+        {% endunless %}
+        {% unless block.settings.name == blank %}
+          <input type="tel" id="ContactForm{{ block.settings.title | remove: ' ' }}" name="contact[{{ block.settings.name }}]" value="" pattern="[0-9\-]*">
+        {% endunless %}
+       
+      {% when 'textarea' %}
+
+        {% unless block.settings.title == blank %}
+          <label for="ContactForm{{ block.settings.title | remove: ' ' }}">{{ block.settings.title }}</label>
+        {% endunless %}
+        {% unless block.settings.name == blank %}
+          <textarea rows=10 id="ContactForm{{ block.settings.title | remove: ' ' }}" name="contact[{{ block.settings.name }}]"></textarea>
+        {% endunless %}
+
+      {% when 'select' %}
+
+        {% unless block.settings.title == blank %}
+          <label for="ContactForm{{ block.settings.title | remove: ' ' }}">{{ block.settings.title }}</label>
+        {% endunless %}
+        {% unless block.settings.name == blank %}
+          <select id="ContactForm{{ block.settings.title | remove: ' ' }}" name="contact[{{ block.settings.name }}]">
+            
+            {% for i in (1..10) %}
+              {% capture val %}value{{ i }}{% endcapture %}
+
+              <option value="{{ block.settings[val] }}" {% if forloop.index == 1 %}selected="selected"{% endif %}>
+                {{ block.settings[val] }}
+              </option>
+            {% endfor %}
+
+          </select>
+        {% endunless %}
+          
+       {% when 'checkbox' %}
+        {% unless block.settings.name == blank %}
+          <input type="checkbox" id="ContactForm{{ block.settings.title | remove: ' ' }}" name="contact[{{ block.settings.name }}]" value="">
+        {% endunless %}
+        {% unless block.settings.title == blank %}
+          <label for="ContactForm{{ block.settings.title | remove: ' ' }}" class="choice">{{ block.settings.title }}</label>
+        {% endunless %}
+           
+      {% else %}
+    {% endcase %}
+
+    {% if block.settings.full %}
+      </div>
+    {% endif %}        
+
+  {% endif %}
+{% endfor %}
+
+<input type="submit" class="btn" value="submit">
+
+{% schema %}
+  {
+    "name": "Contact form",
+    "class": "contact-form-area",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Logo list"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "full",
+            "label": "Half width?"
+          },
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Display"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "name": "Select",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "full",
+            "label": "Half width?"
+          },
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Display"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "text",
+            "id": "value1",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value2",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value3",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value4",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value5",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value6",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value7",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value8",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value9",
+            "label": "Value"
+          },
+          {
+            "type": "text",
+            "id": "value10",
+            "label": "Value"
+          }
+        ]
+      },
+      {
+        "type": "tel",
+        "name": "Phone",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "full",
+            "label": "Half width?"
+          },
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Display"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          }
+        ]
+      },
+      {
+        "type": "email",
+        "name": "Email",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "full",
+            "label": "Half width?"
+          },
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Display"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "name": "Checkbox",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "full",
+            "label": "Half width?"
+          },
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Display"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          }
+        ]
+      },
+      {
+        "type": "textarea",
+        "name": "Textarea",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "full",
+            "label": "Half width?"
+          },
+          {
+            "type": "checkbox",
+            "id": "show",
+            "label": "Display"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

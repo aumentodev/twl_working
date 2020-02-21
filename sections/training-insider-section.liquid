@@ -1,0 +1,193 @@
+  <div class="page_image_banner">
+      <img src="{{ section.settings.mobile_image | img_url: 'master'}}" width="100%" class="why-image mobile-slider">  
+    <img src="{{ section.settings.tablet_image | img_url: 'master'}}" width="100%" class="why-image tablet-slider">
+      <img src="{{ section.settings.desktop_image | img_url: 'master'}}" width="100%" class="why-image desktop-slider">
+  </div>
+  <div class="page-width">
+    <section class="page_content">
+      {% for block in section.blocks %}
+      {% assign video_image = "" %}  
+      {% assign video_title = "" %}
+      {% assign video_url = "" %}
+      {% if block.type == "video-list" %}
+      {% if block.settings.video_title != "" %}
+      {% assign video_title = block.settings.video_title %}      
+      {% endif %}
+      {% if block.settings.video_url != "" %}
+      {% assign video_url = block.settings.video_url %}      
+      {% endif %}
+      {% if video_title != "" and video_url != "" %}
+        <div class="video_box">
+          <div class="video_heading">
+            <h1 class="video_title">{{video_title}}</h1>
+          </div>
+          <div class="video">
+            <iframe class="myVideo" width="100%" height="100%" src="{{video_url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+          </div>
+        </div>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+    </section>
+    <section class="page_see_more">
+      <div class="see_more_heading">
+        <h1 class="heading">{{section.settings.section2_title}}</h1>
+      </div>
+      <div class="see_more_grid">
+        {% for block in section.blocks %}
+        {% assign see_more_video_image = "" %}  
+        {% assign see_more_video_url = "" %}
+        {% if block.type == "see-more-x" %}
+        {% if block.settings.see_more_video_image != "" %}
+        {% assign see_more_video_image = block.settings.see_more_video_image %}      
+        {% endif %}
+        {% if block.settings.see_more_video_url != "" %}
+        {% assign see_more_video_url = block.settings.see_more_video_url %}      
+        {% endif %}
+        {% if see_more_video_image != "" and see_more_video_url != "" %}
+        <div class="see_more_list">
+          <a href="{{see_more_video_url}}" data-fancybox="" data-width="640" data-height="360" data-small-btn="true" class="video">
+            <img src="{{see_more_video_image | img_url: 'master'}}" />
+          </a>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </section>      
+    <section id="get-in-touch" class="section">
+    <div class="container">
+      <div class="row">
+   		<div class="col-md-12 set_form">       
+        <h1 class="set_form_title">{{section.settings.newsletter_title}}</h1>
+        <p class="set_form_subtitle">{{section.settings.newsletter_subtitle}}</p>
+        <form id="email_signup" class="klaviyo_standard_embed_QqXqgT contact_form whyweatform frm_day_life" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">      
+            	<div class="klaviyo_messages">
+              		<div class="success_message" style="display:none;"></div>
+              		<div class="error_message" style="display:none;"></div>
+              	</div> 
+                <div class="grid__item-setf">
+                  <div class="set_input name_fld txt-centr">
+                  	<input required type="text" id="ContactFormName" name="contact[name]" placeholder="Enter name" value="">
+               	  </div>
+                </div>
+            	<input type="hidden" name="g" value="{{section.settings.list_id}}">
+                <div class="grid__item-setf">
+                	<div class="set_input email_fld txt-centr">
+    					<input type="email" value="" name="email" id="k_id_email" placeholder="Your email" />
+           			</div>
+         		</div>         
+ 				<div class="col-md-12 ">
+                  <div class="set_input name_fld txt-centr">
+                      <button type="submit" class="btn contactbtn" style="color: #fff;background-color: #000;">{{section.settings.newsletter_buttontitle}}</button>             
+                  </div>
+           		</div>           
+     		</form>
+    </div>
+  </div>
+</div>
+  </section>
+  </div>
+<script type="text/javascript">
+  $('iframe').load(function(){
+    console.log("Iframe loadedd!!	");
+    $(this).contents().find("body").on('click', function(event) { console.log("Click"); });
+  });
+</script>
+{% schema %}
+{
+    "name": "Training Insider",
+    "class": "page_section",
+	"settings": [
+      {
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "tablet_image",
+		"label": "Tablet Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile Banner image"
+      },
+	  {
+         "type":      "header",
+         "content":   "Second section"
+      },	
+      {
+        "type": "text",
+        "id": "section2_title",
+        "label": "Second section Title"
+      },
+	  {
+         "type":      "header",
+         "content":   "Newsletter signup form"
+      },
+	  {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Form Title"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_subtitle",
+        "label": "Form Sub Title"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_buttontitle",
+        "label": "Form Button Title"
+      },
+	  {
+        "type": "text",
+        "id": "list_id",
+        "label": "Klaviyo list id of form"
+      }
+	],
+    "blocks": [
+      {
+        "type": "video-list",
+        "name": "Video List",
+        "settings": [
+          {
+            "type": "text",
+            "id": "video_title",
+            "label": "Video Title"
+          },
+		  {
+            "type": "text",
+            "id": "video_url",
+            "label": "Video Url"
+          }
+        ]
+      },
+	  {
+        "type": "see-more-x",
+        "name": "See more project X",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "see_more_video_image",
+            "label": "Video Image"
+      	  },
+		  {
+            "type": "text",
+            "id": "see_more_video_url",
+            "label": "Video Url"
+          }
+        ]
+      }
+    ]
+  }  
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

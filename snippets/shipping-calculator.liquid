@@ -1,0 +1,54 @@
+<div class="main_ship_cal"> 
+  <div class="shipping_calculator">
+     <h4>Calculate estimated shipping on this item</h4>
+          <ul>
+            <li>
+          <div class="form-group">
+            <label for="country" class="inset-link inline">
+              Country
+            </label>
+            <div class="clearfix"></div>
+            <div class="input-select">
+              <select name="country" id="country" class="shipping_country">
+                {{ country_option_tags }}
+              </select>
+            </div>
+              </div></li>
+
+          <li><div class="form-group">
+            <label for="shipping_country_province" class="inset-link inline">
+              State
+            </label>
+            <div class="clearfix"></div>
+            <div class="input-select">
+              <select name="shipping_country_province" id="shipping_country_province" class="shipping_country_province">
+              </select>
+            </div>
+            </div></li>
+
+          <li><div class="form-group">
+            <label for="shipping_country_province" class="inset-link inline">
+              Post Code
+            </label>
+            <div class="clearfix"></div>
+            <div>
+              <input type="text" name="zip_code" class="input zip_code pull-left shipping_zip" >
+
+            </div>
+            <div class="clearfix"></div>
+            </div></li>
+            <li>
+          <div class="form-calc">
+           <button type="button" class="button button-primary pull-left shipping_calculate">Calculate</button>
+          </div>
+            </li>
+          </ul>
+  <div class="clearfix"></div>
+          <div class="text-center shipping_loader hide">
+            <div class="fa fa-spinner fa-spin fa-3x"></div>
+          </div>
+
+          <div class="shipping_methods">
+          </div>
+        </div>
+</div>

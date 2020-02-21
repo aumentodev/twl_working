@@ -1,0 +1,41 @@
+{% assign page_handle = page.handle %}
+{% if section.blocks.size > 0 %}
+	{% for block in section.blocks %}
+		{% if block.settings.page_handle == page_handle %}
+			{{ block.settings.page_title }}
+				{% assign page_content = block.settings.page_handle %}  
+	        	{{ pages[page_content].content }}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Page Management",
+    "class": "index-section",
+    "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Common Title"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "text_block",
+        "name": "Page Management",
+        "settings": [
+		  {
+            "type": "page",
+            "id": "page_handle",
+            "label": "Select a page"
+          },
+		  {
+            "type": "text",
+            "id": "page_title",
+            "label": "Page title"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,112 @@
+<div class="help-page-template">
+	<div class="page-width-custom">
+		<ul class="breadcrumbs main-txt-title">
+			<li><a href="/">Home</a></li> / <li>{{ page.title }}</li>
+		</ul>
+	</div>
+	<div class="left-sidebar left-sidebar-desktop">
+		<div class="help-menu-list">
+			<ul class="menu-list">
+				{% for link in linklists[settings.help_menu].links %}
+                  <li class="pare-menu">
+                    <a href="{{ link.url }}" class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="right-sidebar contact-page">
+		<div class="content">
+			<div class="contact-header">
+				{{ page.content }}
+			</div>
+			<div class="contact-forms">
+				<h2 style="margin-top: 15px;">Email us</h2>
+				<div id="wufoo-qdpe17n089ztia">
+				</div>
+				<script type="text/javascript">var qdpe17n089ztia;(function(d, t) {
+				var s = d.createElement(t), options = {
+				'userName':'thewodlife',
+				'formHash':'qdpe17n089ztia',
+				'autoResize':true,
+				'height':'642',
+				'async':true,
+				'host':'wufoo.com',
+				'header':'hide',
+				'ssl':true};
+				s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+				s.onload = s.onreadystatechange = function() {
+				var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+				try { qdpe17n089ztia = new WufooForm();qdpe17n089ztia.initialize(options);qdpe17n089ztia.display(); } catch (e) {}};
+				var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+				})(document, 'script');</script>
+{% comment %}
+		      <div class="contact-form form-vertical">
+		        {% form 'contact' %}
+
+		        	{% if form.posted_successfully? %}
+			            <p class="note form-success">
+			              {{ 'contact.form.post_success' | t }}
+			            </p>
+					{% endif %}
+
+					{{ form.errors | default_errors }}
+
+				  {% section 'contact-form' %}
+      			  <h2>Email us</h2>
+
+		          <div class="grid grid--half-gutters">
+		            <div class="grid__item medium-up--one-half">
+		              <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+		              <input type="text" id="ContactFormName" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+		            </div>
+		            <div class="grid__item medium-up--one-half">
+		              <label for="ContactFormEmail" class="{% if form.errors contains 'email' %}label--error{% endif %}">{{ 'contact.form.email' | t }}</label>
+		              <input type="email" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}">
+		            </div>
+		          </div>
+
+		          <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+		          <input type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+		          <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+		          <textarea rows="10" id="ContactFormMessage" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+		          <input type="submit" class="btn" value="{{ 'contact.form.submit' | t }}">
+
+		        {% endform %}
+		      </div>
+		      {% endcomment %}
+			</div>
+			<div class="contact-footer">
+				<h2>Want to talk?</h2>
+				<p>Got an urgent issue that needs resolving? Want expert advice or recommendations for products? <br /> Call us between 9am and 5pm AEST Monday to Friday!</p>
+
+				<div class="phone-sec">
+					<img src="{{ 'phone3.png' | asset_url }}">
+					<span><h2>Free call: <a href="tel:1300732152">1 300 732 152</a></h2></span>
+				</div>
+				<div class="live-chat">
+					<div><img src="{{ 'chat3.png' | asset_url }}"><h2>Live chat</h2></div>
+					<p>Want to talk with a live operator? Click the button below to commence a chat.</p>
+				</div>
+				<div class="chat-btn">Start chatting</div>
+			</div>
+		</div>
+	</div>
+	<div class="left-sidebar left-sidebar-mobile help-sidebar-mobile">
+		<div class="help-menu-list">
+			<h3 class="mob-title">Need more help</h3>
+			<ul class="menu-list">
+				{% for link in linklists[settings.help_menu].links %}
+                  <li class="pare-menu">
+                    <a href="{{ link.url }}" class="main-txt-title site-nav__link {% if link.active %}active-nav__link{% endif %}"><span>{{ link.title }}</span></a>
+                  </li>
+                {% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+{% section 'newsletter-section' %}
+{% section 'main-bar' %}

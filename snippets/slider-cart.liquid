@@ -1,0 +1,311 @@
+<div class="slider-cart-overlay"></div>
+<div class="slider-cart" id="slider_cart-sec">
+  <div class="slider-top-section">
+    <a href="/cart" class="site-header__cart-custom">
+      <img data-src="{{ 'cart-draw.png' | asset_url }}" class="lazyload cart-icon">
+      <span class="visually-hidden">{{ 'layout.cart.title' | t }}</span>
+      <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+      {% if cart.item_count > 0 %}
+      <div id="CartCount" class="site-header__cart-count">
+        <span>{{ cart.item_count }}</span>
+        <span class="icon__fallback-text medium-up--hide">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span>
+      </div>
+      {% endif %}
+    </a>
+    <a href="/cart" class="main-bold-title">your cart</a>
+    <div class="cart-slider-close"><img data-src="{{ 'close-black.png' | asset_url }}" class="lazyload"></div>
+  </div>
+  <div class="cart-mobile">
+  <div class="cart-btn mobile">
+      <div class="btn btn-checkout-btn  main-bold-title  cartnotemptyblock">Check out</div>
+    </div>
+  </div>
+  <div class="slider-panel-section">
+    <div class="slider-orders">
+      {% if cart.item_count > 0 %}
+      <form action="/cart" method="post" novalidate class="cart">
+        <div class="cart-items">
+          {% for item in cart.items %}          
+          <div class="cart-item-list">
+            <div class="cart-item">
+              <a href="{{ item.url | within: collections.all }}">
+                <img class="cart__image" src="{{ item | img_url: '95x95', scale: 2 }}" alt="{{ item.title | escape }}">
+              </a>
+              <div class="cart-item__product">
+                <a href="{{ item.url }}" class="main-bold-title product-cart_title">
+                  {{ item.product.title | slice: 0, 60 }}
+                </a>
+                <div class="mini-cart__meta">
+                  {% unless item.variant.title contains 'Default' %}
+                  <div class="cart__meta-text main-txt-title">
+                    {% for option in item.product.options %}
+                    <span>{{ item.variant.options[forloop.index0] }}</span><span class="separator"> | </span>
+                    {% endfor %}
+                  </div>
+                  {% endunless %}
+                  <span class="price main-txt-title">{{ item.price | money }}</span>
+                </div>
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="btn btn--small btn--secondary cart__remove main-txt-title">{{ 'cart.general.remove' | t }}</a>
+              </div>
+              <div class="cart__product-quantity">
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="btn btn--small btn--secondary cart__remove medium-up--hide main-txt-title">{{ 'cart.general.remove' | t }}</a>
+                <div class="cart__qty">
+                  <div class="qty-display-sec">
+                    <div class="qty-sec min-btn qty-btn" data-varid="{{item.variant_id}}">-</div>
+                    <div class="qty-sec num-btn">{{ item.quantity }}</div>
+                    <div class="qty-sec plu-btn qty-btn" data-varid="{{item.variant_id}}">+</div>
+                  </div>
+                  <label for="updates_{{ item.key }}" class="cart__qty-label">{{ 'cart.label.quantity' | t }}</label>
+                  <input class="cart__qty-input main-txt-title" type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="1" pattern="[0-9]*">
+                </div>
+                <input type="submit" name="update" class="btn btn--small cart__update medium-up--hide" value="{{ 'cart.general.update' | t }}">
+                <input type="submit" name="checkout" class="btn-checkout-slider main-bold-title" value="{{ 'cart.general.checkout' | t }}" style="display: none;">
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+  <div class="slider-footer-section active">
+    <p class="cart_empty margins main-bold-title text-center {% if cart.item_count == 0 %} cartnotemptyblock {% else %} cartempty {% endif %}"> YOUR CART IS EMPTY! </p>
+    
+    <div class="totals-sec {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}">
+      <span class="cart__subtotal-title main-bold-title">subtotal</span>
+      <span class="cart__subtotal main-bold-title">{{ cart.total_price | money }}</span>
+    </div>
+
+    <div class="afterpay-box-sec{% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}"  style="margin:12px 0px;">
+      <div class="buy-text">
+        <h3>buy now pay later with</h3>
+      </div>
+      <div class="buy-logo">
+        <a href="#afterpay" class="afterpay-box-cs">
+          {% include 'aftrepay-icon'%}
+        </a>
+        <div class="buy-border"></div>
+        <a href="#zippay-new" class="zippay-box-light">
+          <img alt="Afterpay" class="lazyload" data-src="{{ 'zip-pay.jpg' | asset_url }}" />
+        </a>
+      </div>
+    </div>
+
+  
+    
+    
+    {%comment%}
+    
+    <div class="afterpay-box-sec afterpaypayment {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}">
+      <div class="description">
+        {% if cart.total_price >= 120000 %}
+          Or Due to certain restrictions, Afterpay is unavailable on products over $1,200.
+        {% else %}
+          Or 4 payments of
+          <span id="afterpay_instalments">{{ cart.total_price | divided_by: 4 | money }}</span>
+          with
+        {% endif %}
+      </div>
+      <div class="image-holder">
+        <img alt="Afterpay" src="{{ 'afterpay-logo.png' | asset_url }}" />
+      </div>
+      <a href="#afterpay" class="afterpay-box">Learn more</a>
+      <span class="clearfix"></span>
+    </div>
+    <div class="afterpay {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}"> {% include 'afterpay-popup' %} </div>
+    <span class="zippay-sidebar-or" style="display:none;">Or</span>
+    <!-- Zip WIDGET -->
+       <div class="zippay {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}"> {%include 'zip-widget'%} </div>
+   
+      <style>
+        .shopify-zip-prod-widget > iframe {
+          height: 60px!important;
+          max-width: min-content!important;
+        }
+      </style>
+      <span style="cursor:pointer" class="shopify-zip-prod-widget {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}" data-zm-asset="productwidget" data-zm-widget="popup" data-zm-popup-asset="termsdialog"></span>
+    <!-- end Zip WIDGET -->
+    <!-- Zip WIDGET -->
+      <div class="zippay {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}"> {%include 'zip-widget'%} </div>   
+      <style>
+        .shopify-zip-prod-widget > iframe {
+          height: 60px!important;
+          max-width: min-content!important;
+        }
+      </style>
+      <span style="cursor:pointer;" class="shopify-zip-prod-widget {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}" data-zm-asset="productwidget" data-zm-widget="popup" data-zm-popup-asset="termsdialog"></span>
+    <!-- end Zip WIDGET -->
+    {% endcomment %}
+    <div class="clearfix addedcart {% if cart.item_count == 0 %} margins {% endif %}"></div>
+    {% if settings.toggle_shipping_calc %} 
+    <h3 class="main-bold-title calculate-title {% if cart.item_count > 0 %} cartnotempty {% else %} cartempty {% endif %}"><span class="main-bold-title">Calculate estimated shipping on your cart</span></h3>
+    {% endif %}
+      <div class="drawer-shipping">
+      <div class="shipping_calculator ">
+        <ul>
+          <li>
+            <div class="form-group">
+              <label for="country" class="inset-link inline">
+                Country
+              </label>
+              <div class="clearfix"></div>
+              <div class="input-select">
+                <select name="country" id="country" class="shipping_country">
+                  {{ country_option_tags }}
+                </select>
+              </div>
+            </div></li>
+
+          <li><div class="form-group">
+            <label for="shipping_country_province" class="inset-link inline">
+              State
+            </label>
+            <div class="clearfix"></div>
+            <div class="input-select">
+              <select name="shipping_country_province" id="shipping_country_province" class="shipping_country_province">
+              </select>
+            </div>
+            </div></li>
+
+          <li><div class="form-group">
+            <label for="shipping_country_province" class="inset-link inline">
+              Post Code
+            </label>
+            <div class="clearfix"></div>
+            <div>
+              <input type="text" name="zip_code" class="input zip_code pull-left shipping_zip" >
+
+            </div>
+            <div class="clearfix"></div>
+            </div></li>
+          <li>
+            <div class="form-calc">
+              <button type="button" class="button button-primary pull-left shipping_calculate">Calculate</button>
+            </div>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+        <div class="text-center shipping_loader hide">
+          <div class="fa fa-spinner fa-spin fa-3x"></div>
+        </div>
+
+        <div class="shipping_methods">
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    
+    <div class="cart-btn">
+      <div class="btn btn-checkout-btn  main-bold-title {% if cart.item_count > 0 %} cartnotemptyblock {% else %} cartempty {% endif %}" >{{ 'cart.general.checkout' | t }}</div>
+    </div>
+    
+   
+    <div class="payment-icons cart-paypal-view {% if cart.item_count > 0 %} cartnotemptyblock {% else %} cartempty {% endif %}">
+      <h4><span class="text">Or Express Checkout Via </span></h4>
+      <div class="paypal ">
+        {% if additional_checkout_buttons %}
+          <div class="additional-checkout-buttons">
+            {{ content_for_additional_checkout_buttons }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="view-cart">
+      <a href="/cart" class="main-txt-title ">view cart</a>
+    </div>
+    
+        
+    {% if settings.cart_recom_status == true %}
+	  {% include 'visely-popup-cart-frequently-bought-together' %}
+	  {% include 'visely-popup-cart-trending-now' %}
+    {% endif %}
+    
+   
+    
+    
+    {% comment %} <div class="payment-icons">
+      <span class="text">Or 4 payments of $22.49 with </span>
+      <div class="after-pay">
+        <img src="{{ 'after-pay1.png' | asset_url }}"><span>Info</span>
+      </div>
+      <div class="zip-pay">
+        <img src="{{ 'zip-pay1.png' | asset_url }}"><span>Info</span>
+      </div>
+    </div> {% endcomment %}
+    
+   
+    {% comment %} <div class="shipping_calculator" style="display:none;">
+    <div class="form-group">
+      <label for="country" class="inset-link inline">
+        Country:
+      </label>
+      <div class="clearfix"></div>
+      <div class="input-select">
+        <select name="country" id="country" class="shipping_country">
+          {{ country_option_tags }}
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="shipping_country_province" class="inset-link inline">
+        State:
+      </label>
+      <div class="clearfix"></div>
+      <div class="input-select">
+        <select name="shipping_country_province" id="shipping_country_province" class="shipping_country_province">
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="shipping_country_province" class="inset-link inline">
+        Post Code:
+      </label>
+      <div class="clearfix"></div>
+      <div>
+        <input type="text" name="zip_code" class="input zip_code pull-left shipping_zip" >
+        <button type="button" class="button button-primary pull-left shipping_calculate">Calculate</button>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="text-center shipping_loader hide">
+      <div class="fa fa-spinner fa-spin fa-3x"></div>
+    </div>
+
+    <div class="shipping_methods">
+    </div>
+    </div>{% endcomment %}
+
+  
+    <div class="clearfix"></div>
+    {% comment %}
+    <div class="cart-guest-btn">
+      <a href="/checkout"><div class="btn btn-guest-checkout-btn main-bold-title" >checkout as guest</div></a>
+    </div>
+    {% endcomment %}
+    
+  </div>
+</div>
+<script id="shipping-calculator-response-template" type="text/template">
+  {% raw %}
+  <p id="shipping-rates-feedback" {{#if success}} class="success" {{else}} class="error" {{/if}}>
+  {{#if success}}
+    {{#if rates}}
+      {{#rates}}
+        {{#if @first}}
+            Rates start at {{price}}.
+        {{/if}}
+      {{/rates}}
+    {{else}}
+      We do not ship to this destination.
+    {{/if}}
+  {{else}}
+    {{ errorFeedback }}
+  {{/if}}
+  </p>
+  {% endraw %}
+</script>

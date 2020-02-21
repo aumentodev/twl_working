@@ -1,0 +1,368 @@
+{% include 'breadcrumb' %}
+<div class="page-default-template template-open-ready">
+
+  <div class="top_image_banner full_width">
+    <img src="{{section.settings.desktop_image | img_url :"master"}}" width="100%" class="why-image desktop-slider">  
+    <img src="{{section.settings.tablet_image | img_url :"master"}}" width="100%" class="why-image tablet-slider">
+    <img src="{{section.settings.mobile_image | img_url :"master"}}" width="100%" class="why-image mobile-slider">    
+  </div>
+  <div class="page-width">
+    <div class="section-header text-center">
+      <h1>{{ section.settings.title}}</h1>
+      <p>{{ section.settings.content}}</p>
+    </div>
+
+    <section class="page_content">
+      <div class="video_box">
+        <div class="video">
+          <iframe class="myVideo" width="100%" height="100%" src="{{ section.settings.video_url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </section>
+{% if section.settings.enable_small_video != blank %}
+    <section class="page_see_more-open">
+    <div class="swiper-container open-slider-carousel-wrap ">
+      <div class="swiper-wrapper see_more_grid">
+        {% for block in section.blocks %}
+        <div class="swiper-slide see_more_list2">
+          <a href="{{block.settings.video_url}}" data-fancybox="" data-width="640" data-height="360" data-small-btn="true" class="video">
+            <img src="{{block.settings.Video_image | img_url :"master"}}">
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+      <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+      </div>
+    </section>
+    {% endif %}
+    <div class="rte">
+      {{ page.content }}
+    </div>
+  </div>
+
+  {% if section.settings.enable_prod_list %}
+  <div class="11 a-set-first-collection">
+    {% assign actual_product = product %}
+    {% assign vendor = product.vendor %}
+    {% assign vendor_handle = vendor | handleize %}
+    {% assign handle = product.handle %}
+    {% assign brand_products = "" %}
+    {% for product in collections[section.settings.collection].products %}
+    {% capture temp %}
+    {{product.handle}}
+    {% if forloop.last == false %},{% endif%}
+    {% endcapture %}
+    {% assign brand_products = brand_products | append: temp %}
+    {% endfor %}
+    {% assign product_handles = brand_products | split: ","%}
+    {% if product_handles.size > 0 %}
+    <section id="by-brand">
+      <div class="page-width">
+        <div class="grid">
+          <div class="grid__item">
+            <div class="division-wrap">
+              <h1 class="division-title">
+                {{section.settings.open_ready_title}}
+              </h1>
+              <H4>{{section.settings.open_ready_subtitle}}</H4>
+            </div>
+          </div>
+        </div>
+
+        <div class="a-set-collectionprod grid grid--uniform">
+          <div class=" slider-carousel-wrap">
+            <!--             <div class="swiper-container"> -->
+            <div class=" collection-items-holder hot-deals auto-load-col center_reviews">
+              <!--               <ul class="swiper-wrapper center_reviews"> -->
+              <div class="row ">
+                {% for product in collections[section.settings.collection].products limit:10 %}
+                <div class="grid__item small--one-half medium-up--one-fifth col-list">
+                  {% include 'a-product-card-grid-2' %}
+                </div>
+
+                {% endfor %}
+              </div>
+            </div>
+            {% if section.settings.col_slider_one_enable %} <!-- Add Arrows -->
+            <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+            <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </section>
+    {% endif %}
+    {% assign product  = actual_product %}
+  </div>
+  {% endif %}
+  <div class="stance-view-all-button">
+	<a href="/collections/{{section.settings.collection}}">shop now</a>
+  </div>
+
+  <div class="stance-feature-block-container individually-desktop">
+    <div class="stance-feature-image-block">
+      <img src="{{section.settings.icon1_compex_k | img_url : "master"}}" alt="block_img" class="feature-img">
+    </div>
+    <div class="stance-content-block">
+      <div>
+
+      </div>
+      <div class="content">
+        <h2>{{ section.settings.stance_block_heading1_complex_k}}</h2>
+        <p>{{ section.settings.stance_block_desc1_complex_k}}</p>
+        <a href="{{ section.settings.stance_block_button1link_complex_k}}">{{ section.settings.stance_block_button1_complex_k}}</a>
+      </div>
+    </div>
+  </div>
+    <div class="stance-feature-block-container individually-mobile">         
+    <div class="stance-content-block">
+      
+      <div class="content">
+        <h2>{{ section.settings.stance_block_heading1_complex_k}}</h2>
+      <p>{{ section.settings.stance_block_desc1_complex_k}}</p>
+         <a href="{{ section.settings.stance_block_button1link_complex_k}}">{{ section.settings.stance_block_button1_complex_k}}</a>
+      </div>
+    </div>
+    <div class="stance-feature-image-block">
+      <img src="{{section.settings.icon1_compex_k | img_url : "master"}}" alt="block_img" class="feature-img" />
+    </div>
+  </div>
+  <div class="stance-feature-block-container">
+    <div class="stance-content-block">
+      <div class="content">
+       <h2>{{ section.settings.stance_block_heading2_complex_k}}</h2>
+        <p>{{ section.settings.stance_block_desc2_complex_k}}</p>
+        <a href="{{ section.settings.stance_block_button2link_complex_k}}">{{ section.settings.stance_block_button2_complex_k}}</a>
+      </div>
+    </div>       
+    <div class="stance-feature-image-block">
+      <img src="{{section.settings.icon2_compex_k | img_url : "master"}}" alt="block_img" class="feature-img">
+    </div>
+  </div>
+  {% if section.settings.enable_form != blank %}
+  <div class="page-width">
+    <section id="get-in-touch" class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 set_form">       
+            <h2 class="appreal_heading_text appgive-title">{{section.settings.form_title}}</h2>
+            <p class="appreal_heading_text appgive-subtitle">{{section.settings.form_content}}</p>
+            <form id="email_signup" class="klaviyo_standard_embed_QqXqgT contact_form whyweatform" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" >      
+              <div class="klaviyo_messages">
+                <div class="success_message" style="display:none;"></div>
+                <div class="error_message" style="display:none;"></div>
+              </div> 
+              <div class="grid__item-setf">
+                <div class="set_input name_fld txt-centr">
+                  <input required type="text" id="ContactFormName" name="contact[name]" placeholder="Your name" value="">
+                </div>
+              </div>
+              <input type="hidden" name="g" value="{{section.settings.klaviyo_list_id}}">
+              <div class="grid__item-setf">
+                <div class="set_input email_fld txt-centr">
+                  <input type="email" value="" required name="email" id="k_id_email" placeholder="Your email">
+                </div>
+              </div>         
+              <div class="col-md-12 ">
+                <div class="set_input name_fld txt-centr">
+                  <button type="submit" class="btn contactbtn" style="color: #fff;background-color: #000;">{{section.settings.btn_text}}</button>             
+                </div>
+              </div>           
+            </form>
+          </div>
+        </div>
+      </div>
+      <h1 class="text-center whyis_sweat">{{section.settings.form_bottom_text}}</h1>
+    </section>
+  </div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Open ready",
+    "settings": [
+      {
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "tablet_image",
+		"label": "Tablet Banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile Banner image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "content",
+        "label": "Content"
+      },
+	  {
+        "type": "text",
+        "id": "video_url",
+        "label": "Video Url"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_small_video",
+        "label": "Enable Small Video Section"
+      },
+	  {
+        "type": "header",
+        "content": "Product Listing"
+      },
+
+      {
+        "type": "checkbox",
+        "id": "enable_prod_list",
+        "label": "Enable First Collection"
+      },
+      {
+        "type": "text",
+        "id": "open_ready_title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "open_ready_subtitle",
+        "label": "Subheading"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "collection"
+      },
+
+	  {
+        "type": "header",
+        "content": "left image with text"
+      },
+	  {
+        "type": "image_picker",
+        "id": "icon1_compex_k",
+        "label": "Image icon"
+      },
+      {
+        "type": "text",
+        "id": "stance_block_heading1_complex_k",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "stance_block_desc1_complex_k",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "stance_block_button1_complex_k",
+        "label": "Button"
+      },
+      {
+        "type": "url",
+        "id": "stance_block_button1link_complex_k",
+        "label": "Button link"
+      },
+	  {
+        "type": "header",
+        "content": "Right image with text"
+      },
+	  {
+        "type": "image_picker",
+        "id": "icon2_compex_k",
+        "label": "Image icon"
+      },
+      {
+        "type": "text",
+        "id": "stance_block_heading2_complex_k",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "stance_block_desc2_complex_k",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "stance_block_button2_complex_k",
+        "label": "Button"
+      },
+      {
+        "type": "url",
+        "id": "stance_block_button2link_complex_k",
+        "label": "Button link"
+      },
+	  {
+        "type": "header",
+        "content": "signup form"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_form",
+        "label": "Enable form"
+      },
+      {
+        "type": "text",
+        "id": "form_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "form_content",
+        "label": "Content"
+      },
+	  {
+        "type": "text",
+        "id": "klaviyo_list_id",
+        "label": "Klaviyo List Id"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "form_bottom_text",
+        "label": "bottom text"
+      }
+
+
+],
+"blocks": [
+      {
+        "type": "Video_slider",
+        "name": "Video slider",
+        "settings": [
+
+            {
+              "type": "image_picker",
+              "id": "Video_image",
+              "label": "image"
+            },
+            {
+              "type": "text",
+              "id": "video_url",
+              "label": "Video url"
+            }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

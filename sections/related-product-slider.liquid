@@ -1,0 +1,131 @@
+<div class="page-width">
+	<div class="page-collection-list">
+  {% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2 class="main-ctn-title">{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  {% case section.settings.grid %}
+    {% when 2 %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+    {% when 3 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+    {% when 4 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+    {% when 5 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+  {% endcase %}
+      
+  {% assign num_limit = section.settings.grid %}
+
+  <div class="product-list-slider product-list-slider-{{ section.id }}">
+
+      {% for block in section.blocks limit: section.blocks.size %}
+        <div class="product-list">
+          {%- assign product = all_products[block.settings.product] -%}
+          {% include 'product-card-grid-col' %}
+        </div>
+      {% endfor %}
+
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    
+    var desk_num = {{ num_limit }};
+    
+    if($(window).width() < 450){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }else if($(window).width() < 789){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }else if($(window).width() < 950){
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }else {
+      $(".product-list-slider-{{ section.id }}").slick({
+        dots: false,
+        slidesToShow: desk_num,
+        slidesToScroll: 1,
+        autoplay: false,
+        speed: 500,
+        infinite: true
+      });
+    }
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Related products slider",
+    "class": "index-section related-products related-product-slider",
+    "max_blocks": 10,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Collections per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Products",
+        "settings": [
+          {
+            "label": "Product",
+            "id": "product",
+            "type": "product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Related products slider",
+        "category": "Product",
+        "blocks": [
+          {
+            "type": "featured_collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

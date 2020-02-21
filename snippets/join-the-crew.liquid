@@ -1,0 +1,88 @@
+<section id="join-the-crew">
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item">
+        <h1>JOIN THE CREW</h1>
+      </div>
+    </div>
+    {% comment %}
+    <div class="grid">
+      <div class="grid__item">
+        <div class="socials-holder">
+          <ul>
+            <li>
+              <a href="{{ settings.facebook_link }}" target="_blank">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ settings.twitter_link }}" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            {% comment %}
+            <li>
+              <a href="{{ settings.pinterest_link }}" target="_blank">
+                <i class="fa fa-pinterest-p"></i>
+              </a>
+            </li>
+            {% endcomment %}
+            <li>
+              <a href="{{ settings.youtube_link }}" target="_blank">
+                <i class="fa fa-youtube-play"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ settings.instagram_link }}" target="_blank">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endcomment %}
+    
+    <div class="grid">
+      <div class="grid__item">
+        <div class="socials-holder">
+          <ul>
+            <li>
+              <a href="{{ settings.instagram_link }}" target="_blank">
+                 {% include 'icon-instagram' %}
+                  <span class="icon__fallback-text">Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ settings.twitter_link }}" target="_blank">
+                 {% include 'icon-twitter' %}
+                  <span class="icon__fallback-text">Twitter</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ settings.facebook_link }}" target="_blank">
+                {% include 'icon-facebook' %}
+                  <span class="icon__fallback-text">Facebook</span>
+              </a>
+            </li>
+            
+            <li>
+              <a href="{{ settings.youtube_link }}" target="_blank">
+                {% include 'icon-youtube' %}
+                  <span class="icon__fallback-text">YouTube</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .socials-holder ul li{margin:0 15px !important;}
+  .socials-holder ul li a{ background:none !important; border-radius:0 !important; height: auto !important; width:auto !important; line-height:0 !important;}
+  .socials-holder ul li a svg{ width: 40px !important; height:40px !important; fill: #000;}
+  
+</style>

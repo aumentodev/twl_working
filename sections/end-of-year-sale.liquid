@@ -1,0 +1,362 @@
+{% if section.settings.enable_eoyeartophead %}
+
+<section id="page-header">
+  <div class="header-background">
+    <div class="changable-image" style="background-image: url({{ section.settings.eoyear_banner | img_url: 'master' }});">
+      <div class="page-width">
+        <div class="grid">
+          <div class="col-md-12">
+            {%if  section.settings.enable_eoyearbanhead %}
+            <h1>{{ page.title }}</h1>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% unless page.content == blank %}
+<div class="section page ">
+  <div class="page-width">
+    <div class="grid">
+      <div class="col-md-12">
+        <div class="content text-center">
+          {{ page.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endunless %}
+{% if section.settings.enable_eoyeartop_ban %}
+{% unless section.settings.enable_eoyeartophead %}
+<section class="top_bar_monday" >
+  <div class=" top_image_ban full_width">
+    <img src="{{ section.settings.top_eoyear_banner | img_url: 'master' }}" alt="About WODLife" class="about-image small--hide" />
+    <img src="{{ section.settings.top_eoyear_banner_mobile | img_url: 'master' }}" alt="About WODLife" class="about-image medium-up--hide" />
+    {%if  section.settings.eoyear_head != blank %}
+    <h1>{{section.settings.eoyear_head}}</h1>
+    {% endif %}
+  </div>
+</section>
+{% endunless %}
+{% endif %}
+{% if section.settings.enable_eoyeartop_ban and section.settings.enable_eoyeartophead %}
+<section class="top_bar_monday" >
+  <div class="page-width">
+    <div class=" top_image_ban">
+      <div class="col-md-12">
+        <img src="{{ section.settings.top_eoyear_banner | img_url: 'master' }}" alt="About WODLife" class="about-image small--hide" />
+        <img src="{{ section.settings.top_eoyear_banner_mobile | img_url: 'master' }}" alt="About WODLife" class="about-image medium-up--hide" />
+        {%if section.settings.eoyear_head != blank %}
+        <h1>{{section.settings.eoyear_head}}</h1>
+        {% endif %}
+      </div>  
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if section.settings.enable_eoyearups %}
+<div class="shipping-bar-template small--hide" {% if section.settings.ups_bg_color != blank %}style="background-color: {{ section.settings.ups_bg_color }}"{% endif %}>
+  <div class="page-width">
+    <div class="grid">
+      {% for i in (1..4) %}
+      {% capture title %}ups_title{{ i }}{% endcapture %}
+      {% capture text %}ups_text{{ i }}{% endcapture %}
+      {% capture img %}ups_logo{{ i }}{% endcapture %}
+      <div class="grid__item grid__item{{ i }} medium-up--one-quarter">
+        <img src="{{section.settings[img]}}" />        
+        <div class="main-text__text">
+          {% if section.settings[title] != blank %}
+          <p class="main-text_heading">{{ section.settings[title] }}</p>
+          {% endif %}
+          {% if section.settings[text] != blank %}
+            {{ section.settings[text] }}
+          {% endif %}
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if settings.end_of_year_countdown %}
+{% include 'countdown' %} 
+{% endif %} 
+
+<div class="section page mob_top">
+  <div class="page-width">
+    <div class="">
+      <div class="">
+        <div class="content">
+          {% if settings.enable_eoyearthree_img %}
+            <div class="three_col grid">
+              {% for block in section.blocks %}
+              <div class="grid__item medium-up--one-third small--one-third extra-small--one-whole ">
+                <a href="{{block.settings.link}}">
+                  {% if block.settings.image != blank %}<img src="{{ block.settings.image | img_url: 'original' }}" alt="About WODLife" class="about-image" />{% endif %}
+                </a>                           
+
+              </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if section.settings.enable_eoyeartwo_img %}
+            <div class="two_col grid">
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole ">
+                <a href="{{section.settings.eoyearimage2_1_link}}">
+                  <img src="{{ section.settings.eoyearimage2_1 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>  
+              </div>
+              <div class="grid__item medium-up--one-half small--one-half extra-small--one-whole ">
+                <a href="{{section.settings.eoyearimage2_2_link}}">
+                  <img src="{{ section.settings.eoyearimage2_2 | img_url: 'original' }}" alt="About WODLife" class="about-image" />
+                </a>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if section.settings.m_enable_eoy_banner %}
+          <div class="banner_gift text-center">
+            <div class="grid">
+              <div class="grid__item one-whole bannerimage">
+                <a href="{{ section.settings.m_eoy_banner_collections}}">
+                  <img src="{{ section.settings.m_eoy_banner | img_url: 'master' }}" alt="About WODLife" class="about-image small--hide" />
+                  <img src="{{ section.settings.m_eoy_banner_for_mobile | img_url: 'master' }}" alt="About WODLife" class="about-image medium-up--hide" />
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if section.settings.ups_txt_color != blank %}
+{% capture id %}#shopify-section-{{ section.id }}{% endcapture %}
+  <style>
+    {{ id }} .shipping-bar-template .grid__item .main-text__text p {
+      color: {{ section.settings.ups_txt_color }};
+    }
+    {{ id }} .shipping-bar-template .grid__item svg{
+      fill:{{ section.settings.ups_txt_color }};
+    }
+
+  </style>
+{% endif %}
+{% schema %}
+  {
+    "name": "End Of Your Sale",
+    "settings": [
+		{
+          "type": "checkbox",
+          "id": "enable_end_year_sale",
+          "label": "Enable This page",
+          "default": true
+        },
+		{
+          "type": "checkbox",
+          "id": "enable_eoyeartophead",
+          "label": "End of year sale Top Banner"
+        },
+		{
+          "type": "image_picker",
+          "id": "eoyear_banner",
+          "label": "End of year sale Banner of desktop"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_eoyearbanhead",
+          "label": "Enable End of year sale Banner heading"
+        },
+        {
+          "type": "header",
+          "content": "End of year sale Hero banner Setting"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_eoyeartop_ban",
+          "label": "Enable End of year sale Hero Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "top_eoyear_banner",
+          "label": "End of year sale Hero Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "top_eoyear_banner_mobile",
+          "label": "End of year sale Hero Banner for mobile"
+        },
+        {
+          "type": "textarea",
+          "id": "eoyear_head",
+          "label": "End of year sale Hero Banner heading"
+        },
+		{
+          "type": "header",
+          "content": "USP Bar Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_eoyearups",
+          "label": "Enable End of year sale USP Section"
+        },
+		{
+          "type": "color",
+          "id": "ups_bg_color",
+          "label": "Background color"
+        },
+        {
+          "type": "color",
+          "id": "ups_txt_color",
+          "label": "Text color"
+        },
+        {
+          "type": "text",
+          "id": "ups_logo1",
+          "label": "First Logo"
+        },
+        {
+          "type": "text",
+          "id": "ups_title1",
+          "label": "First Title"
+        },
+        {
+          "type": "richtext",
+          "id": "ups_text1",
+          "label": "First Text"
+        },
+        {
+          "type": "text",
+          "id": "ups_logo2",
+          "label": "Second Logo"
+        },
+        {
+          "type": "text",
+          "id": "ups_title2",
+          "label": "Second Title"
+        },
+        {
+          "type": "richtext",
+          "id": "ups_text2",
+          "label": "Second Text"
+        },
+        {
+          "type": "text",
+          "id": "ups_logo3",
+          "label": "Third Logo"
+        },
+        {
+          "type": "text",
+          "id": "ups_title3",
+          "label": "Third Title"
+        },
+        {
+          "type": "richtext",
+          "id": "ups_text3",
+          "label": "Third Text"
+        },
+        {
+          "type": "text",
+          "id": "ups_logo4",
+          "label": "Fourth Logo"
+        },
+        {
+          "type": "text",
+          "id": "ups_title4",
+          "label": "Fourth Title"
+        },
+        {
+          "type": "richtext",
+          "id": "ups_text4",
+          "label": "Fourth Text"
+        },
+		{
+          "type": "header",
+          "content": "2 Main Image Box"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_eoyeartwo_img",
+          "label": "Enable Three image Section"
+        },
+        {
+          "type": "image_picker",
+          "id": "eoyearimage2_1",
+          "label": "1 image In row"
+        },
+        {
+          "type": "url",
+          "id": "eoyearimage2_1_link",
+          "label": "1 image Link In row"
+        },
+        {
+          "type": "image_picker",
+          "id": "eoyearimage2_2",
+          "label": "2 Image In Row"
+        },
+        {
+          "type": "url",
+          "id": "eoyearimage2_2_link",
+          "label": "2 image Link In row"
+        },
+        {
+          "type": "header",
+          "content": "Collection Section"
+        },
+		{
+          "type": "checkbox",
+          "id": "m_enable_eoy_banner",
+          "label": "Enable end of year Collection section"
+        },
+        {
+          "type": "image_picker",
+          "id": "m_eoy_banner",
+          "label": "End of year Collection Image"
+        },
+		{
+          "type": "image_picker",
+          "id": "m_eoy_banner_for_mobile",
+          "label": "End of year Collection Image for mobile"
+        },
+        {
+          "type": "url",
+          "id": "m_eoy_banner_collections",
+          "label": "End of year sale collections"
+        }
+	],
+    "blocks": [
+          {
+            "type": "Image",
+            "name": "Collection",
+            "settings": [
+              {
+                "id": "image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+
+            ]
+          }
+        ]
+      }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

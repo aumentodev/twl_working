@@ -1,0 +1,62 @@
+<script type="text/javascript">
+  var viselyProductMedias = [];
+  {% for image in product.images %} viselyProductMedias.push({"url" : "{{ image.src | product_img_url: 'large' }}" });{% endfor %}
+
+  var ViselyViewedProduct = {
+    "id": "{{ product.id }}",
+    "name": {
+    	"en": "{{ product.title | escape }}"
+  	},
+    "media": viselyProductMedias,
+    "relUrl": "{{ product.url }}",
+    "reversePrices": [{
+                  "currency": "{{ shop.currency }}",
+                  "priceType": "SALE",
+                  "value": {{ product.price }},
+                  "formattedValue": "{{ product.price | money | strip_html }}"
+              }
+              {% if product.compare_at_price > product.price %}
+               ,{
+                  "currency": "{{ shop.currency }}",
+                  "priceType": "REGULAR",
+                  "value": {{ product.compare_at_price }},
+                  "formattedValue": "{{ product.compare_at_price | money | strip_html}}"
+               }
+               {% endif %}
+               ],
+      {% if product.price_min < product.price_max %}
+      "prices": [
+               {
+                  "currency": "{{ shop.currency }}",
+                  "priceType": "RANGEFROM",
+                  "value": {{ product.price_min }},
+                  "formattedValue": "{{ product.price_min | money | strip_html}}"
+               },
+               {
+                    "currency": "{{ shop.currency }}",
+                    "priceType": "RANGETO",
+                    "value": {{ product.price_max }},
+                    "formattedValue": "{{ product.price_max | money | strip_html}}"
+                }],                                                      
+       {% else %} 
+     "prices": [{% if product.compare_at_price > product.price %}
+               {
+                  "currency": "{{ shop.currency }}",
+                  "priceType": "REGULAR",
+                  "value": {{ product.compare_at_price }},
+                  "formattedValue": "{{ product.compare_at_price | money | strip_html}}"
+               },
+               {% endif %}
+                {
+                    "currency": "{{ shop.currency }}",
+                    "priceType": "SALE",
+                    "value": {{ product.price }},
+                    "formattedValue": "{{ product.price | money | strip_html}}"
+                }],                                                            
+       {% endif %}
+    "recommendationType": "RECENTLY_VIEWED",
+    "score": 0,
+    "tags": ['{{ product.tags | join: "', '"}}'],
+    "meta": "{\"okendo|ProductListingSnippet\":\"{{ product.metafields.okendo.ProductListingSnippet | strip_newlines | replace: '\n' , '' | escape  }}\"}"
+  };
+</script>

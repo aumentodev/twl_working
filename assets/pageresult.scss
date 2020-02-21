@@ -1,0 +1,7998 @@
+div#isp_search_result_page_container {
+    max-width: inherit;
+    text-align: left;
+    direction: ltr;
+    display: inline-block;
+    width: 100%;
+    min-height: 800px;
+}
+
+div#isp_search_results_banner img {
+    width: 100%;
+    max-height: 200px;
+    margin: initial;
+}
+
+span#isp_results_search_text {
+    font-size: 145%;
+    font-weight: bold;
+}
+
+#isp_header_subtitle, div#isp_results_did_you_mean {
+    font-size: smaller;
+}
+
+#isp_search_result_page_container div.isp_left_container {
+    float: left;
+    width: 17%;
+    padding-top: 1em;
+    padding-left: 0.4em; 
+    visibility: visible;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    -webkit-transition-property: -webkit-transform, width, margin, opacity, visibility;
+    -moz-transition-property: -moz-transform, width, margin, opacity, visibility;
+    -o-transition-property: -o-transform, width, margin, opacity, visibility;
+    transition-property: transform, width, margin, opacity, visibility;
+}
+
+div.isp_right_container {
+    display: none;
+    float: right;
+    width: 150px;
+    height: 400px;
+}
+
+#isp_search_result_page_container div.isp_center_container {
+    padding: 1em 0;
+}
+
+div.isp_center_container:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.isp_center_container, .isp_left_container {
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    -webkit-transition-property: -webkit-transform, width, margin, opacity, visibility;
+    -moz-transition-property: -moz-transform, width, margin, opacity, visibility;
+    -o-transition-property: -o-transform, width, margin, opacity, visibility;
+    transition-property: transform, width, margin, opacity, visibility;
+}
+
+#isp_search_result_page_container div#isp_search_box_container {
+    margin-left: 0;
+}
+
+#isp_search_result_page_container div.isp_center_container_position {
+    margin-left: 17%;
+}
+
+#isp_search_result_page_container div.isp_center_container_position.isp_center_container_position_no_facets {
+    margin-left: 0;
+}
+
+div.isp_center_container ul#isp_search_results_container, ul#isp_quick_view_content_lookalike {
+    float: left;
+    width: 100%;
+    list-style: none outside none;
+    padding: 0;
+    margin: 0;
+    border: 0 !important;
+    text-align: initial;
+    min-height: 120px;
+}
+
+div.isp_center_container ul#isp_search_results_container li.isp_grid_product, ul#isp_quick_view_content_lookalike li.isp_grid_product {
+    width: 23.7%;
+    height: 315px;
+    float: left;
+    display: inline;
+    position: relative;
+    text-align: center;
+    border: solid 1px #eee;
+    margin: 0.25%;
+    padding: 0.25%;
+    font-size: 100%;
+    font: inherit;
+    overflow: hidden;
+    -webkit-box-shadow: 1px 1px 3px 0 #f2f2f2;
+    -moz-box-shadow: 1px 1px 3px 0 #f2f2f2;
+    -ms-box-shadow: 1px 1px 3px 0 #f2f2f2;
+    box-shadow: 1px 1px 3px 0 #f2f2f2;
+    background-size: 100% 200px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-image: -ms-linear-gradient(bottom, #fafafa 0, #fdfdfd 20%, #fff 60%);
+    background-image: -moz-linear-gradient(bottom, #fafafa 0, #fdfdfd 20%, #fff 60%);
+    background-image: -o-linear-gradient(bottom, #fafafa 0, #fdfdfd 20%, #fff 60%);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fafafa), color-stop(.2, #fdfdfd), color-stop(.6, #fff));
+    background-image: -webkit-linear-gradient(bottom, #fafafa 0, #fdfdfd 20%, #fff 60%);
+    background-image: linear-gradient(to top, #fafafa 0, #fdfdfd 20%, #fff 60%);
+}
+
+#isp_search_results_container li.isp_grid_product a.isp_product_image_href, ul#isp_quick_view_content_lookalike li.isp_grid_product a.isp_product_image_href {
+    text-decoration: none;
+    -webkit-transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    -ms-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+    position: static;
+}
+
+#isp_search_results_container li.isp_grid_product a.isp_product_image_href:hover {
+    text-decoration: none;
+}
+
+li.isp_grid_product div.isp_product_image_wrapper {
+    height: 225px;
+    position: relative;
+}
+
+span.isp_product_reviews_count {
+    color: #aaa;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value.isp_facet_value_color_swatch {
+    display: inline-block;
+    height: 29px;
+    padding: 2px 0;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value.isp_facet_value_color_swatch .isp_facet_value_counter {
+    display: none;
+}
+
+.isp_swatch_selected {
+    box-shadow: 0px 0px 5px black;
+}
+
+.isp_facet_value_color_swatch a {
+    padding: 0 5px !important;
+}
+
+.isp_facet_check_box_color_swatch {
+    display: none;
+}
+
+.isp_facet_value_name_color_swatch {
+    height: 20px;
+    width: 20px;
+    padding: 2px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    display: inline-block !important;
+    margin-left: 0 !important;
+}
+
+.isp_facet_value_color_swatch .isp_facet_value_name_selected, .isp_facet_value_color_swatch .isp_facet_value_name_not_selected {
+    display: none !important;
+}
+
+li.isp_grid_product .isp_product_color_swatch {
+    overflow: hidden;
+    text-align: center;
+    margin-top: 0.5em;
+    width: 100%;
+    padding: 1px;
+}
+
+li.isp_grid_product .isp_product_color_swatch .product-color-swatch {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+div.isp_quick_view_content_left div.isp_sold_out_banner_container, li.isp_grid_product div.isp_sold_out_banner_container  {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+/* #isp_search_result_page_container .isp_sold_out_banner_container{
+position: absolute;
+    bottom: -13px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    min-height: 30px;
+
+} */
+/*li.isp_grid_product div.isp_sold_out_banner_container {
+	position: absolute;
+    right: 47px !important;
+    z-index: 1;
+    bottom: 17px !important;
+   transform: translateY(-17%);
+  transform: translateX(-47%);
+}*/
+div.isp_quick_view_content_left div.isp_sold_out_banner, li.isp_grid_product div.isp_sold_out_banner {
+/*     -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    color: red; */
+    display: block;
+    position: relative;
+/*     right: -3px;
+    top: 20px;
+    width: 65px; */
+}
+
+div.isp_quick_view_content_left div.isp_sold_out_banner_content, li.isp_grid_product div.isp_sold_out_banner_content {
+    position: relative;
+    z-index: 2;
+    padding: 3px 0;
+    font-size: 10px;
+    font-weight: 700;
+    min-height: 14px;
+    line-height: 14px;
+/*     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+}
+
+/* div.isp_quick_view_content_left div.isp_sold_out_banner_content:before, li.isp_grid_product div.isp_sold_out_banner_content:before {
+    -webkit-transform: translateX(-15%) skewX(-45deg);
+    -moz-transform: translateX(-15%) skewX(-45deg);
+    -ms-transform: translateX(-15%) skewX(-45deg);
+    -o-transform: translateX(-15%) skewX(-45deg);
+    content: '';
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    border-bottom: red solid 2px;
+    border-top: red solid 2px;
+    background-color: #fff;
+} */
+
+/* div.isp_quick_view_content_left div.isp_sold_out_banner_content:after, li.isp_grid_product div.isp_sold_out_banner_content:after {
+    -webkit-transform: translateX(15%) skewX(45deg);
+    -moz-transform: translateX(15%) skewX(45deg);
+    -ms-transform: translateX(15%) skewX(45deg);
+    -o-transform: translateX(15%) skewX(45deg);
+    content: '';
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    border-bottom: red solid 2px;
+    border-top: red solid 2px;
+    background-color: rgba(255, 255, 255, 1);
+} */
+
+#isp_search_results_container li.isp_grid_product a.isp_product_quick_view_button, a.isp_product_look_a_like_button {
+    display: none;
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    border: 1px solid #eee;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1px;
+    font-size: 0.9em;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#isp_search_results_container li.isp_grid_product a.isp_product_look_a_like_button {
+    bottom: 30px;
+    background-color: #F58229;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    border: none;
+}
+
+#isp_search_results_container li.isp_grid_product:hover a.isp_product_quick_view_button, #isp_search_results_container li.isp_grid_product:hover a.isp_product_look_a_like_button {
+    display: block;
+}
+
+#isp_quick_view_content_lookalike a.isp_product_quick_view_button {
+    display: none;
+}
+
+#isp_search_results_container li.isp_grid_product a.isp_product_quick_view_button:hover, a.isp_product_look_a_like_button:hover {
+    border: 1px solid #c0c0c0;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#isp_search_results_container li.isp_grid_product a.isp_product_look_a_like_button:hover {
+    background-color: #F58229;
+}
+
+div#isp_product_quick_view_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000001;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+div#isp_product_quick_view_model {
+    width: 90%;
+    max-width: 900px;
+    margin-left: auto;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    left: 50%;
+    top: 10%;
+    position: fixed;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    z-index: 2147483647;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -khtml-border-radius: 5px;
+    padding: 10px;
+    padding-top: 25px;
+}
+
+div.isp_quick_view_description ul {
+    margin-left: 20px;
+}
+
+#isp_product_quick_view_model div.isp_quick_view_content_wrapper {
+    overflow: auto;
+    max-height: 450px;
+    padding-right: 20px;
+}
+
+#isp_product_quick_view_model .isp_quick_view_content_left {
+    float: left;
+    width: 40%;
+    display: block;
+    border-right: 1px solid #EFEFEF;
+}
+
+#isp_product_quick_view_model .isp_quick_view_content_right {
+    float: right;
+    width: 55%;
+    margin-left: 10px;
+}
+
+#isp_product_quick_view_model .isp_quick_view_content_left .isp_quick_view_image_wrapper {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#isp_product_quick_view_model .isp_quick_view_content_left img.isp_quick_view_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 410px;
+    max-width: 100%;
+}
+
+#isp_product_quick_view_model .isp_quick_view_title {
+    font-weight: 700;
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 1.5em;
+}
+
+#isp_product_quick_view_model .isp_quick_view_description {
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    overflow: hidden;
+    line-height: 1.3em;
+    max-height: 13em;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    vertical-align: initial;
+}
+
+#isp_product_quick_view_model a.isp_quick_view_show_more {
+    float: right;
+    margin-bottom: 15px;
+}
+
+#isp_product_quick_view_model .isp_product_sku {
+    text-align: left;
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+#isp_product_quick_view_model .isp_product_review, #isp_product_quick_view_model .isp_yotpo {
+    margin-bottom: 10px;
+    clear: both;
+    text-align: left;
+}
+
+.isp_quick_view_content_right .isp_quick_view_price_add_to_cart_wrapper {
+    margin-top: 15px;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+    position: relative;
+    clear: both;
+}
+
+.isp_quick_view_content_right .isp_quick_view_price_add_to_cart_wrapper:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.isp_quick_view_content_right select.isp_quick_view_variant_select {
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #222;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    width: 100%;
+    margin-bottom: 14px;
+    -webkit-appearance: menulist-button;
+}
+
+.isp_quick_view_content_right option:disabled {
+	color: #bbb;
+}
+
+.isp_quick_view_content_right select.isp_quick_view_variant_select:focus {
+    border-color: #838383;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(85, 85, 85, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(85, 85, 85, .6);
+}
+
+.isp_quick_view_content_right select option.isp_quick_view_variant_select_sold_out {
+    color: red;
+}
+
+.isp_quick_view_content_right .isp_quick_view_price_wrapper {
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.isp_quick_view_content_right .isp_quick_view_add_to_cart_form {
+    float: right;
+    margin: 0;
+}
+
+.isp_quick_view_add_to_cart_form .isp_add_to_cart_quantity {
+    display: inline;
+}
+
+.isp_add_to_cart_quantity .isp_add_to_cart_quantity_num#quantity, .isp_add_to_cart_quantity .isp_add_to_cart_quantity_num {
+    width: 60px;
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px 10px 0 0;
+    padding: 0 5px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #999999;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: initial;
+}
+
+.isp_add_to_cart_quantity label.isp_add_to_cart_quantity_txt {
+    margin-right: 10px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.isp_quick_view_add_to_cart_form input.isp_quick_view_add_to_cart_btn {
+    display: inline-block;
+    height: 25px;
+    max-width: 250px;
+    min-width: 150px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    padding: 0 20px;
+    vertical-align: middle;
+    position: static;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #333333;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    width: initial;
+    line-height: inherit;
+}
+
+.isp_quick_view_add_to_cart_form input.isp_quick_view_add_to_cart_btn.isp_disabled {
+    cursor: wait;
+    opacity: 0.1;
+}
+
+.isp_quick_view_add_to_cart_form input.isp_quick_view_add_to_cart_btn.isp_loading {
+    background-image: url(https://cdn-gae-ssl-default.akamaized.net/images/isp_loading_ajax.gif);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position-y: center;
+    background-position-x: 2%;
+}
+
+.isp_quick_view_add_to_cart_form input.isp_quick_view_add_to_cart_btn:hover {
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+    font-weight: bold;
+}
+
+div#isp_product_quick_view_model div#isp_product_quick_view_close_button {
+    background-size: 32px 32px;
+    top: -16px;
+    right: -16px;
+    position: absolute;
+    cursor: pointer;
+    visibility: visible;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    background-image: url("../../images/isp_close_quick_view4.png");
+    z-index: 2;
+}
+
+#isp_quick_view_content_lookalike li.isp_grid_product .isp_product_image, #isp_search_results_container li.isp_grid_product .isp_product_image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    background: transparent;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto !important;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+li.isp_grid_product div.isp_product_info {
+    text-align: left;
+    padding: 2px;
+    margin: 2px;
+}
+
+li.isp_grid_product div.isp_product_info a {
+    color: inherit;
+    text-decoration: none;
+}
+
+li.isp_grid_product div.isp_product_info div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 1px;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_title {
+    font-size: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    display: -webkit-box;
+    line-height: 1.3em;
+    max-height: 2.6em;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    vertical-align: initial;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_desc {
+    display: none;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_desc_show {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 22px;
+    max-height: 44px;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_vendor {
+    display: none;
+}
+
+li.isp_grid_product div.isp_product_info .isp_variants_count {
+    display: none;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_sku, #isp_product_quick_view_model div.isp_quick_view_content_wrapper .isp_product_sku {
+    display: none;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_sku_title, #isp_product_quick_view_model div.isp_quick_view_content_wrapper .isp_product_sku_title {
+    display: none;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_review {
+    display: none;
+    margin-top: 2px;
+    padding-left: 2px;
+    text-align: center;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_review img {
+    display: inline;
+}
+
+#isp_left_container .isp_facet_value a[facet_name=Isp-review-stars] .isp_facet_check_box_icon {
+    display: none;
+}
+
+#isp_left_container_facets .isp_facet_value a[facet_name=Isp-review-stars] .isp_facet_value_name {
+    margin-left: initial;
+}
+
+#isp_product_quick_view_model .isp_quick_view_content_right .isp_product_review img, li.isp_grid_product div.isp_product_info .isp_product_review img {
+    display: inline;
+    margin: 0 0 0 -3px !important;
+    vertical-align: middle;
+}
+
+.isp_yotpo, .isp_yotpo_back {
+    min-height: 16px;
+    padding-left: 2px;
+}
+
+#isp_product_quick_view_model .isp_yotpo img, #isp_search_results_container .isp_yotpo img {
+    display: inline;
+    margin: 0 0 0 -3px !important;
+    vertical-align: middle;
+}
+
+#isp_search_results_container a.text-m {
+    display: none;
+}
+
+.yotpo.bottomLine.yotpo-small {
+    margin: 0 auto;
+    width: 100px;
+}
+
+li.isp_grid_product div.isp_product_info .isp_product_price_wrapper {
+    font-weight: 500;
+    font-size: 1.2em;
+    margin-top: 1px;
+    display: inline;
+}
+
+#isp_product_quick_view_model .isp_compare_at_price, li.isp_grid_product div.isp_product_info .isp_compare_at_price {
+    text-decoration: line-through;
+    opacity: 0.4;
+    font-weight: 400;
+    color: inherit !important;
+    margin: 0 !important;
+}
+
+li.isp_grid_product span.isp_search_term_highlight {
+    font-weight: 700;
+    background: #ffc;
+    font-size: inherit;
+}
+
+div.isp_center_container #isp_search_res_progress {
+    font-size: 11px;
+    margin: 10px auto -10px;
+    width: 100%;
+    height: 40px;
+    padding-top: 20px;
+    text-indent: 0;
+    text-align: center;
+    display: inline-block;
+}
+
+div#loading {
+    display: none;
+    visibility: hidden;
+}
+
+.loading.engo-popup.active {
+    display: none;
+    visibility: hidden;
+}
+
+div.page>div.img-loader {
+    display: none;
+}
+
+div.loading-modal.modal {
+    visibility: hidden;
+}
+
+div.isp_center_container #isp_search_res_progress img {
+    display: inherit;
+    width: initial;
+}
+
+li.isp_grid_product form.isp_add_to_cart_form {
+    z-index: 19;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: none;
+    opacity: 0.5;
+    margin-bottom: 0;
+}
+
+li.isp_grid_product form.isp_add_to_cart_form:hover {
+    opacity: 1;
+}
+
+li.isp_grid_product:hover form.isp_add_to_cart_form {
+    display: inline;
+}
+
+li.isp_grid_product input[type=submit].isp_add_to_cart_btn {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -ms-box-shadow: none;
+    display: inline-block;
+    height: 35px;
+    border: none;
+    margin: 0;
+    padding: 0 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: none;
+    background: #858585;
+    width: 100%;
+    max-width: 100%;
+    -webkit-transition: background .2s ease, color .2s ease;
+    -moz-transition: background .2s ease, color .2s ease;
+    -o-transition: background .2s ease, color .2s ease;
+    transition: background .2s ease, color .2s ease;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-appearance: none;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: normal;
+    padding: 0 0;
+    text-align: center;
+}
+
+.isp_add_to_cart_disable {
+    cursor: progress;
+}
+
+.isp_add_to_cart_disable > * {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.isp_add_to_cart_quantity_txt_serp {
+    display: none;
+}
+
+.isp_add_to_cart_quantity_num_serp {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: #1b75bb;
+    display: none;
+}
+
+#isp_search_box_container {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    padding-left: 0;
+    margin-left: 0;
+    overflow: hidden;
+}
+
+#isp_search_box_container .isp_watermark {
+    position: relative;
+    bottom: 3px;
+    font-family: Arial;
+    font-size: 11px;
+    color: #aaa;
+    vertical-align: middle;
+    text-decoration: none;
+    float: right;
+    margin-right: 50px;
+    cursor: pointer;
+    z-index: 98;
+    margin-top: -27px;
+    opacity: 0.6;
+    display: none;
+    border: 0;
+}
+
+#isp_search_box_container .isp_watermark:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+#isp_search_box_container .isp_watermark_text {
+    vertical-align: super;
+    text-decoration: none;
+    color: inherit;
+}
+
+#isp_search_box_container .isp_watermark #isp_watermark_img {
+    border: 0;
+    vertical-align: baseline;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    float: none;
+    width: auto;
+}
+
+input[type=search]#isp_main_search_box.isp_search_box {
+    width: 100%;
+    max-width: inherit;
+    height: 44px;
+    padding: 10px 26px;
+    margin-bottom: 0;
+    background: #fff url('../../images/search_icon2.png') no-repeat 5px center;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: block;
+    font-size: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: none;
+    -ms-border-radius: none;
+    -o-border-radius: none;
+    border: solid 1px #dcdcdc;
+    -webkit-transition: box-shadow 0.2s, border 0.2s;
+    -moz-transition: box-shadow 0.2s, border 0.2s;
+    -o-transition: box-shadow 0.2s, border 0.2s;
+    transition: box-shadow 0.2s, border 0.2s;
+    color: initial;
+}
+
+input[type=search]#isp_main_search_box.isp_search_box:focus {
+    outline: 0;
+    border: solid 1px #707070;
+    -webkit-box-shadow: 0 0 5px 1px #969696;
+    -moz-box-shadow: 0 0 5px 1px #969696;
+    box-shadow: 0 0 5px 1px #969696;
+    background-image: url('../../images/search_icon2.png');
+    background-repeat: no-repeat;
+    background-position: 5px center;
+}
+
+#isp_search_box_container .isp_watermark_text {
+    vertical-align: super;
+    text-decoration: none;
+    color: inherit;
+}
+
+#isp_search_result_page_container div.isp_center_container_header {
+    width: 100%;
+    display: inline-block;
+    clear: both;
+    border: 0;
+    padding-top: 10px;
+}
+
+.isp_center_container_header:after {
+    content: '';
+    display: -webkit-box;
+    display: flexbox;
+    display: flex;
+    width: 100%;
+    height: 1px;
+    margin-top: 3px;
+}
+
+span.isp_results_tab {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-bottom: none;
+    vertical-align: sub;
+    cursor: pointer;
+    color: #777;
+}
+
+span.isp_results_tab:hover {
+    text-decoration: underline;
+}
+
+a.isp_did_you_mean_results {
+    display: inline;
+}
+
+span.isp_results_tab_selected {
+    border: 1px solid #bbb;
+    color: inherit;
+    padding-bottom: 6px;
+    background-color: transparent;
+    border-bottom-color: #fff;
+}
+
+span.isp_results_tab_selected:hover {
+    text-decoration: none;
+}
+
+.isp_cms_title {
+    font-weight: 700;
+}
+
+.isp_cms_article {
+    padding: 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+#isp_search_result_page_container .isp_center_container_header div.isp_sorting_and_result_view_wrapper {
+    float: right;
+    margin-right: 0;
+    margin-bottom: 1px;
+    padding-top: 3px;
+}
+
+.isp_sorting_and_result_view_wrapper div.isp_search_res_view_type {
+    display: none;
+    vertical-align: middle;
+    z-index: 99;
+    border: 0;
+    margin-left: 10px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.isp_sorting_and_result_view_wrapper ul#isp_search_res_sorting_menu {
+    display: none;
+    vertical-align: middle;
+    z-index: 99;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0.5em;
+    border: 0 !important;
+}
+
+.isp_sorting_and_result_view_wrapper .isp_search_res_view_type a.isp_view_mode_button {
+    vertical-align: -webkit-baseline-middle;
+    text-decoration: none;
+}
+
+.isp_sorting_and_result_view_wrapper .isp_search_res_view_type img {
+    margin: 0;
+    display: inherit !important;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li {
+    position: relative;
+    margin: 3px !important;
+    font-size: 0.8em;
+    padding: 0;
+    background: none;
+    width: auto !important;
+    z-index: auto;
+    border: 0 !important;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li#search_res_sorting_title {
+    display: inline-block;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li>a {
+    text-decoration: none;
+    position: relative;
+    display: block;
+    padding: 2px 8px;
+    outline: 0;
+    color: #111;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ededed), color-stop(1, #fefefe));
+    background-image: linear-gradient(to top, #ededed, #fefefe);
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li>a>.caret:before {
+    content: '';
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li>a>.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+/*     margin-left: 2px !important; */
+    vertical-align: middle;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    font-weight: 700;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: initial;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li>.dropdown-menu {
+    margin: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    z-index: 9998;
+    display: none;
+    float: left;
+    min-width: 185px;
+    padding: 5px 0;
+    list-style: none;
+    font-size: 1em;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    -ms-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    background-clip: padding-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: initial !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>.open>.dropdown-menu {
+    display: block;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>.open>.dropdown-menu>li {
+    margin: 0;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>.open>.dropdown-menu>li:hover {
+    background: #eaeaea;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>.open>.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.428571429;
+    color: #000;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>.open>.dropdown-menu>li>a.selected_sorting_value {
+    background-image: url(https://ssl.gstatic.com/ui/v1/menu/checkmark2.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.isp_center_container_header div.isp_results_summary_wrapper {
+    float: none;
+    font-size: 1em;
+    margin: 0;
+    padding-top: 1px;
+}
+
+#isp_center_container .isp_center_container_header div.isp_results_summary_wrapper h1 {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    line-height: 2em;
+    letter-spacing: inherit;
+    border: initial;
+    overflow: initial;
+    background: none;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+}
+
+#isp_center_container .isp_center_container_header div.isp_results_summary_wrapper h1 a {
+    cursor: pointer;
+}
+
+.cms_pdf_image {
+    width: 20px;
+    display: inline-block;
+    position: relative;
+    margin-left: 0.3em !important;
+    height: 20px;
+    bottom: -4px;
+    background-image: url(https://cdn-gae-ssl-default.akamaized.net/images/pdf-icon.png);
+    background-repeat: no-repeat;
+    background-size: 1em;
+}
+
+.isp_center_container_header div.isp_results_summary_wrapper #isp_results_did_you_mean {
+    display: none;
+    margin-left: 20px;
+}
+
+.isp_center_container_header div.isp_results_summary_wrapper #isp_results_did_you_mean .isp_did_you_mean_results {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+#isp_center_container .isp_center_container_header a.isp_refine_nevigation {
+    display: none;
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding: 2px 8px;
+    max-height: 26px;
+    text-decoration: none;
+    outline: 0;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    color: #111;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ededed), color-stop(1, #fefefe));
+    background-image: linear-gradient(to top, #ededed, #fefefe);
+}
+
+#isp_center_container .isp_center_container_header a.isp_refine_nevigation img {
+    vertical-align: middle;
+    margin: 0 !important;
+    display: inline-block;
+    width: inherit;
+}
+
+.isp_center_container_header a.isp_refine_nevigation span.isp_refine_navigation_content {
+    color: #111;
+    font-size: 0.8em;
+    padding-left: 2px;
+}
+
+div#isp_left_container_facets {
+    margin-bottom: 20px;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_single_facet_wrapper {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e7e7e7;
+    margin-right: 7px;
+    transition: all 0.5s ease-in-out;
+    overflow-y: hidden;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_single_facet_wrapper.collapsed {
+    max-height: 1.5em;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_single_facet_wrapper .isp_facet_title {
+    margin-bottom: 0.2em;
+    text-align: left;
+    line-height: initial;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value>a[facet_name=Categories] {
+    margin-left: initial;
+    text-indent: initial;
+    padding-left: initial;
+}
+
+span.isp_facet_value_name_not_selected:hover {
+    color: #000;
+}
+
+#isp_left_container_facets .isp_facet_value a .isp_facet_value_name.isp_facet_value_name_category {
+    margin-left: 0;
+}
+
+.isp_single_facet_wrapper .isp_facet_title .isp_facet_title_name {
+    font-weight: 700;
+ 	 font-size: 14px;
+    padding-bottom: 8px;
+    padding-top: 16px;
+    color:#313131 !important;
+    cursor: pointer;
+    padding-right: 20px;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif !important;
+    
+}
+
+.isp_search_res_facets_container .isp_facet_unvisible_values {
+    display: none;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_show_hide_values {
+    font-size: 0.75em;
+    color: #707070;
+    cursor: pointer;
+    margin: 0;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value {
+    padding-bottom: 0.1em;
+    text-indent: 0;
+    overflow: hidden;
+    margin: 0;
+    text-align: left;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value a {
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding-left: 17px;
+    text-indent: -17px;
+    display: block;
+    border: 0;
+    line-height: initial;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value a.isp_sellable_only_checkbox {
+    display: inline;
+    padding-left: 0;
+    position: relative;
+    bottom: 1px;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value .isp_sellable_only_title {
+    cursor: pointer;
+}
+
+#isp_left_container_facets .isp_search_res_facets_container .isp_facet_value a:hover {
+    color: #0654ba;
+}
+
+#isp_left_container .isp_facet_value a div.isp_facet_check_box_icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(241, 241, 241, 0.5);
+    margin: 0;
+    float: initial;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#isp_left_container .isp_facet_value a div.isp_facet_check_box_icon.isp_facet_check_box_icon_checked {
+    background-image: url('../../images/isp_check_marked.png');
+}
+
+#isp_left_container .isp_facet_value a div.isp_facet_check_box_icon.isp_facet_check_box_icon_not_checked {
+    background-image: url('../../images/isp_check_not_marked2.png');
+}
+
+#isp_left_container_facets .isp_facet_value a .isp_facet_value_name {
+    display: inline;
+    vertical-align: middle;
+    font-size: smaller;
+    margin-left: 0.2em;
+    word-wrap: break-word;
+}
+
+#isp_left_container_facets .isp_facet_value a .isp_facet_value_name .isp_facet_value_name_selected {
+    font-weight: 700;
+    display: inline;
+}
+
+#isp_left_container_facets .isp_facet_value a .isp_facet_value_name .isp_facet_value_name_not_selected {
+    display: inline;
+    font-weight: 400;
+}
+
+#isp_left_container_facets .isp_facet_value a .isp_facet_value_name .isp_facet_value_counter {
+    font-weight: 400;
+    font-size: 1em;
+    display: initial;
+}
+
+#isp_left_container_facets .isp_custom_price_container {
+    display: block;
+    padding-bottom: 0.1em;
+    text-indent: 0;
+    overflow: hidden;
+    margin: 0;
+    text-align: left;
+    margin: 0 0 5px;
+    line-height: initial;
+}
+
+.isp_custom_price_container input.isp_custom_price_input[type=number] {
+    display: inline-block;
+    margin: 0;
+    max-width: 20%;
+    min-width: 20%;
+    width: 20%;
+    height: 24px;
+    min-height: 20px;
+    padding: 0 2px;
+    background-color: #fff;
+    border: 1px solid #bccad2;
+    font-size: 11px;
+    line-height: initial;
+    vertical-align: middle;
+    text-indent: initial;
+    border-radius: 1px;
+}
+
+.isp_custom_price_container input.isp_custom_price_input:hover, .isp_custom_price_container input.isp_custom_price_input:focus {
+    border: 1px solid #96A1A8;
+    outline: 0;
+}
+
+.isp_custom_price_container span.isp_custom_price_to_span {
+    font-size: 11px;
+    margin-left: 0;
+    float: none;
+    display: inline-block;
+    width: auto;
+    min-height: initial;
+}
+
+.isp_custom_price_container button.isp_custom_price_submit {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    border-radius: 1px;
+    border: 1px solid #808080;
+    margin-left: 3px;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-weight: 600;
+    padding: 0 0 2px;
+    line-height: normal;
+    min-width: initial;
+    color: inherit;
+    font-size: inherit;
+    float: initial;
+    vertical-align: middle;
+    min-height: initial;
+    background-color: initial;
+}
+
+.isp_custom_price_container button.isp_custom_price_submit:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.isp_custom_price_container label.isp_custom_price_currency {
+    font-weight: 400;
+    font-size: 11px;
+    display: inline;
+    float: initial;
+    padding: 0;
+}
+
+.isp_custom_price_container>* {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 0;
+    vertical-align: middle;
+    display: inline-block;
+    width: inherit;
+}
+
+.isp_custom_price_container .isp_custom_price_validatioon_error {
+    color: #f42121;
+}
+
+#isp_left_container_facets div.isp_single_facet_wrapper span.isp_facet_narrowed_by_category {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.isp_facet_prev_category .isp_facet_category_not_active {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+}
+
+div.isp_center_container div#isp_search_results_filter_tags {
+    display: none;
+    display: inline-block;
+    text-align: initial;
+    position: relative;
+    bottom: 0.6em;
+}
+
+div.isp_center_container h1#isp_results_summary div#isp_search_results_filter_tags {
+    bottom: 2px;
+    left: 25px;
+}
+
+div#isp_search_results_filter_tags .isp_filter_removable_tag {
+    padding: 0.3em;
+    border: 1px #aeaeae solid;
+    -moz-border-radius: 3px;
+    -ms-box-shadow: 0 3px 3px rgba(0, 0, 0, .175);
+    -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, .175);
+    font-size: 0.8em;
+    opacity: 0.8;
+    color: #000;
+    margin-right: 0.6em;
+    display: inline-block;
+    line-height: 13px;
+}
+
+div#isp_search_results_filter_tags .isp_filter_removable_tag:hover {
+    opacity: 1;
+}
+
+div#isp_search_results_filter_tags .isp_filter_removable_tag a {
+    cursor: pointer;
+    color: #555;
+    text-decoration: none;
+    border: 0;
+    display: inline;
+}
+
+div#isp_search_results_filter_tags .isp_filter_tag_remove_all {
+    font-size: 0.8em;
+    margin-left: 0.5em;
+}
+
+div#isp_search_results_filter_tags .isp_filter_tag_remove_all:only-child {
+    display: none;
+}
+
+div#isp_search_results_filter_tags .isp_filter_tag_remove_all a {
+    cursor: pointer;
+    color: #555;
+    display: inline;
+}
+
+.display_refine_slide {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+@media (min-width: 980px) and (max-width: 1349px) {
+    #isp_search_result_page_container div.isp_left_container {
+        width: 16.5%;
+        visibility: visible;
+    }
+    #isp_search_result_page_container div.isp_center_container_position {
+        margin-left: 17.5%;
+    }
+    div.isp_center_container ul#isp_search_results_container li.isp_grid_product, ul#isp_quick_view_content_lookalike li.isp_grid_product {
+        width: 31.7%;
+    }
+}
+
+@media (min-width: 760px) and (max-width: 979px) {
+    #isp_search_result_page_container .isp_center_container_header div.isp_results_summary_wrapper {
+        display: inline-block;
+    }
+    li.isp_grid_product form.isp_add_to_cart_form {
+        display: initial;
+    }
+    #isp_search_result_page_container div.isp_left_container {
+        width: 20%;
+        visibility: visible;
+    }
+    #isp_search_result_page_container div.isp_center_container_position {
+        margin-left: 22%;
+    }
+    div.isp_center_container ul#isp_search_results_container li.isp_grid_product, ul#isp_quick_view_content_lookalike li.isp_grid_product {
+        width: 46.5%;
+    }
+    #isp_search_box_container {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+    .isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li#search_res_sorting_title {
+        display: none;
+    }
+}
+
+@media (min-width: 560px) and (max-width: 759px) {
+    #isp_search_result_page_container .isp_center_container_header div.isp_results_summary_wrapper {
+        display: inline-block;
+    }
+    li.isp_grid_product form.isp_add_to_cart_form {
+        display: initial;
+    }
+    #isp_search_result_page_container div.isp_center_container {
+        padding: 0;
+    }
+    div.isp_center_container ul#isp_search_results_container li.isp_grid_product, ul#isp_quick_view_content_lookalike li.isp_grid_product {
+        width: 46.6%;
+    }
+    #isp_search_result_page_container div.isp_left_container {
+        visibility: hidden;
+        margin-left: -170px;
+        width: 160px;
+    }
+    .display_refine_slide {
+        -webkit-transform: translateX(175px);
+        -moz-transform: translateX(175px);
+        -ms-transform: translateX(175px);
+        -o-transform: translateX(175px);
+        transform: translateX(175px);
+    }
+    #isp_center_container .isp_center_container_header a.isp_refine_nevigation {
+        display: block;
+    }
+    #isp_search_result_page_container div.isp_center_container_position {
+        margin-left: 0;
+    }
+    #isp_search_box_container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+    .isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li#search_res_sorting_title {
+        display: none;
+    }
+    #isp_search_results_container li.isp_grid_product a.isp_product_quick_view_button, a.isp_product_look_a_like_button {
+        display: block;
+        border: 1px solid #c0c0c0;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #000;
+        font-weight: 600;
+        text-decoration: none;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+    }
+    #isp_product_quick_view_model .isp_quick_view_content_left {
+        float: none;
+        width: 100%;
+        display: block;
+        border-right: none;
+    }
+    #isp_product_quick_view_model .isp_quick_view_content_right {
+        float: none;
+        margin-left: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+    #isp_product_quick_view_model .isp_quick_view_description {
+        line-height: 1.3em;
+        -webkit-line-clamp: 5;
+        max-height: 6.5em;
+    }
+}
+
+@media (max-width: 559px) {
+    #isp_search_result_page_container .isp_center_container_header div.isp_results_summary_wrapper {
+        display: inline-block;
+    }
+    li.isp_grid_product form.isp_add_to_cart_form {
+        display: initial;
+    }
+    #isp_search_result_page_container div.isp_center_container {
+        padding: 0;
+    }
+    div.isp_center_container ul#isp_search_results_container li.isp_grid_product, ul#isp_quick_view_content_lookalike li.isp_grid_product {
+        width: 47%;
+        height: 350px;
+    }
+    #isp_search_result_page_container div.isp_left_container {
+        visibility: hidden;
+        margin-left: -170px;
+        width: 160px;
+    }
+    .display_refine_slide {
+        -webkit-transform: translateX(175px);
+        -moz-transform: translateX(175px);
+        -ms-transform: translateX(175px);
+        -o-transform: translateX(175px);
+        transform: translateX(175px);
+    }
+    #isp_center_container .isp_center_container_header a.isp_refine_nevigation {
+        display: block;
+    }
+    #isp_search_result_page_container div.isp_center_container_position {
+        margin-left: 0;
+    }
+    #isp_search_box_container {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+    .isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li#search_res_sorting_title {
+        display: none;
+    }
+    #isp_search_box_container .isp_watermark {
+        display: none !important;
+    }
+    #isp_search_results_container li.isp_grid_product a.isp_product_quick_view_button, a.isp_product_look_a_like_button {
+        display: block;
+        border: 1px solid #c0c0c0;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #000;
+        font-weight: 600;
+        text-decoration: none;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+    }
+    li.isp_grid_product form.isp_add_to_cart_form {
+        opacity: 1;
+    }
+    #isp_product_quick_view_model .isp_quick_view_content_left {
+        float: none;
+        width: 100%;
+        display: block;
+        border-right: none;
+    }
+    #isp_product_quick_view_model .isp_quick_view_content_right {
+        float: none;
+        margin-left: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+    #isp_product_quick_view_model .isp_quick_view_description {
+        line-height: 1.3em;
+        -webkit-line-clamp: 5;
+        max-height: 6.5em;
+    }
+}
+
+.breadcrumb-navigation, .clearfix.breadcrumb-wrap {
+    display: none;
+}
+
+.isp_no_results_suggestions {
+    list-style: initial;
+    margin: 0;
+    padding: 0;
+    margin: 0 0 0 20px;
+}
+
+#isp_search_result_page_container div, #isp_search_result_page_container ul {
+    max-width: 100%;
+    clear: none;
+}
+
+div.main div.col-left, div.main div.col-right {
+    display: none;
+}
+
+div.main div.col-main {
+    float: left;
+    width: 100%;
+}
+
+div.main div.col-wrapper {
+    width: 100%;
+}
+
+div.page-title h1 {
+    display: none;
+}
+
+.isp_serp_left_nav_sticky {
+    position: fixed;
+    top: 50px;
+}
+
+div.main div.col-left, div.main div.col-right {
+    display: none;
+}
+
+div.main div.col-main {
+    float: left;
+    width: 100%;
+}
+
+div.main div.col-wrapper {
+    width: 100%;
+}
+
+.page-layout-3columns .column-main {
+    width: 100%;
+}
+
+.small-12.medium-9.columns {
+    width: 100%;
+}
+
+.page-layout-2columns-left .column-main {
+    width: 100%;
+}
+
+div.main-container-inner aside.col-left.sidebar {
+    display: none;
+}
+
+.col-left.sidebar.col-left-first {
+    display: none;
+}
+
+.main-container aside.grid_3.sidebar {
+    display: none;
+}
+
+aside.offcanvas-sidebar {
+    display: none;
+}
+
+section.main-column {
+    width: 100%;
+}
+
+aside.col-left.sidebar {
+    display: none;
+}
+
+.layout-3col #main-content {
+    width: 100%;
+}
+
+div#sidebar-2 {
+    display: none;
+}
+
+.col-sm-15.col-sm-offset-5.col-xs-60 {
+    display: none;
+    width: 0;
+}
+
+.col-sm-40.page-content {
+    width: 100%;
+}
+
+body>div#wrap>div#page>div#content {
+    width: initial;
+}
+
+.page-content.rte {
+    max-width: inherit;
+}
+
+div.container.main.content div.ten.columns.offset-by-three.page.clearfix {
+    width: 100%;
+    padding: 0;
+}
+
+.col-xs-4.blogsidebar {
+    display: none;
+}
+
+.rte.col-xs-8 {
+    width: 100%
+}
+
+div.grid div.grid-item.large--two-thirds.push--large--one-sixth {
+    width: 100%;
+    left: 0;
+}
+
+div.grid--full div.grid-item.large--two-thirds.push--large--one-sixth {
+    width: 100%;
+    left: 0;
+}
+
+main.wrapper.main-content .grid__item.large--one-fifth {
+    display: none;
+}
+
+div#interior_content_wrap div#generic_interior_content {
+    width: 100%;
+    margin: 0;
+}
+
+div.container.page div.row div.col-sm-7.main-col {
+    width: 100%;
+}
+
+div.container.page div.row div#sidebar {
+    display: none;
+}
+
+div.grid .grid__item.large--one-fifth.medium-down--hide {
+    display: none;
+}
+
+div.grid .grid__item.large--four-fifths {
+    width: 100%;
+}
+
+div.siteContainer aside#sidebar {
+    display: none;
+}
+
+div.siteContainer section#content {
+    width: 100%;
+    max-width: initial;
+}
+
+div.content-wrapper div.sidebar.three.columns {
+    display: none;
+}
+
+div.content-wrapper div.thirteen.columns.clearfix.page {
+    width: initial;
+}
+
+div.container div#sidebar.four.columns {
+    display: none;
+}
+
+div.container div#content.twelve.columns {
+    width: 100%;
+}
+
+div.container.clear.content div.d3-d10.t2-t11.m-all.m-b.page-content {
+    width: 100%;
+    margin-left: 0;
+}
+
+div#page-content div.rte div.navigation_left.margin_top_47 {
+    display: none;
+}
+
+div#page-content div.rte div.rs-page-content {
+    width: 100%;
+}
+
+div.row div.large-8.large-centered.columns.offset-bg-white {
+    width: 100%;
+}
+
+div#page-sidebar {
+    display: none;
+}
+
+div#page-content {
+    width: 100%;
+}
+
+.content div.text-content-wrap.clearfix div.rte.clearfix.text-content {
+    width: 100%;
+}
+
+.col-md-9.col-md-push-3.col-sm-8.col-sm-push-4 {
+    left: auto;
+    left: initial;
+    width: 100%;
+}
+
+.col-md-3.col-md-pull-9.col-sm-4.col-sm-pull-8 {
+    display: none;
+}
+
+div#yt_main {
+    width: 100%;
+}
+
+article.col-main {
+    width: 100% !important;
+}
+
+.col-main.col-sm-9.col-sm-push-3 {
+    left: 0;
+    width: 100%;
+}
+
+div#sns_main {
+    width: 100%;
+}
+
+div#column_left {
+    display: none;
+}
+
+div#column_right {
+    width: 100%;
+    float: none !important;
+}
+
+.col-main.alpha.grid_18 {
+    width: 100%;
+}
+
+.col-right.sidebar.grid_6.omega {
+    display: none;
+}
+
+section#body .sidebar {
+    display: none;
+}
+
+section#body .main {
+    width: 100% !important;
+}
+
+.column_left.column.col-sm-3 {
+    display: none;
+}
+
+div#main_content {
+    margin: 0 !important;
+    width: 100%;
+}
+
+div#isp_search_result_page_container li:before {
+    content: none;
+}
+
+div#sns_right {
+    display: none;
+}
+
+.grid_9.col-main {
+    width: 100%;
+}
+
+aside.grid_3.sidebar.sidebar-left {
+    display: none;
+}
+
+nav.sidebar-module {
+    display: none;
+}
+
+.grid__item.large--four-fifths.xlarge--five-sixths {
+    width: 100%;
+}
+
+section#sidebar {
+    display: none;
+}
+
+section#main {
+    width: 100% !important;
+}
+
+.page-layout-2columns-left .column.main {
+    width: 100%;
+}
+
+.sidebar.sidebar-additional {
+    display: none;
+}
+
+div.grid__item.post-large--two-thirds.push--post-large--one-sixth {
+    left: 0;
+    width: 100%;
+}
+
+.page-content {
+    max-width: initial;
+}
+
+div.grid div.grid__item.large--five-sixths.push--large--one-twelfth {
+    left: 0;
+    width: 100%;
+}
+
+div.grid .grid__item.large--four-fifths.push--large--one-tenth {
+    left: 0;
+}
+
+div.content-wrapper>div.thirteen.columns.clearfix.page {
+    width: 100%;
+}
+
+div#page .container div#bg div#sortable {
+    display: none;
+}
+
+div#page .container div#bg div#cols div#main, div#page .container div#bg div#cols {
+    width: 100%;
+}
+
+div#page .container div#bg div#cols #sidebar {
+    display: none;
+}
+
+div.text-content-wrap div.rte.text-content {
+    width: 100%;
+    padding: 0;
+}
+
+.reading-column {
+    width: 100%;
+}
+
+.page-width.page-container {
+    max-width: 100%;
+}
+
+.template-page .main-content .single-column.row {
+    max-width: none;
+}
+
+.grid__item.large--three-quarters {
+    width: 100%;
+}
+
+.grid__item.large--two-thirds.push--large--one-sixth {
+    width: 100%;
+    left: 0;
+}
+
+.grid-item.large--two-thirds.push--large--one-sixth {
+    width: 100%;
+    left: 0%;
+}
+
+.main-content {
+    width: 100%;
+}
+
+.col-main.col-sm-9 {
+    width: 100%;
+}
+
+div#sidebar {
+    display: none;
+}
+
+nav.grid__item.small--text-center.medium-up--one-fifth {
+    display: none;
+}
+
+.secondary.right {
+    float: left;
+}
+
+.primary.left {
+    width: 100%;
+}
+
+body>main.main-content>div.container>article.page-container.page-narrow, body>div.body>div.container {
+    max-width: 100%;
+}
+
+.main .inner .Left {
+    display: none;
+}
+
+td#navcell {
+    display: none;
+}
+
+div.motopress-wrapper div#content {
+    width: 100%;
+}
+
+div#content div#primary {
+    width: 100%;
+}
+
+div#content div#secondary {
+    display: none;
+}
+
+.mainpage-sidebar.col-sm-4.col-lg-3.col-xs-12.pull-left {
+    display: none;
+}
+
+div#main-content {
+    width: 100%;
+}
+
+#main-content .container:before {
+    display: none;
+}
+
+.col-lg-3.col-md-3.col-md-pull-9.col-lg-pull-9 {
+    display: none;
+}
+
+.col-lg-9.col-md-9.col-md-push-3.col-lg-push-3 {
+    width: 100%;
+    left: 0;
+}
+
+main.template-page.content.av-content-small.alpha.units {
+    width: inherit;
+}
+
+.row-fluid .span4.sidebar.sidebar-right {
+    display: none;
+}
+
+.row-fluid .content.span8 {
+    width: 100%;
+}
+
+.container #content-area div#left-area {
+    width: 100%;
+}
+
+#main-sidebar-container aside#sidebar {
+    display: none;
+}
+
+div#content aside#sidebar {
+    display: none;
+}
+
+.page-content.page-content--centered, .content.col-sm-9.clearfix {
+    width: 100%;
+}
+
+.sidebar.sidebar-right.col-sm-3.clearfix {
+    display: none;
+}
+
+aside#sidebar {
+    display: none;
+}
+
+div#main-content>div.content {
+    width: 100%;
+}
+
+aside.right-off-canvas-menu {
+    display: none;
+}
+
+aside#sidebar {
+    display: none;
+}
+
+section#maincontent>section#content {
+    width: 100%;
+}
+
+.small-12.medium-3.large-3.columns.left {
+    display: none;
+}
+
+.small-12.medium-9.large-9.columns.right {
+    width: 100%;
+}
+
+#isp_scrollUp {
+    bottom: 40px;
+    right: 20px;
+    background: #555;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    opacity: .9;
+    padding: 10px 20px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    -webkit-transition: background 200ms linear;
+    -moz-transition: background 200ms linear;
+    transition: background 200ms linear;
+}
+
+.isp_product_info .pr-snippet .pr-snippet-read-write {
+    display: none;
+}
+
+span.pr-snippet-rating-decimal.pr-rounded {
+    display: none;
+}
+
+.isp_product_info .pr-snippet-stars {
+    margin-bottom: -5px !important;
+}
+
+.isp_favorite {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+}
+
+button.no-focus-enabled {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: none;
+    background-color: transparent;
+    background-position: 10px;
+    padding: 0.5em;
+    border: 0;
+    opacity: 0.7;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+    box-shadow: none;
+    margin: initial;
+}
+
+button.no-focus-enabled:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+svg.favorite--heart {
+    width: 20px;
+    height: 17px;
+}
+
+.favorite_is-favorited, .isp_favorite .favorite_is-favorited path.heart {
+    fill: #c72929;
+    stroke: #c72929;
+}
+
+.isp_favorite path.heart {
+    fill: transparent;
+    stroke: #757575;
+}
+
+#isp_favorite_bar {
+    float: right;
+}
+
+div#isp_favorite_bar {
+    height: inherit;
+    display: inline-block;
+}
+
+#isp_favorite_bar button[disabled], #isp_favorite_bar button, #isp_search_results_container button {
+    vertical-align: text-top;
+    padding: 3px;
+    max-height: inherit;
+    height: inherit;
+    background-color: transparent;
+    line-height: initial;
+    min-width: initial;
+    font-size: initial;
+}
+
+.favorite_is-animated {
+    -webkit-animation: pulse-heart .2s cubic-bezier(.445, .05, .55, .95);
+    -moz-animation: pulse-heart .2s cubic-bezier(.445, .05, .55, .95);
+    animation: pulse-heart .2s cubic-bezier(.445, .05, .55, .95);
+}
+
+.isp_badge .isp_product_image_wrapper:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    pointer-events: none;
+    background-repeat: no-repeat;
+}
+
+.affirm-as-low-as {
+    font-size: smaller;
+}
+
+.affirm-as-low-as>a {
+    display: none;
+}
+
+.isp-product-color-swatch-navy {
+    background: navy;
+}
+
+.isp-product-color-swatch-natural {
+    background: #fffaf0;
+}
+
+.isp-product-color-swatch-cognac {
+    background: #9f381d;
+}
+
+.isp-product-color-swatch-stone {
+    background: #fff6d6;
+}
+
+.isp-product-color-swatch-snuff {
+    background: #ffccff;
+}
+
+.isp-product-color-swatch-sage {
+    background: #9ba17b;
+}
+
+.isp-product-color-swatch-chipmunk {
+    background: #8e6338;
+}
+
+.isp-product-color-swatch-storm {
+    background: #717486;
+}
+
+.isp-product-color-swatch-tobacco {
+    background: #715d47;
+}
+
+.isp-product-color-swatch-pewter {
+    background: #91a092;
+}
+
+.isp-product-color-swatch-dune {
+    background: #867665;
+}
+
+.isp-product-color-swatch-shore {
+    background: #c1bfbd;
+}
+
+.isp-product-color-swatch-kiwi {
+    background: #8ee53f;
+}
+
+.isp-product-color-swatch-sky {
+    background: #87cefa;
+}
+
+.isp-product-color-swatch-royal {
+    background: #4169e1;
+}
+
+.isp-product-color-swatch-moonrock {
+    background: #f2e0ce;
+}
+
+.isp-product-color-swatch-citrus {
+    background: #fff759;
+}
+
+.isp-product-color-swatch-chrome {
+    background: #e3dedb;
+}
+
+.isp-product-color-swatch-walnut {
+    background: #442233;
+}
+
+.isp-product-color-swatch-oak {
+    background: #806517;
+}
+
+.isp-product-color-swatch-alizarin, .isp-product-color-swatch-alizarin_crimson {
+    background: #e32636;
+}
+
+.isp-product-color-swatch-almond {
+    background: #efdecd;
+}
+
+.isp-product-color-swatch-amaranth {
+    background: #e52b50;
+}
+
+.isp-product-color-swatch-amber {
+    background: #ffbf00;
+}
+
+.isp-product-color-swatch-amethyst {
+    background: #9966cc;
+}
+
+.isp-product-color-swatch-apricot {
+    background: #fbceb1;
+}
+
+.isp-product-color-swatch-ao {
+    background: green;
+}
+
+.isp-product-color-swatch-aqua {
+    background: #00ffff;
+}
+
+.isp-product-color-swatch-aquamarine {
+    background: #7fffd4;
+}
+
+.isp-product-color-swatch-arsenic {
+    background: #3b444b;
+}
+
+.isp-product-color-swatch-asparagus {
+    background: #87a96b;
+}
+
+.isp-product-color-swatch-auburn {
+    background: #6d351a;
+    background: #a52a2a;
+}
+
+.isp-product-color-swatch-aureolin {
+    background: #fdee00;
+}
+
+.isp-product-color-swatch-aurometalsaurus {
+    background: #6e7f80;
+}
+
+.isp-product-color-swatch-awesome {
+    background: #ff2052;
+}
+
+.isp-product-color-swatch-azure {
+    background: #007fff;
+}
+
+.isp-product-color-swatch-bazaar {
+    background: #98777b;
+}
+
+.isp-product-color-swatch-beaver {
+    background: #9f8170;
+}
+
+.isp-product-color-swatch-beige {
+    background: beige;
+}
+
+.isp-product-color-swatch-bisque {
+    background: bisque;
+}
+
+.isp-product-color-swatch-bistre {
+    background: #3d2b1f;
+}
+
+.isp-product-color-swatch-camouflage {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/camo.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-belle {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-redbean {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-redblack {
+    background: red;
+}
+
+.isp-product-color-swatch-merlot {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-bittersweet {
+    background: #fe6f5e;
+}
+
+.isp-product-color-swatch-black {
+    background: #000000;
+}
+
+.isp-product-color-swatch-blond {
+    background: #faf0be;
+}
+
+.isp-product-color-swatch-blue {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-blush {
+    background: #de5d83;
+}
+
+.isp-product-color-swatch-bole {
+    background: #79443b;
+}
+
+.isp-product-color-swatch-bone {
+    background: #e3dac9;
+}
+
+.isp-product-color-swatch-boysenberry {
+    background: #873260;
+}
+
+.isp-product-color-swatch-brass {
+    background: #b5a642;
+}
+
+.isp-product-color-swatch-bronze {
+    background: #cd7f32;
+}
+
+.isp-product-color-swatch-brown {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-bubbles {
+    background: #e7feff;
+}
+
+.isp-product-color-swatch-buff {
+    background: #f0dc82;
+}
+
+.isp-product-color-swatch-burgundy {
+    background: #800020;
+}
+
+.isp-product-color-swatch-burlywood {
+    background: #deb887;
+}
+
+.isp-product-color-swatch-byzantine {
+    background: #bd33a4;
+}
+
+.isp-product-color-swatch-byzantium {
+    background: #702963;
+}
+
+.isp-product-color-swatch-cadet {
+    background: #536872;
+    background: #536878;
+}
+
+.isp-product-color-swatch-canary {
+    background: #ffff99;
+}
+
+.isp-product-color-swatch-capri {
+    background: #00bfff;
+}
+
+.isp-product-color-swatch-camel {
+    background: #c19a6b;
+}
+
+.isp-product-color-swatch-cardinal {
+    background: #c41e3a;
+}
+
+
+.isp-product-color-swatch-carmine {
+    background: #ff0040;
+}
+
+.isp-product-color-swatch-carnelian {
+    background: #b31b1b;
+}
+
+.isp-product-color-swatch-ceil {
+    background: #92a1cf;
+}
+
+.isp-product-color-swatch-celadon {
+    background: #ace1af;
+}
+
+.isp-product-color-swatch-celeste {
+    background: #b2ffff;
+}
+
+.isp-product-color-swatch-cerise {
+    background: #de3163;
+}
+
+.isp-product-color-swatch-cerulean {
+    background: #007ba7;
+}
+
+.isp-product-color-swatch-chamoisee {
+    background: #a0785a;
+}
+
+.isp-product-color-swatch-champagne {
+    background: #fad6a5;
+}
+
+.isp-product-color-swatch-charcoal {
+    background: #36454f;
+}
+
+.isp-product-color-swatch-mocha {
+    background: #493d26;
+}
+
+.isp-product-color-swatch-fuschia {
+    background: #ff00ff;
+}
+
+.isp-product-color-swatch-chartreuse {
+    background: #dfff00;
+}
+
+.isp-product-color-swatch-cherry {
+    background: #de3163;
+}
+
+.isp-product-color-swatch-chestnut {
+    background: #cd5c5c;
+}
+
+.isp-product-color-swatch-chocolate {
+    background: #d2691e;
+}
+
+.isp-product-color-swatch-cinereous {
+    background: #98817b;
+}
+
+.isp-product-color-swatch-cinnabar {
+    background: #e34234;
+}
+
+.isp-product-color-swatch-cinnamon {
+    background: #d2691e;
+}
+
+.isp-product-color-swatch-citrine {
+    background: #e4d00a;
+}
+
+
+.isp-product-color-swatch-clover {
+    background: #00ff6f;
+}
+
+.isp-product-color-swatch-cobalt {
+    background: #0047ab;
+}
+
+.isp-product-color-swatch-copper {
+    background: #b87333;
+}
+
+.isp-product-color-swatch-coffee {
+    background: #6f4e37;
+}
+
+.isp-product-color-swatch-cyan {
+    background: #00ffff;
+}
+
+.isp-product-color-swatch-daffodil {
+    background: #ffff31;
+}
+
+.isp-product-color-swatch-dandelion {
+    background: #f0e130;
+}
+
+.isp-product-color-swatch-coquelicot {
+    background: #ff3800;
+}
+
+.isp-product-color-swatch-coral {
+    background: coral;
+}
+
+.isp-product-color-swatch-cordovan {
+    background: #893f45;
+}
+
+.isp-product-color-swatch-corn {
+    background: #fbec5d;
+}
+
+.isp-product-color-swatch-cornflower {
+    background: #9aceeb;
+}
+
+.isp-product-color-swatch-cornsilk {
+    background: #fff8dc;
+}
+
+.isp-product-color-swatch-cream {
+    background: #fffdd0;
+}
+
+.isp-product-color-swatch-crimson {
+    background: #dc143c;
+}
+
+.isp-product-color-swatch-denim {
+    background: #1560bd;
+}
+
+.isp-product-color-swatch-desert {
+    background: #c19a6b;
+}
+
+.isp-product-color-swatch-drab {
+    background: #967117;
+}
+.isp-product-color-swatch-ecru {
+    background: #c2b280;
+}
+
+.isp-product-color-swatch-eggplant {
+    background: #614051;
+}
+
+.isp-product-color-swatch-eggshell {
+    background: #f0ead6;
+}
+
+
+.isp-product-color-swatch-emerald {
+    background: #50c878;
+}
+
+.isp-product-color-swatch-espresso {
+    background: #4e2a2a;
+}
+
+.isp-product-color-swatch-fallow {
+    background: #c19a6b;
+}
+
+.isp-product-color-swatch-famous {
+    background: #ff00ff;
+}
+
+.isp-product-color-swatch-fandango {
+    background: #b53389;
+}
+
+.isp-product-color-swatch-fawn {
+    background: #e5aa70;
+}
+
+.isp-product-color-swatch-feldgrau {
+    background: #4d5d53;
+}
+
+.isp-product-color-swatch-fern {
+    background: #71bc78;
+}
+
+.isp-product-color-swatch-firebrick {
+    background: #b22222;
+}
+
+.isp-product-color-swatch-flame {
+    background: #e25822;
+}
+
+.isp-product-color-swatch-flavescent {
+    background: #f7e98e;
+}
+
+.isp-product-color-swatch-flax {
+    background: #eedc82;
+}
+
+.isp-product-color-swatch-folly {
+    background: #ff004f;
+}
+
+.isp-product-color-swatch-fuchsia {
+    background: #ff00ff;
+}
+
+.isp-product-color-swatch-fulvous {
+    background: #e48400;
+}
+
+.isp-product-color-swatch-gainsboro {
+    background: #dcdcdc;
+}
+
+.isp-product-color-swatch-gamboge {
+    background: #e49b0f;
+}
+
+.isp-product-color-swatch-ginger {
+    background: #b06500;
+}
+
+.isp-product-color-swatch-glaucous {
+    background: #6082b6;
+}
+
+.isp-product-color-swatch-glitter {
+    background: #e6e8fa;
+}
+
+.isp-product-color-swatch-gold {
+    background: gold;
+}
+
+.isp-product-color-swatch-goldenrod {
+    background: #daa520;
+}
+
+.isp-product-color-swatch-green {
+    background: green;
+}
+
+.isp-product-color-swatch-grullo {
+    background: #a99a86;
+}
+
+.isp-product-color-swatch-heliotrope {
+    background: #df73ff;
+}
+
+.isp-product-color-swatch-honeydew {
+    background: #f0fff0;
+}
+
+.isp-product-color-swatch-iceberg {
+    background: #71a6d2;
+}
+
+.isp-product-color-swatch-icterine {
+    background: #fcf75e;
+}
+
+.isp-product-color-swatch-inchworm {
+    background: #b2ec5d;
+}
+
+.isp-product-color-swatch-indigo {
+    background: indigo;
+}
+
+.isp-product-color-swatch-iris {
+    background: #5a4fcf;
+}
+
+.isp-product-color-swatch-isabelline {
+    background: #f4f0ec;
+}
+
+.isp-product-color-swatch-ivory {
+    background: ivory;
+}
+
+.isp-product-color-swatch-jade {
+    background: #00a86b;
+}
+
+.isp-product-color-swatch-jasmine {
+    background: #f8de7e;
+}
+
+.isp-product-color-swatch-jasper {
+    background: #d73b3e;
+}
+
+.isp-product-color-swatch-jonquil {
+    background: #fada5e;
+}
+
+.isp-product-color-swatch-khaki {
+    background: #c3b091;
+}
+
+.isp-product-color-swatch-lava {
+    background: #cf1020;
+}
+
+.isp-product-color-swatch-lavender {
+    background: #b57edc;
+}
+
+.isp-product-color-swatch-lemon {
+    background: #fff700;
+}
+
+.isp-product-color-swatch-lilac {
+    background: #c8a2c8;
+}
+
+.isp-product-color-swatch-lime {
+    background: #bfff00;
+}
+
+.isp-product-color-swatch-linen {
+    background: linen;
+}
+
+.isp-product-color-swatch-lion {
+    background: #c19a6b;
+}
+
+.isp-product-color-swatch-liver {
+    background: #534b4f;
+}
+
+.isp-product-color-swatch-lust {
+    background: #e62020;
+}
+
+.isp-product-color-swatch-magenta {
+    background: #ff00ff;
+}
+
+.isp-product-color-swatch-magnolia {
+    background: #f8f4ff;
+}
+
+.isp-product-color-swatch-mahogany {
+    background: #c04000;
+}
+
+.isp-product-color-swatch-maize {
+    background: #fbec5d;
+}
+
+.isp-product-color-swatch-malachite {
+    background: #0bda51;
+}
+
+.isp-product-color-swatch-manatee {
+    background: #979aaa;
+}
+
+.isp-product-color-swatch-mantis {
+    background: #74c365;
+}
+
+.isp-product-color-swatch-maroon {
+    background: maroon;
+}
+
+.isp-product-color-swatch-mauve {
+    background: #e0b0ff;
+}
+
+.isp-product-color-swatch-mauvelous {
+    background: #ef98aa;
+}
+
+.isp-product-color-swatch-melon {
+    background: #fdbcb4;
+}
+
+.isp-product-color-swatch-mint {
+    background: #3eb489;
+}
+
+.isp-product-color-swatch-moccasin {
+    background: #faebd7;
+}
+
+.isp-product-color-swatch-mulberry {
+    background: #c54b8c;
+}
+
+.isp-product-color-swatch-munsell {
+    background: #f2f3f4;
+}
+
+.isp-product-color-swatch-mustard {
+    background: #ffdb58;
+}
+
+.isp-product-color-swatch-myrtle {
+    background: #21421e;
+}
+
+.isp-product-color-swatch-ochre {
+    background: #cc7722;
+}
+
+.isp-product-color-swatch-olive {
+    background: olive;
+}
+
+.isp-product-color-swatch-olivine {
+    background: #9ab973;
+}
+
+.isp-product-color-swatch-onyx {
+    background: #0f0f0f;
+}
+
+.isp-product-color-swatch-orange {
+    background: #ff8c00;
+}
+
+.isp-product-color-swatch-orchid {
+    background: orchid
+}
+
+.isp-product-color-swatch-patriarch {
+    background: purple;
+}
+
+.isp-product-color-swatch-peach {
+    background: #ffe5b4;
+}
+
+.isp-product-color-swatch-pear {
+    background: #d1e231;
+}
+
+.isp-product-color-swatch-pearl {
+    background: #f0ead6;
+}
+
+.isp-product-color-swatch-peridot {
+    background: #e6e200;
+}
+
+.isp-product-color-swatch-periwinkle {
+    background: #ccf;
+}
+
+.isp-product-color-swatch-phlox {
+    background: #df00ff;
+}
+
+.isp-product-color-swatch-pink {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-pistachio {
+    background: #93c572;
+}
+
+.isp-product-color-swatch-platinum {
+    background: #e5e4e2;
+}
+
+.isp-product-color-swatch-plum {
+    background: #8e4585;
+}
+
+.isp-product-color-swatch-prune {
+    background: #701c1c;
+}
+
+.isp-product-color-swatch-puce {
+    background: #c89;
+}
+
+.isp-product-color-swatch-pumpkin {
+    background: #ff7518;
+}
+
+.isp-product-color-swatch-purple {
+    background: #9400d3;
+}
+
+.isp-product-color-swatch-rackley {
+    background: #5d8aa8;
+}
+
+.isp-product-color-swatch-raspberry {
+    background: #e30b5d;
+}
+
+.isp-product-color-swatch-razzmatazz {
+    background: #e3256b;
+}
+
+.isp-product-color-swatch-red {
+    background: red;
+}
+
+.isp-product-color-swatch-rose {
+    background: #ff007f;
+}
+
+.isp-product-color-swatch-rosewood {
+    background: #65000b;
+}
+
+.isp-product-color-swatch-ruby {
+    background: #e0115f;
+}
+
+.isp-product-color-swatch-ruddy {
+    background: #ff0028;
+}
+
+.isp-product-color-swatch-rufous {
+    background: #a81c07;
+}
+
+.isp-product-color-swatch-russet {
+    background: #80461b;
+}
+
+.isp-product-color-swatch-rust {
+    background: #b7410e;
+}
+
+.isp-product-color-swatch-saffron {
+    background: #f4c430;
+}
+
+.isp-product-color-swatch-salmon {
+    background: #ff8c69;
+}
+
+.isp-product-color-swatch-sand {
+    background: #c2b280;
+}
+
+.isp-product-color-swatch-sandstorm {
+    background: #ecd540;
+}
+
+.isp-product-color-swatch-sapphire {
+    background: #082567;
+}
+
+.isp-product-color-swatch-scarlet {
+    background: #ff2400;
+}
+
+.isp-product-color-swatch-seashell {
+    background: #fff5ee;
+}
+
+.isp-product-color-swatch-sepia {
+    background: #704214;
+}
+
+.isp-product-color-swatch-shadow {
+    background: #8a795d;
+}
+
+.isp-product-color-swatch-shamrock {
+    background: #45cea2;
+}
+
+.isp-product-color-swatch-sienna {
+    background: #882d17;
+}
+
+.isp-product-color-swatch-silver {
+    background: silver;
+}
+
+.isp-product-color-swatch-sinopia {
+    background: #cb410b;
+}
+
+.isp-product-color-swatch-skobeloff {
+    background: #007474;
+}
+
+.isp-product-color-swatch-smalt {
+    background: #039;
+}
+
+.isp-product-color-swatch-snow {
+    background: snow;
+}
+
+.isp-product-color-swatch-stizza {
+    background: #900;
+}
+
+.isp-product-color-swatch-stormcloud {
+    background: teal;
+}
+
+.isp-product-color-swatch-straw {
+    background: #e4d96f;
+}
+
+.isp-product-color-swatch-sunglow {
+    background: #fc3;
+}
+
+.isp-product-color-swatch-sunset {
+    background: #fad6a5;
+}
+
+.isp-product-color-swatch-tan {
+    background: tan;
+}
+
+.isp-product-color-swatch-tangelo {
+    background: #f94d00;
+}
+
+.isp-product-color-swatch-tangerine {
+    background: #f28500;
+}
+
+.isp-product-color-swatch-taupe {
+    background: #483c32;
+}
+
+.isp-product-color-swatch-teal {
+    background: teal;
+}
+
+.isp-product-color-swatch-tawny {
+    background: #cd5700;
+}
+
+.isp-product-color-swatch-thistle {
+    background: #d8bfd8;
+}
+
+.isp-product-color-swatch-timberwolf {
+    background: #dbd7d2;
+}
+
+.isp-product-color-swatch-tomato {
+    background: tomato;
+}
+
+.isp-product-color-swatch-toolbox {
+    background: #746cc0;
+}
+
+.isp-product-color-swatch-topaz {
+    background: #ffc87c;
+}
+
+.isp-product-color-swatch-transparent {
+    background: transparent;
+    border: 1px solid #eee;
+}
+
+.isp-product-color-swatch-tumbleweed {
+    background: #deaa88;
+}
+
+.isp-product-color-swatch-turquoise {
+    background: #30d5c8;
+}
+
+
+.isp-product-color-swatch-ultramarine {
+    background: #120a8f;
+}
+
+
+.isp-product-color-swatch-umber {
+    background: #635147;
+}
+
+.isp-product-color-swatch-ube {
+    background: #8878c3;
+}
+
+.isp-product-color-swatch-urobilin {
+    background: #e1ad21;
+}
+
+.isp-product-color-swatch-verdigris {
+    background: #43b3ae;
+}
+
+.isp-product-color-swatch-vanilla {
+    background: #f3e5ab;
+}
+
+.isp-product-color-swatch-vermilion {
+    background: #e34234;
+}
+
+.isp-product-color-swatch-veronica {
+    background: #a020f0;
+}
+
+.isp-product-color-swatch-violet {
+    background: #8f00ff;
+}
+
+.isp-product-color-swatch-viridian {
+    background: #40826d;
+}
+
+.isp-product-color-swatch-waterspout {
+    background: #00ffff;
+}
+
+.isp-product-color-swatch-wenge {
+    background: #645452;
+}
+
+.isp-product-color-swatch-wheat {
+    background: wheat;
+}
+
+.isp-product-color-swatch-white {
+    background: #ffffff;
+}
+
+
+.isp-product-color-swatch-wine {
+    background: #722f37;
+}
+
+.isp-product-color-swatch-wisteria {
+    background: #c9a0dc;
+}
+
+.isp-product-color-swatch-xanadu {
+    background: #738678;
+}
+
+.isp-product-color-swatch-yellow {
+    background: #ffff00;
+}
+
+.isp-product-color-swatch-zaffre {
+    background: #0014a8;
+}
+
+.isp-product-color-swatch-print {
+    background-image: url(../../images/swatches/print.jpg);
+}
+
+.isp-product-color-swatch-nude {
+    background: wheat;
+}
+
+.isp-product-color-swatch-camo {
+    background-image: url(../../images/swatches/camo.jpg);
+}
+
+.isp-product-color-swatch-plaid {
+    background-image: url(../../images/swatches/plaid.png);
+}
+
+.isp-product-color-swatch-cabana {
+    background-image: url(../../images/swatches/cabana.png);
+}
+
+.isp-product-color-swatch-floral {
+    background-image: url(../../images/swatches/floral.jpg);
+}
+
+.isp-product-color-swatch-stripe {
+    background-image: url(../../images/swatches/striped.jpg);
+}
+
+.isp-product-color-swatch-multi, .isp-product-color-swatch-multicolor, .isp-product-color-swatch-multicolored {
+    background-image: url(../../images/swatches/multicolored.jpg);
+}
+
+.isp-product-color-swatch-alluring {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-blackcoral {
+    background: #ff87a7;
+}
+
+.isp-product-color-swatch-silvernude {
+    background: gray;
+}
+
+.isp-product-color-swatch-oxblood {
+    background: #870f11; }
+
+.isp-product-color-swatch-midnight {
+    background: #182373;
+}
+
+.isp-product-color-swatch-mediumwash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+
+.isp-product-color-swatch-everglade {
+    background: #008587;
+}
+
+.isp-product-color-swatch-avocado {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-blacksilver {
+    background: gray;
+}
+
+.isp-product-color-swatch-navywhite {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/stripe.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-aruba {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-hunter {
+    background: #28572b;
+}
+
+.isp-product-color-swatch-cappuccino {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-seafoam {
+    background: #56dfc1;
+}
+
+.isp-product-color-swatch-bluenavy {
+    background: #182373;
+}
+
+.isp-product-color-swatch-spice {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-gray, .isp-product-color-swatch-grey_wash {
+    background: #938f90;
+}
+
+.isp-product-color-swatch-dreamy {
+    background: #e2918d;
+}
+
+.isp-product-color-swatch-dark {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/dark-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-bleach {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-dark {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/dark-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-grey, .isp-product-color-swatch-h.grey {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-greyblack {
+    background-image: url(../../images/swatches/grey_black.png);
+}
+
+.isp-product-color-swatch-poppy {
+    background: red;
+}
+
+.isp-product-color-swatch-navymulti {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-redsmoke {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-elderberry, .isp-product-color-swatch-sangria {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-colette {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-marigold {
+    background: #ff8c00;
+}
+
+.isp-product-color-swatch-vil {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-latte {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-gunmetal {
+    background: #4b4746;
+}
+
+.isp-product-color-swatch-tortoise {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-aloe {
+    background: #880000;
+}
+
+.isp-product-color-swatch-bluecombo {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-cocoa {
+    background: #c8867f;
+}
+
+.isp-product-color-swatch-zinfandel {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-berry {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-oatmeal {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-blackorange {
+    background: #000000;
+}
+
+.isp-product-color-swatch-raisin {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-bugundy {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-blonde {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-marsala {
+    background: #b95863;
+}
+
+.isp-product-color-swatch-terracotta {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-whitenude {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-brick {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-army {
+    background-image: url(../../images/swatches/camo.jpg);
+}
+
+.isp-product-color-swatch-mermaid {
+    background: #56dfc1;
+}
+
+.isp-product-color-swatch-cheeky {
+    background: #ff848c;
+}
+
+.isp-product-color-swatch-medium {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-coco {
+    background: #c8a899;
+}
+
+.isp-product-color-swatch-blushblack {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-blackcombo {
+    background: #000000;
+}
+
+.isp-product-color-swatch-navysage {
+    background: #182373;
+}
+
+.isp-product-color-swatch-bluewhite {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-coralicious {
+    background: #ff8c00;
+}
+
+.isp-product-color-swatch-rustmulti {
+    background-image: url(//cdn.shopify.com/s/files/1/0628/4681/files/multi-colored.jpg?10501723632038222960);
+}
+
+.isp-product-color-swatch-spicy {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-celine {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-charcoalburgundy {
+    background: gray;
+}
+
+.isp-product-color-swatch-whiteblack {
+    background-image: url(../../images/swatches/black_white.png);
+}
+
+.isp-product-color-swatch-cheetah {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/print.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-cannes {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-bali {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-rainbow {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-rubi {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-cement {
+    background: #938f90;
+}
+
+.isp-product-color-swatch-backstage {
+    background: #9e4b5b;
+}
+
+.isp-product-color-swatch-charcoalpink {
+    background: gray;
+}
+
+.isp-product-color-swatch-light {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-brickred {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-claudine {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-bordeaux {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-blackburgundy {
+    background: #000000;
+}
+
+.isp-product-color-swatch-navygreen {
+    background: #28572b;
+}
+
+.isp-product-color-swatch-seduction {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-blackburgundy {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-goldbrown {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-greyblack {
+    background: #938f90;
+}
+
+.isp-product-color-swatch-blacksilver {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Silver.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-yellowwhite {
+    background: #fffe4e;
+}
+
+.isp-product-color-swatch-olivemulti {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-nudesilver {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-mauvegrey {
+    background: #938f90;
+}
+
+.isp-product-color-swatch-mauvewhite {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-winemulti {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-brownivory {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-charcoalblue {
+    background: #56dfc1;
+}
+
+.isp-product-color-swatch-blacksmoke {
+    background: #000000;
+}
+
+.isp-product-color-swatch-taupemulti {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-kaleblack {
+    background: green;
+}
+
+.isp-product-color-swatch-greycombo {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-ivorynude {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-stepmother {
+    background: #9400d3;
+}
+
+.isp-product-color-swatch-blackmauve {
+    background: #000000;
+}
+
+.isp-product-color-swatch-clearpink {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-fuchsiablack {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-bluenude {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-blackblack {
+    background: #000000;
+}
+
+.isp-product-color-swatch-olivewhite {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-whitewhite {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-olivemauve {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-pinkwhite {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-taupecombo {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-poised {
+    background: red;
+}
+
+.isp-product-color-swatch-rice {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-blackmocha {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-charcoalwhite {
+    background: gray;
+}
+
+.isp-product-color-swatch-oliveblack {
+    background: #768f7c;
+}
+
+.isp-product-color-swatch-rosegoldmulti {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Rose_Gold.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-redivory {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-whitemulti {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/floral.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-blackgrey {
+    background: #4b4746;
+}
+
+.isp-product-color-swatch-isabella {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-dusty {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-blacknude, .isp-product-color-swatch-smoke {
+    background: #000000;
+}
+
+.isp-product-color-swatch-sagecombo {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-goldblue {
+    background: #182373;
+}
+
+.isp-product-color-swatch-goldwine {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-ivoryblack {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-burgundygrey {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-istanbul {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-greymulti {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-eggplantnude {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-blushpurple {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-nuderoyal {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-beigewhite {
+    background: wheat;
+}
+
+.isp-product-color-swatch-blackblue {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-burgundywhite {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-blackcream {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-burgundycombo {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-obsessed {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-navygold {
+    background: #ffff00;
+}
+
+.isp-product-color-swatch-blackyellow {
+    background: #000000;
+}
+
+.isp-product-color-swatch-blackbeige {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-greenmulti {
+    background: green;
+}
+
+.isp-product-color-swatch-mauvecombo {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-stockholm {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-whitenude {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-rendezvous {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-camoblue {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-navyred {
+    background: #182373;
+}
+
+.isp-product-color-swatch-blackolive {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-navyberry {
+    background: #182373;
+}
+
+.isp-product-color-swatch-peasant_spice {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-winegold {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-heather {
+    background: #938f90;
+}
+
+.isp-product-color-swatch-blackwine {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-ivorymulti {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-udaipu {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-charcoalburgundy {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-burgundymulti {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-blackivory {
+    background: #000000;
+}
+
+.isp-product-color-swatch-mustardnavy {
+    background: #ffff00;
+}
+
+.isp-product-color-swatch-martinique {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-oxford {
+    background: gray;
+}
+
+.isp-product-color-swatch-camelblack {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-whitegrey {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-rosegold {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Rose_Gold.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-clear {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Gold.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-blackwhite {
+    background: #000000;
+}
+
+.isp-product-color-swatch-slay {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-dvil {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-lavendar {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-rouge {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-tortoisebrown {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-bluewhite {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-blackcharcoal {
+    background: gray;
+}
+
+.isp-product-color-swatch-prague {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-burgundynude {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-blackmulti {
+    background: #000000;
+}
+
+.isp-product-color-swatch-ursula {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-goldpurple {
+    background: #9400d3;
+}
+
+.isp-product-color-swatch-bluecombo {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-greenwhite {
+    background: green;
+}
+
+.isp-product-color-swatch-whitenavy {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-blushblack {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-slatewhite {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-goldsmoke {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Gold.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-nudeburgundy {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-whitegold {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Gold.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-navymulti, .isp-product-color-swatch-navysilver {
+    background: #182373;
+}
+
+.isp-product-color-swatch-blacktaupe {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-charcoalblack {
+    background: gray;
+}
+
+.isp-product-color-swatch-bluemulti {
+    background: #182373;
+}
+
+.isp-product-color-swatch-blackfuchsia {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-greenred {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-hazelnut {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-yellownavy {
+    background: #ffff00;
+}
+
+.isp-product-color-swatch-purpleblue {
+    background: #9400d3;
+}
+
+.isp-product-color-swatch-navyivory {
+    background: #182373;
+}
+
+.isp-product-color-swatch-whitered {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-rednavy {
+    background: red;
+}
+
+.isp-product-color-swatch-charcoalpink {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-blackpink, .isp-product-color-swatch-peaches_and_cream {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-blackorange {
+    background: #ff8c00;
+}
+
+.isp-product-color-swatch-blackcoral {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-greyblue {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-london {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-offwhite {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-blackbrown {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-whitepink {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-redwhite {
+    background: red;
+}
+
+.isp-product-color-swatch-evergreen {
+    background: #28572b;
+}
+
+.isp-product-color-swatch-blackgold {
+    background: #000000;
+}
+
+.isp-product-color-swatch-leopard {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/print.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-mochataupe {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-blushnavy {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-whitesmoke {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-nudeblack {
+    background: #000000;
+}
+
+.isp-product-color-swatch-olivemustard {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-goldgold {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-redblack {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-blackgreywhite {
+    background: #000000;
+}
+.isp-product-color-swatch-camopink {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/camo.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-goldblack {
+    background: #000000;
+}
+
+
+.isp-product-color-swatch-blackrose {
+    background: #000000;
+}
+
+.isp-product-color-swatch-mustardmulti {
+    background: #dac90a;
+}
+
+.isp-product-color-swatch-eggplantwhite {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-blackred {
+    background: #000000;
+}
+
+.isp-product-color-swatch-whiteblack {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-mustardmustard {
+    background: #fffe4e;
+}
+
+.isp-product-color-swatch-royalwhite {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-burgundynavy {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-mustardwhite {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-blueblack {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-yellowblack {
+    background: #fffe4e;
+}
+
+.isp-product-color-swatch-ivory_combo {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-mediumwashpink {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-goldpink {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-mustardred {
+    background: #dac90a;
+}
+
+.isp-product-color-swatch-mediumwashblue {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-mushroom {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-pomegranate {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-silverblack {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Silver.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-goldyellow {
+    background: #ffff00;
+}
+
+.isp-product-color-swatch-navywhite {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-redbrown {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Bronze.jpg?2635594828431142772);
+}
+
+
+.isp-product-color-swatch-cobalt_blue {
+    background: #0047bb;
+}
+
+.isp-product-color-swatch-cocoa_brown {
+    background: #d2691e;
+}
+
+.isp-product-color-swatch-columbia_blue {
+    background: #9bddff;
+}
+
+.isp-product-color-swatch-cool_black {
+    background: #002e63;
+}
+
+.isp-product-color-swatch-cool_grey {
+    background: #8c92ac;
+}
+
+.isp-product-color-swatch-green_ombre {
+    background: #768f7c;
+}
+
+.isp-product-color-swatch-bijou, .isp-product-color-swatch-dark_ruby {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-neon_lime {
+    background: green;
+}
+
+.isp-product-color-swatch-dusty_mauve {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-brick_rose {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-blush_gold {
+    background: #ffcab9;
+}
+
+.isp-product-color-swatch-blue_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0628/4681/files/dark-wash.jpg?10501723632038222960);
+}
+
+.isp-product-color-swatch-dark_coco {
+    background: #b68d61;
+}
+
+
+.isp-product-color-swatch-70_watt {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Rose_Gold.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-peacock_blue {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-ash_mauve {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-blush_pink {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-brown_multi {
+    background: #412322;
+}
+
+.isp-product-color-swatch-light_stone_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-dusty_mustard {
+    background: #dac90a;
+}
+
+.isp-product-color-swatch-blackoff_white {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-evil_queen {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-multi_color {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Multicolor.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-glam_rock {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-dark_rose {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-dusty_rose {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-light_stone {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-deep_purple {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-rose_rust {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-ballet_pink {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-cyber_pop {
+    background: red;
+}
+
+.isp-product-color-swatch-dark_mocha {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-glow_me_hard {
+    background: #f9be9c;
+}
+
+.isp-product-color-swatch-neon_pink {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-medium_stone {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-rose_smoke {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-dark_plum {
+    background: #491f61;
+}
+	
+.isp-product-color-swatch-black_combo {
+    background-image: url(../../images/swatches/black_combo.png);
+}
+
+.isp-product-color-swatch-dusty_blue {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-violet_blue {
+    background: #324ab2;
+}
+
+.isp-product-color-swatch-violet_red {
+    background: #f75394;
+}
+
+.isp-product-color-swatch-faded_black {
+    background: #000000;
+}
+
+.isp-product-color-swatch-medium_denim {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-dark_grey {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-med_blue {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-dark_heather_grey {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-charcoal_grey {
+    background: gray;
+}
+
+.isp-product-color-swatch-ice_denim {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-dark_lilac {
+    background: #ba91b9;
+}
+
+.isp-product-color-swatch-mauve_lavendar {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-dark_mustard {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-neon_royal {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-grey_white {
+    background: gray;
+}
+
+.isp-product-color-swatch-heathered_grey {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-rose_brown {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-pillow_talk {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-light_grey {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-dusty_mauvewhite {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-black_green {
+    background: #56dfc1;
+}
+
+.isp-product-color-swatch-tres_jolie {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-red_stripe {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-silver_multi {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Silver.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-iced_coffee {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-sunkissed_crush {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-gold_multi {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Bronze.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-blackrose_gold {
+    background: #000000;
+}
+
+.isp-product-color-swatch-ash_brown {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-def_concealer {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-light_mauve {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-red_pink {
+    background: red;
+}
+
+.isp-product-color-swatch-burgundyrose_gold {
+    background-image: url(../../images/swatches/burgondy_rose_gold.png);
+}
+
+.isp-product-color-swatch-purple_ombre {
+    background: #9400d3;
+}
+
+.isp-product-color-swatch-blue_multi {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-sparkle_black {
+    background: #000000;
+}
+
+.isp-product-color-swatch-soft_white {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-medium_mauve {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-ivory_tropical {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-dark_mauve {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-blue_glitter {
+    background: #56dfc1;
+}
+
+.isp-product-color-swatch-cheek_on_cheek {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-dark_yellow {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-neon_coral {
+    background: #ff5f6b;
+}
+
+.isp-product-color-swatch-dusty_violet {
+    background: #ba91b9;
+}
+
+.isp-product-color-swatch-50_watt {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Bronze.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-copper_rose {
+    background: #966;
+}
+
+.isp-product-color-swatch-cedar_wood {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-gun_metal {
+    background: #4b4746;
+}
+
+.isp-product-color-swatch-deep_burgundy {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-blackhot_pink {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-black_floral {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/floral.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-light_olive {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-red_garnet {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-dark_indigo {
+    background-image: url(//cdn.shopify.com/s/files/1/0628/4681/files/dark-wash.jpg?10501723632038222960);
+}
+
+.isp-product-color-swatch-dark_denim {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/dark-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-blue_mint {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-dark_wine {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-bora_bora {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-marled_black {
+    background: #4b4746;
+}
+
+.isp-product-color-swatch-light_denim {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-marsala_rust {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-brown_snake, .isp-product-color-swatch-delicate_lust {
+    background: #b68d61;
+}
+
+
+.isp-product-color-swatch-white_combo {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/stripe.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-rust_mustard {
+    background: #ff8c00;
+}
+
+.isp-product-color-swatch-dark_beige {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-ginger_and_pepper {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-blue_mist {
+    background: #c4d1d6;
+}
+
+.isp-product-color-swatch-grey_metallic {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Silver.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-dark_teal {
+    background: #768f7c;
+}
+
+.isp-product-color-swatch-vintage_violet {
+    background: #9d6673;
+}
+
+.isp-product-color-swatch-dark_olive {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-lilac_glitter {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-burgundy_combo {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-shiny_gold {
+    background: wheat;
+}
+
+.isp-product-color-swatch-beyond_nude {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-dark_blue_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/dark-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-deep_mauve {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-light_blue_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-vintage_blue {
+    background: #c7c7db;
+}
+
+.isp-product-color-swatch-washed_denim {
+    background: #768f7c;
+}
+
+.isp-product-color-swatch-dark_camel {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-abu_dhabi {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-dusty_wineberry {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-blue_metal {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-dark_burgundy {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-bermuda_bronze {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Bronze.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-denim_blue, .isp-product-color-swatch-medium_stone_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-begonia_pink {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-deep_red {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-cashmere_silk {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-dusty_cedar {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-black_silver {
+    background: #000000;
+}
+
+.isp-product-color-swatch-red_wood {
+    background: #ce790f;
+}
+
+.isp-product-color-swatch-off_white {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-black_denim {
+    background: #000000;
+}
+
+.isp-product-color-swatch-red_bean {
+    background-image: #742a2e;
+}
+
+.isp-product-color-swatch-vintage_black {
+    background: #000000;
+}
+
+.isp-product-color-swatch-100_watt {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Gold.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-burnt_brick {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-dark_stone_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/dark-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-creamy_pink {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-french_grey {
+    background: gray;
+}
+
+.isp-product-color-swatch-black_multi, .isp-product-color-swatch-blackgrey {
+    background: #000000;
+}
+
+.isp-product-color-swatch-glow_me_soft {
+    background: #fcd2da;
+}
+
+.isp-product-color-swatch-deep_teal {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-medium_blue_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-dusty_pink {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-wild_ginger {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-dusty_purple {
+    background: #ba91b9;
+}
+
+.isp-product-color-swatch-cocoa_brown {
+    background: #d2691e;
+}
+
+
+.isp-product-color-swatch-columbia_blue {
+    background: #9bddff;
+}
+
+.isp-product-color-swatch-classic_rose {
+    background: #fbcce7;
+}
+
+.isp-product-color-swatch-chrome_yellow {
+    background: #ffa700;
+}
+
+.isp-product-color-swatch-cherry_blossom_pink {
+    background: #ffb7c5;
+}
+
+.isp-product-color-swatch-cerulean_blue {
+    background: #2a52be;
+}
+
+.isp-product-color-swatch-cg_blue {
+    background: #007aa5;
+}
+
+.isp-product-color-swatch-cg_red {
+    background: #e03c31;
+}
+
+.isp-product-color-swatch-carmine_pink {
+    background: #eb4c42;
+}
+
+.isp-product-color-swatch-carmine_red {
+    background: #ff0038;
+}
+
+.isp-product-color-swatch-cadet_blue {
+    background: #5f9ea0;
+}
+
+.isp-product-color-swatch-cadet_grey {
+    background: #91a3b0;
+}
+
+.isp-product-color-swatch-cadmium_green {
+    background: #006b3c;
+}
+
+.isp-product-color-swatch-cadmium_orange {
+    background: #ed872d;
+}
+
+.isp-product-color-swatch-cadmium_red {
+    background: #e30022;
+}
+
+.isp-product-color-swatch-cadmium_yellow {
+    background: #fff600;
+}
+
+.isp-product-color-swatch-cafe_au_lait {
+    background: #a67b5b;
+}
+
+.isp-product-color-swatch-brick_red {
+    background: #cb4154;
+}
+
+.isp-product-color-swatch-bright_cerulean {
+    background: #1dacd6;
+}
+
+.isp-product-color-swatch-bright_green {
+    background: #66ff00;
+}
+
+.isp-product-color-swatch-bright_lavender {
+    background: #bf94e4;
+}
+
+.isp-product-color-swatch-bright_maroon {
+    background: #c32148;
+}
+
+.isp-product-color-swatch-bright_pink {
+    background: #ff007f;
+}
+
+.isp-product-color-swatch-bright_turquoise {
+    background: #08e8de;
+}
+
+.isp-product-color-swatch-bright_ube {
+    background: #d19fe8;
+}
+
+.isp-product-color-swatch-boston_university_red {
+    background: #cc0000;
+}
+
+.isp-product-color-swatch-blue_bell {
+    background: #a2a2d0;
+}
+
+.isp-product-color-swatch-black_bronze {
+    background: linear-gradient(#000, #cd7f32);
+}
+
+.isp-product-color-swatch-black_hot_pink {
+    background: linear-gradient(#000, #e75480);
+}
+
+.isp-product-color-swatch-baby_blue {
+    background: #89cff0;
+}
+
+.isp-product-color-swatch-baby_blue_eyes {
+    background: #a1caf1;
+}
+
+.isp-product-color-swatch-baby_pink {
+    background: #f4c2c2;
+}
+
+.isp-product-color-swatch-ball_blue {
+    background: #21abcd;
+}
+
+.isp-product-color-swatch-beau_blue {
+    background: #bcd4e6;
+}
+
+.isp-product-color-swatch-banana_mania {
+    background: #fae7b5;
+}
+
+.isp-product-color-swatch-banana_yellow {
+    background: #ffd12a;
+    background: #ffe135;
+}
+
+.isp-product-color-swatch-battleship_grey {
+    background: #848482;
+}
+
+.isp-product-color-swatch-black_metallic_dark_red {
+    background: linear-gradient(#000, red);
+}
+
+.isp-product-color-swatch-blanched_almond {
+    background: #ffebcd;
+}
+
+.isp-product-color-swatch-bleu_de_france {
+    background: #318ce7;
+}
+
+.isp-product-color-swatch-blizzard_blue {
+    background: #ace5ee;
+}
+
+.isp-product-color-swatch-blue_gray {
+    background: #6699cc;
+}
+
+.isp-product-color-swatch-blue_green {
+    background: #0d98ba;
+}
+
+.isp-product-color-swatch-blue_purple, .isp-product-color-swatch-blue_violet {
+    background: #8a2be2;
+}
+
+.isp-product-color-swatch-bondi_blue {
+    background: #0095b6;
+}
+
+.isp-product-color-swatch-bottle_green {
+    background: #006a4e;
+}
+
+.isp-product-color-swatch-brandeis_blue {
+    background: #0070ff;
+}
+
+.isp-product-color-swatch-brilliant_lavender {
+    background: #f4bbff;
+}
+
+.isp-product-color-swatch-brilliant_rose {
+    background: #ff55a3;
+}
+
+.isp-product-color-swatch-arylide_yellow {
+    background: #e9d66b;
+}
+
+.isp-product-color-swatch-ash_grey {
+    background: #b2beb5;
+}
+
+
+.isp-product-color-swatch-android_green {
+    background: #a4c639;
+}
+
+.isp-product-color-swatch-anti-flash_white {
+    background: #f2f3f4;
+}
+
+.isp-product-color-swatch-antique_brass {
+    background: #cd9575;
+}
+
+.isp-product-color-swatch-cornflower_blue {
+    background: #6495ed;
+}
+
+.isp-product-color-swatch-crimson_glory {
+    background: #be0032;
+}
+
+.isp-product-color-swatch-crimson_red {
+    background: #990000;
+}
+
+.isp-product-color-swatch-dark_blue {
+    background: #00008b;
+}
+
+.isp-product-color-swatch-dark_brown {
+    background: #654321;
+}
+
+.isp-product-color-swatch-dark_byzantium {
+    background: #5d3954;
+}
+
+.isp-product-color-swatch-dark_candy_apple_red {
+    background: #a40000;
+}
+
+.isp-product-color-swatch-dark_cerulean {
+    background: #08457e;
+}
+
+.isp-product-color-swatch-dark_chestnut {
+    background: #986960;
+}
+
+.isp-product-color-swatch-dark_coral {
+    background: #cd5b45;
+}
+
+.isp-product-color-swatch-dark_cyan {
+    background: #008b8b;
+}
+
+.isp-product-color-swatch-dark_electric_blue {
+    background: #536878;
+}
+
+.isp-product-color-swatch-dark_goldenrod {
+    background: #b8860b;
+}
+
+.isp-product-color-swatch-dark_gray {
+    background: #a9a9a9;
+}
+
+.isp-product-color-swatch-dark_green {
+    background: #013220;
+}
+
+.isp-product-color-swatch-dark_jungle_green {
+    background: #1a2421;
+}
+
+.isp-product-color-swatch-dark_khaki {
+    background: #bdb76b;
+}
+
+.isp-product-color-swatch-dark_lava {
+    background: #483c32;
+}
+
+.isp-product-color-swatch-dark_lavender {
+    background: #734f96;
+}
+
+.isp-product-color-swatch-dark_magenta {
+    background: #8b008b;
+}
+
+.isp-product-color-swatch-dark_midnight_blue {
+    background: #003366;
+}
+
+.isp-product-color-swatch-dark_olive_green {
+    background: #556b2f;
+}
+
+.isp-product-color-swatch-dark_orange {
+    background: #ff8c00;
+}
+
+.isp-product-color-swatch-dark_orchid {
+    background: #9932cc;
+}
+
+.isp-product-color-swatch-dark_pastel_blue {
+    background: #779ecb;
+}
+
+.isp-product-color-swatch-dark_pastel_green {
+    background: #03c03c;
+}
+
+.isp-product-color-swatch-dark_pastel_purple {
+    background: #966fd6;
+}
+
+.isp-product-color-swatch-dark_pastel_red {
+    background: #c23b22;
+}
+
+.isp-product-color-swatch-dark_pink {
+    background: #e75480;
+}
+
+.isp-product-color-swatch-dark_powder_blue {
+    background: #003399;
+}
+
+.isp-product-color-swatch-dark_raspberry {
+    background: #872657;
+}
+
+.isp-product-color-swatch-dark_red {
+    background: #8b0000;
+}
+
+.isp-product-color-swatch-dark_salmon {
+    background: #e9967a;
+}
+
+.isp-product-color-swatch-dark_scarlet {
+    background: #560319;
+}
+
+.isp-product-color-swatch-dark_sea_green {
+    background: #8fbc8f;
+}
+
+.isp-product-color-swatch-dark_sienna {
+    background: #3c1414;
+}
+
+.isp-product-color-swatch-dark_slate_blue {
+    background: #483d8b;
+}
+
+.isp-product-color-swatch-dark_slate_gray {
+    background: #2f4f4f;
+}
+
+.isp-product-color-swatch-dark_spring_green {
+    background: #177245;
+}
+
+.isp-product-color-swatch-dark_tan {
+    background: #918151;
+}
+
+.isp-product-color-swatch-dark_tangerine {
+    background: #ffa812;
+}
+
+.isp-product-color-swatch-dark_taupe {
+    background: #483c32;
+}
+
+.isp-product-color-swatch-dark_terra_cotta {
+    background: #cc4e5c;
+}
+
+.isp-product-color-swatch-dark_turquoise {
+    background: #00ced1;
+}
+
+.isp-product-color-swatch-dark_violet {
+    background: #9400d3;
+}
+
+.isp-product-color-swatch-dartmouth_green {
+    background: #00693e;
+}
+
+.isp-product-color-swatch-davy_grey, .isp-product-color-swatch-davys_grey {
+    background: #555555;
+}
+
+.isp-product-color-swatch-heather_grey {
+    background: #bebbbb;
+}
+
+.isp-product-color-swatch-debian_red {
+    background: #d70a53;
+}
+
+.isp-product-color-swatch-deep_carmine {
+    background: #a9203e;
+}
+
+.isp-product-color-swatch-deep_carmine_pink {
+    background: #ef3038;
+}
+
+.isp-product-color-swatch-deep_carrot_orange {
+    background: #e9692c;
+}
+
+.isp-product-color-swatch-deep_cerise {
+    background: #da3287;
+}
+
+.isp-product-color-swatch-deep_champagne {
+    background: #fad6a5;
+}
+
+.isp-product-color-swatch-deep_chestnut {
+    background: #b94e48;
+}
+
+.isp-product-color-swatch-deep_coffee {
+    background: #704241;
+}
+
+.isp-product-color-swatch-deep_fuchsia {
+    background: #c154c1;
+}
+
+.isp-product-color-swatch-deep_jungle_green {
+    background: #004b49;
+}
+
+.isp-product-color-swatch-deep_lilac {
+    background: #9955bb;
+}
+
+.isp-product-color-swatch-deep_magenta {
+    background: #cc00cc;
+}
+
+.isp-product-color-swatch-deep_peach {
+    background: #ffcba4;
+}
+
+.isp-product-color-swatch-deep_pink {
+    background: #ff1493;
+}
+
+.isp-product-color-swatch-desert_sand {
+    background: #edc9af;
+}
+
+.isp-product-color-swatch-egyptian_blue {
+    background: #1034a6;
+}
+
+.isp-product-color-swatch-electric_blue {
+    background: #7df9ff;
+}
+
+.isp-product-color-swatch-electric_crimson {
+    background: #ff003f;
+}
+
+.isp-product-color-swatch-electric_cyan {
+    background: #00ffff;
+}
+
+.isp-product-color-swatch-electric_green {
+    background: #00ff00;
+}
+
+.isp-product-color-swatch-electric_indigo {
+    background: #6f00ff;
+}
+
+.isp-product-color-swatch-electric_lavender {
+    background: #f4bbff;
+}
+
+.isp-product-color-swatch-electric_lime {
+    background: #ccff00;
+}
+
+.isp-product-color-swatch-eton_blue {
+    background: #96c8a2;
+}
+
+.isp-product-color-swatch-fashion_fuchsia {
+    background: #f400a1;
+}
+
+.isp-product-color-swatch-fern_green {
+    background: #4f7942;
+}
+
+.isp-product-color-swatch-ferrari_red {
+    background: #ff1c00;
+    background: #ff2800;
+}
+
+.isp-product-color-swatch-field_drab {
+    background: #6c541e;
+}
+
+.isp-product-color-swatch-floral_white {
+    background: #fffaf0;
+}
+
+.isp-product-color-swatch-fluorescent_orange {
+    background: #ffbf00;
+}
+
+.isp-product-color-swatch-forest_green {
+    background: #014421;
+    background: #228b22;
+}
+
+.isp-product-color-swatch-french_beige {
+    background: #a67b5b;
+}
+
+.isp-product-color-swatch-french_blue {
+    background: #0072bb;
+}
+
+.isp-product-color-swatch-ghost_white {
+    background: #f8f8ff;
+}
+
+.isp-product-color-swatch-guppie_green {
+    background: #00ff7f;
+}
+
+.isp-product-color-swatch-han_blue {
+    background: #446ccf;
+}
+
+.isp-product-color-swatch-han_purple {
+    background: #5218fa;
+}
+
+.isp-product-color-swatch-hansa_yellow {
+    background: #e9d66b;
+}
+
+.isp-product-color-swatch-harlequin {
+    background: #3fff00;
+}
+
+.isp-product-color-swatch-hooker_green {
+    background: #49796b;
+}
+
+.isp-product-color-swatch-india_green {
+    background: #138808;
+}
+
+.isp-product-color-swatch-islamic_green {
+    background: #009000;
+}
+
+.isp-product-color-swatch-jazzberry_jam {
+    background: #a50b5e;
+}
+
+
+.isp-product-color-swatch-ku_crimson {
+    background: #e8000d;
+}
+
+.isp-product-color-swatch-la_salle_green {
+    background: #087830;
+}
+
+.isp-product-color-swatch-languid_lavender {
+    background: #d6cadd;
+}
+
+.isp-product-color-swatch-lapis_lazuli {
+    background: #26619c;
+}
+
+.isp-product-color-swatch-laser_lemon {
+    background: #fefe22;
+}
+
+.isp-product-color-swatch-lavender_blue {
+    background: #ccccff;
+}
+
+.isp-product-color-swatch-lavender_blush {
+    background: #fff0f5;
+}
+
+.isp-product-color-swatch-lavender_gray {
+    background: #c4c3d0;
+}
+
+.isp-product-color-swatch-lavender_indigo {
+    background: #9457eb;
+}
+
+.isp-product-color-swatch-lavender_magenta {
+    background: violet;
+}
+
+.isp-product-color-swatch-lavender_mist {
+    background: #e6e6fa;
+}
+
+.isp-product-color-swatch-lemon_chiffon {
+    background: #fffacd;
+}
+
+.isp-product-color-swatch-lemon_lime {
+    background: #bfff00;
+}
+
+.isp-product-color-swatch-lemon_yellow {
+    background: #fff44f;
+}
+
+.isp-product-color-swatch-light_apricot {
+    background: #fdd5b1;
+}
+
+.isp-product-color-swatch-light_blue {
+    background: #add8e6;
+}
+
+.isp-product-color-swatch-light_brown {
+    background: #b5651d;
+}
+
+.isp-product-color-swatch-light_carmine_pink {
+    background: #e66771;
+}
+
+.isp-product-color-swatch-light_coral {
+    background: #f08080;
+}
+
+.isp-product-color-swatch-light_cornflower_blue {
+    background: #93ccea;
+}
+
+.isp-product-color-swatch-light_crimson {
+    background: #f56991;
+}
+
+.isp-product-color-swatch-light_cyan {
+    background: #e0ffff;
+}
+
+.isp-product-color-swatch-light_fuchsia_pink {
+    background: #f984ef;
+}
+
+.isp-product-color-swatch-light_goldenrod_yellow {
+    background: #fafad2;
+}
+
+.isp-product-color-swatch-light_gray {
+    background: #d3d3d3;
+}
+
+.isp-product-color-swatch-light_green {
+    background: #90ee90;
+}
+
+.isp-product-color-swatch-light_khaki {
+    background: khaki;
+}
+
+.isp-product-color-swatch-light_pastel_purple {
+    background: #b19cd9;
+}
+
+.isp-product-color-swatch-light_pink {
+    background: #ffb6c1;
+}
+
+.isp-product-color-swatch-light_salmon {
+    background: #ffa07a;
+}
+
+.isp-product-color-swatch-light_salmon_pink {
+    background: #ff9999;
+}
+
+.isp-product-color-swatch-light_sea_green {
+    background: #20b2aa;
+}
+
+.isp-product-color-swatch-light_sky_blue {
+    background: #87cefa;
+}
+
+.isp-product-color-swatch-light_slate_gray {
+    background: #778899;
+}
+
+.isp-product-color-swatch-light_taupe {
+    background: #b38b6d;
+}
+
+.isp-product-color-swatch-light_thulian_pink {
+    background: #e68fac;
+}
+
+.isp-product-color-swatch-light_yellow {
+    background: #ffffed;
+}
+
+.isp-product-color-swatch-lime_green {
+    background: #32cd32;
+}
+
+.isp-product-color-swatch-maya_blue {
+    background: #73c2fb;
+}
+
+.isp-product-color-swatch-meat_brown {
+    background: #e5b73b;
+}
+
+.isp-product-color-swatch-medium_carmine {
+    background: #af4035;
+}
+
+.isp-product-color-swatch-medium_champagne {
+    background: #f3e5ab;
+}
+
+.isp-product-color-swatch-medium_electric_blue {
+    background: #035096;
+}
+
+.isp-product-color-swatch-medium_jungle_green {
+    background: #1c352d;
+}
+
+.isp-product-color-swatch-medium_lavender_magenta {
+    background: plum;
+}
+
+.isp-product-color-swatch-medium_orchid {
+    background: #ba55d3;
+}
+
+.isp-product-color-swatch-medium_persian_blue {
+    background: #0067a5;
+}
+
+.isp-product-color-swatch-medium_purple {
+    background: #9370db;
+}
+
+.isp-product-color-swatch-medium_red_violet {
+    background: #bb3385;
+}
+
+.isp-product-color-swatch-medium_sea_green {
+    background: #3cb371;
+}
+
+.isp-product-color-swatch-medium_slate_blue {
+    background: #7b68ee;
+}
+
+.isp-product-color-swatch-medium_spring_bud {
+    background: #c9dc87;
+}
+
+.isp-product-color-swatch-medium_spring_green {
+    background: #00fa9a;
+}
+
+.isp-product-color-swatch-medium_taupe {
+    background: #674c47;
+}
+
+.isp-product-color-swatch-medium_teal_blue {
+    background: #0054b4;
+}
+
+.isp-product-color-swatch-midnight_blue {
+    background: #191970;
+}
+
+.isp-product-color-swatch-mode_beige {
+    background: #967117;
+}
+
+.isp-product-color-swatch-moonstone_blue {
+    background: #73a9c2;
+}
+
+.isp-product-color-swatch-mordant_red_19 {
+    background: #ae0c00;
+}
+
+.isp-product-color-swatch-nadeshiko_pink {
+    background: #f6adc6;
+}
+
+.isp-product-color-swatch-napier_green {
+    background: #2a8000;
+}
+
+.isp-product-color-swatch-naples_yellow {
+    background: #fada5e;
+}
+
+.isp-product-color-swatch-navajo_white {
+    background: #ffdead;
+}
+
+.isp-product-color-swatch-navy_blue {
+    background: navy;
+}
+
+.isp-product-color-swatch-neon_carrot {
+    background: #ffa343;
+}
+
+.isp-product-color-swatch-neon_fuchsia {
+    background: #fe59c2;
+}
+
+.isp-product-color-swatch-neon_green {
+    background: #39ff14;
+}
+
+.isp-product-color-swatch-non-photo_blue {
+    background: #a4dded;
+}
+
+.isp-product-color-swatch-office_green {
+    background: green;
+}
+
+.isp-product-color-swatch-old_gold {
+    background: #cfb53b;
+}
+
+.isp-product-color-swatch-orange_red {
+    background: #ff4500;
+}
+
+.isp-product-color-swatch-orange_yellow {
+    background: #f8d568;
+}
+
+.isp-product-color-swatch-old_lace {
+    background: #fdf5e6;
+}
+
+.isp-product-color-swatch-otter_brown {
+    background: #654321;
+}
+
+.isp-product-color-swatch-outer_space {
+    background: #414a4c;
+}
+
+.isp-product-color-swatch-outrageous_orange {
+    background: #ff6e4a;
+}
+
+.isp-product-color-swatch-oxford_blue {
+    background: #002147;
+}
+
+.isp-product-color-swatch-pacific_blue {
+    background: #1ca9c9;
+}
+
+.isp-product-color-swatch-pakistan_green {
+    background: #060;
+}
+
+.isp-product-color-swatch-palatinate_blue {
+    background: #273be2;
+}
+
+.isp-product-color-swatch-palatinate_purple {
+    background: #682860;
+}
+
+.isp-product-color-swatch-pale_aqua {
+    background: #bcd4e6;
+}
+
+.isp-product-color-swatch-pale_blue {
+    background: #afeeee;
+}
+
+.isp-product-color-swatch-pale_brown {
+    background: #987654;
+}
+
+.isp-product-color-swatch-pale_carmine {
+    background: #af4035;
+}
+
+.isp-product-color-swatch-pale_cerulean {
+    background: #9bc4e2;
+}
+
+.isp-product-color-swatch-pale_chestnut {
+    background: #ddadaf;
+}
+
+.isp-product-color-swatch-pale_copper {
+    background: #da8a67;
+}
+
+.isp-product-color-swatch-pale_cornflower_blue {
+    background: #abcdef;
+}
+
+.isp-product-color-swatch-pale_gold {
+    background: #e6be8a;
+}
+
+.isp-product-color-swatch-pale_goldenrod {
+    background: #eee8aa;
+}
+
+.isp-product-color-swatch-pale_green {
+    background: #98fb98;
+}
+
+.isp-product-color-swatch-pale_lavender {
+    background: #dcd0ff;
+}
+
+.isp-product-color-swatch-pale_magenta {
+    background: #f984e5;
+}
+
+.isp-product-color-swatch-pale_pink {
+    background: #fadadd;
+}
+
+.isp-product-color-swatch-pale_plum {
+    background: plum
+}
+
+.isp-product-color-swatch-pale_red_violet {
+    background: #db7093;
+}
+
+.isp-product-color-swatch-pale_robin_egg_blue {
+    background: #96ded1;
+}
+
+.isp-product-color-swatch-pale_silver {
+    background: #c9c0bb;
+}
+
+.isp-product-color-swatch-pale_spring_bud {
+    background: #ecebbd;
+}
+
+.isp-product-color-swatch-pale_taupe {
+    background: #bc987e;
+}
+
+.isp-product-color-swatch-pale_violet_red {
+    background: #db7093;
+}
+
+.isp-product-color-swatch-pansy_purple {
+    background: #78184a;
+}
+
+.isp-product-color-swatch-papaya_whip {
+    background: #ffefd5;
+}
+
+.isp-product-color-swatch-paris_green {
+    background: #50c878;
+}
+
+.isp-product-color-swatch-pastel_blue {
+    background: #aec6cf;
+}
+
+.isp-product-color-swatch-pastel_brown {
+    background: #836953;
+}
+
+.isp-product-color-swatch-pastel_gray {
+    background: #cfcfc4;
+}
+
+.isp-product-color-swatch-pastel_green {
+    background: #7d7;
+}
+
+.isp-product-color-swatch-pastel_magenta {
+    background: #f49ac2;
+}
+
+.isp-product-color-swatch-pastel_orange {
+    background: #ffb347;
+}
+
+.isp-product-color-swatch-pastel_pink {
+    background: #ffd1dc;
+}
+
+.isp-product-color-swatch-pearl_aqua {
+    background: #88d8c0;
+}
+
+.isp-product-color-swatch-persian_blue {
+    background: #1c39bb;
+}
+
+.isp-product-color-swatch-persian_indigo {
+    background: #32127a;
+}
+
+.isp-product-color-swatch-persian_orange {
+    background: #d99058;
+}
+
+.isp-product-color-swatch-persian_pink {
+    background: #f77fbe;
+}
+
+.isp-product-color-swatch-persian_plum {
+    background: #701c1c;
+}
+
+.isp-product-color-swatch-phthalo_blue {
+    background: #000f89;
+}
+
+.isp-product-color-swatch-prussian_blue {
+    background: #003153;
+}
+
+.isp-product-color-swatch-psychedelic_purple {
+    background: #df00ff;
+}
+
+.isp-product-color-swatch-purple_heart {
+    background: #69359c;
+}
+
+.isp-product-color-swatch-raspberry_glace {
+    background: #915f6d;
+}
+
+.isp-product-color-swatch-raspberry_pink {
+    background: #e25098;
+}
+
+.isp-product-color-swatch-raspberry_rose {
+    background: #b3446c;
+}
+
+.isp-product-color-swatch-radical_red {
+    background: #ff355e;
+}
+
+.isp-product-color-swatch-red_brown {
+    background: brown;
+}
+
+.isp-product-color-swatch-red_orange {
+    background: #ff5349;
+}
+
+.isp-product-color-swatch-red_violet {
+    background: #c71585;
+}
+
+.isp-product-color-swatch-rich_black {
+    background: #004040;
+}
+
+.isp-product-color-swatch-rich_carmine {
+    background: #d70040;
+}
+
+.isp-product-color-swatch-rich_electric_blue {
+    background: #0892d0;
+}
+
+.isp-product-color-swatch-rich_lilac {
+    background: #b666d2;
+}
+
+.isp-product-color-swatch-rich_maroon {
+    background: #b03060;
+}
+
+.isp-product-color-swatch-rose_bonbon {
+    background: #f9429e;
+}
+
+.isp-product-color-swatch-rose_ebony {
+    background: #674846;
+}
+
+.isp-product-color-swatch-rose_gold {
+    background: #b76e79;
+}
+
+.isp-product-color-swatch-rose_madder {
+    background: #e32636;
+}
+
+.isp-product-color-swatch-rose_pink {
+    background: #f6c;
+}
+
+.isp-product-color-swatch-rosso_corsa {
+    background: #d40000;
+}
+
+.isp-product-color-swatch-rosy_brown {
+    background: #bc8f8f;
+}
+
+.isp-product-color-swatch-royal_azure {
+    background: #0038a8;
+}
+
+.isp-product-color-swatch-royal_blue {
+    background: #002366;
+}
+
+.isp-product-color-swatch-satin_sheen_gold {
+    background: #cba135;
+}
+
+.isp-product-color-swatch-school_bus_yellow {
+    background: #ffd800;
+}
+
+.isp-product-color-swatch-screamin_green {
+    background: #76ff7a;
+}
+
+.isp-product-color-swatch-sea_blue {
+    background: #006994;
+}
+
+.isp-product-color-swatch-sky_blue {
+    background: #87ceeb;
+}
+
+.isp-product-color-swatch-smokey_topaz {
+    background: #933d41;
+}
+
+.isp-product-color-swatch-spiro_disco_ball {
+    background: #0fc0fc;
+}
+
+.isp-product-color-swatch-spring_bud {
+    background: #a7fc00;
+}
+
+.isp-product-color-swatch-spring_green {
+    background: #00ff7f;
+}
+
+.isp-product-color-swatch-united_nations_blue {
+    background: #5b92e5;
+}
+
+.isp-product-color-swatch-university_of_california_gold {
+    background: #b78727;
+}
+
+.isp-product-color-swatch-upsdell_red {
+    background: #ae2029;
+}
+
+.isp-product-color-swatch-usc_cardinal {
+    background: #990000;
+}
+
+.isp-product-color-swatch-usc_gold {
+    background: #ffcc00;
+}
+
+.isp-product-color-swatch-utah_crimson {
+    background: #d3003f;
+}
+
+.isp-product-color-swatch-venetian_red {
+    background: #c80815;
+}
+
+.isp-product-color-swatch-vegas_gold {
+    background: #c5b358;
+}
+
+.isp-product-color-swatch-unmellow_yellow {
+    background: #ffff66;
+}
+
+.isp-product-color-swatch-up_forest_green {
+    background: #014421;
+}
+
+.isp-product-color-swatch-steel_blue {
+    background: #4682b4;
+}
+
+.isp-product-color-swatch-stil_de_grain_yellow {
+    background: #fada5e;
+}
+
+.isp-product-color-swatch-smoky_black {
+    background: #100c08;
+}
+
+.isp-product-color-swatch-sky_magenta {
+    background: #cf71af;
+}
+
+.isp-product-color-swatch-slate_blue {
+    background: #6a5acd;
+}
+
+.isp-product-color-swatch-slate_gray {
+    background: #708090;
+}
+
+.isp-product-color-swatch-shamrock_green {
+    background: #009e60;
+}
+
+.isp-product-color-swatch-shocking_pink {
+    background: #fc0fc0;
+}
+
+.isp-product-color-swatch-selective_yellow {
+    background: #ffba00;
+}
+
+.isp-product-color-swatch-sea_green {
+    background: #2e8b57;
+}
+
+.isp-product-color-swatch-seal_brown {
+    background: #321414;
+}
+
+.isp-product-color-swatch-salmon_pink {
+    background: #ff91a4;
+}
+
+.isp-product-color-swatch-sandy_brown {
+    background: #f4a460;
+}
+
+.isp-product-color-swatch-sandy_taupe {
+    background: #967117;
+}
+
+.isp-product-color-swatch-sap_green {
+    background: #507d2a;
+}
+
+.isp-product-color-swatch-sand_dune {
+    background: #967117;
+}
+
+.isp-product-color-swatch-sacramento_state_green {
+    background: #00563f;
+}
+
+.isp-product-color-swatch-saint_patrick_blue {
+    background: #23297a;
+}
+
+.isp-product-color-swatch-saddle_brown {
+    background: #8b4513;
+}
+
+.isp-product-color-swatch-safety_orange {
+    background: #ff6700;
+}
+
+.isp-product-color-swatch-ruddy_brown {
+    background: #bb6528;
+}
+
+.isp-product-color-swatch-ruddy_pink {
+    background: #e18e96;
+}
+
+.isp-product-color-swatch-royal_fuchsia {
+    background: #ca2c92;
+}
+
+.isp-product-color-swatch-royal_purple {
+    background: #7851a9;
+}
+
+.isp-product-color-swatch-rose_quartz {
+    background: #aa98a9;
+}
+
+.isp-product-color-swatch-rose_taupe {
+    background: #905d5d;
+}
+
+.isp-product-color-swatch-rose_vale {
+    background: #ab4e52;
+}
+
+.isp-product-color-swatch-rifle_green {
+    background: #414833;
+}
+
+.isp-product-color-swatch-robins_egg_blue {
+    background: #1fcecb;
+}
+
+.isp-product-color-swatch-raw_sienna {
+    background: #d68a59;
+}
+
+.isp-product-color-swatch-raw_umber {
+    background: #826644;
+}
+
+.isp-product-color-swatch-razzle_dazzle_rose {
+    background: #f3c;
+}
+
+.isp-product-color-swatch-purple_mountain_majesty {
+    background: #9678b6;
+}
+
+.isp-product-color-swatch-purple_pizzazz {
+    background: #fe4eda;
+}
+
+.isp-product-color-swatch-purple_taupe {
+    background: #50404d;
+}
+
+.isp-product-color-swatch-pink_flamingo {
+    background: #fc74fd;
+}
+
+.isp-product-color-swatch-portland_orange {
+    background: #ff5a36;
+}
+
+.isp-product-color-swatch-powder_blue {
+    background: #b0e0e6;
+}
+
+.isp-product-color-swatch-princeton_orange {
+    background: #ff8f00;
+}
+
+.isp-product-color-swatch-pink_pearl {
+    background: #e7accf;
+}
+
+.isp-product-color-swatch-pink_sherbet {
+    background: #f78fa7;
+}
+
+.isp-product-color-swatch-phthalo_green {
+    background: #123524;
+}
+
+.isp-product-color-swatch-piggy_pink {
+    background: #fddde6;
+}
+
+.isp-product-color-swatch-pine_green {
+    background: #01796f;
+}
+
+.isp-product-color-swatch-persian_red {
+    background: #c33;
+}
+
+.isp-product-color-swatch-persian_rose {
+    background: #fe28a2;
+}
+
+.isp-product-color-swatch-pastel_purple {
+    background: #b39eb5;
+}
+
+.isp-product-color-swatch-payne_grey {
+    background: #536878;
+}
+
+.isp-product-color-swatch-peach_puff {
+    background: #ffdab9;
+}
+
+.isp-product-color-swatch-peach_yellow {
+    background: #fadfad;
+}
+
+.isp-product-color-swatch-pastel_red {
+    background: #ff6961;
+}
+
+.isp-product-color-swatch-pastel_violet {
+    background: #cb99c9;
+}
+
+.isp-product-color-swatch-pastel_yellow {
+    background: #fdfd96;
+}
+
+.isp-product-color-swatch-olive_drab {
+    background: #6b8e23;
+}
+
+.isp-product-color-swatch-orange_peel {
+    background: #ff9f00;
+}
+
+.isp-product-color-swatch-opera_mauve {
+    background: #b784a7;
+}
+
+.isp-product-color-swatch-olive_green {
+    background: #bab86c;
+}
+
+.isp-product-color-swatch-old_lavender {
+    background: #796878;
+}
+
+.isp-product-color-swatch-old_mauve {
+    background: #673147;
+}
+
+.isp-product-color-swatch-old_rose {
+    background: #c08081;
+}
+
+.isp-product-color-swatch-north_texas_green {
+    background: #059033;
+}
+
+.isp-product-color-swatch-ocean_boat_blue {
+    background: #0077be;
+}
+
+.isp-product-color-swatch-moss_green {
+    background: #addfad;
+}
+
+.isp-product-color-swatch-mountain_meadow {
+    background: #30ba8f;
+}
+
+.isp-product-color-swatch-mountbatten_pink {
+    background: #997a8d;
+}
+
+.isp-product-color-swatch-msu_green {
+    background: #18453b;
+}
+
+.isp-product-color-swatch-mint_cream {
+    background: #f5fffa;
+}
+
+.isp-product-color-swatch-mint_green {
+    background: #98ff98;
+}
+
+.isp-product-color-swatch-misty_rose {
+    background: #ffe4e1;
+}
+
+.isp-product-color-swatch-midnight_green {
+    background: #004953;
+}
+
+.isp-product-color-swatch-mikado_yellow {
+    background: #ffc40c;
+}
+
+.isp-product-color-swatch-medium_turquoise {
+    background: #48d1cc;
+}
+
+.isp-product-color-swatch-medium_violet_red {
+    background: #c71585;
+}
+
+.isp-product-color-swatch-medium_aquamarine {
+    background: #66ddaa;
+}
+
+.isp-product-color-swatch-medium_blue {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-medium_candy_apple_red {
+    background: #e2062c;
+}
+
+.isp-product-color-swatch-mauve_taupe {
+    background: #915f6d;
+}
+
+.isp-product-color-swatch-majorelle_blue {
+    background: #6050dc;
+}
+
+.isp-product-color-swatch-mango_tango {
+    background: #ff8243;
+}
+
+.isp-product-color-swatch-magic_mint {
+    background: #aaf0d1;
+}
+
+.isp-product-color-swatch-lincoln_green {
+    background: #195905;
+}
+
+.isp-product-color-swatch-lavender_pink {
+    background: #fbaed2;
+}
+
+.isp-product-color-swatch-lavender_purple {
+    background: #967bb6;
+}
+
+.isp-product-color-swatch-lavender_rose {
+    background: #fba0e3;
+}
+
+.isp-product-color-swatch-lawn_green {
+    background: #7cfc00;
+}
+
+.isp-product-color-swatch-laurel_green {
+    background: #a9ba9d;
+}
+
+.isp-product-color-swatch-june_bud {
+    background: #bdda57;
+}
+
+.isp-product-color-swatch-jungle_green {
+    background: #29ab87;
+}
+
+.isp-product-color-swatch-kelly_green {
+    background: #4cbb17;
+}
+
+.isp-product-color-swatch-indian_red {
+    background: #cd5c5c;
+    background: #ff5c5c;
+}
+
+.isp-product-color-swatch-international_klein_blue {
+    background: #002fa7;
+}
+
+.isp-product-color-swatch-international_orange {
+    background: #ff4f00;
+}
+
+.isp-product-color-swatch-indian_yellow {
+    background: #e3a857;
+}
+
+.isp-product-color-swatch-hot_magenta {
+    background: #ff1dce;
+}
+
+.isp-product-color-swatch-hot_pink {
+    background: #ff69b4;
+}
+
+.isp-product-color-swatch-hunter_green {
+    background: #355e3b;
+}
+
+.isp-product-color-swatch-hollywood_cerise {
+    background: #f400a1;
+}
+
+.isp-product-color-swatch-harvard_crimson {
+    background: #c90016;
+}
+
+.isp-product-color-swatch-harvest_gold {
+    background: #da9100;
+}
+
+.isp-product-color-swatch-heart_gold {
+    background: olive;
+}
+
+.isp-product-color-swatch-golden_brown {
+    background: #996515;
+}
+
+.isp-product-color-swatch-granny_smith_apple {
+    background: #a8e4a0;
+}
+
+
+.isp-product-color-swatch-green_blue {
+    background: #1164b4;
+}
+
+.isp-product-color-swatch-green_yellow {
+    background: #adff2f;
+}
+
+.isp-product-color-swatch-gray, .isp-product-color-swatch-grey {
+    background: gray;
+}
+
+.isp-product-color-swatch-gray_asparagus {
+    background: #465945;
+}
+
+.isp-product-color-swatch-golden_poppy {
+    background: #fcc200;
+}
+
+.isp-product-color-swatch-golden_yellow {
+    background: #ffdf00;
+}
+
+.isp-product-color-swatch-fuzzy_wuzzy {
+    background: #cc6666;
+}
+
+.isp-product-color-swatch-fuchsia_pink {
+    background: #ff77ff;
+}
+
+.isp-product-color-swatch-french_lilac {
+    background: #86608e;
+}
+
+.isp-product-color-swatch-french_rose {
+    background: #f64a8a;
+}
+
+.isp-product-color-swatch-fluorescent_pink {
+    background: #ff1493;
+}
+
+.isp-product-color-swatch-fluorescent_yellow {
+    background: #ccff00;
+}
+
+.isp-product-color-swatch-fire_engine_red {
+    background: #ce1620;
+    background: #ce2029;
+}
+
+.isp-product-color-swatch-falu_red {
+    background: #801818;
+}
+
+.isp-product-color-swatch-electric_purple {
+    background: #bf00ff;
+}
+
+.isp-product-color-swatch-electric_ultramarine {
+    background: #3f00ff;
+}
+
+.isp-product-color-swatch-electric_violet {
+    background: #8f00ff;
+}
+
+.isp-product-color-swatch-electric_yellow {
+    background: #ffff00;
+}
+
+.isp-product-color-swatch-dim_gray {
+    background: #696969;
+}
+
+.isp-product-color-swatch-duke_blue {
+    background: #00009c;
+}
+
+.isp-product-color-swatch-earth_yellow {
+    background: #e1a95f;
+}
+
+
+.isp-product-color-swatch-dodger_blue {
+    background: #1e90ff;
+}
+
+.isp-product-color-swatch-dogwood_rose {
+    background: #d71868;
+}
+
+.isp-product-color-swatch-dollar_bill {
+    background: #85bb65;
+}
+
+.isp-product-color-swatch-deep_saffron {
+    background: #ff9933;
+}
+
+.isp-product-color-swatch-deep_sky_blue {
+    background: #00bfff;
+}
+
+.isp-product-color-swatch-cosmic_latte {
+    background: #fff8e7;
+}
+
+.isp-product-color-swatch-cotton_candy {
+    background: #ffbcd9;
+}
+
+.isp-product-color-swatch-coral_pink {
+    background: #f88379;
+}
+
+.isp-product-color-swatch-coral_red {
+    background: #ff4040;
+}
+
+.isp-product-color-swatch-burnt_orange {
+    background: #cc5500;
+}
+
+.isp-product-color-swatch-burnt_sienna {
+    background: #e97451;
+}
+
+.isp-product-color-swatch-burnt_umber {
+    background: #8a3324;
+}
+
+.isp-product-color-swatch-bulgarian_rose {
+    background: #480607;
+}
+
+.isp-product-color-swatch-bubble_gum {
+    background: #ffc1cc;
+}
+
+.isp-product-color-swatch-stainless_steel {
+    background: #c6c3bf;
+}
+
+.isp-product-color-swatch-river_rock {
+    background: #474334;
+}
+
+.isp-product-color-swatch-american_rose {
+    background: #ff033e;
+}
+
+.isp-product-color-swatch-air_force_blue {
+    background: #5d8aa8;
+}
+
+.isp-product-color-swatch-alice_blue {
+    background: #f0f8ff;
+}
+
+.isp-product-color-swatch-antique_fuchsia {
+    background: #915c83;
+}
+
+.isp-product-color-swatch-antique_white {
+    background: #faebd7;
+}
+
+.isp-product-color-swatch-apple_green {
+    background: #8db600;
+}
+
+.isp-product-color-swatch-army_green {
+    background: #4b5320;
+}
+
+.isp-product-color-swatch-atomic_tangerine {
+    background: #ff9966;
+}
+
+.isp-product-color-swatch-brink_pink {
+    background: #fb607f;
+}
+
+.isp-product-color-swatch-british_racing_green {
+    background: #004225;
+}
+
+.isp-product-color-swatch-cafe_noir {
+    background: #4b3621;
+}
+
+.isp-product-color-swatch-cal_poly_pomona_green {
+    background: #1e4d2b;
+}
+
+.isp-product-color-swatch-cambridge_blue {
+    background: #a3c1ad;
+}
+
+.isp-product-color-swatch-camouflage_green {
+    background: #78866b;
+}
+
+.isp-product-color-swatch-canary_yellow {
+    background: #ffef00;
+}
+
+.isp-product-color-swatch-candy_apple_red {
+    background: #ff0800;
+}
+
+.isp-product-color-swatch-candy_pink {
+    background: #e4717a;
+}
+
+.isp-product-color-swatch-carnation_pink {
+    background: #ffa6c9;
+}
+
+.isp-product-color-swatch-caput_mortuum {
+    background: #592720;
+}
+
+.isp-product-color-swatch-caribbean_green {
+    background: #00cc99;
+}
+
+.isp-product-color-swatch-carolina_blue {
+    background: #99badd;
+}
+
+.isp-product-color-swatch-carrot_orange {
+    background: #ed9121;
+}
+.isp-product-color-swatch-cerise_pink {
+    background: #ec3b83;
+}
+
+.isp-product-color-swatch-celestial_blue {
+    background: #4997d0;
+}
+
+.isp-product-color-swatch-vivid_auburn {
+    background: #922724;
+}
+
+.isp-product-color-swatch-vivid_burgundy {
+    background: #9f1d35;
+}
+
+.isp-product-color-swatch-vivid_cerise {
+    background: #da1d81;
+}
+
+.isp-product-color-swatch-vivid_tangerine {
+    background: #ffa089;
+}
+
+.isp-product-color-swatch-vivid_violet {
+    background: #9f00ff;
+}
+
+.isp-product-color-swatch-warm_black {
+    background: #004242;
+}
+
+.isp-product-color-swatch-white_smoke {
+    background: #f5f5f5;
+}
+
+.isp-product-color-swatch-wild_blue_yonder {
+    background: #a2add0;
+}
+
+.isp-product-color-swatch-wild_strawberry {
+    background: #ff43a4;
+}
+
+.isp-product-color-swatch-wild_watermelon {
+    background: #fc6c85;
+}
+
+
+.isp-product-color-swatch-yellow_green {
+    background: #9acd32;
+}
+
+.isp-product-color-swatch-yellow_orange {
+    background: #ffae42;
+}
+
+.isp-product-color-swatch-yale_blue {
+    background: #0f4d92;
+}
+
+.isp-product-color-swatch-samba_kiss {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-green_multi, .isp-product-color-swatch-oliveburgundy {
+    background: #6f743c;
+}
+
+.isp-product-color-swatch-sugar_rush {
+    background: #ba91b9;
+}
+
+.isp-product-color-swatch-blackoff_white {
+    background: #000000;
+}
+
+.isp-product-color-swatch-cornell_red {
+    background: #b31b1b;
+}
+
+.isp-product-color-swatch-flamingo_pink {
+    background: #fc8eac;
+}
+
+.isp-product-color-swatch-up_maroon {
+    background: #7b1113;
+}
+
+.isp-product-color-swatch-astara_merlot {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-rebellious_edge {
+    background: #9400d3;
+}
+
+.isp-product-color-swatch-heather_combo {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-astara_black {
+    background: #000000;
+}
+
+.isp-product-color-swatch-navyrose_gold {
+    background: #182373;
+}
+
+.isp-product-color-swatch-heather_sage {
+    background: #56dfc1;
+}
+
+.isp-product-color-swatch-queen_of_hearts {
+    background: #870f11;
+}
+
+.isp-product-color-swatch-light_purple {
+    background: #ba91b9;
+}
+
+.isp-product-color-swatch-light_bluewhite {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-knock_em_red {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-powder_pink {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-heather_greyblack {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-strawberry_jam {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-navy_stripe {
+    background: #182373;
+}
+
+.isp-product-color-swatch-grey_stripe {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-moss {
+    background: #dac90a;
+}
+
+.isp-product-color-swatch-grey_combo {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-mustard_multi {
+    background: #fffe4e;
+}
+
+.isp-product-color-swatch-grey_taupe {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-zinnwaldite_brown {
+    background: #2c1608;
+}
+
+.isp-product-color-swatch-baby_doll {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-light_nude {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-wood_rose {
+    background: #c98f9d;
+}
+
+.isp-product-color-swatch-tea_tree {
+    background: #768f7c;
+}
+
+.isp-product-color-swatch-black_soft_white, .isp-product-color-swatch-rose_goldblack {
+    background: #000000;
+}
+
+.isp-product-color-swatch-sandy_glow {
+    background: #b68d61;
+}
+
+.isp-product-color-swatch-pink_multi {
+    background: #eda3c4;
+}
+.isp-product-color-swatch-nuderose_gold {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/Rose_Gold.jpg?2635594828431142772)
+}
+
+.isp-product-color-swatch-melange_black {
+    background: #4b4746;
+}
+
+.isp-product-color-swatch-new_amber {
+    background: #ff8c00;
+}
+
+.isp-product-color-swatch-oatmeal_combo, .isp-product-color-swatch-sandy {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-light_sage {
+    background: #56dfc1;
+}
+
+.isp-product-color-swatch-need_me, .isp-product-color-swatch-orchid_haze {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-light_bluesmoke {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-marled_charcoal {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-black_multi, .isp-product-color-swatch-bluered {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-light_pinkberry {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-raspberry_tart {
+    background: #491f61;
+}
+
+.isp-product-color-swatch-dark_navy {
+    background: #182373;
+}
+
+.isp-product-color-swatch-off_whiteblack {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-hunter_multi {
+    background: #28572b;
+}
+
+.isp-product-color-swatch-new_olive__soft_white {
+    background: #6f743c;
+}
+
+
+.isp-product-color-swatch-sunset_orange {
+    background: #fd5e53;
+}
+
+.isp-product-color-swatch-tangerine_yellow {
+    background: #fc0;
+}
+
+.isp-product-color-swatch-taupe_gray {
+    background: #8b8589;
+}
+
+.isp-product-color-swatch-tea_green {
+    background: #d0f0c0;
+}
+
+.isp-product-color-swatch-tea_rose {
+    background: #f4c2c2;
+}
+
+.isp-product-color-swatch-thulian_pink {
+    background: #de6fa1;
+}
+
+.isp-product-color-swatch-teal_blue {
+    background: #367588;
+}
+
+.isp-product-color-swatch-teal_green {
+    background: #006d5b;
+}
+
+.isp-product-color-swatch-terra_cotta {
+    background: #e2725b;
+}
+
+.isp-product-color-swatch-tickle_me_pink {
+    background: #fc89ac;
+}
+
+.isp-product-color-swatch-tiffany_blue {
+    background: #0abab5;
+}
+
+.isp-product-color-swatch-tiger_eye {
+    background: #e08d3c;
+}
+
+.isp-product-color-swatch-titanium_yellow {
+    background: #eee600;
+}
+
+.isp-product-color-swatch-tractor_red {
+    background: #fd0e35;
+}
+
+.isp-product-color-swatch-trolley_grey {
+    background: gray;
+}
+
+.isp-product-color-swatch-tropical_rain_forest {
+    background: #00755e;
+}
+
+.isp-product-color-swatch-true_blue {
+    background: #0073cf;
+}
+
+.isp-product-color-swatch-tufts_blue {
+    background: #417dc1;
+}
+
+.isp-product-color-swatch-turkish_rose {
+    background: #b57281;
+}
+
+.isp-product-color-swatch-turquoise_blue {
+    background: #00ffef;
+}
+
+.isp-product-color-swatch-turquoise_green {
+    background: #a0d6b4;
+}
+
+.isp-product-color-swatch-tuscan_red {
+    background: #66424d;
+}
+
+.isp-product-color-swatch-twilight_lavender {
+    background: #8a496b;
+}
+
+.isp-product-color-swatch-tyrian_purple {
+    background: #66023c;
+}
+
+.isp-product-color-swatch-ua_blue {
+    background: #0033aa;
+}
+
+.isp-product-color-swatch-ua_red {
+    background: #d9004c;
+}
+
+.isp-product-color-swatch-ucla_blue {
+    background: #536895;
+}
+
+.isp-product-color-swatch-ucla_gold {
+    background: #ffb300;
+}
+
+.isp-product-color-swatch-ufo_green {
+    background: #3cd070;
+}
+
+.isp-product-color-swatch-ultra_pink {
+    background: #ff6fff;
+}
+
+.isp-product-color-swatch-ultramarine_blue {
+    background: #4166f5;
+}
+
+.isp-product-color-swatch-love_overdose {
+    background: #ee2c9f;
+}
+
+.isp-product-color-swatch-silk_indulgent {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-heather_greyivory {
+    background: #bebcbd;
+}
+
+.isp-product-color-swatch-light_rust, .isp-product-color-swatch-rose_dusty {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-rose_powder {
+    background: #f8d3e4;
+}
+
+.isp-product-color-swatch-medium_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/medium-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-poppy_red {
+    background: #ee1212;
+}
+
+.isp-product-color-swatch-white_multi {
+    background: #ffffff;
+}
+
+.isp-product-color-swatch-heather_black {
+    background: #4b4746;
+}
+
+.isp-product-color-swatch-med_wash {
+    background: #0000cd;
+}
+
+.isp-product-color-swatch-marled_oatmeal {
+    background: #f7eee5;
+}
+
+.isp-product-color-swatch-rose_goldnude {
+    background: #efd2b0;
+}
+
+.isp-product-color-swatch-rose_goldpink {
+    background: #eda3c4;
+}
+
+.isp-product-color-swatch-heather_orange {
+    background: #f4ac94;
+}
+
+.isp-product-color-swatch-grey_multi {
+    background: #938f90;
+}
+
+.isp-product-color-swatch-blue_stripe {
+    background: #6577e7;
+}
+
+.isp-product-color-swatch-light_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-acid_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/light-wash.jpg?2635594828431142772);
+}
+
+.isp-product-color-swatch-dark_wash {
+    background-image: url(//cdn.shopify.com/s/files/1/0293/9277/files/dark-wash.jpg?2635594828431142772);
+}
+
+
+
+.isp-more-colors-available {
+    color: #8e8e8e;
+    font-size: 0.8em;
+    margin-bottom: 6px;
+}
+div[id^=isp_load_more] {
+	display: table;
+	margin: 0 auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+div[id^=isp_load_more] > a {
+	border: 1px solid #333;
+	padding: 10px 40px;
+}
+div[id^=isp_load_more] > a:hover  {
+	background: #333;
+	color: white;
+}
+#isp_search_result_page_container #isp_pagination_anchor .isp_pagination {
+    margin-top: 20px;
+}
+
+#isp_pagination_anchor .isp_pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+#isp_pagination_anchor .isp_pagination>li {
+    display: inline;
+    border: 0;
+}
+
+#isp_pagination_anchor .isp_pagination>li>a, #isp_pagination_anchor .isp_pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #788188;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+#isp_pagination_anchor .isp_pagination>li:first-child>a, #isp_pagination_anchor .isp_pagination>li:first-child>span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+#isp_pagination_anchor .isp_pagination>li:last-child>a, #isp_pagination_anchor .isp_pagination>li:last-child>span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+#isp_pagination_anchor .isp_pagination>li>a:hover, #isp_pagination_anchor .isp_pagination>li>span:hover, #isp_pagination_anchor .isp_pagination>li>a:focus, #isp_pagination_anchor .isp_pagination>li>span:focus {
+    z-index: 2;
+    color: #000;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+#isp_pagination_anchor .isp_pagination>.active>a, #isp_pagination_anchor .isp_pagination>.active>span, #isp_pagination_anchor .isp_pagination>.active>a:hover, #isp_pagination_anchor .isp_pagination>.active>span:hover, #isp_pagination_anchor .isp_pagination>.active>a:focus, #isp_pagination_anchor .isp_pagination>.active>span:focus {
+    z-index: 3;
+    color: #fff;
+    background-color: #788188;
+    border-color: #788188;
+    cursor: default;
+}
+
+#isp_pagination_anchor .isp_pagination>.disabled>span, #isp_pagination_anchor .isp_pagination>.disabled>span:hover, #isp_pagination_anchor .isp_pagination>.disabled>span:focus, #isp_pagination_anchor .isp_pagination>.disabled>a, #isp_pagination_anchor .isp_pagination>.disabled>a:hover, #isp_pagination_anchor .isp_pagination>.disabled>a:focus {
+    color: #777;
+    background-color: #fff;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+.isp_full_star {
+    fill: #ffd72f;
+}
+
+.isp_empty_star {
+    fill: #fff;
+}
+
+.isp_single_facet_wrapper:not(.isp-facet-not-selected) .isp_facet_value_name span:not(.isp_facet_value_name_selected) .isp_review_filter {
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+.isp_review_filter img {
+    height: 1.1em;
+    position: relative;
+    top: 2px;
+    display: inline;
+    vertical-align: initial;
+}
+
+.isp_filter_removable_tag .isp_review_filter img {
+    height: 0.9em;
+}
+
+a.isp_product_image_href {
+    width: 100%;
+    height: 100%;
+}
+
+a.isp_product_quick_view_button, a.isp_product_look_a_like_button {
+    position: absolute !important;
+}
+
+a.isp_product_look_a_like_button {
+    top: 56%;
+}
+
+.offscreen {
+    clip-path: inset(100%);
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/********************************************************/
+/****************** Horizontal Filters ******************/
+/********************************************************/
+
+#isp_search_result_page_container div#isp_left_container.horizontal {
+    width: 100%;
+    padding: 0;
+}
+
+#isp_search_result_page_container div#isp_center_container.horizontal {
+    margin-left: 0 !important;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value.isp_facet_value_color_swatch {
+    height: 40px !important;
+    padding: 0;
+}
+
+#isp_left_container.horizontal .isp_facet_value_name_color_swatch {
+    height: 30px !important;
+    width: 30px !important;
+    border-radius: 50%;
+}
+
+div#isp_left_container.horizontal #isp_left_container_facets {
+    border-right: 0 !important;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_single_facet_wrapper {
+    padding-bottom: 0 !important;
+    margin: 8px 2px !important;
+    border: 1px solid #D2D2D2;
+    width: 19%;
+    cursor: pointer;
+    position: relative;
+    overflow-y: visible;
+}
+
+#isp_left_container.horizontal .isp_single_facet_wrapper:not(.isp-facet-not-selected) {
+    border-top: 3px solid #605D5D !important;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_single_facet_wrapper .isp_facet_title {
+    margin-bottom: 0 !important;
+    padding: 10px;
+    background-image: url('/images/keyboard_arrow_right_black_24x24.png');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value:not([facet_id=Isp-in-stock]):not(.isp_facet_value_color_swatch) {
+    background-color: #fff;
+    color: #2d2d2d !important;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value.selected:not([facet_id=Isp-in-stock]):not(.isp_facet_value_color_swatch) {
+    background-color: #948e8e;
+}
+
+#isp_left_container.horizontal .isp_facet_value a .isp_facet_value_name .isp_facet_value_name_selected, #isp_left_container.horizontal .isp_facet_value a .isp_facet_value_name .isp_facet_value_name_selected .money, #isp_left_container.horizontal .isp_facet_value.selected a .isp_facet_value_name .isp_facet_value_counter, #isp_left_container.horizontal .isp_facet_value.selected a .isp_facet_value_name .isp_facet_value_name_not_selected {
+    color: #fff !important;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_single_facet_wrapper:hover, #isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value:hover {
+    box-shadow: -2px 2px 2px 0 rgba(0, 0, 0, .09);
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value a {
+    color: #2d2d2d;
+    padding: 0 !important;
+    text-indent: 0;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value a[facet_id=Isp-color-family] {
+    margin-top: 5px;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value .isp_sellable_only_title {
+    display: block;
+}
+
+#isp_left_container.horizontal .isp_facet_value a div.isp_facet_check_box_icon {
+    display: none !important;
+}
+
+#isp_left_container.horizontal .isp_custom_price_container {
+    display: none;
+}
+
+#isp_left_container.horizontal .isp_product_price.money {
+    font-weight: 400 !important;
+    font-size: inherit !important;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value.isp_facet_value_color_swatch {
+    text-align: center;
+    border-radius: 0;
+    background-color: transparent;
+    color: transparent;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_value.isp_facet_value_color_swatch:hover {
+    box-shadow: none;
+}
+
+#isp_left_container.horizontal .isp_search_res_facets_container .isp_facet_unvisible_values .isp_facet_value {
+    margin-bottom: 5px;
+}
+
+#isp_left_container.color_swatch .isp_facet_color .isp_facet_expander_grid, #isp_left_container.color_swatch .isp_facet_colour .isp_facet_expander_grid, #isp_left_container.color_swatch .isp_facet_colors .isp_facet_expander_grid, #isp_left_container.color_swatch .isp_facet_color_family .isp_facet_expander_grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+#isp_left_container.horizontal .isp_center_container_header a.isp_refine_nevigation {
+    display: none;
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding: 2px 8px;
+    max-height: 26px;
+    text-decoration: none;
+    outline: 0;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    color: #111;
+    background-image: none;
+}
+
+#isp_left_container.horizontal .isp_center_container_header a.isp_refine_nevigation img {
+    vertical-align: middle;
+    margin: 0 !important;
+    display: inline-block;
+    width: inherit;
+}
+
+#isp_left_container.horizontal a.isp_refine_nevigation span.isp_refine_navigation_content {
+    color: #111;
+    font-size: 0.8em;
+    padding-left: 2px;
+}
+
+.horizontal.isp_serp_left_nav_sticky {
+    position: static;
+    top: unset;
+}
+
+[facet_id=Isp-in-stock] {
+    padding: 0 !important;
+}
+
+.horizontal .isp_facet_expander {
+    display: none;
+    width: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: #fff;
+    z-index: 9000;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 1px;
+    max-height: 50vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 13px -2px rgba(0, 0, 0, .8);
+}
+
+.horizontal .isp_facet_expander_grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-row-gap: 5px;
+    text-align: center;
+}
+
+:not(.horizontal) .isp_facet_title:not(.isp_sellable_only_title) {
+    cursor: pointer;
+    background-image: url('/images/keyboard_arrow_up_black_24x24.png');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: right;
+}
+
+@media (min-width: 980px) and (max-width: 1349px) {
+    #isp_search_result_page_container div#isp_center_container.horizontal {
+        margin-left: 0 !important;
+    }
+}
+
+@media (min-width: 760px) and (max-width: 979px) {
+    #isp_search_result_page_container div.isp_left_container.horizontal {
+        visibility: visible;
+        margin-left: 0 !important;
+    }
+
+    #isp_left_container.horizontal .isp_search_res_facets_container {
+        display: none;
+    }
+
+    #isp_search_result_page_container div#isp_center_container.horizontal {
+        margin-left: 0 !important;
+    }
+}
+
+@media (min-width: 560px) and (max-width: 759px) {
+    #isp_left_container.horizontal .isp_center_container_header a.isp_refine_nevigation {
+        display: block;
+    }
+
+    #isp_search_result_page_container div.isp_left_container.horizontal {
+        visibility: visible;
+        margin-left: 0 !important;
+    }
+
+    .isp_center_container.horizontal .isp_center_container_header a.isp_refine_nevigation {
+        display: none;
+    }
+}
+
+@media (max-width: 559px) {
+    #isp_left_container.horizontal {
+        visibility: visible !important;
+        margin-left: 0 !important;
+    }
+    #isp_left_container.horizontal .isp_search_res_facets_container .isp_single_facet_wrapper {
+        width: 48%;
+        margin: 8px 0 !important;
+    }
+    #isp_left_container.horizontal .isp_center_container_header div.isp_sorting_and_result_view_wrapper {
+        padding-top: 0;
+    }
+    #isp_left_container.horizontal .isp_search_res_facets_container {
+        display: none;
+        justify-content: space-between;
+    }
+    #isp_left_container.horizontal .isp_sorting_and_result_view_wrapper #isp_search_res_sorting_menu>li>a {
+        background-image: none;
+    }
+    #isp_search_result_page_container #isp_center_container.horizontal .isp_center_container_header {
+        display: inline-block;
+    }
+    #isp_left_container.horizontal .isp_center_container_header a.isp_refine_nevigation {
+        display: block;
+        margin: 0;
+        width: 120px;
+        height: 40px;
+        max-height: unset;
+        padding: 6px 16px;
+    }
+    #isp_left_container.horizontal .isp_center_container_header a.isp_refine_nevigation img {
+        width: unset;
+    }
+    #isp_left_container.horizontal .isp_facet_value_name_color_swatch {
+        height: 20px !important;
+    }
+    #isp_left_container.color_swatch .isp_facet_color .isp_facet_expander_grid, 
+    #isp_left_container.color_swatch .isp_facet_color_family .isp_facet_expander_grid, 
+    #isp_left_container.color_swatch .isp_facet_colors .isp_facet_expander_grid, 
+    #isp_left_container.color_swatch .isp_facet_colour .isp_facet_expander_grid {
+        grid-column-gap: 5px;
+    }
+    .isp_facet_expander {
+        position: absolute;
+        border: 0;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes pulse-heart {
+    0% {
+        fill-opacity: .4;
+        stroke-opacity: .4;
+    }
+    25% {
+        -webkit-transform: scale(.95);
+        -moz-transform: scale(.95);
+        -ms-transform: scale(.95);
+        -o-transform: scale(.95);
+        transform: scale(.95);
+    }
+    50% {
+        -webkit-transform: scale(.95);
+        -moz-transform: scale(.95);
+        -ms-transform: scale(.95);
+        -o-transform: scale(.95);
+        transform: scale(.95);
+        opacity: 1;
+    }
+    75% {
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        opacity: .7;
+    }
+}
+
+@-moz-keyframes pulse-heart {
+    0% {
+        fill-opacity: .4;
+        stroke-opacity: .4;
+    }
+    25% {
+        -webkit-transform: scale(.95);
+        -moz-transform: scale(.95);
+        -ms-transform: scale(.95);
+        -o-transform: scale(.95);
+        transform: scale(.95);
+    }
+    50% {
+        -webkit-transform: scale(.95);
+        -moz-transform: scale(.95);
+        -ms-transform: scale(.95);
+        -o-transform: scale(.95);
+        transform: scale(.95);
+        opacity: 1;
+    }
+    75% {
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        opacity: .7;
+    }
+}
+
+@keyframes pulse-heart {
+    0% {
+        fill-opacity: .4;
+        stroke-opacity: .4;
+    }
+    25% {
+        -webkit-transform: scale(.95);
+        -moz-transform: scale(.95);
+        -ms-transform: scale(.95);
+        -o-transform: scale(.95);
+        transform: scale(.95);
+    }
+    50% {
+        -webkit-transform: scale(.95);
+        -moz-transform: scale(.95);
+        -ms-transform: scale(.95);
+        -o-transform: scale(.95);
+        transform: scale(.95);
+        opacity: 1;
+    }
+    75% {
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        opacity: .7;
+    }
+}
+
+/********************************************************/
+/*********** Animated skeleton screen using CSS *********/
+/********************************************************/
+
+@media (min-width: 769px) {
+    .isp_grid_product_skeleton:empty {
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80%),
+                          linear-gradient(#F2F2F2 230px, transparent 0),
+                          linear-gradient(#F2F2F2 36px, transparent 0),
+                          linear-gradient(#F2F2F2 12px, transparent 0),
+                          linear-gradient(#F2F2F2 20px, transparent 0),
+                          linear-gradient(#F2F2F2 20px, transparent 0) !important;
+        background-repeat: no-repeat !important;
+        background-size: 50px 100%,
+                         100% 230px,
+                         100% 36px,
+                         30% 12px,
+                         30% 20px,
+                         45% 20px !important;
+        background-position: 0 0,
+                             0 0,
+                             0 240px,
+                             0 285px,
+                             0 305px,
+                             100% 305px !important;
+        animation: shine-fidelity 1s infinite;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0.25% !important;
+        margin: 0.25% !important;
+        display: block !important;
+        min-height: 368px !important;
+        float: left !important;
+    }
+
+    @keyframes shine-fidelity {
+        to {
+            background-position: 130% 0,
+                                 0 0,
+                                 0 240px,
+                                 0 285px,
+                                 0 305px,
+                                 100% 305px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .isp_grid_product_skeleton:empty {
+        background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80%),
+                          linear-gradient(#F2F2F2 114px, transparent 0),
+                          linear-gradient(#F2F2F2 20px, transparent 0),
+                          linear-gradient(#F2F2F2 16px, transparent 0),
+                          linear-gradient(#F2F2F2 8px, transparent 0),
+                          linear-gradient(#F2F2F2 23px, transparent 0) !important;
+        background-repeat: no-repeat !important;
+        background-size: 50px 100%,
+                         100% 114px,
+                         100% 20px,
+                         100% 16px,
+                         45% 8px,
+                         100% 23px !important;
+        background-position: 0 0,
+                             0 0,
+                             0 120px,
+                             0 156px,
+                             0 184px,
+                             100% 204px !important;
+        animation: shine-fidelity-mobile 1s infinite;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0.25% !important;
+        margin: 0.25% !important;
+        display: block !important;
+        min-height: 368px !important;
+        float: left !important;
+        width: 47% !important;
+    }
+
+    @keyframes shine-fidelity-mobile {
+        to {
+            background-position: 130% 0,
+                                 0 0,
+                                 0 120px,
+                                 0 156px,
+                                 0 184px,
+                                 100% 204px;
+        }
+    }
+}
+
+.isp_single_facet_wrapper_skeleton:empty {
+    height: 120px !important;
+    margin-bottom: 50px !important;
+    background-image: linear-gradient( 90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% ),
+                      linear-gradient( #F2F2F2 18px, transparent 0 ),
+                      linear-gradient( #F2F2F2 15px, transparent 0 ),
+                      linear-gradient( #F2F2F2 15px, transparent 0 ),
+                      linear-gradient( #F2F2F2 15px, transparent 0 );
+    background-repeat: no-repeat;
+    background-size: 50px 100%,
+                     100% 18px,
+                     75% 15px,
+                     75% 15px,
+                     75% 15px;
+    background-position: 0 0,
+                         0 0,
+                         0 45px,
+                         0 70px,
+                         0 95px;
+    animation: shine-sidebar 1s infinite;
+}
+
+@keyframes shine-sidebar {
+    to {
+        background-position: 130% 0,
+                             0 0,
+                             0 45px,
+                             0 70px,
+                             0 95px;
+    }
+}

@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url("proximanova-regular-webfont.eot");
+    src: url("proximanova-regular-webfont.eot?#iefix") format("embedded-opentype"),url("proximanova-regular-webfont.woff2") format("woff2"),url("proximanova-regular-webfont.woff") format("woff"),url("proximanova-regular-webfont.ttf") format("truetype"),url("proximanova-regular-webfont.svg#proxima_nova_rgregular") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
+body .wufoo label.desc, body .wufoo legend.desc {
+    color: #000 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    font-family: "proxima_nova_rgregular" !important;
+}
+
+body .wufoo input.text, body .wufoo textarea.textarea, body .wufoo input.file, body .wufoo select.select {
+	color: #000;
+    letter-spacing: 0;
+    font-family: "proxima_nova_rgregular" !important;
+    padding-top: 10px;
+    padding-left: 18px;
+    padding-bottom: 10px;
+}
+
+body .wufoo select.select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-position: right center;
+    background-image: url(//cdn.shopify.com/s/files/1/0226/0165/t/65/assets/ico-select.svg?7072353802279998375);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    line-height: 1.2;
+    padding-right: 28px;
+    text-indent: 0.01px;
+    cursor: pointer;
+}
+body #fo3li14>span {
+    width: 50% !important;
+    margin-right: 0;
+}
+body #fo3li14>span:nth-of-type(1) {
+	padding-right: 15px;
+}
+body #fo3li14>span:nth-of-type(2) {
+	padding-left: 15px;
+}
+.safari body .wufoo input.file {
+	letter-spacing: 0;
+    font-family: "proxima_nova_rgregular" !important;
+}
+
+body .choice__text {
+	font-family: "proxima_nova_rgregular" !important;
+    font-size: 14px;
+}
+
+body #saveForm {
+	width: 100%;
+    border-radius: 0;
+    background: #000;
+    font-family: "proxima_nova_rgregular" !important;
+    font-size: 14px;
+    border: 1px solid #000;
+    margin-top: 15px;
+}
+
+body #saveForm:hover {
+	color: #000;
+	background: #fff;
+	opacity: 1;
+}

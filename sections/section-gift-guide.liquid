@@ -1,0 +1,419 @@
+{% if section.settings.show_page %}
+<div class="page-default-template holiday-2019">
+  <!-- start content here of holiday gift guide page -->
+  {% capture day %}{{ 'now' | date: '%A' }}{% endcapture %}
+  {% if day != 'Saturday' and day != 'Sunday' %}
+  <section id="page-header" class="sec-countdown" style="display:none;">
+    <div class="order-shipping">
+      {% if section.settings.show_announcement_bar %}
+      {% include 'day-countdown' %}
+      <p>{{section.settings.announce_text_prev}} 
+        {% comment %}<span id="days"></span>:{% endcomment %}<span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+      {{section.settings.announce_text_next}}
+      </p>      
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+  <section id="page-header {{section.settings.desktop_image}}">
+    {% if section.settings.desktop_image != blank %}
+    <div class="header-background compexpagebn desktop-image">
+      {% comment %}<a href="{{section.settings.gift_guide_collection}}">{% endcomment %}
+        <img src="{{section.settings.desktop_image | img_url: 'master'}}" width="100%" />
+      </a>
+    </div>
+    {% else %}
+    <div class="header-background compexpagebn desktop-image">
+      <a href="{{section.settings.gift_guide_collection}}">
+        <div class="box_banner"><h1>GIFT GUIDE</h1></div>
+        <!--<img src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mainbanner-day1_0c468430-883a-4e03-a95b-5b369d1d0227.jpg?v=1568870770" width="100%"> -->
+      </a>
+    </div>
+    {% endif %}        
+    {% if section.settings.desktop_image != blank %}
+    <div class="header-background compexpagebn mobile-image">  
+     {% comment %} <a href="{{section.settings.gift_guide_collection}}">{% endcomment %}
+         <img src="{{ section.settings.mobile_image | img_url: 'master' }}" width="100%" />
+      </a>
+    </div>
+    {% else %}
+    <div class="header-background compexpagebn mobile-image">
+      <a href="{{section.settings.gift_guide_collection}}">
+        <div class="box_banner"><h1>GIFT GUIDE</h1></div>
+      </a>
+    </div>
+    {% endif %}   
+  </section>
+    <div class="page-width holiday-wrap">
+      <div class="section-header text-center">
+        <h1>{{section.settings.gift_guide_header}}</h1>
+        <p>{{section.settings.gift_guide_subheader}}</p>
+      </div>
+      <div class="blue-wrapper">
+          <div class="grid">
+            {% for block in section.blocks %}
+            {% if block.type == 'first_row_f_image' %}
+            <div class="grid__item medium-up--one-whole">              
+              {% if block.settings.link != blank %}
+              <a href="{{block.settings.link}}" class="box_view">
+              {% else %}
+              <a href="javascript:void(0);" class="box_view">
+              {% endif %}
+                <div class="box_inner last_r">
+                  <div class="text-view">
+                    <h1>{{block.settings.text_content}}</h1>
+                    {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                  	{% if block.settings.col_image_mobile != blank %} <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+				<!-- <img class="desktop-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-desktop-9shopall.jpg?v=1568796687" width="100%">
+                    <img class="mobile-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mobile-9shopall.jpg?v=1568798626" width="100%"> -->
+                  </div>
+                </div>
+              </a>
+            </div> 
+            {% endif %}
+            {% if block.type == 'first_row_s_image' %}
+             <div class="grid__item medium-up--one-third ">
+              {% if block.settings.link != blank %}
+              <a href="{{block.settings.link}}" class="box_view">
+              {% else %}
+              <a href="javascript:void(0);" class="box_view">
+              {% endif %}
+                <div class="box_inner">
+                  <div class="text-view">
+                     <h4>{{block.settings.text_content}}</h4>
+                    {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                  	{% if block.settings.col_image_mobile != blank %} <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+<!--                     <img class="desktop-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-desktop-1nikeshoes.jpg?v=1568783983" width="100%">
+                    <img class="mobile-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mobile-1nikeshoes_1b93225b-48ec-41f0-ae03-449ed4c239af.jpg?v=1568790524" width="100%"> -->
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>          
+     </div>
+     <div class="blue-wrapper">
+       <div class="grid">
+         {% for block in section.blocks %}
+         {% if block.type == 'second_row_f_image' %}
+         <div class="grid__item medium-up--one-whole">
+            {% if block.settings.link != blank %}
+            <a href="{{block.settings.link}}" class="box_view">
+            {% else %}
+            <a href="javascript:void(0);" class="box_view">
+            {% endif %}
+             <div class="box_inner last_r">
+               <div class="text-view">
+                 <h1>{{block.settings.text_content}}</h1>
+                 {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                 {% if block.settings.col_image_mobile != blank %} <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+                 <!-- <img class="desktop-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-desktop-9shopall.jpg?v=1568796687" width="100%">
+<img class="mobile-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mobile-9shopall.jpg?v=1568798626" width="100%"> -->
+               </div>
+             </div>
+           </a>
+         </div> 
+         {% endif %}
+         {% if block.type == 'second_row_s_image' %}
+         <div class="grid__item medium-up--one-third ">
+           	{% if block.settings.link != blank %}
+            <a href="{{block.settings.link}}" class="box_view">
+            {% else %}
+            <a href="javascript:void(0);" class="box_view">
+            {% endif %}
+             <div class="box_inner">
+               <div class="text-view">
+                 <h4>{{block.settings.text_content}}</h4>
+                 {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                 {% if block.settings.col_image_mobile != blank %} <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+                 <!--                     <img class="desktop-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-desktop-1nikeshoes.jpg?v=1568783983" width="100%">
+<img class="mobile-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mobile-1nikeshoes_1b93225b-48ec-41f0-ae03-449ed4c239af.jpg?v=1568790524" width="100%"> -->
+               </div>
+             </div>
+           </a>
+         </div>
+         {% endif %}
+         {% endfor %}
+       </div>          
+     </div> 
+      
+      <div class="blue-wrapper">
+          <div class="grid">
+			{% for block in section.blocks %}
+         	{% if block.type == 'third_row_f_image' %}
+            <div class="grid__item medium-up--one-whole">
+              {% if block.settings.link != blank %}
+              <a href="{{block.settings.link}}" class="box_view">
+              {% else %}
+              <a href="javascript:void(0);" class="box_view">
+              {% endif %}
+                <div class="box_inner last_r">
+                  <div class="text-view">
+                    <h1>{{block.settings.text_content}}</h1>
+                    {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                  	{% if block.settings.col_image_mobile != blank %} <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+				<!-- <img class="desktop-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-desktop-9shopall.jpg?v=1568796687" width="100%">
+                    <img class="mobile-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mobile-9shopall.jpg?v=1568798626" width="100%"> -->
+                  </div>
+                </div>
+              </a>
+            </div> 
+            {% endif %}
+            {% if block.type == 'third_row_s_image' %}
+             <div class="grid__item medium-up--one-third ">
+              {% if block.settings.link != blank %}
+              <a href="{{block.settings.link}}" class="box_view">
+              {% else %}
+              <a href="javascript:void(0);" class="box_view">
+              {% endif %}
+                <div class="box_inner">
+                  <div class="text-view">
+                     <h4>{{block.settings.text_content}}</h4>
+                     {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                  	 {% if block.settings.col_image_mobile != blank %} <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+				<!-- <img class="desktop-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-desktop-1nikeshoes.jpg?v=1568783983" width="100%">
+                    <img class="mobile-image" src="//cdn.shopify.com/s/files/1/0226/0165/files/Landing_page-mobile-1nikeshoes_1b93225b-48ec-41f0-ae03-449ed4c239af.jpg?v=1568790524" width="100%"> -->
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% if block.type == 'third_row_t_image' %}
+            <div class="grid__item medium-up--one-whole">
+              {% if block.settings.link != blank %}
+              <a href="{{block.settings.link}}" class="box_view">
+              {% else %}
+              <a href="javascript:void(0);" class="box_view">
+              {% endif %}
+                <div class="box_inner last_r">
+                  <div class="text-view">
+                    <h1>{{block.settings.text_content}}</h1>
+                    {% if block.settings.col_image != blank %} <img class="desktop-image" src="{{block.settings.col_image | img_url: 'master'}}" />{% endif %}
+                  	{% if block.settings.col_image_mobile != blank %} <img  class="mobile-image" src="{{block.settings.col_image_mobile | img_url: 'master'}}"/>{% endif %}
+                  </div>
+                </div>
+              </a>
+            </div> 
+            {% endif %}
+            {% endfor %}
+          </div>          
+        </div> 
+      
+      
+      <div class="rte">
+        {{ page.content }}
+      </div>
+  </div>
+</div>
+{% endif %}
+{% schema %}
+   {
+    "name": "Gift Guide",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_page",
+        "label": "Publish page",
+        "default": false
+      },
+	  {
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop banner image"
+      },
+	  {
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile banner image"
+      },
+	  {
+		"type": "text",
+		"id": "gift_guide_header",
+		"label": "Gift guide header"
+      },
+	  {
+		"type": "text",
+		"id": "gift_guide_subheader",
+		"label": "Gift guide sub header"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_announcement_bar",
+        "label": "Show announcement bar",
+        "default": true
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_prev",
+		"label": "Announcement previous text"
+      },
+	  {
+		"type": "text",
+		"id": "announce_text_next",
+		"label": "Announcement next text"
+      },
+	  {
+        "type": "text",
+        "id": "datetime",
+        "label": "End date",
+        "info": "String formatted as following:: dd mmmm YYYY hh:mm:ss Example: 29 April 2019 9:56:00 GMT+10:30"
+      }
+	],
+	"blocks": [
+          {
+            "type": "first_row_f_image",
+            "name": "Sec1 1st row of",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         },
+		 {
+            "type": "first_row_s_image",
+            "name": "Sec1 2nd, 3rd row",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+		 	  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         },
+		 {
+            "type": "second_row_f_image",
+            "name": "Sec2 1st row of",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         },
+		 {
+            "type": "second_row_s_image",
+            "name": "Sec2 2nd, 3rd row",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+		 	  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         },
+		 {
+            "type": "third_row_f_image",
+            "name": "Sec3 1st row of",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         },
+		 {
+            "type": "third_row_s_image",
+            "name": "Sec3 2nd, 3rd row",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+		 	  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         },
+		 {
+            "type": "third_row_t_image",
+            "name": "Sec3 3rd row ",
+            "settings": [
+              {
+                "id": "col_image",
+                "type": "image_picker",
+                "label": "Image"
+              },
+			  {
+                "id": "col_image_mobile",
+                "type": "image_picker",
+                "label": "Mobile Image"
+              },
+              {
+                "id": "link",
+                "type": "url",
+                "label": "Link"
+              }
+            ]
+         }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

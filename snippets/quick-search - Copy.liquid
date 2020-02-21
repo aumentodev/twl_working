@@ -1,0 +1,79 @@
+
+<div class="quick-search-sections">
+  <div class="header-search-section">
+    <form action="/search" method="get" id="header-quick-search" role="search">
+      <div class="search-sec">
+      <input class="search-header__input-custom "
+             type="search"
+             name="q"
+             placeholder="{{ 'general.search.placeholder' | t }}"
+             aria-label="{{ 'general.search.placeholder' | t }}">
+      <button class="search-header__submit search__submit btn--link" type="submit">
+        <img src="{{ 'search-white.png' | asset_url }}" class="icon-search">
+        <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+      </button>
+        <div class="close-search"><span>close</span> <img src="{{ 'close-white.png' | asset_url }}"></div>
+      </div>
+    </form>
+  </div>
+  <div class="body-search-section">
+    <div class="search-results"></div>
+  </div>
+
+  {% if settings.search_enable %}
+    <div class="body-search-footer">
+      <div class="sec-lists">
+        {% for i in (1..4) %}
+          {% capture image %}search_icon{{ i }}{% endcapture %}
+          {% capture txt %}search_txt{{ i }}{% endcapture %}
+          <div class="sec-list">
+            <img src="{{ settings[image] | img_url: '400x400' }}">
+            <p>{{ settings[txt] }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  
+</div>
+
+
+<script>
+$(function() {
+  // Current Ajax request.
+  var currentAjaxRequest = null;
+  // Grabbing all search forms on the page, and adding a .search-results list to each.
+  var $searchForms = $('.quick-search-sections form[action="/search"]');
+  var $input = $searchForms.find('input[name="q"]');
+  
+  $input.attr('autocomplete', 'off').bind('keyup change', function(){
+  
+    var term = $input.val();
+    var form = $(this).closest('form');
+    var searchURL = '/search?type=product&q=' + term;
+    var $resultsList = $('.quick-search-sections .search-results');
+    
+    if (term.length > 0 && term != $(this).attr('data-old-term')) {
+      $(this).attr('data-old-term', term);
+      
+       /*$.ajax({
+           type: 'GET',
+           url: searchURL,
+           data: {},
+           complete: function (data) {
+             console.log('here')
+             $resultsList.empty();
+             var html = $(data.responseText).find(".search-result_lists").html();
+             $resultsList.html(html);
+           }
+       });
+      
+       currentAjaxRequest = $.getJSON(searchURL + '&view=json', function(data) {      
+         resultsList.empty();
+         console.log(data);      
+       });*/
+    }
+  });
+
+});
+</script>
